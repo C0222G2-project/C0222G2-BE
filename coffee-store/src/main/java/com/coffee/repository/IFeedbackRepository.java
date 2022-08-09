@@ -8,6 +8,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 public interface IFeedbackRepository extends JpaRepository<Feedback, Integer> {
 
@@ -43,7 +45,7 @@ public interface IFeedbackRepository extends JpaRepository<Feedback, Integer> {
 
     @Query(value = " select feedback.id, feedback.code, feedback.content, feedback.creator, feedback.email,  " +
             " feedback.feedback_date, feedback.image, feedback.rating, feedback.is_deleted  " +
-            " from feedback where feedback.id :id and feedback.is_deleted = 0 ", nativeQuery = true)
-    Feedback findFeedbackById(@Param("id") int id);
+            " from feedback where feedback.id =:idDetail and feedback.is_deleted = 0 ", nativeQuery = true)
+    Optional<Feedback> findFeedbackById(@Param("idDetail") int id);
 
 }

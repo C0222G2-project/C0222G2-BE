@@ -53,9 +53,9 @@ public class FeedbackRestController {
             sortable = Sort.by("rating").descending();
         }
         Pageable pageable = PageRequest.of(page, size, sortable);
-        String creattor = searchCreator.orElse("");
+        String creator = searchCreator.orElse("");
         String feedbackDate = searchFeedbackDate.orElse("");
-        Page<Feedback> feedbackPage = feedbackService.findAllFeedback(pageable,creattor,feedbackDate);
+        Page<Feedback> feedbackPage = feedbackService.findAllFeedback(pageable,creator,feedbackDate);
         if (feedbackPage.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 
@@ -77,10 +77,10 @@ public class FeedbackRestController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Feedback> getFeedbackById(@PathVariable int id) {
-        Feedback feedback = feedbackService.findFeedbackById(id);
-        if(feedback == null){
+        Optional<Feedback> feedback = feedbackService.findFeedbackById(id);
+        if(!feedback.isPresent()){
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-        return new ResponseEntity<>(feedback, HttpStatus.OK);
+        return new ResponseEntity<>(feedback.get(), HttpStatus.OK);
     }
 }

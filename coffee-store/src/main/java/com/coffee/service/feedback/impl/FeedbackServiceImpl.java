@@ -8,6 +8,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class FeedbackServiceImpl implements IFeedbackService {
     @Autowired
@@ -19,14 +21,14 @@ public class FeedbackServiceImpl implements IFeedbackService {
      * function:  page section, search
      *
      * @param pageable
-     * @param creattor
+     * @param creator
      * @param feedbackDate
      * @return Page<Feedback>
      */
 
     @Override
-    public Page<Feedback> findAllFeedback(Pageable pageable, String creattor, String feedbackDate) {
-        return feedbackRepository.findAllFeedback(pageable, "%" + creattor + "%", "%" + feedbackDate + "%");
+    public Page<Feedback> findAllFeedback(Pageable pageable, String creator, String feedbackDate) {
+        return feedbackRepository.findAllFeedback(pageable, "%" + creator + "%", "%" + feedbackDate + "%");
     }
 
     /**
@@ -39,7 +41,7 @@ public class FeedbackServiceImpl implements IFeedbackService {
      */
 
     @Override
-    public Feedback findFeedbackById(int id) {
+    public Optional<Feedback> findFeedbackById(int id) {
         return feedbackRepository.findFeedbackById(id);
     }
 }

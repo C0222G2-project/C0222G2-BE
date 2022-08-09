@@ -4,6 +4,8 @@ import com.coffee.model.feedback.Feedback;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.Optional;
+
 public interface IFeedbackService {
     /**
      * Created by : LuanTV
@@ -11,11 +13,11 @@ public interface IFeedbackService {
      * function: page section, search
      *
      * @param pageable
-     * @param creattor
+     * @param creator
      * @param feedbackDate
      * @return
      */
-    Page<Feedback> findAllFeedback(Pageable pageable, String creattor, String feedbackDate);
+    Page<Feedback> findAllFeedback(Pageable pageable, String creator, String feedbackDate);
 
     /**
      * Created by : LuanTV
@@ -26,5 +28,5 @@ public interface IFeedbackService {
      * @return
      */
 
-    Feedback findFeedbackById(int id);
+    Optional<Feedback> findFeedbackById(int id);
 }
