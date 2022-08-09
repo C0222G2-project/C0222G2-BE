@@ -2,7 +2,6 @@ package com.coffee.controller;
 
 import com.coffee.model.dish.Dish;
 import com.coffee.service.IDishService;
-import com.coffee.service.IDishTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,13 +16,29 @@ import java.util.Optional;
 public class DishController {
     @Autowired
     private IDishService iDishService;
-    @Autowired
-    private IDishTypeService iDishTypeService;
+
+    /**
+     * @function ( create new Dish)
+     * @param dish
+     * @return dish, status 201
+     * @creator PhucLV
+     * @date-create 09/08/2022
+     */
+
     @PostMapping(value = "/create")
     public ResponseEntity<Dish> createDish(@RequestBody Dish dish) {
-
-        return new ResponseEntity<>(iDishService.save(dish), HttpStatus.CREATED);
+        iDishService.save(dish);
+        return new ResponseEntity<>(dish, HttpStatus.CREATED);
     }
+
+    /**
+     * @function ( find the dish of the id )
+     * @creator PhucLV
+     * @date-create 09/08/2022
+     * @param id
+     * @return true: id status 200 / false: status 404
+     */
+
     @GetMapping("/{id}")
     public ResponseEntity<Dish> findById(@PathVariable int id) {
         Optional<Dish> dishOptional = iDishService.findById(id);
@@ -33,7 +48,14 @@ public class DishController {
         return new ResponseEntity<>(dishOptional.get(), HttpStatus.OK);
     }
 
-
+    /**
+     * @function ( edit the value of the dish )
+     * @param id
+     * @param dish
+     * @return true: dish, status 200 / false: status 404
+     * @creator PhucLV
+     * @date-create 09/08/2022
+     */
     @PutMapping("/{id}")
     public ResponseEntity<Dish> updateDish(@PathVariable int id, @RequestBody Dish dish) {
         Optional<Dish> dishOptional = iDishService.findById(id);
@@ -43,6 +65,5 @@ public class DishController {
         dish.setId(dishOptional.get().getId());
         return new ResponseEntity<>(iDishService.editDish(dish), HttpStatus.OK);
     }
-
 
 }

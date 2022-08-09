@@ -5,7 +5,7 @@ import com.coffee.model.dish.Dish;
 import java.util.Optional;
 
 public interface IDishService {
-    Dish save(Dish dish);
+    void save(Dish dish);
 
     Optional<Dish> findById(int id);
 
