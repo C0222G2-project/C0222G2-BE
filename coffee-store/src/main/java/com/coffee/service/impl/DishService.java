@@ -6,7 +6,9 @@ import com.coffee.service.IDishService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
+@Service
 public class DishService implements IDishService {
     @Autowired
     private IDishRepository iDishRepository;
