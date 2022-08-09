@@ -27,7 +27,7 @@ public class FeedbackServiceImpl implements IFeedbackService {
      */
 
     @Override
-    public Page<Feedback> findAllFeedback(Pageable pageable, String creator, String feedbackDate) {
+    public Page<Feedback> findAllFeedback(Pageable pageable, String creator                                                                                                                 , String feedbackDate) {
         return feedbackRepository.findAllFeedback(pageable, "%" + creator + "%", "%" + feedbackDate + "%");
     }
 
