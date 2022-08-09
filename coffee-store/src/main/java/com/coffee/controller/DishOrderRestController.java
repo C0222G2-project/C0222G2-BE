@@ -19,6 +19,8 @@ public class DishOrderRestController {
     @Autowired
     private IDishOrderService iDishOrderService;
 
+
+    //RestController Method Get List Most Order By BaoTQ
     @GetMapping("/most-order")
     public ResponseEntity<List<DishOrder>> getMostOrder(){
         List<DishOrder> mostOrderList = iDishOrderService.get5DishMostOrder();
