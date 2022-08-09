@@ -15,7 +15,7 @@ public interface IFeedbackService {
 
     /**
      * Created by : LuanTV
-     * Date created: 08/09/2022
+     * Date created: 09/08/2022
      * function: page section, search
      *
      * @param pageable
@@ -27,7 +27,7 @@ public interface IFeedbackService {
 
     /**
      * Created by : LuanTV
-     * Date created: 08/09/2022
+     * Date created: 09/08/2022
      * function: find by id feedback
      *
      * @param id
