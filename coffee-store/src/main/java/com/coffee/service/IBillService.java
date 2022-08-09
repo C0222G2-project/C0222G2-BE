@@ -14,7 +14,7 @@ public interface IBillService {
      * @param pageable
      * @param searchCode
      * @param searchDate
-     * @return
+     * @return 
      */
     Page<Bill> getAll(Pageable pageable, String searchCode, String searchDate);
 

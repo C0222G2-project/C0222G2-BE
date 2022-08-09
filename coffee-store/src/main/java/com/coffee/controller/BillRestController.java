@@ -28,7 +28,7 @@ public class BillRestController {
      * @param pageable
      * @param searchParamCode
      * @param searchParamDate
-     * @return
+     * @return Page<Bill>
      */
 
     @GetMapping("/bill")
@@ -51,7 +51,7 @@ public class BillRestController {
      * function: show bill details by id
      *
      * @param id
-     * @return
+     * @return object Bill
      */
     @GetMapping("/bill/{id}")
     public ResponseEntity<Bill> getById(@PathVariable Integer id){

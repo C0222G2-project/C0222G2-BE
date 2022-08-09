@@ -22,7 +22,7 @@ public class BillServiceImpl implements IBillService {
      * @param pageable
      * @param searchCode
      * @param searchDate
-     * @return
+     * @return Page<Bill>
      */
     @Override
     public Page<Bill> getAll(Pageable pageable, String searchCode, String searchDate) {
@@ -35,7 +35,7 @@ public class BillServiceImpl implements IBillService {
      * function: show bill details by id
      *
      * @param id
-     * @return
+     * @return Bill
      */
 
     @Override

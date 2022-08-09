@@ -15,7 +15,6 @@ public interface IBillRepository extends JpaRepository<Bill, Integer> {
      * Date created: 09/08/2022
      * function: Show bill list, with pagination,search by bill number and creation date
      *
-     *
      * @param pageable
      * @param searchCode
      * @param searchDate
