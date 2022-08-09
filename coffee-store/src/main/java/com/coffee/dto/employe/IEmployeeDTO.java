@@ -11,4 +11,5 @@ public interface IEmployeeDTO {
     String getImage();
     String getPosition();
     String getAppUser();
+    Integer getGender();
 }
