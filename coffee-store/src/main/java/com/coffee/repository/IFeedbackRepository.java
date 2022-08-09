@@ -31,8 +31,8 @@ public interface IFeedbackRepository extends JpaRepository<Feedback, Integer> {
                     " feedback.feedback_date, feedback.image, feedback.rating, feedback.is_deleted  " +
                     " from feedback where feedback.creator like :creator and feedback.feedback_date like :feedbackDate and feedback.is_deleted = 0 ) feedback")
     Page<Feedback> findAllFeedback(Pageable pageable,
-                                   @Param("feedbackDate") String feedbackDate,
-                                   @Param("creator") String creator);
+                                   @Param("creator") String creator,
+                                   @Param("feedbackDate") String feedbackDate);
 
     /**
      * Created by : LuanTV
