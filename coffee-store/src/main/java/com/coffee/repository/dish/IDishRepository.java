@@ -14,10 +14,10 @@ import javax.transaction.Transactional;
 @Repository
 @Transactional
 public interface IDishRepository extends JpaRepository<Dish,Integer> {
-    @Query(value = " select * from dish", nativeQuery = true)
+    @Query(value = "SELECT id,`code`,creation_date,image,is_deleted,`name`,price,dish_type_id FROM dish", nativeQuery = true)
     Page<Dish> selectAllDishPage(Pageable pageable);
 
-    @Query(value = " select * from dish b where b.dish_id =:dishId", nativeQuery = true)
+    @Query(value = "SELECT id,`code`,creation_date,image,is_deleted,`name`,price,dish_type_id  from dish b where b.dish_id =:dishId", nativeQuery = true)
     Dish selectDishById(@Param("dishId") Integer id);
 
     @Modifying
