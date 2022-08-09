@@ -31,6 +31,8 @@ public class Employee {
 
     private String address;
 
+    private Integer gender;
+
     private String email;
 
     private Double salary;
