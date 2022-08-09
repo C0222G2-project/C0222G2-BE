@@ -1,6 +1,5 @@
 package com.coffee.model.account;
 
-import com.coffee.model.employee.Employee;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -31,9 +30,6 @@ public class AppUser {
 
     @OneToMany(mappedBy = "appUser")
     private List<UserRole> userRoles;
-
-    @OneToOne(mappedBy = "appUser")
-    private Employee employee;
 
     @Override
     public boolean equals(Object o) {

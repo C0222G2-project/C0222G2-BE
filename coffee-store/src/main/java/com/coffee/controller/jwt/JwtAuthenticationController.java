@@ -34,6 +34,13 @@ public class JwtAuthenticationController {
     @Autowired
     private TokenUtil tokenUtil;
 
+    /**
+     * Method handle username, password from client
+     * @creator PhuongTD
+     * @param authenticationRequest
+     * @return list roles, username, token
+     * @throws Exception
+     */
     @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
     public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws Exception {
         authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
@@ -52,6 +59,13 @@ public class JwtAuthenticationController {
         return ResponseEntity.ok(new JwtResponse(token, grantList, userDetails.getUsername()));
     }
 
+    /**
+     * Method to authenticate the object
+     * creator: PhuongTD
+     * @param username
+     * @param password
+     * @throws Exception
+     */
     private void authenticate(String username, String password) throws Exception {
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));

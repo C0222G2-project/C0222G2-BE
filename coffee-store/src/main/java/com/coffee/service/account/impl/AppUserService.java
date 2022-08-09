@@ -12,13 +12,13 @@ public class AppUserService implements IAppUserService {
     @Autowired
     private IAppUserRepository IAppUserRepository;
 
+    /**
+     * Method get AppUser by username
+     * @param username
+     * @return AppUser
+     */
     @Override
     public AppUser findAppUserByUsername(String username) {
         return this.IAppUserRepository.getAppUserByUsername(username);
-    }
-
-    @Override
-    public void save(AppUser appUser) {
-        this.IAppUserRepository.save(appUser);
     }
 }
