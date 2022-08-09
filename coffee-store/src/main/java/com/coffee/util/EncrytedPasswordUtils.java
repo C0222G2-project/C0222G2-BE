@@ -6,6 +6,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class EncrytedPasswordUtils {
 
+    /**
+     * @creator: PhuongTD
+     * @param password
+     * @return
+     */
     // Encryte Password with BCryptPasswordEncoder
     public String encrytePassword(String password) {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();

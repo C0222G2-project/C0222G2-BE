@@ -38,6 +38,11 @@ public class SimpleEmailController {
 
     private String token;
 
+    /**
+     * @creator: PhuongTD
+     * @param jwtRequest
+     * @return
+     */
     @PostMapping("/sendSimpleEmail")
     public ResponseEntity<?> sendSimpleEmail(@RequestBody JwtRequest jwtRequest) {
         AppUser appUser = this.appUserService.findAppUserByUsername(jwtRequest.getUsername());
@@ -57,6 +62,13 @@ public class SimpleEmailController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
+    /**
+     * @creator: PhuongTD
+     * @param token
+     * @param response
+     * @return
+     * @throws IOException
+     */
     @GetMapping("/forgotPassword/{token}")
     public ResponseEntity<?> getUsernameForChangePassword(@PathVariable String token, HttpServletResponse response) throws IOException {
         if (this.token == null) {
@@ -70,6 +82,11 @@ public class SimpleEmailController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
+    /**
+     * @creator: PhuongTD
+     * @param jwtRequest
+     * @return
+     */
     @PostMapping("/changePassword")
     public ResponseEntity<?> changePassword(@RequestBody JwtRequest jwtRequest) {
         if (this.token.equals(jwtRequest.getToken())) {

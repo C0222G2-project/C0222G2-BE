@@ -23,6 +23,10 @@ public class AppUserService implements IAppUserService {
         return this.IAppUserRepository.getAppUserByUsername(username);
     }
 
+    /**
+     * @creator: PhuongTD
+     * @param appUser
+     */
     @Override
     public void updatePassword(AppUser appUser) {
         this.IAppUserRepository.updatePassword(appUser);
