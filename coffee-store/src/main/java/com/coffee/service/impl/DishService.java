@@ -13,18 +13,38 @@ public class DishService implements IDishService {
     @Autowired
     private IDishRepository iDishRepository;
 
+    /**
+     * Created By: HieuCD
+     * Date created: 09/08/2022
+     * function: get dish page
+     * @param pageable
+     * @return
+     */
     @Override
-    public Page<Dish> findAll(Pageable pageable) {
+    public Page<Dish> findAllDish(Pageable pageable) {
         return iDishRepository.selectAllDishPage(pageable);
     }
 
+    /**
+     * Created By: HieuCD
+     * Date created: 09/08/2022
+     * function: get dish by dish id
+     * @param id
+     * @return
+     */
     @Override
-    public Dish findById(Integer id) {
+    public Dish findDishById(Integer id) {
         return iDishRepository.selectDishById(id);
     }
 
+    /**
+     * Created By: HieuCD
+     * Date created: 09/08/2022
+     * function: delete dish by dish id
+     * @param id
+     */
     @Override
-    public void delete(Integer id) {
+    public void deleteDish(Integer id) {
         iDishRepository.deleteDishById(id);
     }
 }

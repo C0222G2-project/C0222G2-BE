@@ -34,7 +34,7 @@ public class DishRestController {
      */
     @GetMapping("")
     public ResponseEntity<Page<Dish>> getAllDish(@PageableDefault(10)Pageable pageable) {
-        Page<Dish> dishPage = this.iDishService.findAll(pageable);
+        Page<Dish> dishPage = this.iDishService.findAllDish(pageable);
         if (dishPage.isEmpty()) {
             return new ResponseEntity<>(dishPage, HttpStatus.NO_CONTENT);
         } else {
@@ -51,7 +51,7 @@ public class DishRestController {
      */
     @GetMapping("/findById{id}")
     public ResponseEntity<Dish> findById(@PathVariable Integer id) {
-        Dish dish = this.iDishService.findById(id);
+        Dish dish = this.iDishService.findDishById(id);
         return new ResponseEntity<>(dish, HttpStatus.OK);
     }
 
@@ -64,7 +64,7 @@ public class DishRestController {
      */
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> deleteDish(@PathVariable Integer id) {
-        this.iDishService.delete(id);
+        this.iDishService.deleteDish(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }
