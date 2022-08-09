@@ -17,14 +17,21 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/payment")
 public class PaymentController {
+    /**
+     *Create By HoaNN
+     * Date create 08/08/2022
+     * function displayListDishOrderInTable
+     *
+     *
+     */
     @Autowired
     private IDishOrderService iDishOrderService;
 
-//    @GetMapping("/list")
-//    public ResponseEntity<List<DishOrder>> displayOrder() {
-//        List<DishOrder> dishOrderList = this.iDishOrderService
-//        return new ResponseEntity<>(dishOrderList, HttpStatus.OK);
-//    }
+    @GetMapping("/list")
+    public ResponseEntity<List<DishOrder>> displayOrder() {
+        List<DishOrder> dishOrderList = this.iDishOrderService.displayListDishOrderInTable();
+        return new ResponseEntity<>(dishOrderList, HttpStatus.OK);
+    }
 
 
 }
