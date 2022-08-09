@@ -1,9 +1,22 @@
 package com.coffee.service;
 
-import com.coffee.model.dish_order.DishOrder;
+import com.coffee.dto.DishMostOrderDTO;
+import com.coffee.dto.DishNewestDTO;
 
 import java.util.List;
 
 public interface IDishOrderService {
-    List<DishOrder> get5DishMostOrder();
+
+    /**
+     * BaoTQ
+     * get 5 dish most order
+     */
+    List<DishMostOrderDTO> get5DishMostOrderDTO();
+
+
+    /**
+     * BaoTQ
+     * get 5 dish newest
+     */
+    List<DishNewestDTO> get5DishNewestDTO();
 }
