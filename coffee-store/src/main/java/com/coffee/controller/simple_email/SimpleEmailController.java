@@ -40,6 +40,7 @@ public class SimpleEmailController {
 
     /**
      * @creator: PhuongTD
+     * @date-create 9/8/2022
      * @param jwtRequest
      * @return
      */
@@ -64,6 +65,7 @@ public class SimpleEmailController {
 
     /**
      * @creator: PhuongTD
+     * @date-create 9/8/2022
      * @param token
      * @param response
      * @return
@@ -84,6 +86,7 @@ public class SimpleEmailController {
 
     /**
      * @creator: PhuongTD
+     * @date-create 9/8/2022
      * @param jwtRequest
      * @return
      */
@@ -100,7 +103,6 @@ public class SimpleEmailController {
             } else {
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
             }
-
         }
         return new ResponseEntity<>(HttpStatus.OK);
     }

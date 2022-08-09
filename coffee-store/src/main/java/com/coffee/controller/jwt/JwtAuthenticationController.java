@@ -36,6 +36,7 @@ public class JwtAuthenticationController {
 
     /**
      * @creator: PhuongTD
+     * @date-create 9/8/2022
      * @param authenticationRequest
      * @return
      * @throws Exception
@@ -60,6 +61,7 @@ public class JwtAuthenticationController {
 
     /**
      * @creator: PhuongTD
+     * @date-create 9/8/2022
      * @param username
      * @param password
      * @throws Exception

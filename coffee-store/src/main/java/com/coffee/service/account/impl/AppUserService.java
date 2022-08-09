@@ -15,6 +15,7 @@ public class AppUserService implements IAppUserService {
     /**
      *
      * @Creator PhuongTD
+     * @date-create 9/8/2022
      * @param username
      * @return
      */
@@ -25,6 +26,7 @@ public class AppUserService implements IAppUserService {
 
     /**
      * @creator: PhuongTD
+     * @date-create 9/8/2022
      * @param appUser
      */
     @Override

@@ -34,6 +34,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     /**
      * @creator: PhuongTD
+     * @date-create 9/8/2022
      * @param auth
      * @throws Exception
      */
@@ -47,6 +48,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     /**
      * @creator: PhuongTD
+     * @date-create 9/8/2022
      * @return
      * @throws Exception
      */
@@ -58,6 +60,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     /**
      * @creator: PhuongTD
+     * @date-create 9/8/2022
      * @param httpSecurity
      * @throws Exception
      */
