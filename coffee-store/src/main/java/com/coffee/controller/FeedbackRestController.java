@@ -1,8 +1,9 @@
 package com.coffee.controller;
 
-
+import com.coffee.dto.FeedbackDto;
 import com.coffee.model.feedback.Feedback;
 import com.coffee.service.feedback.IFeedbackService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -10,8 +11,12 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @CrossOrigin
@@ -19,9 +24,36 @@ import java.util.Optional;
 @RequestMapping("/feedback")
 public class FeedbackRestController {
 
-
     @Autowired
     private IFeedbackService feedbackService;
+
+    /**
+     * Created by: DiepTT
+     * Date created: 09/08/2022
+     * Function: Create feedback (User send feedback)
+     *
+     * @param feedbackDto
+     * @param bindingResult
+     * @return feedback in the database
+     */
+    @PostMapping("/create")
+    public ResponseEntity<List<FieldError>> createFeedback(
+            @Validated @RequestBody FeedbackDto feedbackDto,
+            BindingResult bindingResult) {
+
+        if (bindingResult.hasFieldErrors()) {
+            return new ResponseEntity<>(bindingResult.getFieldErrors(), HttpStatus.BAD_REQUEST);
+        }
+
+
+        Feedback feedback = new Feedback();
+
+        BeanUtils.copyProperties(feedbackDto, feedback);
+
+        this.feedbackService.createFeedback(feedback);
+
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    }
 
     /**
      * Created by : LuanTV
@@ -45,12 +77,12 @@ public class FeedbackRestController {
             @RequestParam(name = "sort", required = false, defaultValue = "ASC") String sort,
             @RequestParam Optional<String> searchCreator,
             @RequestParam Optional<String> searchFeedbackDate){
-        Sort sortable = null;
+        Sort sortable = Sort.by(sort);
         if (sort.equals("ASC")) {
-            sortable = Sort.by("rating").ascending();
+            sortable = Sort.by("id").ascending();
         }
         if (sort.equals("DESC")) {
-            sortable = Sort.by("rating").descending();
+            sortable = Sort.by("id").descending();
         }
         Pageable pageable = PageRequest.of(page, size, sortable);
         String creator = searchCreator.orElse("");
