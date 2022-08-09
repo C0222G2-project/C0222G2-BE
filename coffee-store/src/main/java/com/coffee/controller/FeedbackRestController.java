@@ -34,7 +34,7 @@ public class FeedbackRestController {
      * @param sort
      * @param searchCreator
      * @param searchFeedbackDate
-     * @return
+     * @return Page<Feedback>
      */
 
 
@@ -72,7 +72,7 @@ public class FeedbackRestController {
      *
      *
      * @param id
-     * @return
+     * @return  Feedback
      */
 
     @GetMapping("/{id}")

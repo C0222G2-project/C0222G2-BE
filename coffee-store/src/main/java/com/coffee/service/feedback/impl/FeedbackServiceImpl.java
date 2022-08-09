@@ -21,7 +21,7 @@ public class FeedbackServiceImpl implements IFeedbackService {
      * @param pageable
      * @param creattor
      * @param feedbackDate
-     * @return
+     * @return Page<Feedback>
      */
 
     @Override
@@ -35,7 +35,7 @@ public class FeedbackServiceImpl implements IFeedbackService {
      * function: find by id feedback
      *
      * @param id
-     * @return
+     * @return Feedback
      */
 
     @Override

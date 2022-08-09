@@ -43,7 +43,7 @@ public interface IFeedbackRepository extends JpaRepository<Feedback, Integer> {
 
     @Query(value = " select feedback.id, feedback.code, feedback.content, feedback.creator, feedback.email,  " +
             " feedback.feedback_date, feedback.image, feedback.rating, feedback.is_deleted  " +
-            " from feedback where feedback.id :id ", nativeQuery = true)
+            " from feedback where feedback.id :id and feedback.is_deleted = 0 ", nativeQuery = true)
     Feedback findFeedbackById(@Param("id") int id);
 
 }
