@@ -20,6 +20,17 @@ public class BillRestController {
     @Autowired
     public IBillService iBillService;
 
+    /**
+     * Created by: HauLT
+     * Date created: 09/08/2022
+     * function: Show bill list, with pagination,search by bill number and creation date
+     *
+     * @param pageable
+     * @param searchParamCode
+     * @param searchParamDate
+     * @return
+     */
+
     @GetMapping("/bill")
     public ResponseEntity<Page<Bill>> getAllBill(@PageableDefault(10) Pageable pageable,
                                                  @RequestParam Optional<String> searchParamCode,
@@ -32,6 +43,20 @@ public class BillRestController {
         }else {
             return new ResponseEntity<>(HttpStatus.OK);
         }
+    }
+
+    /**
+     * Created by: HauLT
+     * Date created: 09/08/2022
+     * function: show bill details by id
+     *
+     * @param id
+     * @return
+     */
+    @GetMapping("/bill/{id}")
+    public ResponseEntity<Bill> getById(@PathVariable Integer id){
+        Bill bill = this.iBillService.findById(id);
+        return new ResponseEntity<>(bill, HttpStatus.OK);
     }
 
 

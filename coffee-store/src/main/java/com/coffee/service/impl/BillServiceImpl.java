@@ -14,10 +14,29 @@ public class BillServiceImpl implements IBillService {
     @Autowired
     public IBillRepository iBillRepository;
 
+    /**
+     * Created by: HauLT
+     * Date created: 09/08/2022
+     * function: Show bill list, with pagination,search by bill number and creation date
+     *
+     * @param pageable
+     * @param searchCode
+     * @param searchDate
+     * @return
+     */
     @Override
     public Page<Bill> getAll(Pageable pageable, String searchCode, String searchDate) {
         return this.iBillRepository.getAllBill(pageable, "%" + searchCode + "%", "%" + searchDate + "%");
     }
+
+    /**
+     * Created by: HauLT
+     * Date created: 09/08/2022
+     * function: show bill details by id
+     *
+     * @param id
+     * @return
+     */
 
     @Override
     public Bill findById(Integer id) {
