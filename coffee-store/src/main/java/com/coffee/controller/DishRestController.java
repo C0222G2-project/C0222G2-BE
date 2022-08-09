@@ -18,11 +18,20 @@ import java.util.List;
 @CrossOrigin
 @RequestMapping("/dish")
 public class DishRestController {
+
     @Autowired
     private IDishService iDishService;
     @Autowired
     private IDishTypeService iDishTypeService;
 
+    /**
+     *
+     * Created by: HieuCD
+     * Date created: 09/08/2022
+     * function: show dish page
+     * @param pageable
+     * @return
+     */
     @GetMapping("")
     public ResponseEntity<Page<Dish>> getAllDish(@PageableDefault(10)Pageable pageable) {
         Page<Dish> dishPage = this.iDishService.findAll(pageable);
@@ -33,12 +42,26 @@ public class DishRestController {
         }
     }
 
+    /**
+     * Created by: HieuCD
+     * Date created: 09/08/2022
+     * function: get dish by dish
+     * @param id
+     * @return
+     */
     @GetMapping("/findById{id}")
     public ResponseEntity<Dish> findById(@PathVariable Integer id) {
         Dish dish = this.iDishService.findById(id);
         return new ResponseEntity<>(dish, HttpStatus.OK);
     }
 
+    /**
+     * Created by: HieuCD
+     * Date created: 09/08/2022
+     * function: delete dish by dish
+     * @param id
+     * @return
+     */
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> deleteDish(@PathVariable Integer id) {
         this.iDishService.delete(id);
