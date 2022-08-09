@@ -17,7 +17,7 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Integer> {
      * @creator TaiLV
      * Date 09/08/2022
      * @param employee
-     * @return  create Employee success
+     * @return  true: employee, create employee success, status 200 / false: status 404
      */
     @Modifying
     @Transactional
@@ -39,7 +39,7 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Integer> {
      * @param address
      * @param salary
      * @param position
-     * @return  create Employee success
+     * @return  true: employee ,edit employee success, status 200 / false: status 404
      */
     @Transactional
     @Modifying
@@ -51,13 +51,14 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Integer> {
      * @creator TaiLV
      * Date 09/08/2022
      * @param id
+     * if id null : Bad request
      * @return  object Employee
      */
-    @Query(value = " select employee.id, employee.name, employee.image,employee.phone_number , employee.address " +
-            " employee.email, employee.gender, employee.birthday, employee.salary, employee.position_id, employee.user_id " +
-            " from employee join app_user on employee.user_id = app_user.id " +
+    @Query(value = " select employee.id, employee.name, employee.image,employee.phone_number , employee.address , employee.email, employee.gender, " +
+            " employee.birthday, employee.salary, employee.position_id , employee.user_id, employee.is_deleted from employee " +
+            " join app_user on employee.user_id = app_user.id " +
             " join `position` on employee.position_id = `position`.id " +
-            " where id = :id ", nativeQuery = true)
+            " where employee.id = 1 and employee.is_deleted = 0", nativeQuery = true)
     Employee findByIdEmployee(Integer id);
 
 

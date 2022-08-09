@@ -54,11 +54,11 @@ public class EmployeeRestController {
     }
 
     /**
+     * @function ( find the employee of the id )
      * @creator TaiLV
-     * Date 09/08/2022
+     * @date-create 09/08/2022
      * @param id
-     * if id null : Bad request
-     * @return  object Employee
+     * @return true: id status 200 / false: status 404
      */
     @GetMapping("/findId/{id}")
     public ResponseEntity<Employee> findByID(@PathVariable Integer id) {
@@ -70,11 +70,12 @@ public class EmployeeRestController {
 
     /**
      * @creator TaiLV
+     * @function ( create the value of the employee )
      * Date 09/08/2022
      * @param employeeDTO
      * @param bindingResult
      * if employee null : Create new employee
-     * @return  create Employee success
+     * @return  true: employee, status 200 / false: status 404
      */
     @PostMapping("/create")
     public ResponseEntity<Employee> saveEmployee(@Valid @RequestBody EmployeeDTO employeeDTO , BindingResult bindingResult) {
@@ -90,12 +91,13 @@ public class EmployeeRestController {
 
     /**
      * @creator TaiLV
+     * @function ( edit the value of the employee )
      * Date 09/08/2022
      * @param employeeDTO
      * @param bindingResult
      * @param id
      * if employee null : Create new employee
-     * @return  update Employee success
+     * @return  true: employee, status 200 / false: status 404
      */
     @PatchMapping("/edit/{id}")
     public ResponseEntity<Employee> editProduct(@RequestBody EmployeeDTO employeeDTO , BindingResult bindingResult,@PathVariable Integer id) {

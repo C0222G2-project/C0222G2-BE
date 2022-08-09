@@ -13,6 +13,7 @@ public interface IPositionRepository extends JpaRepository<Position, Integer> {
      * @param
      * @return  Position list
      */
-    @Query(value = " select `position`.id, `position`.name from `position` where is_deleted = 0 ", nativeQuery = true)
+    @Query(value = " select `position`.id, `position`.name, `position`.is_deleted from `position` " +
+            " where `position`.is_deleted = 0 ", nativeQuery = true)
     List<Position> findAllPosition();
 }
