@@ -115,4 +115,8 @@ public class SimpleEmailController_sendSimpleEmail {
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
+    /**
+     * READ ME!
+     * Because token auto generate, i can't write full test for method getUsernameForChangePassword and changePassword
+     */
 }

@@ -111,11 +111,13 @@ public class SimpleEmailController {
                     appUser.setPassword(encrytedPasswordUtils.encrytePassword(jwtRequest.getPassword()));
                     this.appUserService.updatePassword(appUser);
                     this.token = "";
+                } else {
+                    return new ResponseEntity<>("Password Not Same", HttpStatus.OK);
                 }
             } else {
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             }
         }
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 }
