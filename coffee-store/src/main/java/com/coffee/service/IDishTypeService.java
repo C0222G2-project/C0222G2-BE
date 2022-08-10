@@ -6,6 +6,6 @@ import org.springframework.data.domain.Pageable;
 
 public interface IDishTypeService {
     Page<DishType> findAllDishType(Pageable pageable);
-    DishType findDishById(Integer id);
-    void deleteDish(Integer id);
+    DishType findDishTypeById(Integer id);
+
 }

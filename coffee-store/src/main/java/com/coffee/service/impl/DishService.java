@@ -18,7 +18,7 @@ public class DishService implements IDishService {
      * Date created: 09/08/2022
      * function: get dish page
      * @param pageable
-     * @return
+     * @return Page<Dish> dishPage
      */
     @Override
     public Page<Dish> findAllDish(Pageable pageable) {
@@ -30,7 +30,7 @@ public class DishService implements IDishService {
      * Date created: 09/08/2022
      * function: get dish by dish id
      * @param id
-     * @return
+     * @return  dish
      */
     @Override
     public Dish findDishById(Integer id) {

@@ -13,18 +13,28 @@ public class DishTypeService implements IDishTypeService {
     @Autowired
     private IDishTypeRepository iDishTypeRepository;
 
+    /**
+     * Created By: HieuCD
+     * Date created: 09/08/2022
+     * function: get dish by dish id
+     * @param pageable
+     * @return Page<DishType> dishPage
+     */
     @Override
     public Page<DishType> findAllDishType(Pageable pageable) {
-        return null;
+        return iDishTypeRepository.selectAllDishTypePage(pageable);
     }
 
+    /**
+     * Created By: HieuCD
+     * Date created: 09/08/2022
+     * function: get dish by dish id
+     * @param id
+     * @return dish
+     */
     @Override
-    public DishType findDishById(Integer id) {
-        return null;
+    public DishType findDishTypeById(Integer id) {
+        return iDishTypeRepository.selectDishById(id);
     }
 
-    @Override
-    public void deleteDish(Integer id) {
-
-    }
 }

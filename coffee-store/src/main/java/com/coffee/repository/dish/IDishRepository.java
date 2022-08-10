@@ -17,10 +17,10 @@ public interface IDishRepository extends JpaRepository<Dish,Integer> {
     @Query(value = "SELECT id,`code`,creation_date,image,is_deleted,`name`,price,dish_type_id FROM dish", nativeQuery = true)
     Page<Dish> selectAllDishPage(Pageable pageable);
 
-    @Query(value = "SELECT id,`code`,creation_date,image,is_deleted,`name`,price,dish_type_id  from dish b where b.dish_id =:dishId", nativeQuery = true)
+    @Query(value = "SELECT id,`code`,creation_date,image,is_deleted,`name`,price,dish_type_id  from dish d where d.id =:dishId", nativeQuery = true)
     Dish selectDishById(@Param("dishId") Integer id);
 
     @Modifying
-    @Query(value = " update dish d set is_deleted=1 where  d.dish_id =:dishId", nativeQuery = true)
+    @Query(value = " update dish d set is_deleted=1 where  d.id =:dishId", nativeQuery = true)
     int deleteDishById(@Param("dishId") Integer id);
 }
