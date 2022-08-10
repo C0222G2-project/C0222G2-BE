@@ -98,4 +98,41 @@ public class DishOrderRestController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    /**
+     *   Author: BinhPX
+     *   Date created: 10/08/2022
+     *   This function get list, @param is pageable and page, size, @return status ok if size greater than 0
+     *   and return status bad gateway if size equal 0
+     **/
+    @GetMapping("/get-dish-list")
+    public ResponseEntity<Page<DishOrder>> getListOrder(@PageableDefault(4)Pageable pageable,
+                                                        @RequestParam("page") Optional<Integer> page,
+                                                        @RequestParam("size") Optional<Integer> size){
+        Page<DishOrder> dishOrders = iDishOrderService.getAllOrder(pageable);
+        if(dishOrders.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(dishOrders, HttpStatus.OK);
+    }
+
+    /**
+     *   Author: BinhPX
+     *   Date created: 10/08/2022
+     *   This function get order have code is, @param is a code, @return status ok if size greater than 0
+     *   and return status bad gateway if size equal 0
+     **/
+    @GetMapping("/get-order-have-code/{code}")
+    public ResponseEntity<List<DishOrder>> getOrderHaveCode(@PathVariable Optional<Integer> code){
+        if(code.isPresent()){
+            List<DishOrder> dishOrders = iDishOrderService.getOrderHaveCode(code.get());
+            if(dishOrders.isEmpty()){
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+            else{
+                return new ResponseEntity<>(dishOrders, HttpStatus.OK);
+            }
+        }
+        return new ResponseEntity<>(HttpStatus.BAD_GATEWAY);
+    }
+
 }
