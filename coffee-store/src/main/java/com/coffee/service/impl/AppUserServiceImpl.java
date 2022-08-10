@@ -11,5 +11,17 @@ import java.util.List;
 
 @Service
 public class AppUserServiceImpl implements IAppUserService {
+    @Autowired
+    private IAppUserRepository iUserRepository;
 
+    /**
+     * @creator TaiLV
+     * Date 09/08/2022
+     * @param
+     * @return  AppUser list
+     */
+    @Override
+    public List<AppUser> getAllUser() {
+        return iUserRepository.findAllUser();
+    }
 }
