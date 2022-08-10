@@ -1,5 +1,6 @@
 package com.coffee.dto;
 
+import javax.validation.constraints.*;
 import java.sql.Date;
 
 /**
@@ -10,66 +11,42 @@ import java.sql.Date;
 
 public class FeedbackDto {
 
-    private Integer id;
-
-    private String code;
-
+    @NotBlank(message = "Vui lòng nhập họ và tên.")
+    @Pattern(regexp = "^([A-ZÁÀẢÃẠĂẮẰẲẴẶÂẤẦẨẬẪÉÈẺẼẸÊẾỀỂỄỆÍÌỈĨỊÓÒỎÕỌÔỐỒỔỖỘƠỚỜỞỠỢÚÙỦŨỤƯỨỪỬỮỰÝỲỶỸỴĐ]" +
+            "[a-záàảãạăắằẳẵặâấầẩậẫéèẻẽẹêếềểễệíìỉĩịóòỏõọôốồổỗộơớờởỡợúùủũụưứừửữựýỳỷỹỵđ]*" +
+            "( ))*([A-ZÁÀẢÃẠĂẮẰẲẴẶÂẤẦẨẬẪÉÈẺẼẸÊẾỀỂỄỆÍÌỈĨỊÓÒỎÕỌÔỐỒỔỖỘƠỚỜỞỠỢÚÙỦŨỤƯỨỪỬỮỰÝỲỶỸỴĐ]" +
+            "[a-záàảãạăắằẳẵặâấầẩậẫéèẻẽẹêếềểễệíìỉĩịóòỏõọôốồổỗộơớờởỡợúùủũụưứừửữựýỳỷỹỵđ]*)$",
+            message ="Vui lòng nhập đúng định dạng họ và tên: " +
+            "viết hoa chữ cái đầu mỗi từ, không chứa ký tự đặc biệt...")
+    @Size(max = 30, message = "Vui lòng không nhập quá 30 ký tự.")
     private String creator;
 
+    @NotBlank(message = "Vui lòng nhập địa chỉ email cá nhân.")
+    @Email(message = "Vui lòng nhập đúng định dạng email.")
+    @Size(max = 320, message = "Vui lòng không nhập quá 320 ký tự.")
     private String email;
 
+    @NotBlank(message = "Vui lòng nhập nội dung phản hồi.")
     private String content;
 
+    @NotNull(message = "Vui lòng đánh giá sao trước khi phản hồi.")
     private Integer rating;
 
-    private Date feedbackDate;
-
+    @NotBlank(message = "Vui lòng đính kèm ảnh phản hồi thực tế.")
     private String image;
 
-    private Boolean isDeleted;
 
     public FeedbackDto() {
     }
 
-    public FeedbackDto(Integer id, String code, String creator, String email,
-                       String content, Integer rating, Date feedbackDate, String image, Boolean isDeleted) {
-        this.id = id;
-        this.code = code;
+    public FeedbackDto(String creator, String email, String content, Integer rating, String image) {
         this.creator = creator;
         this.email = email;
         this.content = content;
         this.rating = rating;
-        this.feedbackDate = feedbackDate;
-        this.image = image;
-        this.isDeleted = isDeleted;
-    }
-
-    public FeedbackDto(String code, String creator, String email, String content,
-                       Integer rating, Date feedbackDate, String image) {
-        this.code = code;
-        this.creator = creator;
-        this.email = email;
-        this.content = content;
-        this.rating = rating;
-        this.feedbackDate = feedbackDate;
         this.image = image;
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
 
     public String getCreator() {
         return creator;
@@ -103,27 +80,11 @@ public class FeedbackDto {
         this.rating = rating;
     }
 
-    public Date getFeedbackDate() {
-        return feedbackDate;
-    }
-
-    public void setFeedbackDate(Date feedbackDate) {
-        this.feedbackDate = feedbackDate;
-    }
-
     public String getImage() {
         return image;
     }
 
     public void setImage(String image) {
         this.image = image;
-    }
-
-    public Boolean getDeleted() {
-        return isDeleted;
-    }
-
-    public void setDeleted(Boolean deleted) {
-        isDeleted = deleted;
     }
 }
