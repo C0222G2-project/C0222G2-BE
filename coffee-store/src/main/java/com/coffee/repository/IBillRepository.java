@@ -41,10 +41,10 @@ public interface IBillRepository extends JpaRepository<Bill, Integer> {
                     " bill.is_deleted as isDeleted, employee.name as employeeName, coffee_table.code as coffeeTableCode, " +
                     " dish_order.quantity as dishOrderQuantity, dish.name as dishName, dish.price as dishPrice " +
                     " from bill " +
-                    " left join dish_order on bill.id = dish_order.bill_id " +
-                    " left join employee on dish_order.employee_id = employee.id " +
-                    " left join coffee_table on dish_order.coffee_table_id = coffee_table.id " +
-                    " left join dish on dish_order.dish_id = dish.id " +
+                    " join dish_order on bill.id = dish_order.bill_id " +
+                    " join employee on dish_order.employee_id = employee.id " +
+                    " join coffee_table on dish_order.coffee_table_id = coffee_table.id " +
+                    " join dish on dish_order.dish_id = dish.id " +
                     " where bill.code like :searchCode and bill.creation_date like :searchDate and bill.is_deleted = 0) temp_table")
     Page<IBillDto> getAllBill(Pageable pageable, @Param("searchCode") String searchCode,
                           @Param("searchDate") String searchDate);
@@ -63,10 +63,10 @@ public interface IBillRepository extends JpaRepository<Bill, Integer> {
             " bill.is_deleted as isDeleted, employee.name as employeeName, coffee_table.code as coffeeTableCode, " +
             " dish_order.quantity as dishOrderQuantity, dish.name as dishName, dish.price as dishPrice " +
             " from bill " +
-            " left join dish_order on bill.id = dish_order.bill_id " +
-            " left join employee on dish_order.employee_id = employee.id " +
-            " left join coffee_table on dish_order.coffee_table_id = coffee_table.id " +
-            " left join dish on dish_order.dish_id = dish.id " +
+            " join dish_order on bill.id = dish_order.bill_id " +
+            " join employee on dish_order.employee_id = employee.id " +
+            " join coffee_table on dish_order.coffee_table_id = coffee_table.id " +
+            " join dish on dish_order.dish_id = dish.id " +
             " where bill.id = :idDetail and bill.is_deleted = 0 ", nativeQuery = true)
     IBillDto getByIdBill(@Param("idDetail") Integer id);
 
