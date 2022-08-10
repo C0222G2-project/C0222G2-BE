@@ -1,13 +1,17 @@
 package com.coffee.service.impl;
 
 
+
 import com.coffee.dto.employe.IEmployeeDTO;
+
 import com.coffee.model.employee.Employee;
 import com.coffee.repository.IEmployeeRepository;
 import com.coffee.service.IEmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+
 import org.springframework.stereotype.Service;
 
 @Service
@@ -17,7 +21,6 @@ public class EmployeeServiceImpl implements IEmployeeService {
     private IEmployeeRepository iEmployeeRepository;
 
     /**
-<<<<<<< HEAD
      * Create by TuyenTN
      * Date: 9-8-2022 16:37
      * @param pageable
@@ -56,12 +59,11 @@ public class EmployeeServiceImpl implements IEmployeeService {
     }
 
     /**
-=======
->>>>>>> a132af98fc8efbb150d5e181ad09360cb50a0d78
      * @creator TaiLV
      * Date 09/08/2022
      * @param employee
      * if employee null : Create new employee
+     * @return  true: create employee success, status 200 / false: status 404
      * @return  create Employee success
      */
     @Override
@@ -86,7 +88,11 @@ public class EmployeeServiceImpl implements IEmployeeService {
      * Date 09/08/2022
      * @param employee
      * if employee null : Create new employee
+<<<<<<< HEAD
+     * @return  true: edit employee success, status 200 / false: status 404
+=======
      * @return  update Employee success
+>>>>>>> ccede6118b6e623b7883bb907d99172b0c46d9ee
      */
     @Override
     public Employee editEmployee(Employee employee) {

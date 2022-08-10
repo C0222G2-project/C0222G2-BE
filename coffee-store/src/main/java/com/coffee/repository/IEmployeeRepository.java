@@ -1,11 +1,16 @@
 package com.coffee.repository;
 
 
+<<<<<<< HEAD
+import com.coffee.model.employee.Employee;
+import com.coffee.model.employee.Position;
+=======
 import com.coffee.dto.employe.IEmployeeDTO;
 import com.coffee.model.employee.Employee;
 import com.coffee.model.employee.Position;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+>>>>>>> ccede6118b6e623b7883bb907d99172b0c46d9ee
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -20,7 +25,11 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Integer> {
      * @creator TaiLV
      * Date 09/08/2022
      * @param employee
+<<<<<<< HEAD
+     * @return  true: employee, create employee success, status 200 / false: status 404
+=======
      * @return  create Employee success
+>>>>>>> ccede6118b6e623b7883bb907d99172b0c46d9ee
      */
     @Modifying
     @Transactional
@@ -42,7 +51,11 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Integer> {
      * @param address
      * @param salary
      * @param position
+<<<<<<< HEAD
+     * @return  true: employee ,edit employee success, status 200 / false: status 404
+=======
      * @return  create Employee success
+>>>>>>> ccede6118b6e623b7883bb907d99172b0c46d9ee
      */
     @Transactional
     @Modifying
@@ -54,6 +67,18 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Integer> {
      * @creator TaiLV
      * Date 09/08/2022
      * @param id
+<<<<<<< HEAD
+     * if id null : Bad request
+     * @return  object Employee
+     */
+    @Query(value = " select employee.id, employee.name, employee.image,employee.phone_number , employee.address , employee.email, employee.gender, " +
+            " employee.birthday, employee.salary, employee.position_id , employee.user_id, employee.is_deleted from employee " +
+            " join app_user on employee.user_id = app_user.id " +
+            " join `position` on employee.position_id = `position`.id " +
+            " where employee.id = 1 and employee.is_deleted = 0", nativeQuery = true)
+    Employee findByIdEmployee(Integer id);
+
+=======
      * @return  object Employee
      */
     @Query(value = " select employee.id, employee.name, employee.image,employee.phone_number , employee.address " +
@@ -118,5 +143,6 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Integer> {
     @Query(value = " update employee set is_deleted = 1 where id = :id ",nativeQuery = true)
     void deleteEmployeeById(Integer id);
 
+>>>>>>> ccede6118b6e623b7883bb907d99172b0c46d9ee
 
 }

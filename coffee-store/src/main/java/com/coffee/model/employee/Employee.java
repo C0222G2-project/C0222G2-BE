@@ -25,11 +25,14 @@ public class Employee {
     private String name;
 
     private Date birthday;
+
     private Integer gender;
+
     @Column(unique = true)
     private String phoneNumber;
 
     private String address;
+
 
     private String email;
 

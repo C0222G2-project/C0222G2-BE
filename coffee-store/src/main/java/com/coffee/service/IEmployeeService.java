@@ -1,5 +1,7 @@
 package com.coffee.service;
 
+
+
 import com.coffee.dto.employe.IEmployeeDTO;
 import com.coffee.model.employee.Employee;
 import org.springframework.data.domain.Page;
@@ -54,6 +56,7 @@ public interface IEmployeeService {
      * @creator TaiLV
      * Date 09/08/2022
      * @param employee
+     * @return  true: edit employee success, status 200 / false: status 404
      * if employee null : Create new employee
      * @return  update Employee success
      */
