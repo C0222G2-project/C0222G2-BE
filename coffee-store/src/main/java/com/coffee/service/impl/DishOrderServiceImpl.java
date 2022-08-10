@@ -15,8 +15,6 @@ private IDishOrderRepository iDishOrderRepository;
     /**
      *Create By HoaNN
      * Date create 08/08/2022
-     * function displayListDishOrderInTable
-     *
      *
      */
     @Override

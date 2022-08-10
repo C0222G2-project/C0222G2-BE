@@ -9,16 +9,16 @@ import java.util.List;
 @Repository
 public interface IDishOrderRepository extends JpaRepository<DishOrder, Integer> {
 
-/**
- *Create By HoaNN
- * Date create 08/08/2022
- * function displayListDishOrderInTable
- *
- *
- */
-    @Query(value=" select dish.name, dish.price, dishOrder.quantity,table.code " +
-            " from dishOrder " +
-            " join dish on dish.id = dishOrder.dish_id  ")
+    /**
+     *Create By HoaNN
+     * Date create 08/08/2022
+     * @return
+     */
+
+    @Query(value =" select dish.name, dish.price, dish_order.quantity,coffee_table.code " +
+            " from dish_order " +
+            " join dish on dish.id = dish_order.dish_id " +
+            " join coffee_table on dish_order.coffee_table_id = coffee_table.id", nativeQuery= true)
     List<DishOrder> displayListDishOrderByIdInTable();
 
 }
