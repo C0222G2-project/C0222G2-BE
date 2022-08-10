@@ -19,7 +19,6 @@ public class Position {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String a;
     private String name;
 
     @OneToMany(mappedBy = "position")
