@@ -31,14 +31,14 @@ public class EmployeeRestController_saveEmployee {
         EmployeeDTO employeeDTO = new EmployeeDTO();
         employeeDTO.getUser().setUserName(null);
         employeeDTO.setName("Lê Văn A");
-        employeeDTO.getBirthday("2000-01-01");
-        employeeDTO.getPhoneNumber("0936369999");
+        employeeDTO.setBirthday("2000-01-01");
+        employeeDTO.setPhoneNumber("0936369999");
         employeeDTO.setAddress("Tp.Đà NẴNG");
         employeeDTO.setGender(0);
         employeeDTO.setEmail("levana@gmail.com");
         employeeDTO.setSalary(10.0);
         employeeDTO.setImage("http/:firebase.levana.png");
-        employeeDTO.getIsDeleted(0);
+        employeeDTO.setIsDeleted(0);
 
         Position position = new Position();
         position.setId(1);
@@ -60,14 +60,14 @@ public class EmployeeRestController_saveEmployee {
         EmployeeDTO employeeDTO = new EmployeeDTO();
         employeeDTO.getUser().setUserName("");
         employeeDTO.setName("Lê Văn A");
-        employeeDTO.getBirthday("2000-01-01");
-        employeeDTO.getPhoneNumber("0936369999");
+        employeeDTO.setBirthday("2000-01-01");
+        employeeDTO.setPhoneNumber("0936369999");
         employeeDTO.setAddress("Tp.Đà NẴNG");
         employeeDTO.setGender(0);
         employeeDTO.setEmail("levana@gmail.com");
         employeeDTO.setSalary(10.0);
         employeeDTO.setImage("http/:firebase.levana.png");
-        employeeDTO.getIsDeleted(0);
+        employeeDTO.setIsDeleted(0);
 
         Position position = new Position();
         position.setId(1);
@@ -89,14 +89,14 @@ public class EmployeeRestController_saveEmployee {
         EmployeeDTO employeeDTO = new EmployeeDTO();
         employeeDTO.getUser().setUserName("1user123");
         employeeDTO.setName("Lê Văn A");
-        employeeDTO.getBirthday("2000-01-01");
-        employeeDTO.getPhoneNumber("0936369999");
+        employeeDTO.setBirthday("2000-01-01");
+        employeeDTO.setPhoneNumber("0936369999");
         employeeDTO.setAddress("Tp.Đà NẴNG");
         employeeDTO.setGender(0);
         employeeDTO.setEmail("levana@gmail.com");
         employeeDTO.setSalary(10.0);
         employeeDTO.setImage("http/:firebase.levana.png");
-        employeeDTO.getIsDeleted(0);
+        employeeDTO.setIsDeleted(0);
 
         Position position = new Position();
         position.setId(1);
@@ -118,14 +118,14 @@ public class EmployeeRestController_saveEmployee {
         EmployeeDTO employeeDTO = new EmployeeDTO();
         employeeDTO.getUser().setUserName("user1");
         employeeDTO.setName("Lê Văn A");
-        employeeDTO.getBirthday("2000-01-01");
-        employeeDTO.getPhoneNumber("0936369999");
+        employeeDTO.setBirthday("2000-01-01");
+        employeeDTO.setPhoneNumber("0936369999");
         employeeDTO.setAddress("Tp.Đà NẴNG");
         employeeDTO.setGender(0);
         employeeDTO.setEmail("levana@gmail.com");
         employeeDTO.setSalary(10.0);
         employeeDTO.setImage("http/:firebase.levana.png");
-        employeeDTO.getIsDeleted(0);
+        employeeDTO.setIsDeleted(0);
 
         Position position = new Position();
         position.setId(1);
@@ -146,14 +146,14 @@ public class EmployeeRestController_saveEmployee {
         EmployeeDTO employeeDTO = new EmployeeDTO();
         employeeDTO.getUser().setUserName("user123");
         employeeDTO.setName(null);
-        employeeDTO.getBirthday("2000-01-01");
-        employeeDTO.getPhoneNumber("0936369999");
+        employeeDTO.setBirthday("2000-01-01");
+        employeeDTO.setPhoneNumber("0936369999");
         employeeDTO.setAddress("Tp.Đà NẴNG");
         employeeDTO.setGender(0);
         employeeDTO.setEmail("levana@gmail.com");
         employeeDTO.setSalary(10.0);
         employeeDTO.setImage("http/:firebase.levana.png");
-        employeeDTO.getIsDeleted(0);
+        employeeDTO.setIsDeleted(0);
 
         Position position = new Position();
         position.setId(1);
@@ -175,14 +175,14 @@ public class EmployeeRestController_saveEmployee {
         EmployeeDTO employeeDTO = new EmployeeDTO();
         employeeDTO.getUser().setUserName("user123");
         employeeDTO.setName("");
-        employeeDTO.getBirthday("2000-01-01");
-        employeeDTO.getPhoneNumber("0936369999");
+        employeeDTO.setBirthday("2000-01-01");
+        employeeDTO.setPhoneNumber("0936369999");
         employeeDTO.setAddress("Tp.Đà NẴNG");
         employeeDTO.setGender(0);
         employeeDTO.setEmail("levana@gmail.com");
         employeeDTO.setSalary(10.0);
         employeeDTO.setImage("http/:firebase.levana.png");
-        employeeDTO.getIsDeleted(0);
+        employeeDTO.setIsDeleted(0);
 
         Position position = new Position();
         position.setId(1);
@@ -204,14 +204,14 @@ public class EmployeeRestController_saveEmployee {
         EmployeeDTO employeeDTO = new EmployeeDTO();
         employeeDTO.getUser().setUserName("user123");
         employeeDTO.setName("Lê Văn A");
-        employeeDTO.getBirthday("20000101");
-        employeeDTO.getPhoneNumber("0936369999");
+        employeeDTO.setBirthday("20000101");
+        employeeDTO.setPhoneNumber("0936369999");
         employeeDTO.setAddress("Tp.Đà NẴNG");
         employeeDTO.setGender(0);
         employeeDTO.setEmail("levana@gmail.com");
         employeeDTO.setSalary(10.0);
         employeeDTO.setImage("http/:firebase.levana.png");
-        employeeDTO.getIsDeleted(0);
+        employeeDTO.setIsDeleted(0);
 
         Position position = new Position();
         position.setId(1);
@@ -233,14 +233,14 @@ public class EmployeeRestController_saveEmployee {
         EmployeeDTO employeeDTO = new EmployeeDTO();
         employeeDTO.getUser().setUserName("user123");
         employeeDTO.setName("Lê Văn A");
-        employeeDTO.getBirthday("2000-01-01");
-        employeeDTO.getPhoneNumber(null);
+        employeeDTO.setBirthday("2000-01-01");
+        employeeDTO.setPhoneNumber(null);
         employeeDTO.setAddress("Tp.Đà NẴNG");
         employeeDTO.setGender(0);
         employeeDTO.setEmail("levana@gmail.com");
         employeeDTO.setSalary(10.0);
         employeeDTO.setImage("http/:firebase.levana.png");
-        employeeDTO.getIsDeleted(0);
+        employeeDTO.setIsDeleted(0);
 
         Position position = new Position();
         position.setId(1);
@@ -262,14 +262,14 @@ public class EmployeeRestController_saveEmployee {
         EmployeeDTO employeeDTO = new EmployeeDTO();
         employeeDTO.getUser().setUserName("user123");
         employeeDTO.setName("Lê Văn A");
-        employeeDTO.getBirthday("2000-01-01");
-        employeeDTO.getPhoneNumber("");
+        employeeDTO.setBirthday("2000-01-01");
+        employeeDTO.setPhoneNumber("");
         employeeDTO.setAddress("Tp.Đà NẴNG");
         employeeDTO.setGender(0);
         employeeDTO.setEmail("levana@gmail.com");
         employeeDTO.setSalary(10.0);
         employeeDTO.setImage("http/:firebase.levana.png");
-        employeeDTO.getIsDeleted(0);
+        employeeDTO.setIsDeleted(0);
 
         Position position = new Position();
         position.setId(1);
@@ -291,14 +291,14 @@ public class EmployeeRestController_saveEmployee {
         EmployeeDTO employeeDTO = new EmployeeDTO();
         employeeDTO.getUser().setUserName("user123");
         employeeDTO.setName("Lê Văn A");
-        employeeDTO.getBirthday("2000-01-01");
-        employeeDTO.getPhoneNumber("0936369999");
+        employeeDTO.setBirthday("2000-01-01");
+        employeeDTO.setPhoneNumber("0936369999");
         employeeDTO.setAddress(null);
         employeeDTO.setGender(0);
         employeeDTO.setEmail("levana@gmail.com");
         employeeDTO.setSalary(10.0);
         employeeDTO.setImage("http/:firebase.levana.png");
-        employeeDTO.getIsDeleted(0);
+        employeeDTO.setIsDeleted(0);
 
         Position position = new Position();
         position.setId(1);
@@ -320,14 +320,14 @@ public class EmployeeRestController_saveEmployee {
         EmployeeDTO employeeDTO = new EmployeeDTO();
         employeeDTO.getUser().setUserName("user123");
         employeeDTO.setName("Lê Văn A");
-        employeeDTO.getBirthday("2000-01-01");
-        employeeDTO.getPhoneNumber("0936369999");
+        employeeDTO.setBirthday("2000-01-01");
+        employeeDTO.setPhoneNumber("0936369999");
         employeeDTO.setAddress("");
         employeeDTO.setGender(0);
         employeeDTO.setEmail("levana@gmail.com");
         employeeDTO.setSalary(10.0);
         employeeDTO.setImage("http/:firebase.levana.png");
-        employeeDTO.getIsDeleted(0);
+        employeeDTO.setIsDeleted(0);
 
         Position position = new Position();
         position.setId(1);
@@ -349,14 +349,14 @@ public class EmployeeRestController_saveEmployee {
         EmployeeDTO employeeDTO = new EmployeeDTO();
         employeeDTO.getUser().setUserName("user123");
         employeeDTO.setName("Lê Văn A");
-        employeeDTO.getBirthday("2000-01-01");
-        employeeDTO.getPhoneNumber("0936369999");
+        employeeDTO.setBirthday("2000-01-01");
+        employeeDTO.setPhoneNumber("0936369999");
         employeeDTO.setAddress("Tp.Đà Nẵng");
         employeeDTO.setGender(0);
         employeeDTO.setEmail(null);
         employeeDTO.setSalary(10.0);
         employeeDTO.setImage("http/:firebase.levana.png");
-        employeeDTO.getIsDeleted(0);
+        employeeDTO.setIsDeleted(0);
 
         Position position = new Position();
         position.setId(1);
@@ -378,14 +378,14 @@ public class EmployeeRestController_saveEmployee {
         EmployeeDTO employeeDTO = new EmployeeDTO();
         employeeDTO.getUser().setUserName("user123");
         employeeDTO.setName("Lê Văn A");
-        employeeDTO.getBirthday("2000-01-01");
-        employeeDTO.getPhoneNumber("0936369999");
+        employeeDTO.setBirthday("2000-01-01");
+        employeeDTO.setPhoneNumber("0936369999");
         employeeDTO.setAddress("Tp.Đà Nẵng");
         employeeDTO.setGender(0);
         employeeDTO.setEmail("");
         employeeDTO.setSalary(10.0);
         employeeDTO.setImage("http/:firebase.levana.png");
-        employeeDTO.getIsDeleted(0);
+        employeeDTO.setIsDeleted(0);
 
         Position position = new Position();
         position.setId(1);
@@ -407,14 +407,14 @@ public class EmployeeRestController_saveEmployee {
         EmployeeDTO employeeDTO = new EmployeeDTO();
         employeeDTO.getUser().setUserName("user123");
         employeeDTO.setName("Lê Văn A");
-        employeeDTO.getBirthday("2000-01-01");
-        employeeDTO.getPhoneNumber("0936369999");
+        employeeDTO.setBirthday("2000-01-01");
+        employeeDTO.setPhoneNumber("0936369999");
         employeeDTO.setAddress("Tp.Đà Nẵng");
         employeeDTO.setGender(0);
         employeeDTO.setEmail("levana");
         employeeDTO.setSalary(10.0);
         employeeDTO.setImage("http/:firebase.levana.png");
-        employeeDTO.getIsDeleted(0);
+        employeeDTO.setIsDeleted(0);
 
         Position position = new Position();
         position.setId(1);
@@ -436,14 +436,14 @@ public class EmployeeRestController_saveEmployee {
         EmployeeDTO employeeDTO = new EmployeeDTO();
         employeeDTO.getUser().setUserName("user123");
         employeeDTO.setName("Lê Văn A");
-        employeeDTO.getBirthday("2000-01-01");
-        employeeDTO.getPhoneNumber("0936369999");
+        employeeDTO.setBirthday("2000-01-01");
+        employeeDTO.setPhoneNumber("0936369999");
         employeeDTO.setAddress("Tp.Đà Nẵng");
         employeeDTO.setGender(0);
         employeeDTO.setEmail("levana@gmail.com");
         employeeDTO.setSalary(null);
         employeeDTO.setImage("http/:firebase.levana.png");
-        employeeDTO.getIsDeleted(0);
+        employeeDTO.setIsDeleted(0);
 
         Position position = new Position();
         position.setId(1);
@@ -465,14 +465,14 @@ public class EmployeeRestController_saveEmployee {
         EmployeeDTO employeeDTO = new EmployeeDTO();
         employeeDTO.getUser().setUserName("user123");
         employeeDTO.setName("Lê Văn A");
-        employeeDTO.getBirthday("2000-01-01");
-        employeeDTO.getPhoneNumber("0936369999");
+        employeeDTO.setBirthday("2000-01-01");
+        employeeDTO.setPhoneNumber("0936369999");
         employeeDTO.setAddress("Tp.Đà Nẵng");
         employeeDTO.setGender(0);
         employeeDTO.setEmail("levana@gmail.com");
         employeeDTO.setSalary(-11.0);
         employeeDTO.setImage("http/:firebase.levana.png");
-        employeeDTO.getIsDeleted(0);
+        employeeDTO.setIsDeleted(0);
 
         Position position = new Position();
         position.setId(1);
@@ -494,14 +494,14 @@ public class EmployeeRestController_saveEmployee {
         EmployeeDTO employeeDTO = new EmployeeDTO();
         employeeDTO.getUser().setUserName("user123");
         employeeDTO.setName("Lê Văn A");
-        employeeDTO.getBirthday("2000-01-01");
-        employeeDTO.getPhoneNumber("0936369999");
+        employeeDTO.setBirthday("2000-01-01");
+        employeeDTO.setPhoneNumber("0936369999");
         employeeDTO.setAddress("Tp.Đà NẴNG");
         employeeDTO.setGender(0);
         employeeDTO.setEmail("levana@gmail.com");
         employeeDTO.setSalary(10.0);
         employeeDTO.setImage("http/:firebase.levana.png");
-        employeeDTO.getIsDeleted(0);
+        employeeDTO.setIsDeleted(0);
 
         Position position = new Position();
         position.setId(1);
