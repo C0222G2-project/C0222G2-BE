@@ -6,11 +6,11 @@ import com.coffee.model.employee.Position;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.PositiveOrZero;
 
-public class EmployeeDTO implements Validator {
+public class EmployeeDTOEdit implements Validator {
     private Integer id;
 
     @NotBlank(message = "vui lòng điền thông tin")
@@ -26,6 +26,7 @@ public class EmployeeDTO implements Validator {
     private String address;
 
     @NotBlank(message = "vui lòng điền thông tin")
+    @Email(message = "vui lòng nhập đúng định dạng email")
     private String email;
 
     private int gender;
@@ -38,7 +39,7 @@ public class EmployeeDTO implements Validator {
 
     private Position position;
 
-    private AppUser user;
+
 
     @Override
     public boolean supports(Class<?> clazz) {
@@ -49,31 +50,16 @@ public class EmployeeDTO implements Validator {
     public void validate(Object target, Errors errors) {
         EmployeeDTO employeeDTO = (EmployeeDTO) target;
 
-        if (employeeDTO.getUser().getUserName().equals("admin")) {
-            errors.rejectValue("user", "create.user", "vui lòng nhập tài khoản khác admin");
-        }
-        if (employeeDTO.getUser().getUserName().equals("root")) {
-            errors.rejectValue("user", "create.user", "vui lòng nhập tài khoản khác root");
-        }
-        if (employeeDTO.getUser().getUserName().matches("^[0-9][A-Za-z0-9!@#$%^&*()_+;':<>?,.]$")) {
-            errors.rejectValue("user", "create.user", "vui lòng nhập tài khoản không có số đầu");
-        }
-        if (employeeDTO.getUser().getUserName().length() >= 6) {
-            errors.rejectValue("user", "create.user", "vui lòng nhập tài khoản lớn hơn 6 kí tự");
-        }
-        if (employeeDTO.getUser().getUserName().isEmpty()) {
-            errors.rejectValue("user", "create.user", "Tài khoản đã tồn tại vui lòng nhập mới");
-        }
         if (employeeDTO.getSalary() % 100000 != 0) {
             errors.rejectValue("salary", "create.salary", "vui lòng nhập lương là bội của 100.000");
         }
     }
 
-    public EmployeeDTO() {
+    public EmployeeDTOEdit() {
     }
 
-    public EmployeeDTO(Integer id, String name, String image, String phoneNumber, String address, String email,
-                       int gender, String birthday, Double salary, Integer isDeleted, Position position, AppUser user) {
+    public EmployeeDTOEdit(Integer id, String name, String image, String phoneNumber, String address, String email,
+                       int gender, String birthday, Double salary, Integer isDeleted, Position position) {
         this.id = id;
         this.name = name;
         this.image = image;
@@ -85,7 +71,6 @@ public class EmployeeDTO implements Validator {
         this.salary = salary;
         this.isDeleted = isDeleted;
         this.position = position;
-        this.user = user;
     }
 
     public Integer getId() {
@@ -176,11 +161,4 @@ public class EmployeeDTO implements Validator {
         this.position = position;
     }
 
-    public AppUser getUser() {
-        return user;
-    }
-
-    public void setUser(AppUser user) {
-        this.user = user;
-    }
 }

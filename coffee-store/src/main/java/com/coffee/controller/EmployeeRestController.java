@@ -20,8 +20,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
-import java.sql.Date;
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -149,6 +147,18 @@ public class EmployeeRestController {
 
     /**
      * @creator TaiLV
+     * @function ( find by user name the value of the employee )
+     * Date 10/08/2022
+     * @param username
+     * @return  true: employee, status 200 / false: status 404
+     */
+    @GetMapping("/employee/findUserName")
+    public AppUser findAppUserByUserName(@PathVariable String username){
+        return iEmployeeService.findAppUserByUserName(username);
+    }
+
+    /**
+     * @creator TaiLV
      * @function ( create the value of the employee )
      * Date 09/08/2022
      * @param employeeDTO
@@ -164,16 +174,6 @@ public class EmployeeRestController {
         if(bindingResult.hasErrors()){
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
-
-
-        AppUser appUser = new AppUser();
-        appUser.setIsDeleted(null);
-        appUser.setUserRoles(null);
-        appUser.setPassword("123456");
-        appUser.setCreationDate(Date.valueOf(LocalDate.now()));
-        appUser.setUserName(employee.getAppUser().getUserName());
-
-        BeanUtils.copyProperties(employeeDTO, employee);
 
         BeanUtils.copyProperties(employeeDTO, employee);
 
@@ -192,8 +192,7 @@ public class EmployeeRestController {
      */
 
     @PatchMapping("/employee/edit/{id}")
-    public ResponseEntity<Employee> editEmployee(@RequestBody EmployeeDTO employeeDTO , BindingResult bindingResult,@PathVariable Integer id) {
-
+    public ResponseEntity<Employee> editEmployee(@PathVariable Integer id,@RequestBody @Valid  EmployeeDTO employeeDTO , BindingResult bindingResult) {
         Employee employee = this.iEmployeeService.findById(id);
         if(employee == null){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

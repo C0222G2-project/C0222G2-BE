@@ -2,6 +2,7 @@ package com.coffee.repository;
 
 
 
+import com.coffee.model.account.AppUser;
 import com.coffee.model.employee.Employee;
 import com.coffee.model.employee.Position;
 import com.coffee.dto.employe.IEmployeeDTO;
@@ -26,7 +27,7 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Integer> {
      */
     @Modifying
     @Transactional
-    @Query(value = " INSERT INTO employee (user_id, name, image, phone_number, address, email, gender, birthday, salary, position_id) " +
+    @Query(value = " INSERT INTO employee (user_id.username, name, image, phone_number, address, email, gender, birthday, salary, position_id) " +
             " VALUES (:#{#employee.user.username}, :#{#employee.name}, :#{#employee.image}, :#{#employee.phoneNumber}, " +
             " :#{#employee.address}, :#{#employee.name}, :#{#employee.gender}, :#{#employee.birthday}, :#{#employee.salary}, " +
             " :#{#employee.position.id}); ", nativeQuery = true)
@@ -35,24 +36,16 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Integer> {
     /**
      * @creator TaiLV
      * Date 09/08/2022
-     * @param name
-     * @param image
-     * @param birthday
-     * @param email
-     * @param gender
-     * @param phoneNumber
-     * @param address
-     * @param salary
-     * @param position
-
+     * @param employee
      * @return  true: employee ,edit employee success, status 200 / false: status 404
-
      */
     @Transactional
     @Modifying
-    @Query(value = " update employee set name= ?, image = ?, birthday = ?, email = ? , gender = ?, phone_number = ?,address = ?, " +
-            " salary = ?, position_id = ? where id = :#{#employee.id}" , nativeQuery = true)
-    Employee editEmployee(String name, String image, Date birthday , String email, int gender, String phoneNumber, String address, Double salary, Position position);
+    @Query(value = " update employee set name = :#{#employee.name}, image = :#{#employee.image}, " +
+            " birthday = :#{#employee.birthday}, email = :#{#employee.email} , gender = :#{#employee.gender}, " +
+            " phone_number = :#{#employee.phoneNumber},address = :#{#employee.address}, " +
+            " salary = :#{#employee.salary}, position_id = :#{#employee.position.id} where id = :#{#employee.id} " , nativeQuery = true)
+    Employee editEmployee(Employee employee);
 
     /**
      * @creator TaiLV
@@ -65,7 +58,7 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Integer> {
             " employee.birthday, employee.salary, employee.position_id , employee.user_id, employee.is_deleted from employee " +
             " join app_user on employee.user_id = app_user.id " +
             " join `position` on employee.position_id = `position`.id " +
-            " where employee.id = 1 and employee.is_deleted = 0", nativeQuery = true)
+            " where employee.id = :id and employee.is_deleted = 0", nativeQuery = true)
     Employee findByIdEmployee(Integer id);
 
 
@@ -113,6 +106,24 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Integer> {
             " where employee.is_deleted =0 and employee.id = :id ",nativeQuery = true)
     IEmployeeDTO findEmployeeById(Integer id);
 
+    /**
+     * Create by TuyenTN
+     * Date: 16:30 pm  9-8-2022
+     * @param id
+     * @return
+     */
+    @Transactional
+    @Modifying
+    @Query(value = " update employee set is_deleted = 1 where id = :id ",nativeQuery = true)
+    void deleteEmployeeById(Integer id);
 
+    /**
+     * Create by TaiLV
+     * Date: 16:30 pm  10-8-2022
+     * @param username
+     * @return
+     */
+    @Query(value = "select au.id, au.is_deleted, au.password, au.user_name from app_user au where au.user_name = :username", nativeQuery = true)
+    AppUser getAppUserByUsername(String username);
 
 }

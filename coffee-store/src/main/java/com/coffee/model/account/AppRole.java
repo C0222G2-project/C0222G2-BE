@@ -1,5 +1,6 @@
 package com.coffee.model.account;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -22,6 +23,7 @@ public class AppRole {
     @Column(nullable = false, unique = true)
     private String roleName;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "appRole")
     private List<UserRole> userRoles;
 

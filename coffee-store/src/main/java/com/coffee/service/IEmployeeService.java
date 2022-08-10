@@ -3,6 +3,7 @@ package com.coffee.service;
 
 
 import com.coffee.dto.employe.IEmployeeDTO;
+import com.coffee.model.account.AppUser;
 import com.coffee.model.employee.Employee;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -63,4 +64,5 @@ public interface IEmployeeService {
     Employee editEmployee(Employee employee);
 
 
+    AppUser findAppUserByUserName(String username);
 }

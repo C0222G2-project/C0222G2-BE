@@ -14,11 +14,7 @@ public interface IAppUserRepository extends JpaRepository<AppUser, Integer> {
      * @param
      * @return  AppUser list
      */
-<<<<<<< HEAD
-    @Query(value = " select app_user.id, app_user.username, app_user.password, app_user.is_deleted from app_user " +
+    @Query(value = " select app_user.id, app_user.user_name,app_user.creation_date, app_user.password, app_user.is_deleted from app_user " +
             " where is_deleted = 0 ", nativeQuery = true)
-=======
-    @Query(value = " select app_user.id, app_user.name, app_user.password from app_user where is_deleted = 0 ", nativeQuery = true)
->>>>>>> ccede6118b6e623b7883bb907d99172b0c46d9ee
     List<AppUser> findAllUser();
 }
