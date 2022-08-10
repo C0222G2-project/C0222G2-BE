@@ -15,32 +15,28 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class EmployeeRestController_deleteEmployeeById {
     @Autowired
     private MockMvc mockMvc;
-
+    // delete - id = null
     @Test
     public void deleteEmployeeById_id_5() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders.delete("/rest/employee/delete/null"))
                 .andDo(print()).andExpect(status().is4xxClientError());
     }
+    // delete - id = ''
     @Test
     public void deleteEmployeeById_id_6() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders.delete("/rest/employee/delete/"))
                 .andDo(print()).andExpect(status().is4xxClientError());
     }
+    // delete - id = no in database
     @Test
     public void deleteEmployeeById_id_7() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders.delete("/rest/employee/delete/15"))
                 .andDo(print()).andExpect(status().is4xxClientError());
     }
-
+    // delete - id = in database
     @Test
     public void deleteEmployeeById_id_8() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders.delete("/rest/employee/delete/1"))
                 .andDo(print()).andExpect(status().is2xxSuccessful());
     }
-
-
-
-
-
-
 }

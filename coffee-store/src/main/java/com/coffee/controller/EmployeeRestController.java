@@ -39,7 +39,7 @@ public class EmployeeRestController {
      * Create date: 16:30
      * Method getAllEmployee show list and paging and search
      * @param pageable
-     * @param searName
+     * @param searchName
      * @param searchPhone
      * @param searchAccount
      * @return
@@ -47,10 +47,10 @@ public class EmployeeRestController {
 
     @GetMapping("/employee/list")
     public ResponseEntity<Page<IEmployeeDTO>> getAllEmployee(@PageableDefault(5) Pageable pageable,
-                                                             Optional<String> searName,
+                                                             Optional<String> searchName,
                                                              Optional<String> searchPhone,
                                                              Optional<String> searchAccount) {
-        String searchByName = searName.orElse("");
+        String searchByName = searchName.orElse("");
         String searchByPhone = searchPhone.orElse("");
         String searchByAccount = searchAccount.orElse("");
         if (searchByName.equals("null")) {

@@ -18,6 +18,7 @@ public class EmployeeRestController_findEmployeeById {
     @Autowired
     private MockMvc mockMvc;
 
+    //find id = null
     @Test
     public  void findEmployeeById_id_1() {
         try {
@@ -27,17 +28,19 @@ public class EmployeeRestController_findEmployeeById {
             e.printStackTrace();
         }
     }
-
+    //find id = ''
     @Test
     public void findEmployeeById_id_2() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders.get("/rest/employee/find/"))
                 .andDo(print()).andExpect(status().is4xxClientError());
     }
+    //find id = no in database
     @Test
     public void findEmployeeById_id_3() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders.get("/rest/employee/find/15"))
                 .andDo(print()).andExpect(status().is4xxClientError());
     }
+    //find id = have in database
     @Test
     public void findEmployeeById_id_4() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders.get("/rest/employee/find/1"))
