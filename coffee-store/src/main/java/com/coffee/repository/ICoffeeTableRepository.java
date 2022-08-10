@@ -1,13 +1,13 @@
 package com.coffee.repository;
 
-import com.coffee.dto.ICoffeeTableDTO;
+import com.coffee.dto.ICoffeeTableDto;
 import com.coffee.model.coffee_table.CoffeeTable;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
-import sun.jvm.hotspot.debugger.Page;
 
 import java.util.List;
 
@@ -29,9 +29,9 @@ public interface ICoffeeTableRepository extends JpaRepository<CoffeeTable, Integ
             " join coffee_table on dish_order.coffee_table_id = coffee_table.id " +
             " where coffee_table.id = :idKey) as dto_table",
             nativeQuery = true)
-    List<ICoffeeTableDTO> displayTableById(@Param("idKey") Integer id);
+    List<ICoffeeTableDto> displayTableById(@Param("idKey") Integer id);
 
-//    @Query(value = "select code from coffee_table", nativeQuery = true)
-//    Page<CoffeeTable> displayCoffeeTableByPage(Pageable pageable);
+    @Query(value = "select code from coffee_table", nativeQuery = true)
+    Page<CoffeeTable> displayCoffeeTableByPage(Pageable pageable);
 
 }

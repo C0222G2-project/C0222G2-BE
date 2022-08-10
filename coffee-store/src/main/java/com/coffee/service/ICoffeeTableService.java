@@ -1,9 +1,9 @@
 package com.coffee.service;
 
-import com.coffee.dto.ICoffeeTableDTO;
+import com.coffee.dto.ICoffeeTableDto;
 import com.coffee.model.coffee_table.CoffeeTable;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import sun.jvm.hotspot.debugger.Page;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,7 +16,7 @@ public interface ICoffeeTableService {
      * @param id
      * @return
      */
-    List<ICoffeeTableDTO> findByIdTable(Integer id);
+    List<ICoffeeTableDto> findByIdTable(Integer id);
 
-    Optional<CoffeeTable> displayCoffeeTableByPage(Pageable pageable);
+    Page<CoffeeTable> displayCoffeeTableByPage(Pageable pageable);
 }

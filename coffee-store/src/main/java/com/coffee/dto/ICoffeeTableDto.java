@@ -1,6 +1,6 @@
 package com.coffee.dto;
 
-public interface ICoffeeTableDTO {
+public interface ICoffeeTableDto {
 
     String getName();
     Double getPrice();

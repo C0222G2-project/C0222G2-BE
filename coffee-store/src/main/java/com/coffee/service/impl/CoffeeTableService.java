@@ -1,13 +1,13 @@
 package com.coffee.service.impl;
 
-import com.coffee.dto.ICoffeeTableDTO;
+import com.coffee.dto.ICoffeeTableDto;
 import com.coffee.model.coffee_table.CoffeeTable;
 import com.coffee.repository.ICoffeeTableRepository;
 import com.coffee.service.ICoffeeTableService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import sun.jvm.hotspot.debugger.Page;
 
 import java.util.List;
 import java.util.Optional;
@@ -23,13 +23,13 @@ public class CoffeeTableService implements ICoffeeTableService {
      * Date create 08/08/2022
      */
     @Override
-    public List<ICoffeeTableDTO> findByIdTable(Integer id) {
+    public List<ICoffeeTableDto> findByIdTable(Integer id) {
         return this.iCoffeeTableRepository.displayTableById(id);
     }
 
     @Override
-    public Optional<CoffeeTable> displayCoffeeTableByPage(Pageable pageable) {
-        return null;
+    public Page<CoffeeTable> displayCoffeeTableByPage(Pageable pageable) {
+        return this.iCoffeeTableRepository.displayCoffeeTableByPage(pageable);
     }
 
 
