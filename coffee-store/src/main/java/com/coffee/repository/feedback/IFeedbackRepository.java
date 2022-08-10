@@ -37,7 +37,7 @@ public interface IFeedbackRepository extends JpaRepository<Feedback, Integer> {
     /**
      * Created by : LuanTV
      * Date created: 09/08/2022
-     * function:  page , search
+     * Function:  page , search
      *
      * @param pageable
      * @param creator
@@ -58,7 +58,7 @@ public interface IFeedbackRepository extends JpaRepository<Feedback, Integer> {
     /**
      * Created by : LuanTV
      * Date created: 09/08/2022
-     * function: find by id feedback
+     * Function: find by id feedback
      *
      * @param id
      * @return

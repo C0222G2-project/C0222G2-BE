@@ -59,7 +59,7 @@ public class FeedbackRestController {
      * Created by : LuanTV
      * Date created: 09/08/2022
      * Update: 10/08/2022
-     * function:  page section, search, sort
+     * Function:  page section, search, sort
      * if page feedback "" : NO_CONTENT
      *
      * @param page
@@ -101,9 +101,8 @@ public class FeedbackRestController {
     /**
      * Created by : LuanTV
      * Date created: 09/08/2022
-     *function: find by id feedback
+     * Function: find by id feedback
      * if id feedback null : NO_CONTENT
-     *
      *
      * @param id
      * @return  Feedback

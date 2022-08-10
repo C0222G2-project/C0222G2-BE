@@ -20,7 +20,7 @@ public class FeedbackServiceImpl implements IFeedbackService {
     /**
      * Created by : LuanTV
      * Date created: 09/08/2022
-     * function:  page section, search
+     * Function:  page section, search
      *
      * @param pageable
      * @param creator
@@ -37,7 +37,7 @@ public class FeedbackServiceImpl implements IFeedbackService {
     /**
      * Created by : LuanTV
      * Date created: 09/08/2022
-     * function: find by id feedback
+     * Function: find by id feedback
      *
      * @param id
      * @return Feedback
