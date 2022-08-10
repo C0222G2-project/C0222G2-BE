@@ -17,6 +17,12 @@ public class DishRestController_getDishTypePage {
     @Autowired
     private MockMvc mockMvc;
 
+    /**
+     * this function use to test dishPage have size = 0
+     * created by : HieuCD
+     * Date created: 10/08/2022
+     * @throws Exception
+     */
     @Test
     public void getDishTypePage_5() throws Exception {
 
@@ -25,6 +31,12 @@ public class DishRestController_getDishTypePage {
         ).andDo(print()).andExpect(status().is(204));
     }
 
+    /**
+     * this function use to test dishPage have size > 0
+     * created by : HieuCD
+     * Date created: 10/08/2022
+     * @throws Exception
+     */
     @Test
     public void getDishTypePage_6() throws Exception {
 

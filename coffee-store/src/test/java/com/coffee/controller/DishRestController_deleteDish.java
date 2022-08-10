@@ -16,6 +16,12 @@ public class DishRestController_deleteDish {
     @Autowired
     private MockMvc mockMvc;
 
+    /**
+     * this function use to test value = null
+     * created by : HieuCD
+     * Date created: 10/08/2022
+     * @throws Exception
+     */
     @Test
     public void deleteDish_19() throws Exception {
         this.mockMvc.perform(
@@ -23,6 +29,12 @@ public class DishRestController_deleteDish {
         ).andDo(print()).andExpect(status().is4xxClientError());
     }
 
+    /**
+     * this function use to test value = ""
+     * created by : HieuCD
+     * Date created: 10/08/2022
+     * @throws Exception
+     */
     @Test
     public void deleteDish_20() throws Exception {
         this.mockMvc.perform(
@@ -30,6 +42,12 @@ public class DishRestController_deleteDish {
         ).andDo(print()).andExpect(status().is4xxClientError());
     }
 
+    /**
+     * this function use to test false format
+     * created by : HieuCD
+     * Date created: 10/08/2022
+     * @throws Exception
+     */
     @Test
     public void deleteDish_21() throws Exception {
         this.mockMvc.perform(
@@ -37,6 +55,12 @@ public class DishRestController_deleteDish {
         ).andDo(print()).andExpect(status().is4xxClientError());
     }
 
+    /**
+     * this function use to test value < minlength
+     * created by : HieuCD
+     * Date created: 10/08/2022
+     * @throws Exception
+     */
     @Test
     public void deleteDish_22() throws Exception {
         this.mockMvc.perform(
@@ -44,6 +68,12 @@ public class DishRestController_deleteDish {
         ).andDo(print()).andExpect(status().is4xxClientError());
     }
 
+    /**
+     * this function use to test value > maxlength
+     * created by : HieuCD
+     * Date created: 10/08/2022
+     * @throws Exception
+     */
     @Test
     public void deleteDish_23() throws Exception {
         this.mockMvc.perform(
@@ -51,7 +81,12 @@ public class DishRestController_deleteDish {
         ).andDo(print()).andExpect(status().is4xxClientError());
     }
 
-
+    /**
+     * this function use to test valid value
+     * created by : HieuCD
+     * Date created: 10/08/2022
+     * @throws Exception
+     */
     @Test
     public void deleteDish_24() throws Exception {
         this.mockMvc.perform(
