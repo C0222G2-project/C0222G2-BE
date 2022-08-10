@@ -19,25 +19,105 @@ public class FeedbackRestController_getAllFeedback {
     @Autowired
     private MockMvc mockMvc;
 
+    /**
+     * Created by : LuanTV
+     * Date created: 10/08/2022
+     * function: searchCreator
+     *
+     * @throws Exception
+     */
+
+
     @Test
-    public void getAllFeedback_5() throws Exception {
+    public void getAllFeedback_7_searchCreator() throws Exception {
 
         this.mockMvc.perform(
-                MockMvcRequestBuilders
-                        .get("/feedback/page"))
+                MockMvcRequestBuilders.get("/feedback/page?searchCreator=null"))
                 .andDo(print())
-                .andExpect(status().is2xxSuccessful());
+                .andExpect(status().is4xxClientError());
     }
 
     @Test
-    public void getListStudent_6() throws Exception {
+    public void getAllFeedback_8_searchCreator() throws Exception {
 
         this.mockMvc.perform(
-                MockMvcRequestBuilders.get("/feedback/page/"))
+                MockMvcRequestBuilders.get("/feedback/page?searchCreator= "))
+                .andDo(print())
+                .andExpect(status().is(204));
+    }
+    @Test
+    public void getAllFeedback_9_searchCreator() throws Exception {
+
+        this.mockMvc.perform(
+                MockMvcRequestBuilders.get("/feedback/page?searchCreator=cong"))
+                .andDo(print())
+                .andExpect(status().is(204));
+    }
+
+    @Test
+    public void getAllFeedback_10_searchCreator() throws Exception {
+
+        this.mockMvc.perform(
+                MockMvcRequestBuilders.get("/feedback/page?searchCreator=hau"))
+                .andDo(print())
+                .andExpect(status().is(204));
+    }
+
+
+    /**
+     * Created by : LuanTV
+     * Date created: 10/08/2022
+     * function: searchStartDate, searchEndDate
+     *
+     * @throws Exception
+     */
+
+    @Test
+    public void getAllFeedback_7_searchStartDate_searchEndDate() throws Exception {
+
+        this.mockMvc.perform(
+                MockMvcRequestBuilders.get("/feedback/page?searchStartDate=null&searchEndDate=null"))
+                .andDo(print())
+                .andExpect(status().is(204));
+    }
+
+    @Test
+    public void getAllFeedback_8_searchStartDate_searchEndDate() throws Exception {
+
+        this.mockMvc.perform(
+                MockMvcRequestBuilders.get("/feedback/page?searchStartDate= &searchEndDate= "))
+                .andDo(print())
+                .andExpect(status().is(204));
+    }
+    @Test
+    public void getAllFeedback_9_searchStartDate_searchEndDate() throws Exception {
+
+        this.mockMvc.perform(
+                MockMvcRequestBuilders.get("/feedback/page?searchStartDate=2022-03-05&searchEndDate=2022-03-30"))
+                .andDo(print())
+                .andExpect(status().is(204));
+    }
+
+    @Test
+    public void getAllFeedback_10_searchStartDate_searchEndDate() throws Exception {
+
+        this.mockMvc.perform(
+                MockMvcRequestBuilders.get("/feedback/page?&searchStartDate=2022-02-06&searchEndDate=2022-02-06"))
+                .andDo(print())
+                .andExpect(status().is(204));
+    }
+
+
+
+    @Test
+    public void getListStudent_11() throws Exception {
+
+        this.mockMvc.perform(
+                MockMvcRequestBuilders.get("/feedback/page?searchCreator=hau&searchStartDate=2022-02-06&searchEndDate=2022-02-07"))
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful())
                 .andExpect(jsonPath("totalPages").value(1))
-                .andExpect(jsonPath("totalElements").value(4))
+                .andExpect(jsonPath("totalElements").value(1))
                 .andExpect(jsonPath("content[3].id").value(4))
                 .andExpect(jsonPath("content[3].code").value("FB004"))
                 .andExpect(jsonPath("content[3].creator").value("Hậu"))
@@ -47,4 +127,5 @@ public class FeedbackRestController_getAllFeedback {
                 .andExpect(jsonPath("content[3].feedbackDate").value("2022-02-06"))
                 .andExpect(jsonPath("content[3].image").value("https://www.vivosmartphone.vn/uploads/MANGOADS/ch%E1%BB%A5p%20%E1%BA%A3nh/%E1%BA%A2nh%20%C4%91%E1%BB%93%20u%E1%BB%91ng/fD6Mguu.jpg"));
     }
+
 }

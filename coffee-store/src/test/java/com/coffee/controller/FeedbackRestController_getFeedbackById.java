@@ -19,6 +19,14 @@ public class FeedbackRestController_getFeedbackById {
     @Autowired
     private MockMvc mockMvc;
 
+    /**
+     * Created by : LuanTV
+     * Date created: 10/08/2022
+     * function:f find by id feedback
+     *
+     * @throws Exception
+     */
+
     @Test
     public void getFeedbackById_id_1() throws Exception {
 
@@ -45,7 +53,7 @@ public class FeedbackRestController_getFeedbackById {
         this.mockMvc.perform(
                 MockMvcRequestBuilders.get("/feedback/9"))
                 .andDo(print())
-                .andExpect(status().is2xxSuccessful());
+                .andExpect(status().is(204));
 
     }
 
