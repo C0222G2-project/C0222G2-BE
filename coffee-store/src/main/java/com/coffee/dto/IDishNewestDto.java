@@ -2,7 +2,7 @@ package com.coffee.dto;
 
 import java.util.Date;
 
-public interface DishNewestDTO {
+public interface IDishNewestDto {
     /**
      * Created interface DTO by: BaoTQ
      * Date create: 09/08/2022

@@ -1,7 +1,7 @@
 package com.coffee.dto;
 
 
-public interface DishMostOrderDTO {
+public interface IDishMostOrderDto {
 
     /**
      * Created interface DTO by: BaoTQ

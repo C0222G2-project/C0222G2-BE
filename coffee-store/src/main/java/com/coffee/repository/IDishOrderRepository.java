@@ -1,7 +1,7 @@
 package com.coffee.repository;
 
-import com.coffee.dto.DishMostOrderDTO;
-import com.coffee.dto.DishNewestDTO;
+import com.coffee.dto.IDishMostOrderDto;
+import com.coffee.dto.IDishNewestDto;
 import com.coffee.model.dish_order.DishOrder;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -22,7 +22,7 @@ public interface IDishOrderRepository extends JpaRepository<DishOrder, Integer> 
             " FROM dish_order inner join dish on dish_order.dish_id = dish.id " +
             " GROUP BY  dish_order.dish_id ORDER BY time_order DESC LIMIT 5) as dto_table"
             , nativeQuery = true)
-    List<DishMostOrderDTO> get5DishMostOrderDTO();
+    List<IDishMostOrderDto> get5DishMostOrderDTO();
 
 
     /**
@@ -32,6 +32,6 @@ public interface IDishOrderRepository extends JpaRepository<DishOrder, Integer> 
      */
     @Query(value = " SELECT id,name,creation_date as dateCreate,price,image " +
             " FROM dish ORDER BY creation_date DESC LIMIT 5", nativeQuery = true)
-    List<DishNewestDTO> get5DishNewestDTO();
+    List<IDishNewestDto> get5DishNewestDTO();
 
 }

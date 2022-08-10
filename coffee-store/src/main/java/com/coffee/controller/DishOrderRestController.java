@@ -1,8 +1,7 @@
 package com.coffee.controller;
 
-import com.coffee.dto.DishMostOrderDTO;
-import com.coffee.dto.DishNewestDTO;
-import com.coffee.repository.IDishOrderRepository;
+import com.coffee.dto.IDishMostOrderDto;
+import com.coffee.dto.IDishNewestDto;
 import com.coffee.service.IDishOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -30,8 +29,8 @@ public class DishOrderRestController {
      * function: display 5 dish most order
      */
     @GetMapping("/most-order")
-    public ResponseEntity<List<DishMostOrderDTO>> getListDishMostOrder(){
-        List<DishMostOrderDTO> mostOrderList = iDishOrderService.get5DishMostOrderDTO();
+    public ResponseEntity<List<IDishMostOrderDto>> getListDishMostOrder(){
+        List<IDishMostOrderDto> mostOrderList = iDishOrderService.get5DishMostOrderDTO();
         if(mostOrderList.isEmpty()){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
@@ -45,8 +44,8 @@ public class DishOrderRestController {
      * function: display 5 dish newest
      */
     @GetMapping("/newest")
-    public ResponseEntity<List<DishNewestDTO>> getListDishNewest(){
-        List<DishNewestDTO> newestList = iDishOrderService.get5DishNewestDTO();
+    public ResponseEntity<List<IDishNewestDto>> getListDishNewest(){
+        List<IDishNewestDto> newestList = iDishOrderService.get5DishNewestDTO();
         if(newestList.isEmpty()){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }

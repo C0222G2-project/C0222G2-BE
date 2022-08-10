@@ -1,7 +1,7 @@
 package com.coffee.service.impl;
 
-import com.coffee.dto.DishMostOrderDTO;
-import com.coffee.dto.DishNewestDTO;
+import com.coffee.dto.IDishMostOrderDto;
+import com.coffee.dto.IDishNewestDto;
 import com.coffee.repository.IDishOrderRepository;
 import com.coffee.service.IDishOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,12 +16,12 @@ public class IDishOrderServiceImpl implements IDishOrderService {
     private IDishOrderRepository iDishOrderRepository;
 
     @Override
-    public List<DishMostOrderDTO> get5DishMostOrderDTO() {
+    public List<IDishMostOrderDto> get5DishMostOrderDTO() {
         return iDishOrderRepository.get5DishMostOrderDTO();
     }
 
     @Override
-    public List<DishNewestDTO> get5DishNewestDTO() {
+    public List<IDishNewestDto> get5DishNewestDTO() {
         return iDishOrderRepository.get5DishNewestDTO();
     }
 }
