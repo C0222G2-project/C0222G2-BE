@@ -1,7 +1,6 @@
 package com.coffee.controller;
 
 import com.coffee.model.jwt.JwtRequest;
-import com.coffee.util.TokenUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,9 +24,12 @@ public class jwtAuthenticationEntryPoint_createAuthenticationToken {
     @Autowired
     private ObjectMapper objectMapper;
 
-    @Autowired
-    private TokenUtil tokenUtil;
-
+    /**
+     * Test for username is null
+     * @creator PhuongTD
+     * date-create 10/8/2022
+     * @throws Exception
+     */
     @Test
     public void createAuthenticationToken_username_7() throws Exception {
         JwtRequest jwtRequest = new JwtRequest();
@@ -41,6 +43,12 @@ public class jwtAuthenticationEntryPoint_createAuthenticationToken {
                 .andExpect(status().is4xxClientError());
     }
 
+    /**
+     * Test for password null
+     * @creator PhuongTD
+     * date-create 10/8/2022
+     * @throws Exception
+     */
     @Test
     public void createAuthenticationToken_password_7() throws Exception {
         JwtRequest jwtRequest = new JwtRequest();
@@ -54,6 +62,12 @@ public class jwtAuthenticationEntryPoint_createAuthenticationToken {
                 .andExpect(status().is4xxClientError());
     }
 
+    /**
+     * Test for username input wrong
+     * @creator PhuongTD
+     * date-create 10/8/2022
+     * @throws Exception
+     */
     // 91. [item] not found in database => return status 204
     @Test
     public void createAuthenticationToken_username_91() throws Exception {
@@ -69,6 +83,12 @@ public class jwtAuthenticationEntryPoint_createAuthenticationToken {
                 .andExpect(status().is2xxSuccessful());
     }
 
+    /**
+     * Test for password input wrong
+     * @creator PhuongTD
+     * date-create 10/8/2022
+     * @throws Exception
+     */
     // 92. [item] unauthorized => return status 401
     @Test
     public void createAuthenticationToken_password_92() throws Exception {
@@ -84,6 +104,12 @@ public class jwtAuthenticationEntryPoint_createAuthenticationToken {
                 .andExpect(status().is4xxClientError());
     }
 
+    /**
+     * Test for successfully
+     * @creator PhuongTD
+     * date-create 10/8/2022
+     * @throws Exception
+     */
     @Test
     public void createAuthenticationToken_username_password_18() throws Exception {
         JwtRequest jwtRequest = new JwtRequest();

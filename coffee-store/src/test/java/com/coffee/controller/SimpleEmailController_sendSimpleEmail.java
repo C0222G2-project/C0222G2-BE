@@ -1,18 +1,14 @@
 package com.coffee.controller;
 
-import com.coffee.controller.jwt.JwtAuthenticationController;
 import com.coffee.model.jwt.JwtRequest;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.jayway.jsonpath.JsonPath;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -27,6 +23,12 @@ public class SimpleEmailController_sendSimpleEmail {
     @Autowired
     private ObjectMapper objectMapper;
 
+    /**
+     * Test for username is null
+     * @creator PhuongTD
+     * date-create 10/8/2022
+     * @throws Exception
+     */
     @Test
     public void sendSimpleEmail_username_13() throws Exception {
         JwtRequest jwtRequest = new JwtRequest();
@@ -39,6 +41,12 @@ public class SimpleEmailController_sendSimpleEmail {
                 .andExpect(status().is4xxClientError());
     }
 
+    /**
+     * Test for username is not found in database
+     * @creator PhuongTD
+     * date-create 10/8/2022
+     * @throws Exception
+     */
     // 91. [item] not found in database => return status 204
     @Test
     public void sendSimpleEmail_username_91() throws Exception {
@@ -53,8 +61,14 @@ public class SimpleEmailController_sendSimpleEmail {
                 .andExpect(status().is2xxSuccessful());
     }
 
+    /**
+     * Test for successfully
+     * @creator PhuongTD
+     * date-create 10/8/2022
+     * @throws Exception
+     */
     @Test
-    public void createAuthenticationToken_sendSimpleEmail_18() throws Exception {
+    public void sendSimpleEmail_username_18() throws Exception {
         JwtRequest jwtRequest = new JwtRequest();
         jwtRequest.setUsername("staff");
 
@@ -66,18 +80,39 @@ public class SimpleEmailController_sendSimpleEmail {
                 .andExpect(status().is2xxSuccessful());
     }
 
+    /**
+     * Test for wrong token
+     * @creator PhuongTD
+     * date-create 10/8/2022
+     * @throws Exception
+     */
+    // 93. [item] is not same with token's server
     @Test
-    public void getUsernameForChangePassword_() throws Exception {
-        JwtRequest jwtRequest = new JwtRequest();
-        jwtRequest.setUsername("staff");
-        ResponseEntity<?> response = new JwtAuthenticationController().createAuthenticationToken(jwtRequest);
-        System.out.println(response);
-
+    public void getUsernameForChangePassword_token_93() throws Exception {
+        String tempToken = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzdGFmZiIsImV4cCI6MTY2MDEzOTYyNiwiaWF0IjoxNjYwMTIxNjI2fQ.wCAsQ1bTO2kj6c5qvBSLFcWPtsCBxogqO3XY7smnGgJchLeO4KdKSSAq0yD6qDu__Xilbk1ftbsunyUS19G7NQ";
         this.mockMvc.perform(MockMvcRequestBuilders
-                        .post("/sendSimpleEmail")
+                        .get("/forgotPassword/" + tempToken))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+
+    /**
+     * Test for wrong token
+     * @creator PhuongTD
+     * date-create 10/8/2022
+     * @throws Exception
+     */
+    // 93. [item] is not same with token's server
+    @Test
+    public void changePassword_token_7() throws Exception {
+        String tempToken = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzdGFmZiIsImV4cCI6MTY2MDEzOTYyNiwiaWF0IjoxNjYwMTIxNjI2fQ.wCAsQ1bTO2kj6c5qvBSLFcWPtsCBxogqO3XY7smnGgJchLeO4KdKSSAq0yD6qDu__Xilbk1ftbsunyUS19G7NQ";
+        JwtRequest jwtRequest = new JwtRequest();
+        jwtRequest.setToken(tempToken);
+        this.mockMvc.perform(MockMvcRequestBuilders
+                        .post("/changePassword/" + tempToken)
                         .content(this.objectMapper.writeValueAsString(jwtRequest))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
-//                .andDo(MockMvcResultHandlers.print())
-                .andExpect(status().is2xxSuccessful());
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
     }
 }

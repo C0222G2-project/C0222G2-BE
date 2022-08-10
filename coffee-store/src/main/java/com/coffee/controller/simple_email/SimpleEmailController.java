@@ -80,7 +80,7 @@ public class SimpleEmailController {
     @GetMapping("/forgotPassword/{token}")
     public ResponseEntity<?> getUsernameForChangePassword(@PathVariable String token, HttpServletResponse response) throws IOException {
         if (this.token == null) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
         if (this.token.equals(token)) {
             response.sendRedirect("http://localhost:4200/forgot/" + token);
@@ -98,6 +98,9 @@ public class SimpleEmailController {
      */
     @PostMapping("/changePassword")
     public ResponseEntity<?> changePassword(@Valid @RequestBody JwtRequest jwtRequest, BindingResult bindingResult) {
+        if (this.token == null) {
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
         if (this.token.equals(jwtRequest.getToken())) {
             AppUser appUser = this.appUserService.findAppUserByUsername(jwtTokenUtil.getUsernameFromToken(jwtRequest.getToken()));
             if (appUser != null) {
@@ -110,7 +113,7 @@ public class SimpleEmailController {
                     this.token = "";
                 }
             } else {
-                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             }
         }
         return new ResponseEntity<>(HttpStatus.OK);
