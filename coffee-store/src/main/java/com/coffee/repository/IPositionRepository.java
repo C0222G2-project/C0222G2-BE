@@ -1,4 +1,4 @@
-package com.coffee.reponsitory;
+package com.coffee.repository;
 
 import com.coffee.model.employee.Position;
 import org.springframework.data.jpa.repository.JpaRepository;

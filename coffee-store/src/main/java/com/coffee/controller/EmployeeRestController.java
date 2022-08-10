@@ -15,6 +15,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -60,7 +62,7 @@ public class EmployeeRestController {
      * @param id
      * @return true: id status 200 / false: status 404
      */
-    @GetMapping("/findId/{id}")
+    @GetMapping("/employee/findId/{id}")
     public ResponseEntity<Employee> findByID(@PathVariable Integer id) {
         if (id == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -77,7 +79,7 @@ public class EmployeeRestController {
      * if employee null : Create new employee
      * @return  true: employee, status 200 / false: status 404
      */
-    @PostMapping("/create")
+    @PostMapping("/employee/create")
     public ResponseEntity<Employee> saveEmployee(@Valid @RequestBody EmployeeDTO employeeDTO , BindingResult bindingResult) {
         Employee employee =new Employee();
 
@@ -85,7 +87,16 @@ public class EmployeeRestController {
         if(bindingResult.hasErrors()){
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
+
+        AppUser appUser = new AppUser();
+        appUser.setIsDeleted(null);
+        appUser.setUserRoles(null);
+        appUser.setPassword("123456");
+        appUser.setCreationDate(Date.valueOf(LocalDate.now()));
+        appUser.setUserName(employee.getAppUser().getUserName());
+
         BeanUtils.copyProperties(employeeDTO, employee);
+
         return new ResponseEntity<>(iEmployeeService.saveEmployee(employee), HttpStatus.CREATED);
     }
 
@@ -99,8 +110,8 @@ public class EmployeeRestController {
      * if employee null : Create new employee
      * @return  true: employee, status 200 / false: status 404
      */
-    @PatchMapping("/edit/{id}")
-    public ResponseEntity<Employee> editProduct(@RequestBody EmployeeDTO employeeDTO , BindingResult bindingResult,@PathVariable Integer id) {
+    @PatchMapping("/employee/edit/{id}")
+    public ResponseEntity<Employee> editEmployee(@RequestBody EmployeeDTO employeeDTO , BindingResult bindingResult,@PathVariable Integer id) {
         Employee employee = this.iEmployeeService.findById(id);
         if(employee == null){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

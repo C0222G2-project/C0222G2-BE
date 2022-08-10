@@ -2,7 +2,7 @@ package com.coffee.service.impl;
 
 
 import com.coffee.model.employee.Employee;
-import com.coffee.reponsitory.IEmployeeRepository;
+import com.coffee.repository.IEmployeeRepository;
 import com.coffee.service.IEmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

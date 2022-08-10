@@ -51,6 +51,12 @@ public class EmployeeDTO implements Validator {
         if (employeeDTO.getUser().getUserName().equals("root")) {
             errors.rejectValue("user", "create.user", "vui lòng nhập tài khoản khác root");
         }
+        if (employeeDTO.getUser().getUserName().equals(getUser().getUserName().matches("^[0-9][A-Za-z0-9!@#$%^&*()_+;':<>?,.]$"))) {
+            errors.rejectValue("user", "create.user", "vui lòng nhập tài khoản không có số đầu");
+        }
+        if (employeeDTO.getUser().getUserName().length() >= 6) {
+            errors.rejectValue("user", "create.user", "vui lòng nhập tài khoản lớn hơn 6 kí tự");
+        }
         if (employeeDTO.getUser().getUserName().isEmpty()) {
             errors.rejectValue("user", "create.user", "Tài khoản đã tồn tại vui lòng nhập mới");
         }
@@ -109,7 +115,7 @@ public class EmployeeDTO implements Validator {
         this.image = image;
     }
 
-    public String getPhoneNumber() {
+    public String getPhoneNumber(String s) {
         return phoneNumber;
     }
 
@@ -133,7 +139,7 @@ public class EmployeeDTO implements Validator {
         this.gender = gender;
     }
 
-    public String getBirthday() {
+    public String getBirthday(String s) {
         return birthday;
     }
 
@@ -149,7 +155,7 @@ public class EmployeeDTO implements Validator {
         this.salary = salary;
     }
 
-    public Integer getIsDeleted() {
+    public Integer getIsDeleted(int i) {
         return isDeleted;
     }
 
@@ -177,7 +183,6 @@ public class EmployeeDTO implements Validator {
     public boolean supports(Class<?> clazz) {
         return false;
     }
-
 
 }
 
