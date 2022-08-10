@@ -21,8 +21,6 @@ public class DishRestController {
 
     @Autowired
     private IDishService iDishService;
-    @Autowired
-    private IDishTypeService iDishTypeService;
 
     /**
      *
