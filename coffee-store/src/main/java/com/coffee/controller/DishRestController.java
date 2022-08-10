@@ -68,7 +68,7 @@ public class DishRestController {
      * HTTP status  204(NO_CONTENT) : id = null
      * HTTP status  200(OK) : deleted
      */
-    @DeleteMapping("/delete/{id}")
+    @PatchMapping("/delete/{id}")
     public ResponseEntity<Void> deleteDish(@PathVariable Integer id) {
         this.iDishService.deleteDish(id);
         if (id == null) {
