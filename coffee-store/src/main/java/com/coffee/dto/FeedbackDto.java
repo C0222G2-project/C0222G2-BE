@@ -1,11 +1,11 @@
 package com.coffee.dto;
 
 import javax.validation.constraints.*;
-import java.sql.Date;
 
 /**
  * Created by: DiepTT
  * Date created: 09/08/2022
+ * Date updated: 10/08/2022
  * Function: Create feedback (User send feedback)
  */
 
@@ -16,8 +16,8 @@ public class FeedbackDto {
             "[a-záàảãạăắằẳẵặâấầẩậẫéèẻẽẹêếềểễệíìỉĩịóòỏõọôốồổỗộơớờởỡợúùủũụưứừửữựýỳỷỹỵđ]*" +
             "( ))*([A-ZÁÀẢÃẠĂẮẰẲẴẶÂẤẦẨẬẪÉÈẺẼẸÊẾỀỂỄỆÍÌỈĨỊÓÒỎÕỌÔỐỒỔỖỘƠỚỜỞỠỢÚÙỦŨỤƯỨỪỬỮỰÝỲỶỸỴĐ]" +
             "[a-záàảãạăắằẳẵặâấầẩậẫéèẻẽẹêếềểễệíìỉĩịóòỏõọôốồổỗộơớờởỡợúùủũụưứừửữựýỳỷỹỵđ]*)$",
-            message ="Vui lòng nhập đúng định dạng họ và tên: " +
-            "viết hoa chữ cái đầu mỗi từ, không chứa ký tự đặc biệt...")
+            message = "Vui lòng nhập đúng định dạng họ và tên: " +
+                    "viết hoa chữ cái đầu mỗi từ, không chứa ký tự đặc biệt...")
     @Size(max = 30, message = "Vui lòng không nhập quá 30 ký tự.")
     private String creator;
 
