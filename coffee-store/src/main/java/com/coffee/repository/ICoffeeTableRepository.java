@@ -64,6 +64,14 @@ public interface ICoffeeTableRepository extends JpaRepository<CoffeeTable, Integ
             " where coffee_table.id = :idKey2 ",
             nativeQuery = true)
     ITotalPaymentDto totalPayment(@Param("idKey2") Integer id);
+
+
+    @Query(value="select * from coffee_table where is_deleted = 0", nativeQuery = true)
+    Page<CoffeeTable> findAll(Pageable pageable);
+
+    @Query(value="select * from coffee_table where is_deleted = 0 and id = :codeTable", nativeQuery = true)
+    CoffeeTable findByCode(@Param("codeTable") String codeTable);
+
 }
 
 
