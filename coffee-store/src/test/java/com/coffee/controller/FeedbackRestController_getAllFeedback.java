@@ -22,7 +22,7 @@ public class FeedbackRestController_getAllFeedback {
     /**
      * Created by : LuanTV
      * Date created: 10/08/2022
-     * function: searchCreator
+     * function: check searchCreator
      *
      * @throws Exception
      */
@@ -67,7 +67,7 @@ public class FeedbackRestController_getAllFeedback {
     /**
      * Created by : LuanTV
      * Date created: 10/08/2022
-     * function: searchStartDate, searchEndDate
+     * function: check searchStartDate, searchEndDate
      *
      * @throws Exception
      */
@@ -107,7 +107,13 @@ public class FeedbackRestController_getAllFeedback {
                 .andExpect(status().is(204));
     }
 
-
+    /**
+     * Created by : LuanTV
+     * Date created: 10/08/2022
+     * function: check exact search results
+     *
+     * @throws Exception
+     */
 
     @Test
     public void getListStudent_11() throws Exception {

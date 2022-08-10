@@ -22,7 +22,7 @@ public class FeedbackRestController_getFeedbackById {
     /**
      * Created by : LuanTV
      * Date created: 10/08/2022
-     * function:f find by id feedback
+     * function: check find by id feedback
      *
      * @throws Exception
      */
@@ -56,6 +56,14 @@ public class FeedbackRestController_getFeedbackById {
                 .andExpect(status().is(204));
 
     }
+
+    /**
+     * Created by : LuanTV
+     * Date created: 10/08/2022
+     * function: check exact id search results
+     *
+     * @throws Exception
+     */
 
     @Test
     public void getFeedbackById_id_4() throws Exception {
