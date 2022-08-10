@@ -1,16 +1,8 @@
-package com.coffee.model.account;
+package com.coffee.dto;
 
-import javax.persistence.*;
+import javax.persistence.Column;
 
-@Entity
-@Table(name = "App_User", //
-        uniqueConstraints = { //
-                @UniqueConstraint(name = "APP_USER_UK", columnNames = "User_Name") })
-public class AppUser {
-
-    @Id
-    @GeneratedValue
-    @Column(name = "User_Id", nullable = false)
+public class AppUserDto {
     private Long userId;
 
     @Column(name = "User_Name", length = 36, nullable = false)

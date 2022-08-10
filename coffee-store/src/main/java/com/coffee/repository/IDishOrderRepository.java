@@ -12,21 +12,43 @@ import org.springframework.stereotype.Repository;
 import javax.transaction.Transactional;
 import java.util.List;
 
+
 @Repository
 @Transactional
 public interface IDishOrderRepository extends JpaRepository<DishOrder, Integer> {
-    @Query(value = "select coffee_table_id, code, quantity, dish_id, bill_id, " +
-            "employee_id from dish_order where is_delete = 0", nativeQuery = true)
+
+    /**
+     *   Author: BinhPX
+     *   Date created: 09/08/2022
+     *   This function will return all data can get below database use native query
+     *   .@param pageable, @return
+     **/
+    @Query(value = "select coffee_table_id, `code`, quantity, dish_id, bill_id, " +
+            "employee_id from dish_order where is_deleted = 0", nativeQuery = true)
     Page<DishOrder> getAllOrder(Pageable pageable);
 
+
+    /**
+     *   Author: BinhPX
+     *   Date created: 09/08/2022
+     *   This function create order menu and insert into database, use native query
+     *   .@param is object, @return
+     **/
     @Modifying
-    @Query(value = "insert into order_dish(coffee_table_id, code, quantity, dish_id, bill_id, employee_id)" +
+    @Query(value = "insert into dish_order(coffee_table_id, `code`, quantity, dish_id, bill_id, employee_id)" +
             "values (:table_id, :order_code, :quantity, :dish, :bill_id, :employee_id)", nativeQuery = true)
-    DishOrder createOrder(@Param("table_id") Integer tableId, @Param("order_code") String orderCode,
+    void createOrder(@Param("table_id") int tableId, @Param("order_code") String orderCode,
                           @Param("quantity") Integer quantity, @Param("dish") Integer dish,
                           @Param("bill_id") Integer billId, @Param("employee_id") Integer employeeId);
 
-    @Query(value = "select coffee_table_id, code, quantity, dish_id, bill_id, " +
-            "employee_id from dish_order where is_delete = 0 and coffee_table_id = :tableId", nativeQuery = true)
-    List<DishOrder> getOrderHaveTableId(@Param("tableId") String tableId);
+
+    /**
+     *   Author: BinhPX
+     *   Date created: 09/08/2022
+     *   This function find any order have table id match param.
+     *   .@param table id, @return
+     **/
+    @Query(value = "select coffee_table_id, `code`, quantity, dish_id, bill_id, " +
+            "employee_id from dish_order where is_deleted = 0 and coffee_table_id = :param", nativeQuery = true)
+    List<DishOrder> getOrderHaveCode(@Param("param") String param);
 }
