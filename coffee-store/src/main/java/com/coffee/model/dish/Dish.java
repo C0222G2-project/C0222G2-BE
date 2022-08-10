@@ -7,6 +7,8 @@ import lombok.Setter;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 import java.sql.Date;
 import java.util.List;
 import java.util.Objects;
@@ -30,6 +32,8 @@ public class Dish {
     @Column(columnDefinition = "text")
     private String image;
 
+    @NotBlank(message = "Please input date of birth")
+    @Pattern(regexp = "\\d{4}-\\d{2}-\\d{2}", message = "Invalid format dob")
     private Date creationDate;
 
     @Column(columnDefinition = "bit(1) default 0")
@@ -39,8 +43,8 @@ public class Dish {
     @JoinColumn(name = "dish_type_id", referencedColumnName = "id")
     private DishType dishType;
 
-    @OneToMany(mappedBy = "dish")
-    private List<DishOrder> dishOrders;
+//    @OneToMany(mappedBy = "dish")
+//    private List<DishOrder> dishOrders;
 
     @Override
     public boolean equals(Object o) {

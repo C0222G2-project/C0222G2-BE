@@ -18,7 +18,7 @@ public interface IDishRepository extends JpaRepository<Dish, Integer> {
             " :#{#dish.price}); ", nativeQuery = true)
     void saveDish(Dish dish);
 
-    @Query(value = "select dish_id from dish where dish_id = :id", nativeQuery = true)
+    @Query(value = "select * from dish where id = :id", nativeQuery = true)
     Optional<Dish> findByIdDish(@Param("id") int id);
 
 

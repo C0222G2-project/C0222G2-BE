@@ -24,6 +24,7 @@ public class DishService implements IDishService {
     public void save(Dish dish) {
         iDishRepository.saveDish(dish);
     }
+
     /**
      * @function ( find the dish of the id )
      * @creator PhucLV
