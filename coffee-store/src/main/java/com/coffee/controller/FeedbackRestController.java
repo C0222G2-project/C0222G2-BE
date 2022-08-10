@@ -58,14 +58,16 @@ public class FeedbackRestController {
     /**
      * Created by : LuanTV
      * Date created: 09/08/2022
-     * function:  page section, search, sort
+     * Update: 10/08/2022
+     * Function:  page section, search, sort
      * if page feedback "" : NO_CONTENT
      *
      * @param page
      * @param size
      * @param sort
      * @param searchCreator
-     * @param searchFeedbackDate
+     * @param searchStartDate
+     * @param searchEndDate
      * @return Page<Feedback>
      */
 
@@ -73,21 +75,21 @@ public class FeedbackRestController {
     @GetMapping("/page")
     public ResponseEntity<Page<Feedback>> getAllFeedback(
             @RequestParam(name = "page", required = false, defaultValue = "0") Integer page,
-            @RequestParam(name = "size", required = false, defaultValue = "5") Integer size,
+            @RequestParam(name = "size", required = false, defaultValue = "10") Integer size,
             @RequestParam(name = "sort", required = false, defaultValue = "ASC") String sort,
             @RequestParam Optional<String> searchCreator,
-            @RequestParam Optional<String> searchFeedbackDate){
+            @RequestParam Optional<String> searchStartDate,
+            @RequestParam Optional<String> searchEndDate){
+
         Sort sortable = Sort.by(sort);
         if (sort.equals("ASC")) {
             sortable = Sort.by("id").ascending();
         }
-        if (sort.equals("DESC")) {
-            sortable = Sort.by("id").descending();
-        }
         Pageable pageable = PageRequest.of(page, size, sortable);
         String creator = searchCreator.orElse("");
-        String feedbackDate = searchFeedbackDate.orElse("");
-        Page<Feedback> feedbackPage = feedbackService.findAllFeedback(pageable,creator,feedbackDate);
+        String startDate = searchStartDate.orElse("1000-01-01");
+        String endDate = searchEndDate.orElse("8000-01-01");
+        Page<Feedback> feedbackPage = feedbackService.findAllFeedback(pageable,creator,startDate,endDate);
         if (feedbackPage.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 
@@ -99,9 +101,8 @@ public class FeedbackRestController {
     /**
      * Created by : LuanTV
      * Date created: 09/08/2022
-     *function: find by id feedback
+     * Function: find by id feedback
      * if id feedback null : NO_CONTENT
-     *
      *
      * @param id
      * @return  Feedback
