@@ -42,6 +42,11 @@ public class EmployeeDTO implements Validator {
     private AppUser user;
 
     @Override
+    public boolean supports(Class<?> clazz) {
+        return false;
+    }
+
+    @Override
     public void validate(Object target, Errors errors) {
         EmployeeDTO employeeDTO = (EmployeeDTO) target;
 
@@ -64,6 +69,7 @@ public class EmployeeDTO implements Validator {
             errors.rejectValue("salary", "create.salary", "vui lòng nhập lương là bội của 100.000");
         }
     }
+
     public EmployeeDTO() {
     }
 
@@ -99,14 +105,6 @@ public class EmployeeDTO implements Validator {
         this.name = name;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public String getImage() {
         return image;
     }
@@ -115,7 +113,7 @@ public class EmployeeDTO implements Validator {
         this.image = image;
     }
 
-    public String getPhoneNumber(String s) {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
@@ -131,6 +129,14 @@ public class EmployeeDTO implements Validator {
         this.address = address;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public int getGender() {
         return gender;
     }
@@ -139,7 +145,7 @@ public class EmployeeDTO implements Validator {
         this.gender = gender;
     }
 
-    public String getBirthday(String s) {
+    public String getBirthday() {
         return birthday;
     }
 
@@ -155,7 +161,7 @@ public class EmployeeDTO implements Validator {
         this.salary = salary;
     }
 
-    public Integer getIsDeleted(int i) {
+    public Integer getIsDeleted() {
         return isDeleted;
     }
 
@@ -178,11 +184,4 @@ public class EmployeeDTO implements Validator {
     public void setUser(AppUser user) {
         this.user = user;
     }
-
-    @Override
-    public boolean supports(Class<?> clazz) {
-        return false;
-    }
-
 }
-
