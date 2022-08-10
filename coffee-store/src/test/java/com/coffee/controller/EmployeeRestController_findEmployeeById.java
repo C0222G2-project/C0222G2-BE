@@ -18,6 +18,11 @@ public class EmployeeRestController_findEmployeeById {
     @Autowired
     private MockMvc mockMvc;
 
+    /**
+     * Create by TuyenTN
+     * create date:10/08/2022
+     * findEmployeeById() have param id = null
+     */
     //find id = null
     @Test
     public  void findEmployeeById_id_1() {
@@ -28,19 +33,31 @@ public class EmployeeRestController_findEmployeeById {
             e.printStackTrace();
         }
     }
-    //find id = ''
+    /**
+     * Create by TuyenTN
+     * create date:10/08/2022
+     * findEmployeeById() have param id = ''
+     */
     @Test
     public void findEmployeeById_id_2() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders.get("/rest/employee/find/"))
                 .andDo(print()).andExpect(status().is4xxClientError());
     }
-    //find id = no in database
+    /**
+     * Create by TuyenTN
+     * create date:10/08/2022
+     * findEmployeeById() have param id not have in database
+     */
     @Test
     public void findEmployeeById_id_3() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders.get("/rest/employee/find/15"))
                 .andDo(print()).andExpect(status().is4xxClientError());
     }
-    //find id = have in database
+    /**
+     * Create by TuyenTN
+     * create date:10/08/2022
+     * findEmployeeById() have param id have in database
+     */
     @Test
     public void findEmployeeById_id_4() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders.get("/rest/employee/find/1"))

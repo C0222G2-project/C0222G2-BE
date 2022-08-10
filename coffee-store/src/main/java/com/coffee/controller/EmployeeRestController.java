@@ -173,7 +173,7 @@ public class EmployeeRestController {
      * @return  update Employee success
      */
     @PatchMapping("/employee/edit/{id}")
-    public ResponseEntity<Employee> editProduct(@RequestBody EmployeeDTO employeeDTO , BindingResult bindingResult,@PathVariable Integer id) {
+    public ResponseEntity<Employee> editEmployee(@RequestBody EmployeeDTO employeeDTO , BindingResult bindingResult,@PathVariable Integer id) {
         Employee employee = this.iEmployeeService.findById(id);
         if(employee == null){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
