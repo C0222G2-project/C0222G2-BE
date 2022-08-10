@@ -58,6 +58,7 @@ public class FeedbackRestController {
     /**
      * Created by : LuanTV
      * Date created: 09/08/2022
+     * Update: 10/08/2022
      * function:  page section, search, sort
      * if page feedback "" : NO_CONTENT
      *
@@ -69,6 +70,7 @@ public class FeedbackRestController {
      * @param searchEndDate
      * @return Page<Feedback>
      */
+
 
     @GetMapping("/page")
     public ResponseEntity<Page<Feedback>> getAllFeedback(

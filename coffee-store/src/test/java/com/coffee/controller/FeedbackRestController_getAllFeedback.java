@@ -1,12 +1,19 @@
 package com.coffee.controller;
 
+import com.coffee.model.feedback.Feedback;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
+import org.springframework.http.ResponseEntity;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
+import static org.springframework.data.domain.Sort.Direction.ASC;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -34,7 +41,7 @@ public class FeedbackRestController_getAllFeedback {
         this.mockMvc.perform(
                 MockMvcRequestBuilders.get("/feedback/page?searchCreator=null"))
                 .andDo(print())
-                .andExpect(status().is4xxClientError());
+                .andExpect(status().is(204));
     }
 
     @Test
@@ -117,22 +124,23 @@ public class FeedbackRestController_getAllFeedback {
      */
 
     @Test
-    public void getListStudent_11() throws Exception {
+    public void getAllFeedback_11() throws Exception {
 
         this.mockMvc.perform(
-                MockMvcRequestBuilders.get("/feedback/page?searchCreator=hau&searchStartDate=2022-02-06&searchEndDate=2022-02-07"))
+                MockMvcRequestBuilders.get("/feedback/page?searchCreator=d&searchStartDate=2022-02-05&searchEndDate=2022-02-05"))
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful())
                 .andExpect(jsonPath("totalPages").value(1))
                 .andExpect(jsonPath("totalElements").value(1))
-                .andExpect(jsonPath("content[3].id").value(4))
-                .andExpect(jsonPath("content[3].code").value("FB004"))
-                .andExpect(jsonPath("content[3].creator").value("Hậu"))
-                .andExpect(jsonPath("content[3].email").value("haudn@gmail.com"))
-                .andExpect(jsonPath("content[3].content").value("Ngon, bổ rẻ"))
-                .andExpect(jsonPath("content[3].rating").value(4))
-                .andExpect(jsonPath("content[3].feedbackDate").value("2022-02-06"))
-                .andExpect(jsonPath("content[3].image").value("https://www.vivosmartphone.vn/uploads/MANGOADS/ch%E1%BB%A5p%20%E1%BA%A3nh/%E1%BA%A2nh%20%C4%91%E1%BB%93%20u%E1%BB%91ng/fD6Mguu.jpg"));
+                .andExpect(jsonPath("content[0].id").value(3))
+                .andExpect(jsonPath("content[0].code").value("FB003"))
+                .andExpect(jsonPath("content[0].creator").value("Diệp"))
+                .andExpect(jsonPath("content[0].email").value("diepdn@gmail.com"))
+                .andExpect(jsonPath("content[0].content").value("Giá tiền vừa đủ"))
+                .andExpect(jsonPath("content[0].rating").value(3))
+                .andExpect(jsonPath("content[0].feedbackDate").value("2022-02-05"))
+                .andExpect(jsonPath("content[0].image").value("https://www.vivosmartphone.vn/uploads/MANGOADS/ch%E1%BB%A5p%20%E1%BA%A3nh/%E1%BA%A2nh%20%C4%91%E1%BB%93%20u%E1%BB%91ng/fD6Mguu.jpg"));
+
     }
 
 }
