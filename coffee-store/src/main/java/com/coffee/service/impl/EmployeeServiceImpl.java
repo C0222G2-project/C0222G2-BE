@@ -55,44 +55,4 @@ public class EmployeeServiceImpl implements IEmployeeService {
         this.iEmployeeRepository.deleteEmployeeById(id);
     }
 
-    /**
-=======
->>>>>>> a132af98fc8efbb150d5e181ad09360cb50a0d78
-     * @creator TaiLV
-     * Date 09/08/2022
-     * @param employee
-     * if employee null : Create new employee
-     * @return  create Employee success
-     */
-    @Override
-    public Employee saveEmployee(Employee employee) {
-        return iEmployeeRepository.saveEmployee(employee);
-    }
-
-    /**
-     * @creator TaiLV
-     * Date 09/08/2022
-     * @param id
-     * if id null : Bad request
-     * @return  object Employee
-     */
-    @Override
-    public Employee findById(Integer id) {
-        return iEmployeeRepository.findByIdEmployee(id);
-    }
-
-    /**
-     * @creator TaiLV
-     * Date 09/08/2022
-     * @param employee
-     * if employee null : Create new employee
-     * @return  update Employee success
-     */
-    @Override
-    public Employee editEmployee(Employee employee) {
-        return iEmployeeRepository.editEmployee(employee.getName(), employee.getImage(),employee.getBirthday(),employee.getEmail(),
-                employee.getGender(),employee.getPhoneNumber(),employee.getAddress(),employee.getSalary(),employee.getPosition());
-    }
-
-
 }
