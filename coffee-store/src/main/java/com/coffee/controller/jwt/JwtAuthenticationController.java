@@ -1,7 +1,10 @@
 package com.coffee.controller.jwt;
 
+import com.coffee.model.account.AppUser;
 import com.coffee.model.jwt.JwtRequest;
 import com.coffee.model.jwt.JwtResponse;
+import com.coffee.service.account.IAppUserService;
+import com.coffee.service.account.impl.AppUserService;
 import com.coffee.service.jwt.JwtUserDetailsService;
 import com.coffee.util.JwtTokenUtil;
 import com.coffee.util.TokenUtil;
@@ -18,6 +21,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -33,6 +37,9 @@ public class JwtAuthenticationController {
 
     @Autowired
     private JwtUserDetailsService userDetailsService;
+
+    @Autowired
+    private IAppUserService appUserService;
 
     @Autowired
     private TokenUtil tokenUtil;
@@ -57,6 +64,12 @@ public class JwtAuthenticationController {
         }
 
         authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
+        AppUser appUser = this.appUserService.findAppUserByUsername(authenticationRequest.getUsername());
+        Date date = new Date(System.currentTimeMillis());
+
+        if (date.toLocalDate().compareTo(appUser.getCreationDate().toLocalDate().plusDays(30)) >= 0) {
+            return new ResponseEntity<>("PasswordExpired", HttpStatus.UNAUTHORIZED);
+        }
 
         List<String> grantList = userDetails.getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority)

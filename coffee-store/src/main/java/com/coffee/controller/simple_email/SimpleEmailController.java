@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.io.IOException;
+import java.sql.Date;
 
 @RestController
 @CrossOrigin
@@ -110,6 +111,8 @@ public class SimpleEmailController {
                 }
                 if (jwtRequest.getPassword().equals(jwtRequest.getConfirmPassword())) {
                     appUser.setPassword(encrytedPasswordUtils.encrytePassword(jwtRequest.getPassword()));
+                    Date date = new Date(System.currentTimeMillis());
+                    appUser.setCreationDate(date);
                     this.appUserService.updatePassword(appUser);
                     this.token = "";
                 } else {
