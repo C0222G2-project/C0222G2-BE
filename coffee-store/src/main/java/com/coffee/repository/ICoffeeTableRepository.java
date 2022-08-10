@@ -14,15 +14,10 @@ import java.util.List;
 @Repository
 public interface ICoffeeTableRepository extends JpaRepository<CoffeeTable, Integer> {
 
-    /**
-     * Create HoaNN
-     * Date create 08/08/2022
-     * method display list order by id coffee table
-     *
-     * @param id
-     * @return
-     */
-    @Query(value = "select dto_table.name,dto_table.price,dto_table.quantity,dto_table.code, dto_table.tong_tien as payment from (select dish.name , dish.price , dish_order.quantity , coffee_table.code," +
+
+    @Query(value = "select dto_table.name,dto_table.price,dto_table.quantity,dto_table.code, dto_table.tong_tien " +
+            " as payment " +
+            " from (select dish.name , dish.price , dish_order.quantity , coffee_table.code," +
             " ifnull((dish.price * dish_order.quantity),0) as tong_tien " +
             " from dish_order " +
             " join dish on dish.id = dish_order.dish_id " +
@@ -31,7 +26,7 @@ public interface ICoffeeTableRepository extends JpaRepository<CoffeeTable, Integ
             nativeQuery = true)
     List<ICoffeeTableDto> displayTableById(@Param("idKey") Integer id);
 
-    @Query(value = "select code from coffee_table", nativeQuery = true)
-    Page<CoffeeTable> displayCoffeeTableByPage(Pageable pageable);
+//    @Query(value = "select coffee_table.code from coffee_table", nativeQuery = true)
+//    Page<CoffeeTable> displayCoffeeTableByPage(Pageable pageable);
 
 }

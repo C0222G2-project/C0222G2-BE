@@ -18,10 +18,6 @@ public class CoffeeTableService implements ICoffeeTableService {
     @Autowired
     private ICoffeeTableRepository iCoffeeTableRepository;
 
-    /**
-     * Create By HoaNN
-     * Date create 08/08/2022
-     */
     @Override
     public List<ICoffeeTableDto> findByIdTable(Integer id) {
         return this.iCoffeeTableRepository.displayTableById(id);
@@ -29,7 +25,7 @@ public class CoffeeTableService implements ICoffeeTableService {
 
     @Override
     public Page<CoffeeTable> displayCoffeeTableByPage(Pageable pageable) {
-        return this.iCoffeeTableRepository.displayCoffeeTableByPage(pageable);
+        return this.iCoffeeTableRepository.findAll(pageable);
     }
 
 
