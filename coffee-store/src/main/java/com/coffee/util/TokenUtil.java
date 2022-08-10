@@ -3,8 +3,11 @@ package com.coffee.util;
 import lombok.Data;
 import org.springframework.stereotype.Component;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Component
 @Data
 public class TokenUtil {
-    private String token;
+    private Map<String, String> tokenMap = new HashMap<>();
 }
