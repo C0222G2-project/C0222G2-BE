@@ -4,7 +4,7 @@ import java.util.Date;
 
 public interface DishNewestDTO {
     /**
-     * Created by: BaoTQ
+     * Created interface DTO by: BaoTQ
      * Date create: 09/08/2022
      */
     Integer getId();

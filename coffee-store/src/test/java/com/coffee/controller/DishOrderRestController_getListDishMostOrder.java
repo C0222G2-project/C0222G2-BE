@@ -20,6 +20,11 @@ public class DishOrderRestController_getListDishMostOrder {
     public DishOrderRestController_getListDishMostOrder() {
     }
 
+    /**
+     * Created by: BaoTQ
+     * Date create: 10/08/2022
+     * Function: test list size = 0
+     */
     @Test
     public void getListDishMostOrder_5() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders.get("/dish-order/most-order", new Object[0]))
@@ -27,6 +32,13 @@ public class DishOrderRestController_getListDishMostOrder {
                 .andExpect(MockMvcResultMatchers.status().is4xxClientError());
     }
 
+
+
+    /**
+     * Created by: BaoTQ
+     * Date create: 10/08/2022
+     * Function: test list size > 0
+     */
     @Test
     public void getListDishMostOrder_6() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders.get("/dish-order/most-order", new Object[0]))
