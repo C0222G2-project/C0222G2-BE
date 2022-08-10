@@ -1,53 +1,57 @@
 package com.coffee.model.account;
 
-import com.coffee.model.employee.Employee;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import org.hibernate.Hibernate;
-
 import javax.persistence.*;
-import java.sql.Date;
-import java.util.List;
-import java.util.Objects;
 
 @Entity
-@Getter
-@Setter
-@RequiredArgsConstructor
+@Table(name = "App_User", //
+        uniqueConstraints = { //
+                @UniqueConstraint(name = "APP_USER_UK", columnNames = "User_Name") })
 public class AppUser {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    @GeneratedValue
+    @Column(name = "User_Id", nullable = false)
+    private Long userId;
 
-    @Column(unique = true, nullable = false)
+    @Column(name = "User_Name", length = 36, nullable = false)
     private String userName;
 
-    @Column(nullable = false)
-    private String password;
+    @Column(name = "Encryted_Password", length = 128, nullable = false)
+    private String encrytedPassword;
 
-    private Date creationDate;
+    @Column(name = "Enabled", length = 1, nullable = false)
+    private boolean enabled;
 
-    @Column(columnDefinition = "bit(1) default 0")
-    private Boolean isDeleted;
-
-    @OneToMany(mappedBy = "appUser")
-    private List<UserRole> userRoles;
-
-    @OneToOne(mappedBy = "appUser")
-    private Employee employee;
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        AppUser appUser = (AppUser) o;
-        return id != null && Objects.equals(id, appUser.id);
+    public Long getUserId() {
+        return userId;
     }
 
-    @Override
-    public int hashCode() {
-        return getClass().hashCode();
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getEncrytedPassword() {
+        return encrytedPassword;
+    }
+
+    public void setEncrytedPassword(String encrytedPassword) {
+        this.encrytedPassword = encrytedPassword;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
 }
