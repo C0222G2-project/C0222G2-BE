@@ -30,7 +30,10 @@ public class Employee {
     private String phoneNumber;
 
     private String address;
+
     private Integer gender;
+
+
     private String email;
 
     private Double salary;

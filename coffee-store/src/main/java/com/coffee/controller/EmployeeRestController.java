@@ -12,12 +12,27 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
+import com.coffee.dto.EmployeeDTO;
+import com.coffee.model.account.AppUser;
+import com.coffee.model.employee.Employee;
+import com.coffee.model.employee.Position;
+import com.coffee.service.IAppUserService;
+import com.coffee.service.IPositionService;
+import org.springframework.beans.BeanUtils;
+import org.springframework.validation.BindingResult;
+import javax.validation.Valid;
+import java.util.List;
+
 @RestController
 @CrossOrigin
-@RequestMapping("/employee")
+@RequestMapping("/rest")
 public class EmployeeRestController {
     @Autowired
     private IEmployeeService iEmployeeService;
+    @Autowired
+    private IPositionService iPositionService;
+    @Autowired
+    private IAppUserService iUserService;
 
     /**
      * Create by TuyenTN
@@ -30,7 +45,7 @@ public class EmployeeRestController {
      * @return
      */
 
-    @GetMapping("/list")
+    @GetMapping("/employee/list")
     public ResponseEntity<Page<IEmployeeDTO>> getAllEmployee(@PageableDefault(5) Pageable pageable,
                                                              Optional<String> searName,
                                                              Optional<String> searchPhone,
@@ -50,7 +65,7 @@ public class EmployeeRestController {
         Page<IEmployeeDTO> employeePage = this.iEmployeeService.getAllEmployee(pageable, searchByName, searchByPhone,searchByAccount);
         System.out.println(employeePage);
         if (employeePage.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(employeePage, HttpStatus.OK);
     }
@@ -62,11 +77,11 @@ public class EmployeeRestController {
      * @param id
      * @return
      */
-    @GetMapping("/find/{id}")
+    @GetMapping("/employee/find/{id}")
     public ResponseEntity<IEmployeeDTO> findEmployeeById(@PathVariable Integer id){
         IEmployeeDTO iEmployeeDTO = this.iEmployeeService.findEmployeeById(id);
         if (iEmployeeDTO == null){
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(iEmployeeDTO,HttpStatus.OK);
     }
@@ -79,10 +94,95 @@ public class EmployeeRestController {
      * @return
      */
 
-    @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Void> deleteEmployeeById(@PathVariable Integer id){
+    @DeleteMapping("/employee/delete/{id}")
+    public ResponseEntity<Void> deleteEmployeeById(@PathVariable Integer id) {
+        IEmployeeDTO iEmployeeDTO = this.iEmployeeService.findEmployeeById(id);
+        if (iEmployeeDTO == null){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
         this.iEmployeeService.deleteEmployeeById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    /**
+     * @creator TaiLV
+     * Date 09/08/2022
+     * @param
+     * @return  Position list
+     */
+    @GetMapping("/position")
+    public ResponseEntity<List<Position>> getAllPosition() {
+        List<Position> positionList = iPositionService.getAllPosition();
+        return new ResponseEntity<>(positionList, HttpStatus.OK);
+    }
+
+    /**
+     * @creator TaiLV
+     * Date 09/08/2022
+     * @param
+     * @return  AppUser list
+     */
+    @GetMapping("/user")
+    public ResponseEntity<List<AppUser>> getAllUser() {
+        List<AppUser> userList = iUserService.getAllUser();
+        return new ResponseEntity<>(userList, HttpStatus.OK);
+    }
+
+    /**
+     * @creator TaiLV
+     * Date 09/08/2022
+     * @param id
+     * if id null : Bad request
+     * @return  object Employee
+     */
+    @GetMapping("/employee/findId/{id}")
+    public ResponseEntity<Employee> findByID(@PathVariable Integer id) {
+        if (id == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(iEmployeeService.findById(id), HttpStatus.OK);
+    }
+
+    /**
+     * @creator TaiLV
+     * Date 09/08/2022
+     * @param employeeDTO
+     * @param bindingResult
+     * if employee null : Create new employee
+     * @return  create Employee success
+     */
+    @PostMapping("/employee/create")
+    public ResponseEntity<Employee> saveEmployee(@Valid @RequestBody EmployeeDTO employeeDTO , BindingResult bindingResult) {
+        Employee employee =new Employee();
+
+        new EmployeeDTO().validate(employeeDTO,bindingResult);
+        if(bindingResult.hasErrors()){
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        BeanUtils.copyProperties(employeeDTO, employee);
+        return new ResponseEntity<>(iEmployeeService.saveEmployee(employee), HttpStatus.CREATED);
+    }
+
+    /**
+     * @creator TaiLV
+     * Date 09/08/2022
+     * @param employeeDTO
+     * @param bindingResult
+     * @param id
+     * if employee null : Create new employee
+     * @return  update Employee success
+     */
+    @PatchMapping("/employee/edit/{id}")
+    public ResponseEntity<Employee> editProduct(@RequestBody EmployeeDTO employeeDTO , BindingResult bindingResult,@PathVariable Integer id) {
+        Employee employee = this.iEmployeeService.findById(id);
+        if(employee == null){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        new EmployeeDTO().validate(employeeDTO,bindingResult);
+        if(bindingResult.hasErrors()){
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        BeanUtils.copyProperties(employeeDTO, employee);
+        return new ResponseEntity<>(iEmployeeService.editEmployee(employee), HttpStatus.CREATED);
+    }
 }
