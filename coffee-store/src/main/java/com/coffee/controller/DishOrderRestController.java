@@ -22,28 +22,34 @@ public class DishOrderRestController {
     @Autowired
     private IDishOrderService iDishOrderService;
 
-    @Autowired
-    private IDishOrderRepository iDishOrderRepository;
 
 
     /**
-     * BaoTQ
-     * display 5 dish most order
+     * Created by: BaoTQ
+     * Date create: 09/08/2022
+     * function: display 5 dish most order
      */
     @GetMapping("/most-order")
-    public ResponseEntity<List<DishMostOrderDTO>> getMostOrder(){
+    public ResponseEntity<List<DishMostOrderDTO>> getListDishMostOrder(){
         List<DishMostOrderDTO> mostOrderList = iDishOrderService.get5DishMostOrderDTO();
+        if(mostOrderList.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
         return new ResponseEntity<>(mostOrderList, HttpStatus.OK);
     }
 
 
     /**
-     * BaoTQ
-     * display 5 dish newest
+     * Created by: BaoTQ
+     * Date create: 09/08/2022
+     * function: display 5 dish newest
      */
     @GetMapping("/newest")
-    public ResponseEntity<List<DishNewestDTO>> getNewest(){
-        List<DishNewestDTO> newestList = iDishOrderRepository.get5DishNewestDTO();
+    public ResponseEntity<List<DishNewestDTO>> getListDishNewest(){
+        List<DishNewestDTO> newestList = iDishOrderService.get5DishNewestDTO();
+        if(newestList.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
         return new ResponseEntity<>(newestList, HttpStatus.OK);
     }
 
