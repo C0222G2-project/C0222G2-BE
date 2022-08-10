@@ -1,5 +1,7 @@
 package com.coffee.service.impl;
 
+import com.coffee.dto.IDishMostOrderDto;
+import com.coffee.dto.IDishNewestDto;
 import com.coffee.model.dish_order.DishOrder;
 import com.coffee.repository.IDishOrderRepository;
 import com.coffee.service.IDishOrderService;
@@ -11,9 +13,22 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class DishOrderServiceImpl implements IDishOrderService {
+public class IDishOrderServiceImpl implements IDishOrderService {
+
+    @Autowired
+    private IDishOrderRepository iDishOrderRepository;
     @Autowired
     private IDishOrderRepository dishOrderRepository;
+    @Override
+    public List<IDishMostOrderDto> get5DishMostOrderDTO() {
+        return iDishOrderRepository.get5DishMostOrderDTO();
+    }
+
+    @Override
+    public List<IDishNewestDto> get5DishNewestDTO() {
+        return iDishOrderRepository.get5DishNewestDTO();
+    }
+
 
 
     /**
@@ -34,9 +49,9 @@ public class DishOrderServiceImpl implements IDishOrderService {
     @Override
     public void createOrder(DishOrder orderDish) {
         dishOrderRepository.
-        createOrder(orderDish.getCoffeeTable().getId(), orderDish.getCode(),
-                orderDish.getQuantity(), orderDish.getDish().getId(), orderDish.getBill().getId(),
-                orderDish.getEmployee().getId());
+                createOrder(orderDish.getCoffeeTable().getId(), orderDish.getCode(),
+                        orderDish.getQuantity(), orderDish.getDish().getId(), orderDish.getBill().getId(),
+                        orderDish.getEmployee().getId());
     }
 
 

@@ -1,6 +1,9 @@
 package com.coffee.controller;
 
+
 import com.coffee.dto.DishOrderDto;
+import com.coffee.dto.IDishMostOrderDto;
+import com.coffee.dto.IDishNewestDto;
 import com.coffee.model.bill.Bill;
 import com.coffee.model.coffee_table.CoffeeTable;
 import com.coffee.model.dish.Dish;
@@ -25,60 +28,76 @@ import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
-
 @RestController
+@CrossOrigin
 @RequestMapping("/dish-order")
 public class DishOrderRestController {
-    @Autowired
-    private IDishService iDishService;
-    @Autowired
-    private IDishTypeService iDishTypeService;
+
     @Autowired
     private IDishOrderService iDishOrderService;
 
+    @Autowired
+    private IDishService iDishService;
+
+    @Autowired
+    private IDishTypeService iDishTypeService;
 
     /**
-     *   Author: BinhPX
-     *   Date created: 09/08/2022
-     *   This function will return data can get, @param pageable, @return
+     * Author: BinhPX
+     * Date created: 09/08/2022
+     * This function will return data can get, @param pageable, @return
      **/
     @GetMapping("/dish")
-    public ResponseEntity<Page<Dish>> getAllDish(@PageableDefault(4)Pageable pageable,
+    public ResponseEntity<Page<Dish>> getAllDish(@PageableDefault(4) Pageable pageable,
                                                  @RequestParam("page") Optional<Integer> page,
-                                                 @RequestParam("size") Optional<Integer> size){
+                                                 @RequestParam("size") Optional<Integer> size) {
         Page<Dish> dishes = iDishService.findAll(pageable);
-        if(dishes.isEmpty()){
+        if (dishes.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.BAD_GATEWAY);
         }
         return new ResponseEntity<>(dishes, HttpStatus.OK);
     }
 
     /**
-     *   Author: BinhPX
-     *   Date created: 09/08/2022
-     *   This function will return all data can get, @return
+     * Author: BinhPX
+     * Date created: 09/08/2022
+     * This function will return all data can get, @return
      **/
     @GetMapping("/dish-type")
-    public ResponseEntity<List<DishType>> getAllDishType(){
+    public ResponseEntity<List<DishType>> getAllDishType() {
         List<DishType> dishesType = iDishTypeService.findAll();
-        if(dishesType.isEmpty()){
+        if (dishesType.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(dishesType, HttpStatus.OK);
     }
 
+    /**
+     * Created by: BaoTQ
+     * Date create: 09/08/2022
+     * function: display 5 dish most order
+     */
+    @GetMapping("/most-order")
+    public ResponseEntity<List<IDishMostOrderDto>> getListDishMostOrder() {
+        List<IDishMostOrderDto> mostOrderList = iDishOrderService.get5DishMostOrderDTO();
+        if (mostOrderList.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(mostOrderList, HttpStatus.OK);
+    }
+
 
     /**
-     *   Author: BinhPX
-     *   Date created: 09/08/2022
-     *   This function create new order, @param dishOrderDto, @return
+     * Author: BinhPX
+     * Date created: 09/08/2022
+     * This function create new order, @param dishOrderDto, @return
      **/
     @PostMapping("/create-dishOrder")
-    public ResponseEntity<List<FieldError>> createOrder(@Valid @RequestBody DishOrderDto dishOrderDto, BindingResult bindingResult){
+    public ResponseEntity<List<FieldError>> createOrder(@Valid @RequestBody DishOrderDto dishOrderDto, BindingResult bindingResult) {
         DishOrder dishOrder = new DishOrder();
         int numberCode = (int) (Math.random() * 9999);
         dishOrder.setCode("OD-" + numberCode);
-        if(bindingResult.hasErrors()) {
+        if (bindingResult.hasErrors()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         BeanUtils.copyProperties(dishOrderDto, dishOrder);
@@ -97,5 +116,20 @@ public class DishOrderRestController {
         iDishOrderService.createOrder(dishOrder);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    /**
+     * Created by: BaoTQ
+     * Date create: 09/08/2022
+     * function: display 5 dish newest
+     */
+    @GetMapping("/newest")
+    public ResponseEntity<List<IDishNewestDto>> getListDishNewest() {
+        List<IDishNewestDto> newestList = iDishOrderService.get5DishNewestDTO();
+        if (newestList.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(newestList, HttpStatus.OK);
+    }
+
 
 }
