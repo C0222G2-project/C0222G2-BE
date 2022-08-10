@@ -19,8 +19,12 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
+
 
 @RestController
 @CrossOrigin
@@ -35,7 +39,6 @@ public class EmployeeRestController {
     private IAppUserService iUserService;
 
     /**
-<<<<<<< HEAD
      * Create by TuyenTN
      * Create date: 16:30
      * Method getAllEmployee show list and paging and search
@@ -45,7 +48,6 @@ public class EmployeeRestController {
      * @param searchAccount
      * @return
      */
-
     @GetMapping("/employee/list")
     public ResponseEntity<Page<IEmployeeDTO>> getAllEmployee(@PageableDefault(5) Pageable pageable,
                                                              Optional<String> searchName,
@@ -130,11 +132,11 @@ public class EmployeeRestController {
     }
 
     /**
+     * @function ( find the employee of the id )
      * @creator TaiLV
-     * Date 09/08/2022
+     * @date-create 09/08/2022
      * @param id
-     * if id null : Bad request
-     * @return  object Employee
+     * @return true: id status 200 / false: status 404
      */
 
     @GetMapping("/employee/findId/{id}")
@@ -147,13 +149,13 @@ public class EmployeeRestController {
 
     /**
      * @creator TaiLV
+     * @function ( create the value of the employee )
      * Date 09/08/2022
      * @param employeeDTO
      * @param bindingResult
      * if employee null : Create new employee
-     * @return  create Employee success
+     * @return  true: employee, status 200 / false: status 404
      */
-
     @PostMapping("/employee/create")
     public ResponseEntity<Employee> saveEmployee(@Valid @RequestBody EmployeeDTO employeeDTO , BindingResult bindingResult) {
         Employee employee =new Employee();
@@ -162,18 +164,31 @@ public class EmployeeRestController {
         if(bindingResult.hasErrors()){
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
+
+
+        AppUser appUser = new AppUser();
+        appUser.setIsDeleted(null);
+        appUser.setUserRoles(null);
+        appUser.setPassword("123456");
+        appUser.setCreationDate(Date.valueOf(LocalDate.now()));
+        appUser.setUserName(employee.getAppUser().getUserName());
+
         BeanUtils.copyProperties(employeeDTO, employee);
+
+        BeanUtils.copyProperties(employeeDTO, employee);
+
         return new ResponseEntity<>(iEmployeeService.saveEmployee(employee), HttpStatus.CREATED);
     }
 
     /**
      * @creator TaiLV
+     * @function ( edit the value of the employee )
      * Date 09/08/2022
      * @param employeeDTO
      * @param bindingResult
      * @param id
      * if employee null : Create new employee
-     * @return  update Employee success
+     * @return  true: employee, status 200 / false: status 404
      */
 
     @PatchMapping("/employee/edit/{id}")
@@ -190,4 +205,5 @@ public class EmployeeRestController {
         BeanUtils.copyProperties(employeeDTO, employee);
         return new ResponseEntity<>(iEmployeeService.editEmployee(employee), HttpStatus.CREATED);
     }
+
 }
