@@ -1,9 +1,10 @@
 package com.coffee.service.impl;
 
+
 import com.coffee.dto.ICoffeeTableDto;
 import com.coffee.dto.ITotalPaymentDto;
 import com.coffee.model.coffee_table.CoffeeTable;
-import com.coffee.repository.ICoffeeTableRepository;
+import com.coffee.repository.CoffeeTableRepository;
 import com.coffee.service.ICoffeeTableService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -11,56 +12,34 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
-public class CoffeeTableService implements ICoffeeTableService {
-
+public class CoffeeTableServiceImpl implements ICoffeeTableService {
     @Autowired
-    private ICoffeeTableRepository iCoffeeTableRepository;
+    private CoffeeTableRepository coffeeTableRepository;
 
-    /**
-     * Create HoaNN
-     * Date create 10/08/2022
-     * @param id
-     * @return
-     */
     @Override
     public List<ICoffeeTableDto> findByIdTable(Integer id) {
-        return this.iCoffeeTableRepository.displayTableById(id);
+        return null;
     }
 
-    /**
-     * Create HoaNN
-     * Date create 10/08/2022
-     * @param pageable
-     * @return
-     */
     @Override
     public Page<ICoffeeTableDto> displayCoffeeTableByPage(Pageable pageable) {
-        return this.iCoffeeTableRepository.displayCoffeeTableByPage(pageable);
+        return null;
     }
 
-    /**
-     * Create HoaNN
-     * Date create 10/08/2022
-     * @param id
-     * @return
-     */
     @Override
     public ITotalPaymentDto calcultion(Integer id) {
-        return this.iCoffeeTableRepository.totalPayment(id);
+        return null;
     }
-
 
     @Override
     public Page<CoffeeTable> findAll(Pageable pageable) {
-        return null;
+        return coffeeTableRepository.findAll(pageable);
     }
 
     @Override
     public CoffeeTable findByCode(String code) {
-        return null;
+        return coffeeTableRepository.findByCode('%' + code + '%');
     }
-
 }

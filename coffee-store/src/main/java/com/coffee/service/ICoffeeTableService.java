@@ -1,5 +1,6 @@
 package com.coffee.service;
 
+
 import com.coffee.dto.ICoffeeTableDto;
 import com.coffee.dto.ITotalPaymentDto;
 import com.coffee.model.coffee_table.CoffeeTable;
@@ -24,4 +25,8 @@ public interface ICoffeeTableService {
 
     ITotalPaymentDto calcultion(Integer id);
 
+    Page<CoffeeTable> findAll(Pageable pageable);
+
+    CoffeeTable findByCode(String code);
 }
+

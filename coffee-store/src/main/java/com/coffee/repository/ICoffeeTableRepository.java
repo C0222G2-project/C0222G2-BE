@@ -1,5 +1,6 @@
 package com.coffee.repository;
 
+
 import com.coffee.dto.ICoffeeTableDto;
 import com.coffee.dto.ITotalPaymentDto;
 import com.coffee.model.coffee_table.CoffeeTable;
@@ -9,6 +10,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import com.coffee.model.coffee_table.CoffeeTable;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
@@ -62,3 +65,5 @@ public interface ICoffeeTableRepository extends JpaRepository<CoffeeTable, Integ
             nativeQuery = true)
     ITotalPaymentDto totalPayment(@Param("idKey2") Integer id);
 }
+
+
