@@ -20,23 +20,24 @@ public class FeedbackServiceImpl implements IFeedbackService {
     /**
      * Created by : LuanTV
      * Date created: 09/08/2022
-     * function:  page section, search
+     * Function:  page section, search
      *
      * @param pageable
      * @param creator
-     * @param feedbackDate
+     * @param startDate
+     * @param endDate
      * @return Page<Feedback>
      */
 
     @Override
-    public Page<Feedback> findAllFeedback(Pageable pageable, String creator, String feedbackDate) {
-        return feedbackRepository.findAllFeedback(pageable, "%" + creator + "%", "%" + feedbackDate + "%");
+    public Page<Feedback> findAllFeedback(Pageable pageable, String creator , String startDate, String endDate) {
+        return feedbackRepository.findAllFeedback(pageable, "%" + creator + "%", startDate, endDate );
     }
 
     /**
      * Created by : LuanTV
      * Date created: 09/08/2022
-     * function: find by id feedback
+     * Function: find by id feedback
      *
      * @param id
      * @return Feedback

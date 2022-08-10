@@ -16,19 +16,21 @@ public interface IFeedbackService {
     /**
      * Created by : LuanTV
      * Date created: 09/08/2022
-     * function: page section, search
+     * Function: page section, search
      *
      * @param pageable
      * @param creator
-     * @param feedbackDate
+     * @param startDate
+     * @param endDate
      * @return
      */
-    Page<Feedback> findAllFeedback(Pageable pageable, String creator, String feedbackDate);
+
+    Page<Feedback> findAllFeedback(Pageable pageable, String creator, String startDate, String endDate);
 
     /**
      * Created by : LuanTV
      * Date created: 09/08/2022
-     * function: find by id feedback
+     * Function: find by id feedback
      *
      * @param id
      * @return
