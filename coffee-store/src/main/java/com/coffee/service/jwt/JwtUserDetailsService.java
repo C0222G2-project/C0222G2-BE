@@ -39,7 +39,7 @@ public class JwtUserDetailsService implements UserDetailsService {
         AppUser appUser = this.IAppUserRepository.getAppUserByUsername(userName);
 
         if (appUser == null) {
-            throw new UsernameNotFoundException("User " + userName + " was not found in the database");
+            return null;
         }
 
         // [ROLE_USER, ROLE_ADMIN,..]

@@ -27,6 +27,8 @@ public class JwtRequestFilter extends OncePerRequestFilter {
     private JwtTokenUtil jwtTokenUtil;
 
     /**
+     * @function After setting the Authentication in the context,
+     * we specify that the current user is authenticated. So it passes the Spring Security Configurations successfully.
      * @creator: PhuongTD
      * @date-create 9/8/2022
      * @param request

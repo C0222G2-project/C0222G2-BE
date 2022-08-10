@@ -1,5 +1,6 @@
 package com.coffee.model.jwt;
 
+import javax.validation.constraints.Pattern;
 import java.io.Serializable;
 
 public class JwtRequest implements Serializable {
@@ -7,8 +8,12 @@ public class JwtRequest implements Serializable {
     private static final long serialVersionUID = 5926468583005150707L;
 
     private String username;
+    @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}",
+            message = "Minimum eight characters, at least one letter, one number and one special character")
     private String password;
     private String token;
+    @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}",
+            message = "Minimum eight characters, at least one letter, one number and one special character")
     private String confirmPassword;
 
     //need default constructor for JSON Parsing
