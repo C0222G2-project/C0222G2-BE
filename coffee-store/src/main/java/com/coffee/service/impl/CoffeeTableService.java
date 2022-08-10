@@ -1,6 +1,7 @@
 package com.coffee.service.impl;
 
 import com.coffee.dto.ICoffeeTableDto;
+import com.coffee.dto.ITotalPaymentDto;
 import com.coffee.model.coffee_table.CoffeeTable;
 import com.coffee.repository.ICoffeeTableRepository;
 import com.coffee.service.ICoffeeTableService;
@@ -24,9 +25,13 @@ public class CoffeeTableService implements ICoffeeTableService {
     }
 
     @Override
-    public Page<CoffeeTable> displayCoffeeTableByPage(Pageable pageable) {
-        return this.iCoffeeTableRepository.findAll(pageable);
+    public Page<ICoffeeTableDto> displayCoffeeTableByPage(Pageable pageable) {
+        return this.iCoffeeTableRepository.displayCoffeeTableByPage(pageable);
     }
 
+    @Override
+    public ITotalPaymentDto calcultion(Integer id) {
+        return this.iCoffeeTableRepository.totalPayment(id);
+    }
 
 }

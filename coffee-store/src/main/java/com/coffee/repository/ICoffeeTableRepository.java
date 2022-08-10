@@ -1,6 +1,7 @@
 package com.coffee.repository;
 
 import com.coffee.dto.ICoffeeTableDto;
+import com.coffee.dto.ITotalPaymentDto;
 import com.coffee.model.coffee_table.CoffeeTable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -26,7 +27,21 @@ public interface ICoffeeTableRepository extends JpaRepository<CoffeeTable, Integ
             nativeQuery = true)
     List<ICoffeeTableDto> displayTableById(@Param("idKey") Integer id);
 
-//    @Query(value = "select coffee_table.code from coffee_table", nativeQuery = true)
-//    Page<CoffeeTable> displayCoffeeTableByPage(Pageable pageable);
+    @Query(value = "select code" +
+            " from coffee_table",
+            countQuery = " select count(*) from " +
+                    "(select code from coffee_table)",
+            nativeQuery = true)
+    Page<ICoffeeTableDto> displayCoffeeTableByPage(Pageable pageable);
 
+    @Query(value = "select dto_table.code" +
+            " as payment " +
+            " from (select coffee_table.code," +
+            " sum(ifnull((dish.price * dish_order.quantity),0)) as tong_bill " +
+            " from dish_order " +
+            " join dish on dish.id = dish_order.dish_id " +
+            " join coffee_table on dish_order.coffee_table_id = coffee_table.id " +
+            " where coffee_table.id = :idKey2) as dto_table",
+            nativeQuery = true)
+    ITotalPaymentDto totalPayment(@Param("idKey2") Integer id);
 }

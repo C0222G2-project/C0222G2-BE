@@ -2,6 +2,7 @@ package com.coffee.controller;
 
 
 import com.coffee.dto.ICoffeeTableDto;
+import com.coffee.dto.ITotalPaymentDto;
 import com.coffee.model.coffee_table.CoffeeTable;
 import com.coffee.service.ICoffeeTableService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,16 +41,22 @@ public class PaymentRestController {
      * Create: HoaNN
      * Date create: 09/08/2022
      * function display list tables coffee by page
-     * (em fix lỗi page chưa xong )
      *
      * @param pageable
      */
     @GetMapping("/page")
-    public ResponseEntity<Page<CoffeeTable>> getCoffeeTablePage(@PageableDefault(size = 6) Pageable pageable) {
-        Page<CoffeeTable> coffeeTablePage = this.iCoffeeTableService.displayCoffeeTableByPage(pageable);
-        if (coffeeTablePage.isEmpty()) {
+    public ResponseEntity<Page<ICoffeeTableDto>> getCoffeeTablePage(@PageableDefault(size = 6) Pageable pageable) {
+        Page<ICoffeeTableDto> iCoffeeTableDtos = this.iCoffeeTableService.displayCoffeeTableByPage(pageable);
+        if (iCoffeeTableDtos.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<>(coffeeTablePage, HttpStatus.OK);
+        return new ResponseEntity<>(iCoffeeTableDtos, HttpStatus.OK);
+    }
+
+
+    @GetMapping("/total/{id}")
+    public ResponseEntity<ITotalPaymentDto> calculation(@PathVariable("id") Integer id){
+        ITotalPaymentDto iTotalPaymentDto = this.iCoffeeTableService.calcultion(id);
+        return new ResponseEntity<>(iTotalPaymentDto, HttpStatus.OK);
     }
 }
