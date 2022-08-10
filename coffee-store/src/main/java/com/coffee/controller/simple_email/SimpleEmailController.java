@@ -1,7 +1,6 @@
 package com.coffee.controller.simple_email;
 
 import com.coffee.model.account.AppUser;
-import com.coffee.model.employee.Employee;
 import com.coffee.model.jwt.JwtRequest;
 import com.coffee.model.jwt.JwtResponse;
 import com.coffee.service.account.IAppUserService;
