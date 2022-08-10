@@ -1,5 +1,6 @@
 package com.coffee.service;
 
+import com.coffee.dto.IBillDto;
 import com.coffee.model.bill.Bill;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -14,9 +15,9 @@ public interface IBillService {
      * @param pageable
      * @param searchCode
      * @param searchDate
-     * @return 
+     * @return
      */
-    Page<Bill> getAll(Pageable pageable, String searchCode, String searchDate);
+    Page<IBillDto> getAll(Pageable pageable, String searchCode, String searchDate);
 
     /**
      * Created by: HauLT

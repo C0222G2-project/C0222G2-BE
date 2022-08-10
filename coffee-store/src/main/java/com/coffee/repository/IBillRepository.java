@@ -1,11 +1,14 @@
 package com.coffee.repository;
 
+import com.coffee.dto.IBillDto;
 import com.coffee.model.bill.Bill;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+
+import java.util.List;
 
 public interface IBillRepository extends JpaRepository<Bill, Integer> {
 
@@ -21,18 +24,29 @@ public interface IBillRepository extends JpaRepository<Bill, Integer> {
      * @return
      */
 
-    @Query(value = " select bill.id, bill.code, bill.creation_date, bill.is_deleted, employee.name, coffee_table.code, "+
-            " dish_order.quantity, dish.name, dish.price " +
+    @Query(value = "select bill.id as id, bill.code as billCode, bill.creation_date as creationDate, " +
+            " bill.is_deleted as isDeleted, employee.name as employeeName, coffee_table.code as coffeeTableCode, " +
+            " dish_order.quantity as dishOrderQuantity, dish.name as dishName, dish.price as dishPrice " +
             " from bill " +
-            " left join dish_order on bill.id = dish_order.bill_id " +
-            " left join employee on dish_order.employee_id = employee.id " +
-            " left join coffee_table on dish_order.coffee_table_id = coffee_table.id " +
-            " left join dish on dish_order.dish_id = dish.id " +
-            " where code like :searchCode and creation_date like :searchDate and is_deleted = 0 ", nativeQuery = true,
-            countQuery ="select (id,code,creation_date,is_deleted) from " +
-                    " (select id,code,creation_date,is_deleted from bill " +
-                    " where code like :searchCode and creation_date like :searchDate and is_deleted = 0) temp_table")
-    Page<Bill> getAllBill(Pageable pageable, @Param("searchCode") String searchCode,
+            " join dish_order on bill.id = dish_order.bill_id " +
+            " join employee on dish_order.employee_id = employee.id " +
+            " join coffee_table on dish_order.coffee_table_id = coffee_table.id " +
+            " join dish on dish_order.dish_id = dish.id " +
+            " where bill.code like :searchCode and bill.creation_date like :searchDate and bill.is_deleted = 0 ", nativeQuery = true)
+//            countQuery ="select count (bill.id as id, bill.code as billCode, bill.creation_date as creationDate, " +
+//                    " bill.is_deleted as isDeleted, employee.name as employeeName, coffee_table.code as coffeeTableCode, " +
+//                    " dish_order.quantity as dishOrderQuantity, dish.name as dishName, dish.price as dishPrice) " +
+//                    " from " +
+//                    " (select bill.id, bill.code as billCode, bill.creation_date as creationDate, " +
+//                    " bill.is_deleted as isDeleted, employee.name as employeeName, coffee_table.code as coffeeTableCode, " +
+//                    " dish_order.quantity as dishOrderQuantity, dish.name as dishName, dish.price as dishPrice " +
+//                    " from bill " +
+//                    " left join dish_order on bill.id = dish_order.bill_id " +
+//                    " left join employee on dish_order.employee_id = employee.id " +
+//                    " left join coffee_table on dish_order.coffee_table_id = coffee_table.id " +
+//                    " left join dish on dish_order.dish_id = dish.id " +
+//                    " where bill.code like :searchCode and bill.creation_date like :searchDate and bill.is_deleted = 0) temp_table")
+    Page<IBillDto> getAllBill(Pageable pageable, @Param("searchCode") String searchCode,
                           @Param("searchDate") String searchDate);
 
 
@@ -45,13 +59,20 @@ public interface IBillRepository extends JpaRepository<Bill, Integer> {
      * @return
      */
 
-    @Query(value = "select bill.id, bill.code, bill.creation_date, bill.is_deleted, employee.name, coffee_table.code, "+
-            " dish_order.quantity, dish.name, dish.price " +
-            " from bill" +
+    @Query(value = "select bill.id as billId, bill.code as billCode, bill.creation_date as creationDate, " +
+            " bill.is_deleted as isDeleted, employee.name as employeeName, coffee_table.code as coffeeTableCode, " +
+            " dish_order.quantity as dishOrderQuantity, dish.name as dishName, dish.price as dishPrice " +
+            " from bill " +
             " left join dish_order on bill.id = dish_order.bill_id " +
             " left join employee on dish_order.employee_id = employee.id " +
             " left join coffee_table on dish_order.coffee_table_id = coffee_table.id " +
             " left join dish on dish_order.dish_id = dish.id " +
-            " where id = :idDetail and is_deleted = 0 ", nativeQuery = true)
+            " where bill.id = :idDetail and bill.is_deleted = 0 ", nativeQuery = true)
     Bill getByIdBill(@Param("idDetail") Integer id);
+
+
+
+//    @Query(value = " select employee.name as nameEmployee, dish_order.id as idOrder from employee " +
+//            "inner join dish_order on dish_order.employee_id = employee.id", nativeQuery = true)
+//    List<IBillDto> test();
 }

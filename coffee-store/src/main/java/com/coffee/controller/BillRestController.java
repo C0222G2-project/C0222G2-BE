@@ -1,6 +1,8 @@
 package com.coffee.controller;
 
+import com.coffee.dto.IBillDto;
 import com.coffee.model.bill.Bill;
+import com.coffee.repository.IBillRepository;
 import com.coffee.service.IBillService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -10,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RequestMapping("/rest")
@@ -32,16 +35,16 @@ public class BillRestController {
      */
 
     @GetMapping("/bill")
-    public ResponseEntity<Page<Bill>> getAllBill(@PageableDefault(10) Pageable pageable,
+    public ResponseEntity<Page<IBillDto>> getAllBill(@PageableDefault(10) Pageable pageable,
                                                  @RequestParam Optional<String> searchParamCode,
                                                  @RequestParam Optional<String> searchParamDate){
         String searchCode = searchParamCode.orElse("");
         String searchDate = searchParamDate.orElse("");
-        Page<Bill> bills = this.iBillService.getAll(pageable, searchCode, searchDate);
-        if (bills.isEmpty()){
+        Page<IBillDto> billDtoPage = this.iBillService.getAll(pageable, searchCode, searchDate);
+        if (billDtoPage.isEmpty()){
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }else {
-            return new ResponseEntity<>(HttpStatus.OK);
+            return new ResponseEntity<>(billDtoPage,HttpStatus.OK);
         }
     }
 
@@ -53,11 +56,22 @@ public class BillRestController {
      * @param id
      * @return object Bill
      */
-    @GetMapping("/bill/{id}")
+
+    @GetMapping("/bill/detail/{id}")
     public ResponseEntity<Bill> getById(@PathVariable Integer id){
         Bill bill = this.iBillService.findById(id);
+        if (bill == null){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
         return new ResponseEntity<>(bill, HttpStatus.OK);
     }
 
-
+//    @Autowired
+//    private IBillRepository iBillRepository;
+//
+//    @GetMapping("/test")
+//    public ResponseEntity<List<IBillDto>> getTest(){
+//        List<IBillDto> listDTO = iBillRepository.test();
+//        return new ResponseEntity<>(listDTO,HttpStatus.OK);
+//    }
 }

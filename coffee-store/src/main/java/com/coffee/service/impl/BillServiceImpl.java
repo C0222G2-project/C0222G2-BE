@@ -1,5 +1,6 @@
 package com.coffee.service.impl;
 
+import com.coffee.dto.IBillDto;
 import com.coffee.model.bill.Bill;
 import com.coffee.repository.IBillRepository;
 import com.coffee.service.IBillService;
@@ -25,8 +26,8 @@ public class BillServiceImpl implements IBillService {
      * @return Page<Bill>
      */
     @Override
-    public Page<Bill> getAll(Pageable pageable, String searchCode, String searchDate) {
-        return this.iBillRepository.getAllBill(pageable, "%" + searchCode + "%", "%" + searchDate + "%");
+    public Page<IBillDto> getAll(Pageable pageable, String searchCode, String searchDate) {
+        return this.iBillRepository.getAllBill(pageable, "%" + searchCode + "%","%" + searchDate + "%" );
     }
 
     /**
