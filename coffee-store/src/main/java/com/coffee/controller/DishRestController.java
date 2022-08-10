@@ -2,7 +2,6 @@ package com.coffee.controller;
 
 import com.coffee.dto.DishDto;
 import com.coffee.model.dish.Dish;
-import com.coffee.model.dish.DishType;
 import com.coffee.service.IDishService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +13,6 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
 import java.util.Optional;
 
 @RequestMapping(value = "/dish")
@@ -31,13 +29,6 @@ public class DishRestController {
      * @creator PhucLV
      * @date-create 09/08/2022
      */
-
-//    @PostMapping(value = "/create")
-//    public ResponseEntity<Dish> createDish(@RequestBody Dish dish) {
-//        iDishService.save(dish);
-//        return new ResponseEntity<>(dish, HttpStatus.CREATED);
-//    }
-
 
     @PostMapping(value = "/create")
     public ResponseEntity<FieldError> createDish( @RequestBody @Valid DishDto dishDto, BindingResult bindingResult) {
@@ -92,27 +83,5 @@ public class DishRestController {
         iDishService.editDish(dish);
         return new ResponseEntity<>( HttpStatus.OK);
     }
-
-
-    //    @PatchMapping("/{id}")
-//    public ResponseEntity<Dish> updateDish(@Valid @PathVariable int id, @RequestBody Dish dish, BindingResult bindingResult) {
-//        Optional<Dish> dishOptional = iDishService.findById(id);
-//
-//        if (!dishOptional.isPresent()) {
-//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//        }
-//
-//        DishDto dishDto= new DishDto();
-//        BeanUtils.copyProperties(dish, dishDto);
-//        dishDto.setId(dishOptional.get().getId());
-//        if (bindingResult.hasErrors()){
-//            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-//        }
-//        BeanUtils.copyProperties(dishDto, dish);
-//        iDishService.editDish(dish);
-//        return new ResponseEntity<>(dish, HttpStatus.OK);
-//    }
-
-
 
 }
