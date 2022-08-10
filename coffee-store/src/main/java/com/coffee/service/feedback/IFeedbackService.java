@@ -20,10 +20,12 @@ public interface IFeedbackService {
      *
      * @param pageable
      * @param creator
-     * @param feedbackDate
+     * @param startDate
+     * @param endDate
      * @return
      */
-    Page<Feedback> findAllFeedback(Pageable pageable, String creator, String feedbackDate);
+
+    Page<Feedback> findAllFeedback(Pageable pageable, String creator, String startDate, String endDate);
 
     /**
      * Created by : LuanTV

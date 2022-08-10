@@ -40,20 +40,20 @@ public interface IFeedbackRepository extends JpaRepository<Feedback, Integer> {
      * function:  page , search
      *
      * @param pageable
-     * @param feedbackDate
      * @param creator
+     * @param startDate
+     * @param endDate
      * @return
      */
 
     @Query(value = " select feedback.id, feedback.code, feedback.content, feedback.creator, feedback.email,  " +
             " feedback.feedback_date, feedback.image, feedback.rating, feedback.is_deleted  " +
-            " from feedback where feedback.creator like :creator and feedback.feedback_date like :feedbackDate and feedback.is_deleted = 0 ", nativeQuery = true,
+            " from feedback where feedback.creator like :creator and (feedback.feedback_date between :startDate and :endDate) and feedback.is_deleted = 0 ", nativeQuery = true,
             countQuery = " select count (*) from ( select feedback.id, feedback.code, feedback.content, feedback.creator, feedback.email,  " +
                     " feedback.feedback_date, feedback.image, feedback.rating, feedback.is_deleted  " +
-                    " from feedback where feedback.creator like :creator and feedback.feedback_date like :feedbackDate and feedback.is_deleted = 0 ) feedback")
+                    " from feedback where feedback.creator like :creator and (feedback.feedback_date between :startDate and :endDate) and feedback.is_deleted = 0 ) feedback")
     Page<Feedback> findAllFeedback(Pageable pageable,
-                                   @Param("creator") String creator,
-                                   @Param("feedbackDate") String feedbackDate); 
+                                   @Param("creator") String creator, String startDate, String endDate);
 
     /**
      * Created by : LuanTV
