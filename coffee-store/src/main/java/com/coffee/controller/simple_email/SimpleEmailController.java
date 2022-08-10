@@ -70,11 +70,12 @@ public class SimpleEmailController {
     }
 
     /**
+     *
      * @creator: PhuongTD
      * @date-create 9/8/2022
      * @param token
      * @param response
-     * @return
+     * @return redirect to change password form if true or redirect to login form if false
      * @throws IOException
      */
     @GetMapping("/forgotPassword/{token}")
@@ -91,10 +92,11 @@ public class SimpleEmailController {
     }
 
     /**
+     * Method change password
      * @creator: PhuongTD
      * @date-create 9/8/2022
      * @param jwtRequest
-     * @return
+     * @return status 401 if token null
      */
     @PostMapping("/changePassword")
     public ResponseEntity<?> changePassword(@Valid @RequestBody JwtRequest jwtRequest, BindingResult bindingResult) {
