@@ -79,7 +79,7 @@ public class BillRestController_getById {
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful())
                 .andExpect(jsonPath("id").value(1))
-                .andExpect(jsonPath("code").value("BIll-1"))
+                .andExpect(jsonPath("billCode").value("BIll-1"))
                 .andExpect(jsonPath("creationDate").value("2022-12-12"))
                 .andExpect(jsonPath("isDeleted").value(false));
     }

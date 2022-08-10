@@ -40,7 +40,7 @@ public class BillServiceImpl implements IBillService {
      */
 
     @Override
-    public Bill findById(Integer id) {
+    public IBillDto findById(Integer id) {
         return this.iBillRepository.getByIdBill(id);
     }
 }

@@ -28,5 +28,5 @@ public interface IBillService {
      * @return
      */
 
-    Bill findById(Integer id);
+    IBillDto findById(Integer id);
 }

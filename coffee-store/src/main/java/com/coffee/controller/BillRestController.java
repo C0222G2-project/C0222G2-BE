@@ -12,7 +12,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Optional;
 
 @RequestMapping("/rest")
@@ -58,20 +57,13 @@ public class BillRestController {
      */
 
     @GetMapping("/bill/detail/{id}")
-    public ResponseEntity<Bill> getById(@PathVariable Integer id){
-        Bill bill = this.iBillService.findById(id);
-        if (bill == null){
+    public ResponseEntity<IBillDto> getById(@PathVariable Integer id){
+        IBillDto iBillDto = this.iBillService.findById(id);
+        if (iBillDto == null){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity<>(bill, HttpStatus.OK);
+        return new ResponseEntity<>(iBillDto, HttpStatus.OK);
     }
 
-//    @Autowired
-//    private IBillRepository iBillRepository;
-//
-//    @GetMapping("/test")
-//    public ResponseEntity<List<IBillDto>> getTest(){
-//        List<IBillDto> listDTO = iBillRepository.test();
-//        return new ResponseEntity<>(listDTO,HttpStatus.OK);
-//    }
+
 }

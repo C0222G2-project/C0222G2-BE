@@ -32,9 +32,9 @@ public class BillRestController_getAllBill {
 
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .get("/rest/bill/page?searchCode = BIll-1&searchDate = null"))
+                                .get("/rest/bill?searchParamCode=BIll-1&searchParamDate=null"))
                 .andDo(print())
-                .andExpect(status().is4xxClientError());
+                .andExpect(status().is2xxSuccessful());
     }
 
     /**
@@ -49,9 +49,9 @@ public class BillRestController_getAllBill {
 
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .get("/rest/bill/page?searchCode = null&searchDate = 2022-12-12"))
+                                .get("/rest/bill?searchParamCode=null&searchParamDate=2022-12-12"))
                 .andDo(print())
-                .andExpect(status().is4xxClientError());
+                .andExpect(status().is(204));
     }
 
     /**
@@ -66,9 +66,9 @@ public class BillRestController_getAllBill {
 
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .get("/rest/bill/page?searchCode = null&searchDate = null"))
+                                .get("/rest/bill?searchParamCode=null&searchParamDate=null"))
                 .andDo(print())
-                .andExpect(status().is4xxClientError());
+                .andExpect(status().is(204));
     }
 
     /**
@@ -83,9 +83,9 @@ public class BillRestController_getAllBill {
 
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .get("/rest/bill/page?searchCode = &searchDate = "))
+                                .get("/rest/bill?searchParamCode=&searchParamDate="))
                 .andDo(print())
-                .andExpect(status().is4xxClientError());
+                .andExpect(status().is2xxSuccessful());
     }
 
     /**
@@ -100,9 +100,9 @@ public class BillRestController_getAllBill {
 
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .get("/rest/bill/page?searchCode = BIll-1&searchDate = "))
+                                .get("/rest/bill?searchParamCode=BIll-1&searchParamDat="))
                 .andDo(print())
-                .andExpect(status().is4xxClientError());
+                .andExpect(status().is2xxSuccessful());
     }
 
     /**
@@ -117,9 +117,9 @@ public class BillRestController_getAllBill {
 
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .get("/rest/bill/page?searchCode = &searchDate = 2022-12-12"))
+                                .get("/rest/bill?searchParamCode=&searchParamDate=2022-12-12"))
                 .andDo(print())
-                .andExpect(status().is4xxClientError());
+                .andExpect(status().is2xxSuccessful());
     }
 
     /**
@@ -134,9 +134,9 @@ public class BillRestController_getAllBill {
 
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .get("/rest/bill/page?searchCode = BIll-2123&searchDate = 2022-12-12"))
+                                .get("/rest/bill?searchParamCode=BIll-1&searchParamDate=2033-12-12"))
                 .andDo(print())
-                .andExpect(status().is4xxClientError());
+                .andExpect(status().is(204));
     }
 
     /**
@@ -151,9 +151,9 @@ public class BillRestController_getAllBill {
 
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .get("/rest/bill/page?searchCode = BIll-1?searchDate = 2050-12-12"))
+                                .get("/rest/bill?searchParamCode=BIll-1788?searchParamDate=2022-12-12"))
                 .andDo(print())
-                .andExpect(status().is4xxClientError());
+                .andExpect(status().is(204));
     }
 
     /**
@@ -168,9 +168,19 @@ public class BillRestController_getAllBill {
 
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .get("/rest/bill/page?searchCode = BIll1?searchDate = 2050-12-12"))
+                                .get("/rest/bill?searchParamCode=BIll1?searchParamDate=2050-12-12"))
                 .andDo(print())
-                .andExpect(status().is4xxClientError());
+                .andExpect(status().is(204));
+    }
+
+    @Test
+    public void getAllBill_10() throws Exception {
+
+        this.mockMvc.perform(
+                        MockMvcRequestBuilders
+                                .get("/rest/bill?searchParamCode=BIll-1&searchParamDate=2022-12-12"))
+                .andDo(print())
+                .andExpect(status().is(204));
     }
 
     /**
@@ -181,14 +191,18 @@ public class BillRestController_getAllBill {
      */
 
     @Test
-    public void getAllBill() throws Exception {
+    public void getAllBill_11() throws Exception {
 
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .get("/rest/bill"))
+                                .get("/rest/bill?searchParamCode=BIll-1&searchParamDate=2022-12-12"))
                 .andDo(print())
-                .andExpect(status().is2xxSuccessful());
+                .andExpect(status().is2xxSuccessful())
+                .andExpect(jsonPath("content[0].id").value(1))
+                .andExpect(jsonPath("content[0].billCode").value("BIll-1"))
+                .andExpect(jsonPath("content[0].creationDate").value("2022-12-12"));
     }
+
 
 
 }
