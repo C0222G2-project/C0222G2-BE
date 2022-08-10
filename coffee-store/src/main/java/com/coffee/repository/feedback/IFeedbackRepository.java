@@ -49,7 +49,7 @@ public interface IFeedbackRepository extends JpaRepository<Feedback, Integer> {
     @Query(value = " select feedback.id, feedback.code, feedback.content, feedback.creator, feedback.email,  " +
             " feedback.feedback_date, feedback.image, feedback.rating, feedback.is_deleted  " +
             " from feedback where feedback.creator like :creator and (feedback.feedback_date between :startDate and :endDate) and feedback.is_deleted = 0 ", nativeQuery = true,
-            countQuery = " select count (*) from ( select feedback.id, feedback.code, feedback.content, feedback.creator, feedback.email,  " +
+            countQuery = " select count(*) from ( select feedback.id, feedback.code, feedback.content, feedback.creator, feedback.email,  " +
                     " feedback.feedback_date, feedback.image, feedback.rating, feedback.is_deleted  " +
                     " from feedback where feedback.creator like :creator and (feedback.feedback_date between :startDate and :endDate) and feedback.is_deleted = 0 ) feedback")
     Page<Feedback> findAllFeedback(Pageable pageable,

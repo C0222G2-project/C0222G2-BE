@@ -102,7 +102,7 @@ public class FeedbackRestController_getAllFeedback {
     public void getAllFeedback_10_searchStartDate_searchEndDate() throws Exception {
 
         this.mockMvc.perform(
-                MockMvcRequestBuilders.get("/feedback/page?&searchStartDate=2022-02-06&searchEndDate=2022-02-06"))
+                MockMvcRequestBuilders.get("/feedback/page?searchStartDate=2022-02-06&searchEndDate=2022-02-06"))
                 .andDo(print())
                 .andExpect(status().is(204));
     }
