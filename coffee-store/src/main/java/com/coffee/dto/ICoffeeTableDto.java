@@ -1,5 +1,7 @@
 package com.coffee.dto;
-
+/**
+ create HoaNN
+ */
 public interface ICoffeeTableDto {
 
     String getName();
