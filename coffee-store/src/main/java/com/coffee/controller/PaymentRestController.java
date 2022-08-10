@@ -25,9 +25,7 @@ public class PaymentRestController {
      * Create: HoaNN
      * Date create: 09/08/2022
      * function display list order by id coffee table
-     *
      * @param id
-     * @return
      */
     @GetMapping("list/{id}")
     public ResponseEntity<List<ICoffeeTableDto>> displayDishOrderByIdTable(@PathVariable("id") Integer id) {
@@ -42,10 +40,9 @@ public class PaymentRestController {
      * Create: HoaNN
      * Date create: 09/08/2022
      * function display list tables coffee by page
-     * (em fix lỗi xong page )
+     * (em fix lỗi page chưa xong )
      *
      * @param pageable
-     * @return
      */
     @GetMapping("/page")
     public ResponseEntity<Page<CoffeeTable>> getCoffeeTablePage(@PageableDefault(size = 6) Pageable pageable) {
