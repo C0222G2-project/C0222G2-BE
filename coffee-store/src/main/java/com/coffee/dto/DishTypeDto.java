@@ -1,6 +1,5 @@
 package com.coffee.dto;
 
-
 import javax.validation.constraints.NotNull;
 
 public class DishTypeDto {

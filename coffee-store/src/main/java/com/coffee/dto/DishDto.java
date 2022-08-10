@@ -18,7 +18,7 @@ public class DishDto implements Validator {
     private String code;
     @NotNull
     @Min(value = 5000, message = "giá phải lớn hơn 5000")
-    private Integer price;
+    private Double price;
 
     @NotBlank
     @NotNull
@@ -32,13 +32,12 @@ public class DishDto implements Validator {
 
     //    @Pattern(regexp = "\\d{4}-\\d{2}-\\d{2}", message = "Invalid format dob")
     private String creationDate;
-
     private DishType dishType;
 
     public DishDto() {
     }
 
-    public DishDto(Integer id, @NotNull @NotBlank @Size(min = 3, message = "mã số món phải nhiều hơn 3 chữ cái") String code, @NotNull @NotBlank @Min(value = 5000, message = "giá phải lớn hơn 5000") Integer price, @NotNull @Size(min = 5, message = "mã số món phải nhiều hơn 3 chữ cái") String name, @NotBlank @NotNull String image, Boolean isDeleted, String creationDate, DishType dishType) {
+    public DishDto(Integer id, @NotNull @NotBlank @Size(min = 3, message = "mã số món phải nhiều hơn 3 chữ cái") String code, @NotNull @Min(value = 5000, message = "giá phải lớn hơn 5000") Double price, @NotBlank @NotNull @Size(min = 5, message = "mã số món phải nhiều hơn 3 chữ cái") String name, @NotBlank @NotNull String image, Boolean isDeleted, String creationDate, DishType dishType) {
         this.id = id;
         this.code = code;
         this.price = price;
@@ -65,11 +64,11 @@ public class DishDto implements Validator {
         this.code = code;
     }
 
-    public Integer getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 

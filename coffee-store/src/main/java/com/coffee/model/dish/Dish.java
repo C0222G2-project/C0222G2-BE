@@ -43,8 +43,8 @@ public class Dish {
     @JoinColumn(name = "dish_type_id", referencedColumnName = "id")
     private DishType dishType;
 
-//    @OneToMany(mappedBy = "dish")
-//    private List<DishOrder> dishOrders;
+    @OneToMany(mappedBy = "dish")
+    private List<DishOrder> dishOrders;
 
     @Override
     public boolean equals(Object o) {

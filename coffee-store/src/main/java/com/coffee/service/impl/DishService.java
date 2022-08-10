@@ -47,7 +47,7 @@ public class DishService implements IDishService {
      */
 
     @Override
-    public Dish editDish(Dish dish) {
-        return iDishRepository.editDish(dish);
+    public void editDish( Dish dish) {
+        iDishRepository.editDish(dish);
     }
 }

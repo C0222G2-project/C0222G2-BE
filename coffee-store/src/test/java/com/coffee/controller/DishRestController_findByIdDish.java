@@ -21,6 +21,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class DishRestController_findByIdDish {
     @Autowired
     private MockMvc mockMvc;
+
+    /**
+     * @function: This function is used to check when id is null
+     * @throws Exception
+     * @creation: PhucLV
+     * @Time 10/08/2022
+     */
     @Test
     public void findById_id1() throws Exception{
         this.mockMvc.perform(
@@ -29,6 +36,14 @@ public class DishRestController_findByIdDish {
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
+
+
+    /**
+     * @function:  This function is used on success when id = 1
+     * @throws Exception
+     * @creation: PhucLV
+     * @Time 10/08/2022
+     */
 
     @Test
     public void findById_id_1() throws Exception{
@@ -40,11 +55,10 @@ public class DishRestController_findByIdDish {
                 .andExpect(jsonPath("id").value(1))
                 .andExpect(jsonPath("code").value("C-F001"))
                 .andExpect(jsonPath("name").value("cà phê sữa"))
-                .andExpect(jsonPath("price").value(10000))
-                .andExpect(jsonPath("image").value("ảnh 1"))
+                .andExpect(jsonPath("price").value(10000.0))
+                .andExpect(jsonPath("image").value("logo.jpeg"))
                 .andExpect(jsonPath("isDeleted").value(false))
                 .andExpect(jsonPath("dishType.id").value(1))
-                .andExpect(jsonPath("creationDate").value("1995-01-14"))
-        ;
+                .andExpect(jsonPath("creationDate").value("1995-01-14"));
     }
 }

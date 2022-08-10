@@ -9,5 +9,5 @@ public interface IDishService {
 
     Optional<Dish> findById(int id);
 
-    Dish editDish(Dish dish);
+    void editDish(Dish dish);
 }

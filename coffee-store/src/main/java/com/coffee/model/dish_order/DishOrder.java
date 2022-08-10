@@ -40,9 +40,9 @@ public class DishOrder {
     @JoinColumn(name = "employee_id", referencedColumnName = "id")
     private Employee employee;
 
-//    @ManyToOne
-//    @JoinColumn(name = "dish_id", referencedColumnName = "id")
-//    private Dish dish;
+    @ManyToOne
+    @JoinColumn(name = "dish_id", referencedColumnName = "id")
+    private Dish dish;
 
     @Override
     public boolean equals(Object o) {

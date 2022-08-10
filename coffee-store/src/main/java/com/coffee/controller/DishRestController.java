@@ -41,20 +41,7 @@ public class DishRestController {
 
     @PostMapping(value = "/create")
     public ResponseEntity<FieldError> createDish( @RequestBody @Valid DishDto dishDto, BindingResult bindingResult) {
-//        if (bindingResult.hasErrors()) {
-//            return new ResponseEntity<>(bindingResult.getFieldErrors(),
-//                    HttpStatus.NOT_ACCEPTABLE);
-//        }
-//
-//        Dish dish = new Dish();
-//        BeanUtils.copyProperties(dishDto, dish);
-//        DishType dishType = new DishType();
-//        dishType.setId(dishDto.getDishTypeDto().getId());
-//        dish.setDishType(dishType);
-//
-//        this.iDishService.save(dish);
-//
-//        return new ResponseEntity<>(HttpStatus.OK);
+
         if (bindingResult.hasErrors()) {
             return new ResponseEntity<>(bindingResult.getFieldError(), HttpStatus.UPGRADE_REQUIRED);
         }
@@ -83,19 +70,49 @@ public class DishRestController {
     /**
      * @function ( edit the value of the dish )
      * @param id
-     * @param dish
+//     * @param dishDto
      * @return true: dish, status 200 / false: status 404
      * @creator PhucLV
      * @date-create 09/08/2022
      */
-    @PutMapping("/edit/{id}")
-    public ResponseEntity<Dish> updateDish(@PathVariable int id, @RequestBody Dish dish) {
+
+    @PatchMapping("/edit/{id}")
+    public ResponseEntity<FieldError> updateDish( @PathVariable int id, @RequestBody @Valid DishDto dishDto ,BindingResult bindingResult) {
         Optional<Dish> dishOptional = iDishService.findById(id);
         if (!dishOptional.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        dish.setId(dishOptional.get().getId());
-        return new ResponseEntity<>(iDishService.editDish(dish), HttpStatus.OK);
+        if (bindingResult.hasErrors()) {
+            return new ResponseEntity<>(bindingResult.getFieldError(), HttpStatus.UPGRADE_REQUIRED);
+        }
+        dishDto.setId(dishOptional.get().getId());
+        Dish dish = new Dish();
+        BeanUtils.copyProperties(dishDto, dish);
+
+        iDishService.editDish(dish);
+        return new ResponseEntity<>( HttpStatus.OK);
     }
+
+
+    //    @PatchMapping("/{id}")
+//    public ResponseEntity<Dish> updateDish(@Valid @PathVariable int id, @RequestBody Dish dish, BindingResult bindingResult) {
+//        Optional<Dish> dishOptional = iDishService.findById(id);
+//
+//        if (!dishOptional.isPresent()) {
+//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//        }
+//
+//        DishDto dishDto= new DishDto();
+//        BeanUtils.copyProperties(dish, dishDto);
+//        dishDto.setId(dishOptional.get().getId());
+//        if (bindingResult.hasErrors()){
+//            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+//        }
+//        BeanUtils.copyProperties(dishDto, dish);
+//        iDishService.editDish(dish);
+//        return new ResponseEntity<>(dish, HttpStatus.OK);
+//    }
+
+
 
 }

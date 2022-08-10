@@ -24,8 +24,7 @@ public interface IDishRepository extends JpaRepository<Dish, Integer> {
 
     @Modifying
     @Transactional
-    @Query(value = " update dish set `name`= ?, image = ?, code = ?, email = ? , price = ?, " +
-            " dish_type_id = ?", nativeQuery = true)
-    Dish editDish(Dish dish);
+    @Query(value = " update dish set `name`= :#{#dish.name}, image = :#{#dish.image}, code = :#{#dish.code},  price = :#{#dish.price}, dish_type_id = :#{#dish.dishType.id} where id= :#{#dish.id}", nativeQuery = true)
+    void editDish(Dish dish);
 
 }
