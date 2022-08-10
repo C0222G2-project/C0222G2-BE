@@ -13,30 +13,29 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class DishRestController_getDishPage {
+public class DishRestController_getDishTypePage {
     @Autowired
     private MockMvc mockMvc;
 
     @Test
-    public void getDishPage_5() throws Exception {
+    public void getDishTypePage_5() throws Exception {
 
         this.mockMvc.perform(
-                MockMvcRequestBuilders.get("/dish/getDishPage/")
+                MockMvcRequestBuilders.get("/dishType/getDishTypePage/")
         ).andDo(print()).andExpect(status().is(204));
     }
 
     @Test
-    public void getDishPage_6() throws Exception {
+    public void getDishTypePage_6() throws Exception {
 
         this.mockMvc.perform(
-                MockMvcRequestBuilders.get("/dish/getDishPage/")
+                MockMvcRequestBuilders.get("/dishType/getDishTypePage/")
         )
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful())
                 .andExpect(jsonPath("totalPages").value(1))
                 .andExpect(jsonPath("totalElements").value(2))
-                .andExpect(jsonPath("content[0].code").value("sv01"))
-                .andExpect(jsonPath("content[0].name").value("Cà phê đen"))
-                .andExpect(jsonPath("content[0].price").value("15.0"));
+                .andExpect(jsonPath("content[0].code").value("dt01"))
+                .andExpect(jsonPath("content[0].name").value("Coffee"));
     }
 }

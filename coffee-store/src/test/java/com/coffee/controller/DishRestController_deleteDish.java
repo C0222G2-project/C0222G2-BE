@@ -17,44 +17,43 @@ public class DishRestController_deleteDish {
     private MockMvc mockMvc;
 
     @Test
-    public void deleteDish_19() throws Exception{
+    public void deleteDish_19() throws Exception {
         this.mockMvc.perform(
                 MockMvcRequestBuilders.get("/dishType/delete/")
         ).andDo(print()).andExpect(status().is4xxClientError());
     }
 
     @Test
-    public void deleteDish_20() throws Exception{
+    public void deleteDish_20() throws Exception {
         this.mockMvc.perform(
                 MockMvcRequestBuilders.get("/dishType/delete/''")
         ).andDo(print()).andExpect(status().is4xxClientError());
     }
 
     @Test
-    public void deleteDish_21() throws Exception{
+    public void deleteDish_21() throws Exception {
         this.mockMvc.perform(
                 MockMvcRequestBuilders.get("/dishType/delete/'hello'")
         ).andDo(print()).andExpect(status().is4xxClientError());
     }
 
     @Test
-    public void deleteDish_22() throws Exception{
+    public void deleteDish_22() throws Exception {
         this.mockMvc.perform(
                 MockMvcRequestBuilders.get("/dishType/delete/-1")
         ).andDo(print()).andExpect(status().is4xxClientError());
     }
 
     @Test
-    public void deleteDish_23() throws Exception{
+    public void deleteDish_23() throws Exception {
         this.mockMvc.perform(
                 MockMvcRequestBuilders.get("/dishType/delete/2")
         ).andDo(print()).andExpect(status().is4xxClientError());
     }
 
 
-
     @Test
-    public void deleteDish_24() throws Exception{
+    public void deleteDish_24() throws Exception {
         this.mockMvc.perform(
                 MockMvcRequestBuilders.get("/dishType/delete/1")
         ).andDo(print()).andExpect(status().is4xxClientError());
