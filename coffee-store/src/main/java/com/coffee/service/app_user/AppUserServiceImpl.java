@@ -10,15 +10,4 @@ import org.springframework.stereotype.Service;
 public class AppUserServiceImpl implements IAppUserService {
     @Autowired
     private IAppUserRepository iAppUserRepository;
-
-    @Override
-    public AppUserDto findById(Integer id) {
-         this.iAppUserRepository.findAppUserById(id).orElse(null);
-         return null;
-    }
-
-    @Override
-    public void update(AppUser appUser) {
-        this.iAppUserRepository.update(appUser);
-    }
 }
