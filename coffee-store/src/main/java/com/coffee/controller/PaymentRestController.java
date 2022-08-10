@@ -22,10 +22,12 @@ public class PaymentRestController {
 
     @Autowired
     private ICoffeeTableService iCoffeeTableService;
+
     /**
      * Create: HoaNN
      * Date create: 09/08/2022
      * function display list order by id coffee table
+     *
      * @param id
      */
     @GetMapping("list/{id}")
@@ -53,10 +55,19 @@ public class PaymentRestController {
         return new ResponseEntity<>(iCoffeeTableDtos, HttpStatus.OK);
     }
 
-
+    /**
+     * Create: HoaNN
+     * Date create: 09/08/2022
+     * function use calculation payment
+     *
+     * @param id
+     */
     @GetMapping("/total/{id}")
-    public ResponseEntity<ITotalPaymentDto> calculation(@PathVariable("id") Integer id){
+    public ResponseEntity<ITotalPaymentDto> calculation(@PathVariable("id") Integer id) {
         ITotalPaymentDto iTotalPaymentDto = this.iCoffeeTableService.calcultion(id);
+        if (iTotalPaymentDto == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
         return new ResponseEntity<>(iTotalPaymentDto, HttpStatus.OK);
     }
 }

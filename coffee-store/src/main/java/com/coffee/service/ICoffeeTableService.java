@@ -10,7 +10,13 @@ import java.util.List;
 
 public interface ICoffeeTableService {
 
-
+    /**
+     * Create HoaNN
+     * Date create 10/08/2022
+     *
+     * @param id pageable
+     * @return
+     */
     List<ICoffeeTableDto> findByIdTable(Integer id);
 
     Page<ICoffeeTableDto> displayCoffeeTableByPage(Pageable pageable);

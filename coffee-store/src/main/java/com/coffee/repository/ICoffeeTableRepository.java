@@ -33,6 +33,13 @@ public interface ICoffeeTableRepository extends JpaRepository<CoffeeTable, Integ
             nativeQuery = true)
     List<ICoffeeTableDto> displayTableById(@Param("idKey") Integer id);
 
+    /**
+     * Create HoaNN
+     * Date create 10/08/2022
+     *
+     * @param pageable
+     * @return
+     */
     @Query(value = "select code" +
             " from coffee_table",
             countQuery = " select count(*) from " +
@@ -40,6 +47,13 @@ public interface ICoffeeTableRepository extends JpaRepository<CoffeeTable, Integ
             nativeQuery = true)
     Page<ICoffeeTableDto> displayCoffeeTableByPage(Pageable pageable);
 
+    /**
+     * Create HoaNN
+     * Date create 10/08/2022
+     *
+     * @param id
+     * @return
+     */
     @Query(value = "select sum(ifnull((dish.price * dish_order.quantity),0)) as total " +
             " from dish_order " +
             " join dish on dish.id = dish_order.dish_id " +
