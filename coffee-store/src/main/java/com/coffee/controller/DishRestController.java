@@ -28,7 +28,8 @@ public class DishRestController {
      * function: show dish page
      *
      * @param pageable
-     * @return HTTP status  200(OK) : return Page<Dish> dishPage
+     * @return
+     * HTTP status  200(OK) : return Page<Dish> dishPage
      * HTTP status  204(NO_CONTENT): return dishPage is empty
      */
     @GetMapping("/getDishPage")
@@ -41,6 +42,19 @@ public class DishRestController {
         }
     }
 
+    /**
+     * Created by: HieuCD
+     * Date created: 09/08/2022
+     * function: search dish
+     * @param pageable
+     * @param dishName
+     * @param dishCode
+     * @param dishPrice
+     * @param dishTypeId
+     * @return
+     *      * HTTP status  200(OK) : return Page<Dish> dishPage
+     *      * HTTP status  204(NO_CONTENT): return dishPage is empty
+     */
     @GetMapping("/searchDish")
     public ResponseEntity<Page<Dish>> getAllDish(@PageableDefault(10) Pageable pageable,
                                                  Optional<String> dishName,

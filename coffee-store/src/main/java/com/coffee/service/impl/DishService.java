@@ -1,7 +1,6 @@
 package com.coffee.service.impl;
 
 import com.coffee.model.dish.Dish;
-import com.coffee.model.dish.DishType;
 import com.coffee.repository.dish.IDishRepository;
 import com.coffee.service.IDishService;
 import org.springframework.beans.factory.annotation.Autowired;
