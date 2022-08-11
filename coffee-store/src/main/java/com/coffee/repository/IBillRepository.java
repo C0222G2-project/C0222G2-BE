@@ -8,8 +8,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import java.util.List;
-
 public interface IBillRepository extends JpaRepository<Bill, Integer> {
 
 
@@ -33,9 +31,7 @@ public interface IBillRepository extends JpaRepository<Bill, Integer> {
             " join coffee_table on dish_order.coffee_table_id = coffee_table.id " +
             " join dish on dish_order.dish_id = dish.id " +
             " where bill.code like :searchCode and bill.creation_date like :searchDate and bill.is_deleted = 0 ", nativeQuery = true,
-            countQuery ="select count (bill.id as id, bill.code as billCode, bill.creation_date as creationDate, " +
-                    " bill.is_deleted as isDeleted, employee.name as employeeName, coffee_table.code as coffeeTableCode, " +
-                    " dish_order.quantity as dishOrderQuantity, dish.name as dishName, dish.price as dishPrice) " +
+            countQuery ="select count(*) " +
                     " from " +
                     " (select bill.id, bill.code as billCode, bill.creation_date as creationDate, " +
                     " bill.is_deleted as isDeleted, employee.name as employeeName, coffee_table.code as coffeeTableCode, " +
