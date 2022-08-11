@@ -1,5 +1,6 @@
 package com.coffee.model.dish;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -27,6 +28,7 @@ public class DishType {
     private Boolean isDeleted;
 
     @OneToMany(mappedBy = "dishType")
+    @JsonIgnore
     private List<Dish> dishes;
 
     @Override
