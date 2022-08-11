@@ -32,8 +32,6 @@ public class Dish {
     @Column(columnDefinition = "text")
     private String image;
 
-    @NotBlank(message = "Please input date of birth")
-    @Pattern(regexp = "\\d{4}-\\d{2}-\\d{2}", message = "Invalid format dob")
     private Date creationDate;
 
     @Column(columnDefinition = "bit(1) default 0")

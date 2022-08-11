@@ -31,7 +31,8 @@ public class DishRestController {
      */
 
     @PostMapping(value = "/create")
-    public ResponseEntity<FieldError> createDish( @RequestBody @Valid DishDto dishDto, BindingResult bindingResult) {
+    public ResponseEntity<FieldError> createDish( @RequestBody @Valid DishDto dishDto,
+                                                  BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
             return new ResponseEntity<>(bindingResult.getFieldError(), HttpStatus.UPGRADE_REQUIRED);
