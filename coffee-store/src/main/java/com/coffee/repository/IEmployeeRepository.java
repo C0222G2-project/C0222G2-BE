@@ -1,8 +1,8 @@
 package com.coffee.repository;
 
 
-import com.coffee.model.account.AppUser;
 import com.coffee.model.employee.Employee;
+import com.coffee.dto.employe.IEmployeeDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -15,44 +15,61 @@ import org.springframework.transaction.annotation.Transactional;
 public interface IEmployeeRepository extends JpaRepository<Employee, Integer> {
 
     /**
-     * @param employee
-     * @return true: employee, create employee success, status 200 / false: status 404
-     * @creator TaiLV
-     * Date 09/08/2022
+     * Create by TuyenTN
+     * Date: 16:30 pm  9-8-2022
+     * method show list and search and paging
+     *
+     * @param pageable
+     * @param searchByName
+     * @param searchByPhone
+     * @param searchByAccount
+     * @return
      */
-    @Modifying
-    @Transactional
-    @Query(value = " INSERT INTO employee (name, image, phone_number, address, email, gender, birthday, salary, position_id, `user_id`) " +
-            " VALUES (:#{#employee.name}, :#{#employee.image}, :#{#employee.phoneNumber}, " +
-            " :#{#employee.address}, :#{#employee.email}, :#{#employee.gender}, :#{#employee.birthday}, :#{#employee.salary}, " +
-            " :#{#employee.position.id} , :#{#employee.appUser.id}); ", nativeQuery = true)
-    void saveEmployee(@Param("employee") Employee employee);
+
+
+    @Query(value = " select employee.`name`,employee.phone_number as phoneNumber,position.name as position, " +
+            " app_user.user_name as appUser,employee.id,employee.birthday,employee.image,employee.address,employee.salary, " +
+            " employee.gender,employee.email from employee " +
+            " join app_user on app_user.id = employee.user_id " +
+            " join position on employee.position_id = position.id " +
+            " where employee.is_deleted =0 and employee.name like :keyZero and employee.phone_number like :keyOne " +
+            " and app_user.user_name like :keyTwo ",
+            countQuery = " select count(*) from (select employee.`name`,employee.phone_number as phoneNumber, " +
+                    " app_user.user_name as appUser,position.name as position,employee.id,employee.birthday,employee.image, " +
+                    " employee.address,employee.salary, employee.gender,employee.email from employee " +
+                    " join app_user on app_user.id = employee.user_id " +
+                    " join position on employee.position_id = position.id " +
+                    " where employee.is_deleted =0 and employee.name like :keyZero and employee.phone_number like :keyOne " +
+                    " and app_user.user_name like :keyTwo ) templol ", nativeQuery = true)
+    Page<IEmployeeDTO> getAllEmployee(Pageable pageable, @Param("keyZero") String searchByName,
+                                      @Param("keyOne") String searchByPhone,
+                                      @Param("keyTwo") String searchByAccount);
 
     /**
-     * @param employee
-     * @return true: employee ,edit employee success, status 200 / false: status 404
-     * @creator TaiLV
-     * Date 09/08/2022
+     * Create by TuyenTN
+     * Date: 16:30 pm  9-8-2022
+     *
+     * @param id
+     * @return
+     */
+    @Query(value = "select employee.`name`,employee.phone_number as phoneNumber,position.name as position, " +
+            " app_user.user_name as appUser,employee.id,employee.birthday,employee.image,employee.address,employee.salary, " +
+            " employee.gender,employee.email from employee " +
+            " join app_user on app_user.id = employee.user_id " +
+            " join position on employee.position_id = position.id " +
+            " where employee.is_deleted =0 and employee.id = :id ", nativeQuery = true)
+    IEmployeeDTO findEmployeeById(Integer id);
+
+    /**
+     * Create by TuyenTN
+     * Date: 16:30 pm  9-8-2022
+     *
+     * @param id
+     * @return
      */
     @Transactional
     @Modifying
-    @Query(value = " update employee set `name` = :#{#employee.name}, image = :#{#employee.image}," +
-            " birthday = :#{#employee.birthday}, email = :#{#employee.email} , gender = :#{#employee.gender}," +
-            " phone_number = :#{#employee.phoneNumber}, address = :#{#employee.address}, salary = :#{#employee.salary}" +
-            " where id = :#{#employee.id} ", nativeQuery = true)
-    void editEmployee(Employee employee);
-
-    /**
-     * @param id if id null : Bad request
-     * @return object Employee
-     * @creator TaiLV
-     * Date 09/08/2022
-     */
-    @Query(value = " select employee.id, employee.name, employee.image,employee.phone_number , employee.address , employee.email, employee.gender, " +
-            " employee.birthday, employee.salary, employee.position_id , employee.user_id, employee.is_deleted from employee " +
-            " where employee.id = :id and employee.is_deleted = 0", nativeQuery = true)
-    Employee findByIdEmployee(@Param("id") Integer id);
-
-
+    @Query(value = " update employee set is_deleted = 1 where id = :id ", nativeQuery = true)
+    void deleteEmployeeById(Integer id);
 
 }
