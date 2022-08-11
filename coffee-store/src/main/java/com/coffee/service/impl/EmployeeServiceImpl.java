@@ -2,6 +2,7 @@ package com.coffee.service.impl;
 
 
 
+import com.coffee.dto.employe.IEmployeeDTO;
 import com.coffee.model.account.AppRole;
 import com.coffee.model.account.AppUser;
 import com.coffee.model.account.UserRole;
@@ -13,6 +14,8 @@ import com.coffee.service.IUserRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.sql.Date;
@@ -31,9 +34,56 @@ public class EmployeeServiceImpl implements IEmployeeService {
     private IUserRoleService iUserRoleService;
 
 
+    /**
+     * Create by TuyenTN
+     * Date: 9-8-2022 16:37
+     *
+     * @param pageable
+     * @param searchByName
+     * @param searchByPhone
+     * @param searchByAccount
+     * @return
+     */
+    @Override
+    public Page<IEmployeeDTO> getAllEmployee(Pageable pageable, String searchByName, String searchByPhone, String searchByAccount) {
+        return iEmployeeRepository.getAllEmployee(pageable, "%" + searchByName + "%", "%" + searchByPhone + "%",
+                "%" + searchByAccount + "%");
+    }
+
+    /**
+     * Create by TuyenTN
+     * Date: 9-8-2022
+     * findEmployeeById(id)
+     *
+     * @param id
+     * @return
+     */
+    @Override
+    public IEmployeeDTO findEmployeeById(Integer id) {
+        return this.iEmployeeRepository.findEmployeeById(id);
+    }
+
+    /**
+     * Create by TuyenTN
+     * Date: 9-8-2022
+     * deleteEmployeeById()
+     *
+     * @param id
+     */
+    @Override
+    public void deleteEmployeeById(Integer id) {
+        this.iEmployeeRepository.deleteEmployeeById(id);
+    }
 
 
+    /**
+     * end code TuyenTN
+     */
 
+//-------------------------------------------------------------------------------------------------------------------
+    /**
+     * start code TaiLV
+     */
 
     /**
      * @creator TaiLV

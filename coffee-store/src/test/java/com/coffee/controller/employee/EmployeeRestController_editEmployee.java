@@ -1,4 +1,4 @@
-package com.coffee.controller;
+package com.coffee.controller.employee;
 
 import com.coffee.dto.employe.EmployeeDTOCreate;
 import com.coffee.model.account.AppUser;
@@ -19,7 +19,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class EmployeeRestController_saveEmployee {
+public class EmployeeRestController_editEmployee {
 
     @Autowired
     private MockMvc mockMvc;
@@ -30,11 +30,11 @@ public class EmployeeRestController_saveEmployee {
     /**
      * Create by TaiLV
      * create date:10/08/2022
-     * method : saveEmployee()
+     * method : editEmployee()
      * test userName = null
      */
     @Test
-    public void saveEmployee_userName_13() throws Exception {
+    public void editEmployee_userName_13() throws Exception {
 
         EmployeeDTOCreate employeeDTO = new EmployeeDTOCreate();
 
@@ -57,7 +57,7 @@ public class EmployeeRestController_saveEmployee {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/rest/employee/create")
+                        .patch("/rest/employee/edit")
                         .content(this.objectMapper.writeValueAsString(employeeDTO))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -67,11 +67,11 @@ public class EmployeeRestController_saveEmployee {
     /**
      * Create by TaiLV
      * create date:10/08/2022
-     * method : saveEmployee()
+     * method : editEmployee()
      * test userName = ""
      */
     @Test
-    public void saveEmployee_userName_14() throws Exception {
+    public void editEmployee_userName_14() throws Exception {
 
         EmployeeDTOCreate employeeDTO = new EmployeeDTOCreate();
 
@@ -94,7 +94,7 @@ public class EmployeeRestController_saveEmployee {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/rest/employee/create")
+                        .patch("/rest/employee/edit")
                         .content(this.objectMapper.writeValueAsString(employeeDTO))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -108,7 +108,7 @@ public class EmployeeRestController_saveEmployee {
      * test userName: first input = number
      */
     @Test
-    public void saveEmployee_userName_15() throws Exception {
+    public void editEmployee_userName_15() throws Exception {
 
         EmployeeDTOCreate employeeDTO = new EmployeeDTOCreate();
 
@@ -131,7 +131,7 @@ public class EmployeeRestController_saveEmployee {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/rest/employee/create")
+                        .patch("/rest/employee/edit")
                         .content(this.objectMapper.writeValueAsString(employeeDTO))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -141,11 +141,11 @@ public class EmployeeRestController_saveEmployee {
     /**
      * Create by TaiLV
      * create date:10/08/2022
-     * method : saveEmployee()
+     * method : editEmployee()
      * test userName < 6 char
      */
     @Test
-    public void saveEmployee_userName_16() throws Exception {
+    public void editEmployee_userName_16() throws Exception {
 
         EmployeeDTOCreate employeeDTO = new EmployeeDTOCreate();
 
@@ -168,7 +168,7 @@ public class EmployeeRestController_saveEmployee {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/rest/employee/create")
+                        .patch("/rest/employee/edit")
                         .content(this.objectMapper.writeValueAsString(employeeDTO))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -178,11 +178,11 @@ public class EmployeeRestController_saveEmployee {
     /**
      * Create by TaiLV
      * create date:10/08/2022
-     * method : saveEmployee()
+     * method : editEmployee()
      * test userName >20 char
      */
     @Test
-    public void saveEmployee_userName_16_1() throws Exception {
+    public void editEmployee_userName_16_1() throws Exception {
 
         EmployeeDTOCreate employeeDTO = new EmployeeDTOCreate();
 
@@ -207,7 +207,7 @@ public class EmployeeRestController_saveEmployee {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/rest/employee/create")
+                        .patch("/rest/employee/edit")
                         .content(this.objectMapper.writeValueAsString(employeeDTO))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -217,11 +217,11 @@ public class EmployeeRestController_saveEmployee {
     /**
      * Create by TaiLV
      * create date:10/08/2022
-     * method : saveEmployee()
+     * method : editEmployee()
      * test name = null
      */
     @Test
-    public void saveEmployee_name_13() throws Exception {
+    public void editEmployee_name_13() throws Exception {
 
         EmployeeDTOCreate employeeDTO = new EmployeeDTOCreate();
 
@@ -244,7 +244,7 @@ public class EmployeeRestController_saveEmployee {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/rest/employee/create")
+                        .patch("/rest/employee/edit")
                         .content(this.objectMapper.writeValueAsString(employeeDTO))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -254,11 +254,11 @@ public class EmployeeRestController_saveEmployee {
     /**
      * Create by TaiLV
      * create date:10/08/2022
-     * method : saveEmployee()
+     * method : editEmployee()
      * test name = ""
      */
     @Test
-    public void saveEmployee_name_14() throws Exception {
+    public void editEmployee_name_14() throws Exception {
 
         EmployeeDTOCreate employeeDTO = new EmployeeDTOCreate();
         AppUser appUser = new AppUser();
@@ -279,7 +279,7 @@ public class EmployeeRestController_saveEmployee {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/rest/employee/create")
+                        .patch("/rest/employee/edit")
                         .content(this.objectMapper.writeValueAsString(employeeDTO))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -289,11 +289,11 @@ public class EmployeeRestController_saveEmployee {
     /**
      * Create by TaiLV
      * create date:10/08/2022
-     * method : saveEmployee()
+     * method : editEmployee()
      * test format birthday
      */
     @Test
-    public void saveEmployee_birthday_15() throws Exception {
+    public void editEmployee_birthday_15() throws Exception {
 
         EmployeeDTOCreate employeeDTO = new EmployeeDTOCreate();
 
@@ -316,7 +316,7 @@ public class EmployeeRestController_saveEmployee {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/rest/employee/create")
+                        .patch("/rest/employee/edit")
                         .content(this.objectMapper.writeValueAsString(employeeDTO))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -326,11 +326,11 @@ public class EmployeeRestController_saveEmployee {
     /**
      * Create by TaiLV
      * create date:10/08/2022
-     * method : saveEmployee()
+     * method : editEmployee()
      * test birthday = null
      */
     @Test
-    public void saveEmployee_birthday_13() throws Exception {
+    public void editEmployee_birthday_13() throws Exception {
 
         EmployeeDTOCreate employeeDTO = new EmployeeDTOCreate();
 
@@ -353,7 +353,7 @@ public class EmployeeRestController_saveEmployee {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/rest/employee/create")
+                        .patch("/rest/employee/edit")
                         .content(this.objectMapper.writeValueAsString(employeeDTO))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -363,11 +363,11 @@ public class EmployeeRestController_saveEmployee {
     /**
      * Create by TaiLV
      * create date:10/08/2022
-     * method : saveEmployee()
+     * method : editEmployee()
      * test birthday = ""
      */
     @Test
-    public void saveEmployee_birthday_14() throws Exception {
+    public void editEmployee_birthday_14() throws Exception {
 
         EmployeeDTOCreate employeeDTO = new EmployeeDTOCreate();
         AppUser appUser = new AppUser();
@@ -388,7 +388,7 @@ public class EmployeeRestController_saveEmployee {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/rest/employee/create")
+                        .patch("/rest/employee/edit")
                         .content(this.objectMapper.writeValueAsString(employeeDTO))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -399,11 +399,11 @@ public class EmployeeRestController_saveEmployee {
     /**
      * Create by TaiLV
      * create date:10/08/2022
-     * method : saveEmployee()
+     * method : editEmployee()
      * test phoneNumber = null
      */
     @Test
-    public void saveEmployee_phoneNumber_13() throws Exception {
+    public void editEmployee_phoneNumber_13() throws Exception {
 
         EmployeeDTOCreate employeeDTO = new EmployeeDTOCreate();
 
@@ -426,7 +426,7 @@ public class EmployeeRestController_saveEmployee {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/rest/employee/create")
+                        .patch("/rest/employee/edit")
                         .content(this.objectMapper.writeValueAsString(employeeDTO))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -436,11 +436,11 @@ public class EmployeeRestController_saveEmployee {
     /**
      * Create by TaiLV
      * create date:10/08/2022
-     * method : saveEmployee()
+     * method : editEmployee()
      * test phoneNumber = ""
      */
     @Test
-    public void saveEmployee_phoneNumber_14() throws Exception {
+    public void editEmployee_phoneNumber_14() throws Exception {
 
         EmployeeDTOCreate employeeDTO = new EmployeeDTOCreate();
 
@@ -463,7 +463,7 @@ public class EmployeeRestController_saveEmployee {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/rest/employee/create")
+                        .patch("/rest/employee/edit")
                         .content(this.objectMapper.writeValueAsString(employeeDTO))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -474,11 +474,11 @@ public class EmployeeRestController_saveEmployee {
     /**
      * Create by TaiLV
      * create date:10/08/2022
-     * method : saveEmployee()
+     * method : editEmployee()
      * test format phoneNumber
      */
     @Test
-    public void saveEmployee_phoneNumber_15() throws Exception {
+    public void editEmployee_phoneNumber_15() throws Exception {
 
         EmployeeDTOCreate employeeDTO = new EmployeeDTOCreate();
 
@@ -501,7 +501,7 @@ public class EmployeeRestController_saveEmployee {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/rest/employee/create")
+                        .patch("/rest/employee/edit")
                         .content(this.objectMapper.writeValueAsString(employeeDTO))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -510,11 +510,11 @@ public class EmployeeRestController_saveEmployee {
     /**
      * Create by TaiLV
      * create date:10/08/2022
-     * method : saveEmployee()
+     * method : editEmployee()
      * test address = null
      */
     @Test
-    public void saveEmployee_address_13() throws Exception {
+    public void editEmployee_address_13() throws Exception {
 
         EmployeeDTOCreate employeeDTO = new EmployeeDTOCreate();
 
@@ -536,7 +536,7 @@ public class EmployeeRestController_saveEmployee {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/rest/employee/create")
+                        .patch("/rest/employee/edit")
                         .content(this.objectMapper.writeValueAsString(employeeDTO))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -546,11 +546,11 @@ public class EmployeeRestController_saveEmployee {
     /**
      * Create by TaiLV
      * create date:10/08/2022
-     * method : saveEmployee()
+     * method : editEmployee()
      * test address = ""
      */
     @Test
-    public void saveEmployee_address_14() throws Exception {
+    public void editEmployee_address_14() throws Exception {
 
         EmployeeDTOCreate employeeDTO = new EmployeeDTOCreate();
 
@@ -572,7 +572,7 @@ public class EmployeeRestController_saveEmployee {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/rest/employee/create")
+                        .patch("/rest/employee/edit")
                         .content(this.objectMapper.writeValueAsString(employeeDTO))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -582,11 +582,11 @@ public class EmployeeRestController_saveEmployee {
     /**
      * Create by TaiLV
      * create date:10/08/2022
-     * method : saveEmployee()
+     * method : editEmployee()
      * test address = !@$#%^&*()
      */
     @Test
-    public void saveEmployee_address_15() throws Exception {
+    public void editEmployee_address_15() throws Exception {
 
         EmployeeDTOCreate employeeDTO = new EmployeeDTOCreate();
 
@@ -608,7 +608,7 @@ public class EmployeeRestController_saveEmployee {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/rest/employee/create")
+                        .patch("/rest/employee/edit")
                         .content(this.objectMapper.writeValueAsString(employeeDTO))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -617,11 +617,11 @@ public class EmployeeRestController_saveEmployee {
     /**
      * Create by TaiLV
      * create date:10/08/2022
-     * method : saveEmployee()
+     * method : editEmployee()
      * test email = null
      */
     @Test
-    public void saveEmployee_email_13() throws Exception {
+    public void editEmployee_email_13() throws Exception {
 
         EmployeeDTOCreate employeeDTO = new EmployeeDTOCreate();
 
@@ -643,7 +643,7 @@ public class EmployeeRestController_saveEmployee {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/rest/employee/create")
+                        .patch("/rest/employee/edit")
                         .content(this.objectMapper.writeValueAsString(employeeDTO))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -657,7 +657,7 @@ public class EmployeeRestController_saveEmployee {
      * test email = ""
      */
     @Test
-    public void saveEmployee_email_14() throws Exception {
+    public void editEmployee_email_14() throws Exception {
 
         EmployeeDTOCreate employeeDTO = new EmployeeDTOCreate();
 
@@ -680,7 +680,7 @@ public class EmployeeRestController_saveEmployee {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/rest/employee/create")
+                        .patch("/rest/employee/edit")
                         .content(this.objectMapper.writeValueAsString(employeeDTO))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -694,7 +694,7 @@ public class EmployeeRestController_saveEmployee {
      * test format email
      */
     @Test
-    public void saveEmployee_email_15() throws Exception {
+    public void editEmployee_email_15() throws Exception {
 
         EmployeeDTOCreate employeeDTO = new EmployeeDTOCreate();
 
@@ -717,7 +717,7 @@ public class EmployeeRestController_saveEmployee {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/rest/employee/create")
+                        .patch("/rest/employee/edit")
                         .content(this.objectMapper.writeValueAsString(employeeDTO))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -727,11 +727,11 @@ public class EmployeeRestController_saveEmployee {
     /**
      * Create by TaiLV
      * create date:10/08/2022
-     * method : saveEmployee()
+     * method : editEmployee()
      * test salary = null
      */
     @Test
-    public void saveEmployee_salary_13() throws Exception {
+    public void editEmployee_salary_13() throws Exception {
 
         EmployeeDTOCreate employeeDTO = new EmployeeDTOCreate();
 
@@ -754,7 +754,7 @@ public class EmployeeRestController_saveEmployee {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/rest/employee/create")
+                        .patch("/rest/employee/edit")
                         .content(this.objectMapper.writeValueAsString(employeeDTO))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -764,11 +764,11 @@ public class EmployeeRestController_saveEmployee {
     /**
      * Create by TaiLV
      * create date:10/08/2022
-     * method : saveEmployee()
+     * method : editEmployee()
      * test salary < 0
      */
     @Test
-    public void saveEmployee_salary_15() throws Exception {
+    public void editEmployee_salary_15() throws Exception {
 
         EmployeeDTOCreate employeeDTO = new EmployeeDTOCreate();
 
@@ -791,7 +791,7 @@ public class EmployeeRestController_saveEmployee {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/rest/employee/create")
+                        .patch("/rest/employee/edit")
                         .content(this.objectMapper.writeValueAsString(employeeDTO))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -801,11 +801,11 @@ public class EmployeeRestController_saveEmployee {
     /**
      * Create by TaiLV
      * create date:10/08/2022
-     * method : saveEmployee()
+     * method : editEmployee()
      * test employee create success
      */
     @Test
-    public void saveEmployee_18() throws Exception {
+    public void editEmployee_18() throws Exception {
 
         EmployeeDTOCreate employeeDTO = new EmployeeDTOCreate();
 
@@ -828,7 +828,7 @@ public class EmployeeRestController_saveEmployee {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/rest/employee/create")
+                        .patch("/rest/employee/edit")
                         .content(this.objectMapper.writeValueAsString(employeeDTO))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
