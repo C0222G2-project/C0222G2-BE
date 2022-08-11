@@ -206,7 +206,7 @@ public class DishOrderRestController_createOrder {
      * @throws Exception
      */
     @Test
-    public void createOrder_quantity_17() throws Exception {
+    public void createOrder_quantity_16() throws Exception {
         DishOrderDto dishOrderDto = new DishOrderDto();
         DishDto dishDto = new DishDto();
         dishDto.setId(1);
@@ -221,6 +221,37 @@ public class DishOrderRestController_createOrder {
         coffeTableDto.setId(1);
         dishOrderDto.setCoffeeTable(coffeTableDto);
         dishOrderDto.setQuantity(0);
+
+        this.mockMvc.perform(MockMvcRequestBuilders
+                        .post("/dish-order/create-dishOrder")
+                        .content(this.objectMapper.writeValueAsString(dishOrderDto))
+                        .contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+
+    /**
+     *  Author: BinhPX
+     *  Date: 10/08/2022
+     *  This function run check quantity is greater than max length then false create
+     * @throws Exception
+     */
+    @Test
+    public void createOrder_quantity_17() throws Exception {
+        DishOrderDto dishOrderDto = new DishOrderDto();
+        DishDto dishDto = new DishDto();
+        dishDto.setId(1);
+        dishOrderDto.setDish(dishDto);
+        BillDto billDto = new BillDto();
+        billDto.setId(1);
+        dishOrderDto.setBill(billDto);
+        EmployeeDto employeeDto = new EmployeeDto();
+        employeeDto.setId(1);
+        dishOrderDto.setEmployee(employeeDto);
+        CoffeTableDto coffeTableDto = new CoffeTableDto();
+        coffeTableDto.setId(1);
+        dishOrderDto.setCoffeeTable(coffeTableDto);
+        dishOrderDto.setQuantity(6);
 
         this.mockMvc.perform(MockMvcRequestBuilders
                         .post("/dish-order/create-dishOrder")

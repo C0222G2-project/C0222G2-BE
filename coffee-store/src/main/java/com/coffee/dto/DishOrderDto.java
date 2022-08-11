@@ -18,6 +18,7 @@ public class DishOrderDto {
 
     @NotNull
     @Min(value = 0, message = "Must greater than 1")
+    @Max(value = 5, message = "Must less than 5")
     private Integer quantity;
 
     @NotNull

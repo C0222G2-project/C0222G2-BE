@@ -11,8 +11,6 @@ import com.coffee.model.dish.DishType;
 import com.coffee.model.dish_order.DishOrder;
 import com.coffee.model.employee.Employee;
 import com.coffee.service.IDishOrderService;
-import com.coffee.service.IDishService;
-import com.coffee.service.IDishTypeService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -36,41 +34,6 @@ public class DishOrderRestController {
     @Autowired
     private IDishOrderService iDishOrderService;
 
-    @Autowired
-    private IDishService iDishService;
-
-    @Autowired
-    private IDishTypeService iDishTypeService;
-
-    /**
-     * Author: BinhPX
-     * Date created: 09/08/2022
-     * This function will return data can get, @param pageable, @return
-     **/
-    @GetMapping("/dish")
-    public ResponseEntity<Page<Dish>> getAllDish(@PageableDefault(4) Pageable pageable,
-                                                 @RequestParam("page") Optional<Integer> page,
-                                                 @RequestParam("size") Optional<Integer> size) {
-        Page<Dish> dishes = iDishService.findAll(pageable);
-        if (dishes.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.BAD_GATEWAY);
-        }
-        return new ResponseEntity<>(dishes, HttpStatus.OK);
-    }
-
-    /**
-     * Author: BinhPX
-     * Date created: 09/08/2022
-     * This function will return all data can get, @return
-     **/
-    @GetMapping("/dish-type")
-    public ResponseEntity<List<DishType>> getAllDishType() {
-        List<DishType> dishesType = iDishTypeService.findAll();
-        if (dishesType.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
-        return new ResponseEntity<>(dishesType, HttpStatus.OK);
-    }
 
     /**
      * Created by: BaoTQ
@@ -101,18 +64,6 @@ public class DishOrderRestController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         BeanUtils.copyProperties(dishOrderDto, dishOrder);
-        Bill bill = new Bill();
-        bill.setId(dishOrderDto.getBill().getId());
-        dishOrder.setBill(bill);
-        Employee employee = new Employee();
-        employee.setId(dishOrderDto.getEmployee().getId());
-        dishOrder.setEmployee(employee);
-        Dish dish = new Dish();
-        dish.setId(dishOrderDto.getDish().getId());
-        dishOrder.setDish(dish);
-        CoffeeTable coffeeTable = new CoffeeTable();
-        coffeeTable.setId(dishOrderDto.getCoffeeTable().getId());
-        dishOrder.setCoffeeTable(coffeeTable);
         iDishOrderService.createOrder(dishOrder);
         return new ResponseEntity<>(HttpStatus.OK);
     }
@@ -131,5 +82,40 @@ public class DishOrderRestController {
         return new ResponseEntity<>(newestList, HttpStatus.OK);
     }
 
+    /**
+     *   Author: BinhPX
+     *   Date created: 10/08/2022
+     *   This function get list, @param is pageable and page, size, @return status ok if size greater than 0
+     *   and return status bad gateway if size equal 0
+     **/
+    @GetMapping("/get-dish-list")
+    public ResponseEntity<Page<DishOrder>> getAllOrder(@PageableDefault(4)Pageable pageable,
+                                                        @RequestParam("page") Optional<Integer> page,
+                                                        @RequestParam("size") Optional<Integer> size){
+        Page<DishOrder> dishOrders = iDishOrderService.getAllOrder(pageable);
+        if(dishOrders.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(dishOrders, HttpStatus.OK);
+    }
 
+    /**
+     *   Author: BinhPX
+     *   Date created: 10/08/2022
+     *   This function get order have code is, @param is a code, @return status ok if size greater than 0
+     *   and return status bad gateway if size equal 0
+     **/
+    @GetMapping("/get-order-have-code/{code}")
+    public ResponseEntity<List<DishOrder>> getOrderHaveCode(@PathVariable Optional<Integer> code){
+        if(code.isPresent()){
+            List<DishOrder> dishOrders = iDishOrderService.getOrderHaveCode(String.valueOf(code.get()));
+            if(dishOrders.isEmpty()){
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+            else{
+                return new ResponseEntity<>(dishOrders, HttpStatus.OK);
+            }
+        }
+        return new ResponseEntity<>(HttpStatus.BAD_GATEWAY);
+    }
 }

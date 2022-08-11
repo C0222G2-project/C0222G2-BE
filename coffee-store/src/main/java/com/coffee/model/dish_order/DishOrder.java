@@ -1,9 +1,9 @@
 package com.coffee.model.dish_order;
 
 import com.coffee.model.bill.Bill;
-import com.coffee.model.coffee_table.CoffeeTable;
 import com.coffee.model.dish.Dish;
 import com.coffee.model.employee.Employee;
+import com.coffee.model.coffee_table.CoffeeTable;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -11,7 +11,6 @@ import lombok.Setter;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
-import java.util.Objects;
 
 @Entity
 @Getter
