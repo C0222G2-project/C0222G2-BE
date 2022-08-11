@@ -14,4 +14,8 @@ public interface IAppUserService {
      * @return  AppUser list
      */
     List<AppUser> getAllUser();
+
+    AppUser findAppUserByUserName(String userName);
+
+    void saveAppUser(AppUser appUser);
 }

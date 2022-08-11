@@ -1,8 +1,6 @@
 package com.coffee.controller;
 
-import com.coffee.dto.EmployeeDTO;
-import com.coffee.dto.EmployeeDTOEdit;
-import com.coffee.model.account.AppUser;
+import com.coffee.dto.employe.EmployeeDTOEdit;
 import com.coffee.model.employee.Position;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
@@ -12,6 +10,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+
+import java.sql.Date;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -35,12 +35,12 @@ public class EmployeeRestController_editEmployee {
      * test name = null
      */
     @Test
-    public void saveEmployee_name_13() throws Exception {
+    public void editEmployee_name_13() throws Exception {
 
         EmployeeDTOEdit employeeDTO = new EmployeeDTOEdit();
 
         employeeDTO.setName(null);
-        employeeDTO.setBirthday("2000-01-01");
+        employeeDTO.setBirthday(Date.valueOf("2000-01-01"));
         employeeDTO.setPhoneNumber("0936369999");
         employeeDTO.setAddress("Tp.Đà NẴNG");
         employeeDTO.setGender(0);
@@ -70,12 +70,12 @@ public class EmployeeRestController_editEmployee {
      * test name = ""
      */
     @Test
-    public void saveEmployee_name_14() throws Exception {
+    public void editEmployee_name_14() throws Exception {
 
         EmployeeDTOEdit employeeDTO = new EmployeeDTOEdit();
 
         employeeDTO.setName("");
-        employeeDTO.setBirthday("2000-01-01");
+        employeeDTO.setBirthday(Date.valueOf("2000-01-01"));
         employeeDTO.setPhoneNumber("0936369999");
         employeeDTO.setAddress("Tp.Đà NẴNG");
         employeeDTO.setGender(0);
@@ -105,12 +105,12 @@ public class EmployeeRestController_editEmployee {
      * test format birthday
      */
     @Test
-    public void saveEmployee_birthday_15() throws Exception {
+    public void editEmployee_birthday_15() throws Exception {
 
         EmployeeDTOEdit employeeDTO = new EmployeeDTOEdit();
 
         employeeDTO.setName("Lê Văn A");
-        employeeDTO.setBirthday("20000101");
+        employeeDTO.setBirthday(Date.valueOf("2000-01-01"));
         employeeDTO.setPhoneNumber("0936369999");
         employeeDTO.setAddress("Tp.Đà NẴNG");
         employeeDTO.setGender(0);
@@ -140,12 +140,12 @@ public class EmployeeRestController_editEmployee {
      * test phoneNumber = null
      */
     @Test
-    public void saveEmployee_phoneNumber_13() throws Exception {
+    public void editEmployee_phoneNumber_13() throws Exception {
 
         EmployeeDTOEdit employeeDTO = new EmployeeDTOEdit();
 
         employeeDTO.setName("Lê Văn A");
-        employeeDTO.setBirthday("2000-01-01");
+        employeeDTO.setBirthday(Date.valueOf("2000-01-01"));
         employeeDTO.setPhoneNumber(null);
         employeeDTO.setAddress("Tp.Đà NẴNG");
         employeeDTO.setGender(0);
@@ -175,13 +175,13 @@ public class EmployeeRestController_editEmployee {
      * test phoneNumber = ""
      */
     @Test
-    public void saveEmployee_phoneNumber_14() throws Exception {
+    public void editEmployee_phoneNumber_14() throws Exception {
 
         EmployeeDTOEdit employeeDTO = new EmployeeDTOEdit();
 
 
         employeeDTO.setName("Lê Văn A");
-        employeeDTO.setBirthday("2000-01-01");
+        employeeDTO.setBirthday(Date.valueOf("2000-01-01"));
         employeeDTO.setPhoneNumber("");
         employeeDTO.setAddress("Tp.Đà NẴNG");
         employeeDTO.setGender(0);
@@ -211,12 +211,12 @@ public class EmployeeRestController_editEmployee {
      * test address = null
      */
     @Test
-    public void saveEmployee_address_13() throws Exception {
+    public void editEmployee_address_13() throws Exception {
 
         EmployeeDTOEdit employeeDTO = new EmployeeDTOEdit();
 
         employeeDTO.setName("Lê Văn A");
-        employeeDTO.setBirthday("2000-01-01");
+        employeeDTO.setBirthday(Date.valueOf("2000-01-01"));
         employeeDTO.setPhoneNumber("0936369999");
         employeeDTO.setAddress(null);
         employeeDTO.setGender(0);
@@ -246,12 +246,12 @@ public class EmployeeRestController_editEmployee {
      * test address = ""
      */
     @Test
-    public void saveEmployee_address_14() throws Exception {
+    public void editEmployee_address_14() throws Exception {
 
         EmployeeDTOEdit employeeDTO = new EmployeeDTOEdit();
 
         employeeDTO.setName("Lê Văn A");
-        employeeDTO.setBirthday("2000-01-01");
+        employeeDTO.setBirthday(Date.valueOf("2000-01-01"));
         employeeDTO.setPhoneNumber("0936369999");
         employeeDTO.setAddress("");
         employeeDTO.setGender(0);
@@ -281,12 +281,12 @@ public class EmployeeRestController_editEmployee {
      * test email = null
      */
     @Test
-    public void saveEmployee_email_13() throws Exception {
+    public void editEmployee_email_13() throws Exception {
 
         EmployeeDTOEdit employeeDTO = new EmployeeDTOEdit();
 
         employeeDTO.setName("Lê Văn A");
-        employeeDTO.setBirthday("2000-01-01");
+        employeeDTO.setBirthday(Date.valueOf("2000-01-01"));
         employeeDTO.setPhoneNumber("0936369999");
         employeeDTO.setAddress("Tp.Đà Nẵng");
         employeeDTO.setGender(0);
@@ -316,12 +316,12 @@ public class EmployeeRestController_editEmployee {
      * test name = ""
      */
     @Test
-    public void saveEmployee_email_14() throws Exception {
+    public void editEmployee_email_14() throws Exception {
 
         EmployeeDTOEdit employeeDTO = new EmployeeDTOEdit();
 
         employeeDTO.setName("Lê Văn A");
-        employeeDTO.setBirthday("2000-01-01");
+        employeeDTO.setBirthday(Date.valueOf("2000-01-01"));
         employeeDTO.setPhoneNumber("0936369999");
         employeeDTO.setAddress("Tp.Đà Nẵng");
         employeeDTO.setGender(0);
@@ -351,12 +351,12 @@ public class EmployeeRestController_editEmployee {
      * test format email
      */
     @Test
-    public void saveEmployee_email_15() throws Exception {
+    public void editEmployee_email_15() throws Exception {
 
         EmployeeDTOEdit employeeDTO = new EmployeeDTOEdit();
 
         employeeDTO.setName("Lê Văn A");
-        employeeDTO.setBirthday("2000-01-01");
+        employeeDTO.setBirthday(Date.valueOf("2000-01-01"));
         employeeDTO.setPhoneNumber("0936369999");
         employeeDTO.setAddress("Tp.Đà Nẵng");
         employeeDTO.setGender(0);
@@ -386,12 +386,12 @@ public class EmployeeRestController_editEmployee {
      * test salary = null
      */
     @Test
-    public void saveEmployee_salary_13() throws Exception {
+    public void editEmployee_salary_13() throws Exception {
 
         EmployeeDTOEdit employeeDTO = new EmployeeDTOEdit();
 
         employeeDTO.setName("Lê Văn A");
-        employeeDTO.setBirthday("2000-01-01");
+        employeeDTO.setBirthday(Date.valueOf("2000-01-01"));
         employeeDTO.setPhoneNumber("0936369999");
         employeeDTO.setAddress("Tp.Đà Nẵng");
         employeeDTO.setGender(0);
@@ -421,12 +421,12 @@ public class EmployeeRestController_editEmployee {
      * test salary < 0
      */
     @Test
-    public void saveEmployee_salary_15() throws Exception {
+    public void editEmployee_salary_15() throws Exception {
 
         EmployeeDTOEdit employeeDTO = new EmployeeDTOEdit();
 
         employeeDTO.setName("Lê Văn A");
-        employeeDTO.setBirthday("2000-01-01");
+        employeeDTO.setBirthday(Date.valueOf("2000-01-01"));
         employeeDTO.setPhoneNumber("0936369999");
         employeeDTO.setAddress("Tp.Đà Nẵng");
         employeeDTO.setGender(0);
@@ -456,12 +456,12 @@ public class EmployeeRestController_editEmployee {
      * test employee edit success
      */
     @Test
-    public void saveEmployee_18() throws Exception {
+    public void editEmployee_18() throws Exception {
 
         EmployeeDTOEdit employeeDTO = new EmployeeDTOEdit();
 
         employeeDTO.setName("Lê Văn A");
-        employeeDTO.setBirthday("2000-01-01");
+        employeeDTO.setBirthday(Date.valueOf("2000-01-01"));
         employeeDTO.setPhoneNumber("0936369999");
         employeeDTO.setAddress("Tp.Đà NẴNG");
         employeeDTO.setGender(0);

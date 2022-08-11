@@ -33,10 +33,9 @@ public class AppUser {
     @Column(columnDefinition = "bit(1) default 0")
     private Boolean isDeleted;
 
-    @JsonBackReference
     @OneToMany(mappedBy = "appUser")
     private List<UserRole> userRoles;
-    @JsonBackReference
+
     @OneToOne(mappedBy = "appUser")
     private Employee employee;
 

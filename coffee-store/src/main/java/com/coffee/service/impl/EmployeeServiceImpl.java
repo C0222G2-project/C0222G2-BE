@@ -2,14 +2,14 @@ package com.coffee.service.impl;
 
 
 
-import com.coffee.dto.employe.IEmployeeDTO;
-
 import com.coffee.model.account.AppRole;
 import com.coffee.model.account.AppUser;
 import com.coffee.model.account.UserRole;
 import com.coffee.model.employee.Employee;
 import com.coffee.repository.IEmployeeRepository;
+import com.coffee.service.IAppUserService;
 import com.coffee.service.IEmployeeService;
+import com.coffee.service.IUserRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.data.domain.Page;
@@ -26,43 +26,13 @@ public class EmployeeServiceImpl implements IEmployeeService {
     @Autowired
     private IEmployeeRepository iEmployeeRepository;
 
-    /**
-     * Create by TuyenTN
-     * Date: 9-8-2022 16:37
-     * @param pageable
-     * @param searchByName
-     * @param searchByPhone
-     * @param searchByAccount
-     * @return
-     */
-    @Override
-    public Page<IEmployeeDTO> getAllEmployee(Pageable pageable, String searchByName, String searchByPhone, String searchByAccount) {
-        return iEmployeeRepository.getAllEmployee(pageable,"%"+searchByName+"%","%"+searchByPhone+"%",
-                "%"+searchByAccount+"%");
-    }
+    @Autowired
+    private IAppUserService iAppUserService;
 
-    /**
-     * Create by TuyenTN
-     * Date: 9-8-2022
-     * findEmployeeById(id)
-     * @param id
-     * @return
-     */
-    @Override
-    public IEmployeeDTO findEmployeeById(Integer id) {
-        return this.iEmployeeRepository.findEmployeeById(id);
-    }
+    @Autowired
+    private IUserRoleService iUserRoleService;
 
-    /**
-     * Create by TuyenTN
-     * Date: 9-8-2022
-     * deleteEmployeeById()
-     * @param id
-     */
-    @Override
-    public void deleteEmployeeById(Integer id) {
-        this.iEmployeeRepository.deleteEmployeeById(id);
-    }
+
 
     /**
      * @creator TaiLV
@@ -73,23 +43,25 @@ public class EmployeeServiceImpl implements IEmployeeService {
      * @return  create Employee success
      */
     @Override
-    public Employee saveEmployee(Employee employee) {
+    public void saveEmployee(Employee employee) {
+        AppRole appRole = new AppRole();
+        UserRole userRole = new UserRole();
 
-        AppUser appUser = new AppUser();
+        AppUser appUser = employee.getAppUser();
         appUser.setCreationDate(Date.valueOf(LocalDate.now()));
         appUser.setPassword("123456");
-//        appUser.setUserName(employee.getAppUser().getUserName());
+        this.iAppUserService.saveAppUser(appUser);
 
-//        AppUser appUser1 = this.findAppUserByUserName(appUser.getUserName());
-        AppRole appRole = new AppRole();
         appRole.setId(2);
-//
-        UserRole userRole = new UserRole();
-        userRole.setAppUser(appUser);
         userRole.setAppRole(appRole);
+        AppUser au = this.iAppUserService.findAppUserByUserName(appUser.getUserName());
+        userRole.setAppUser(au);
+        userRole.setIsDeleted(false);
+        this.iUserRoleService.save(userRole);
+        employee.setAppUser(au);
 
+        iEmployeeRepository.saveEmployee(employee);
 
-        return iEmployeeRepository.saveEmployee(employee);
     }
 
     /**
@@ -113,14 +85,10 @@ public class EmployeeServiceImpl implements IEmployeeService {
      */
 
     @Override
-    public Employee editEmployee(Employee employee) {
-        return iEmployeeRepository.editEmployee(employee);
+    public void editEmployee(Employee employee) {
+         iEmployeeRepository.editEmployee(employee);
     }
 
-    @Override
-    public AppUser findAppUserByUserName(String username) {
-        return this.iEmployeeRepository.getAppUserByUsername(username);
-    }
 
 
 }

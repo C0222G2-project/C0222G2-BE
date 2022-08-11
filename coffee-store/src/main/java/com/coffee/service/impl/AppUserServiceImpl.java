@@ -24,4 +24,14 @@ public class AppUserServiceImpl implements IAppUserService {
     public List<AppUser> getAllUser() {
         return iUserRepository.findAllUser();
     }
+
+    @Override
+    public AppUser findAppUserByUserName(String userName) {
+        return iUserRepository.findAppUserByUserName(userName);
+    }
+
+    @Override
+    public void saveAppUser(AppUser appUser) {
+        iUserRepository.saveAppUser(appUser);
+    }
 }
