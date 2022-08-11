@@ -1,7 +1,6 @@
 package com.coffee.service;
 
 import com.coffee.dto.IBillDto;
-import com.coffee.model.bill.Bill;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

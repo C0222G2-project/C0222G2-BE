@@ -1,7 +1,6 @@
 package com.coffee.service.impl;
 
 import com.coffee.dto.IBillDto;
-import com.coffee.model.bill.Bill;
 import com.coffee.repository.IBillRepository;
 import com.coffee.service.IBillService;
 import org.springframework.beans.factory.annotation.Autowired;
