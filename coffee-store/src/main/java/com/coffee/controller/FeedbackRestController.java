@@ -79,7 +79,7 @@ public class FeedbackRestController {
             @RequestParam(name = "sort", required = false, defaultValue = "ASC") String sort,
             @RequestParam Optional<String> searchCreator,
             @RequestParam Optional<String> searchStartDate,
-            @RequestParam Optional<String> searchEndDate){
+            @RequestParam Optional<String> searchEndDate) {
 
         Sort sortable = Sort.by(sort);
         if (sort.equals("ASC")) {
@@ -89,7 +89,7 @@ public class FeedbackRestController {
         String creator = searchCreator.orElse("");
         String startDate = searchStartDate.orElse("1000-01-01");
         String endDate = searchEndDate.orElse("8000-01-01");
-        Page<Feedback> feedbackPage = feedbackService.findAllFeedback(pageable,creator,startDate,endDate);
+        Page<Feedback> feedbackPage = feedbackService.findAllFeedback(pageable, creator, startDate, endDate);
         if (feedbackPage.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 
@@ -105,13 +105,13 @@ public class FeedbackRestController {
      * if id feedback null : NO_CONTENT
      *
      * @param id
-     * @return  Feedback
+     * @return Feedback
      */
 
     @GetMapping("/{id}")
     public ResponseEntity<Feedback> getFeedbackById(@PathVariable int id) {
         Optional<Feedback> feedback = feedbackService.findFeedbackById(id);
-        if(!feedback.isPresent()){
+        if (!feedback.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(feedback.get(), HttpStatus.OK);
