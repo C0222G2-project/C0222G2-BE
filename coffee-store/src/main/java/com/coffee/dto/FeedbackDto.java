@@ -1,5 +1,8 @@
 package com.coffee.dto;
 
+import org.hibernate.validator.constraints.Range;
+import org.springframework.format.annotation.NumberFormat;
+
 import javax.validation.constraints.*;
 
 /**
@@ -18,21 +21,24 @@ public class FeedbackDto {
             "[a-záàảãạăắằẳẵặâấầẩậẫéèẻẽẹêếềểễệíìỉĩịóòỏõọôốồổỗộơớờởỡợúùủũụưứừửữựýỳỷỹỵđ]*)$",
             message = "Vui lòng nhập đúng định dạng họ và tên: " +
                     "viết hoa chữ cái đầu mỗi từ, không chứa ký tự đặc biệt...")
-    @Size(max = 30, message = "Vui lòng không nhập quá 30 ký tự.")
+    @Size(min = 2, max = 30, message = "Vui lòng nhập 2 - 30 ký tự.")
     private String creator;
 
     @NotBlank(message = "Vui lòng nhập địa chỉ email cá nhân.")
     @Email(message = "Vui lòng nhập đúng định dạng email.")
-    @Size(max = 320, message = "Vui lòng không nhập quá 320 ký tự.")
+    @Size(min = 5, max = 320, message = "Vui lòng nhập 5 - 320 ký tự.")
     private String email;
 
     @NotBlank(message = "Vui lòng nhập nội dung phản hồi.")
+    @Size(min = 2, message = "Vui lòng nhập nhiều hơn 1 ký tự.")
     private String content;
 
     @NotNull(message = "Vui lòng đánh giá sao trước khi phản hồi.")
+    @Range(min = 1, max = 5, message = "Vui lòng đánh giá 1-5 sao.")
     private Integer rating;
 
     @NotBlank(message = "Vui lòng đính kèm ảnh phản hồi thực tế.")
+    @Size(min=5, max = 70, message = "Vui lòng đặt tên ảnh từ 5 đến 70 ký tự.")
     private String image;
 
 

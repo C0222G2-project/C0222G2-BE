@@ -25,12 +25,38 @@ public class FeedbackRestController_createFeedback {
 
     /**
      * Created by: DiepTT
+     * Date created: 11/08/2022
+     * Function: Check not-null of "creator"
+     *
+     * @throws Exception
+     */
+    @Test
+    public void createFeedback_creator_13() throws Exception {
+
+        FeedbackDto feedbackDto = new FeedbackDto();
+
+        feedbackDto.setCreator(null);
+        feedbackDto.setEmail("nguyenthihoa@gmail.com");
+        feedbackDto.setRating(5);
+        feedbackDto.setContent("Quán trang trí đẹp, thức uống ngon.");
+        feedbackDto.setImage("anh-quan-cafe-1.jpg");
+
+        this.mockMvc
+                .perform(MockMvcRequestBuilders
+                        .post("/feedback/create")
+                        .content(this.objectMapper.writeValueAsString(feedbackDto))
+                        .contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+
+  /**
+     * Created by: DiepTT
      * Date created: 10/08/2022
      * Function: Check required of "creator"
      *
      * @throws Exception
      */
-
     @Test
     public void createFeedback_creator_14() throws Exception {
 
@@ -81,6 +107,33 @@ public class FeedbackRestController_createFeedback {
 
     /**
      * Created by: DiepTT
+     * Date created: 11/08/2022
+     * Function: Check min length (1 character) of "creator"
+     *
+     * @throws Exception
+     */
+    @Test
+    public void createFeedback_creator_16() throws Exception {
+
+        FeedbackDto feedbackDto = new FeedbackDto();
+
+        feedbackDto.setCreator("T");
+        feedbackDto.setEmail("nguyenthihoa@gmail.com");
+        feedbackDto.setRating(5);
+        feedbackDto.setContent("Quán trang trí đẹp, thức uống ngon.");
+        feedbackDto.setImage("anh-quan-cafe-1.jpg");
+
+        this.mockMvc
+                .perform(MockMvcRequestBuilders
+                        .post("/feedback/create")
+                        .content(this.objectMapper.writeValueAsString(feedbackDto))
+                        .contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+
+    /**
+     * Created by: DiepTT
      * Date created: 10/08/2022
      * Function: Check max length (30 characters) of "creator"
      *
@@ -107,6 +160,33 @@ public class FeedbackRestController_createFeedback {
     }
 
     /**
+     * Created by: DiepTT
+     * Date created: 11/08/2022
+     * Function: Check not-null of "email"
+     *
+     * @throws Exception
+     */
+    @Test
+    public void createFeedback_email_13() throws Exception {
+
+        FeedbackDto feedbackDto = new FeedbackDto();
+
+        feedbackDto.setCreator("Nguyễn Thị Hoa");
+        feedbackDto.setEmail(null);
+        feedbackDto.setRating(5);
+        feedbackDto.setContent("Quán trang trí đẹp, thức uống ngon.");
+        feedbackDto.setImage("anh-quan-cafe-1.jpg");
+
+        this.mockMvc
+                .perform(MockMvcRequestBuilders
+                        .post("/feedback/create")
+                        .content(this.objectMapper.writeValueAsString(feedbackDto))
+                        .contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+
+ /**
      * Created by: DiepTT
      * Date created: 10/08/2022
      * Function: Check required of "email"
@@ -136,17 +216,99 @@ public class FeedbackRestController_createFeedback {
     /**
      * Created by: DiepTT
      * Date created: 10/08/2022
-     * Function: Check format of "email"
+     * Date updated: 11/08/2022
+     * Function: Check format (without "@domain") of "email"
      *
      * @throws Exception
      */
     @Test
-    public void createFeedback_email_15() throws Exception {
+    public void createFeedback_email_15_check_1() throws Exception {
 
         FeedbackDto feedbackDto = new FeedbackDto();
 
         feedbackDto.setCreator("Nguyễn Thị Hoa");
-        feedbackDto.setEmail("nguyenthihoa.com");
+        feedbackDto.setEmail("nguyenthihoa");
+        feedbackDto.setRating(5);
+        feedbackDto.setContent("Quán trang trí đẹp, thức uống ngon.");
+        feedbackDto.setImage("anh-quan-cafe-1.jpg");
+
+        this.mockMvc
+                .perform(MockMvcRequestBuilders
+                        .post("/feedback/create")
+                        .content(this.objectMapper.writeValueAsString(feedbackDto))
+                        .contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+
+    /**
+     * Created by: DiepTT
+     * Date created: 11/08/2022
+     * Function: Check format (without "domain") of "email"
+     *
+     * @throws Exception
+     */
+    @Test
+    public void createFeedback_email_15_check_2() throws Exception {
+
+        FeedbackDto feedbackDto = new FeedbackDto();
+
+        feedbackDto.setCreator("Nguyễn Thị Hoa");
+        feedbackDto.setEmail("nguyenthihoa@");
+        feedbackDto.setRating(5);
+        feedbackDto.setContent("Quán trang trí đẹp, thức uống ngon.");
+        feedbackDto.setImage("anh-quan-cafe-1.jpg");
+
+        this.mockMvc
+                .perform(MockMvcRequestBuilders
+                        .post("/feedback/create")
+                        .content(this.objectMapper.writeValueAsString(feedbackDto))
+                        .contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+
+    /**
+     * Created by: DiepTT
+     * Date created: 11/08/2022
+     * Function: Check format (without "local-part") of "email"
+     *
+     * @throws Exception
+     */
+    @Test
+    public void createFeedback_email_15_check_3() throws Exception {
+
+        FeedbackDto feedbackDto = new FeedbackDto();
+
+        feedbackDto.setCreator("Nguyễn Thị Hoa");
+        feedbackDto.setEmail("@gmail.com");
+        feedbackDto.setRating(5);
+        feedbackDto.setContent("Quán trang trí đẹp, thức uống ngon.");
+        feedbackDto.setImage("anh-quan-cafe-1.jpg");
+
+        this.mockMvc
+                .perform(MockMvcRequestBuilders
+                        .post("/feedback/create")
+                        .content(this.objectMapper.writeValueAsString(feedbackDto))
+                        .contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+
+    /**
+     * Created by: DiepTT
+     * Date created: 11/08/2022
+     * Function: Check min length (3 characters) of "email"
+     *
+     * @throws Exception
+     */
+    @Test
+    public void createFeedback_email_16() throws Exception {
+
+        FeedbackDto feedbackDto = new FeedbackDto();
+
+        feedbackDto.setCreator("Nguyễn Thị Hoa");
+        feedbackDto.setEmail("n@agit");
         feedbackDto.setRating(5);
         feedbackDto.setContent("Quán trang trí đẹp, thức uống ngon.");
         feedbackDto.setImage("anh-quan-cafe-1.jpg");
@@ -193,6 +355,33 @@ public class FeedbackRestController_createFeedback {
 
     /**
      * Created by: DiepTT
+     * Date created: 11/08/2022
+     * Function: Check not-null of "content"
+     *
+     * @throws Exception
+     */
+    @Test
+    public void createFeedback_content_13() throws Exception {
+
+        FeedbackDto feedbackDto = new FeedbackDto();
+
+        feedbackDto.setCreator("Nguyễn Thị Hoa");
+        feedbackDto.setEmail(null);
+        feedbackDto.setRating(5);
+        feedbackDto.setContent("");
+        feedbackDto.setImage("anh-quan-cafe-1.jpg");
+
+         this.mockMvc
+                .perform(MockMvcRequestBuilders
+                        .post("/feedback/create")
+                        .content(this.objectMapper.writeValueAsString(feedbackDto))
+                        .contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+
+ /**
+     * Created by: DiepTT
      * Date created: 10/08/2022
      * Function: Check required of "content"
      *
@@ -207,6 +396,33 @@ public class FeedbackRestController_createFeedback {
         feedbackDto.setEmail("nguyenthihoa@gmail.com");
         feedbackDto.setRating(5);
         feedbackDto.setContent("");
+        feedbackDto.setImage("anh-quan-cafe-1.jpg");
+
+         this.mockMvc
+                .perform(MockMvcRequestBuilders
+                        .post("/feedback/create")
+                        .content(this.objectMapper.writeValueAsString(feedbackDto))
+                        .contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+
+ /**
+     * Created by: DiepTT
+     * Date created: 11/08/2022
+     * Function: Check min length (1 character) of "content"
+     *
+     * @throws Exception
+     */
+    @Test
+    public void createFeedback_content_16() throws Exception {
+
+        FeedbackDto feedbackDto = new FeedbackDto();
+
+        feedbackDto.setCreator("Nguyễn Thị Hoa");
+        feedbackDto.setEmail("nguyenthihoa@gmail.com");
+        feedbackDto.setRating(5);
+        feedbackDto.setContent("Q");
         feedbackDto.setImage("anh-quan-cafe-1.jpg");
 
          this.mockMvc
@@ -247,6 +463,86 @@ public class FeedbackRestController_createFeedback {
 
     /**
      * Created by: DiepTT
+     * Date created: 11/08/2022
+     * Function: Check min (1) of "rating"
+     *
+     * @throws Exception
+     */
+    @Test
+    public void createFeedback_rating_16() throws Exception {
+
+        FeedbackDto feedbackDto = new FeedbackDto();
+
+        feedbackDto.setCreator("Nguyễn Thị Hoa");
+        feedbackDto.setEmail("nguyenthihoa@gmail.com");
+        feedbackDto.setRating(0);
+        feedbackDto.setContent("Quán trang trí đẹp, thức uống ngon.");
+        feedbackDto.setImage("anh-quan-cafe-1.jpg");
+
+        this.mockMvc
+                .perform(MockMvcRequestBuilders
+                        .post("/feedback/create")
+                        .content(this.objectMapper.writeValueAsString(feedbackDto))
+                        .contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+
+    /**
+     * Created by: DiepTT
+     * Date created: 11/08/2022
+     * Function: Check max (5) of "rating"
+     *
+     * @throws Exception
+     */
+    @Test
+    public void createFeedback_rating_17() throws Exception {
+
+        FeedbackDto feedbackDto = new FeedbackDto();
+
+        feedbackDto.setCreator("Nguyễn Thị Hoa");
+        feedbackDto.setEmail("nguyenthihoa@gmail.com");
+        feedbackDto.setRating(6);
+        feedbackDto.setContent("Quán trang trí đẹp, thức uống ngon.");
+        feedbackDto.setImage("anh-quan-cafe-1.jpg");
+
+        this.mockMvc
+                .perform(MockMvcRequestBuilders
+                        .post("/feedback/create")
+                        .content(this.objectMapper.writeValueAsString(feedbackDto))
+                        .contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+
+    /**
+     * Created by: DiepTT
+     * Date created: 11/08/2022
+     * Function: Check not-null of "image"
+     *
+     * @throws Exception
+     */
+    @Test
+    public void createFeedback_image_13() throws Exception {
+
+        FeedbackDto feedbackDto = new FeedbackDto();
+
+        feedbackDto.setCreator("Nguyễn Thị Hoa");
+        feedbackDto.setEmail("nguyenthihoa@gmail.com");
+        feedbackDto.setRating(5);
+        feedbackDto.setContent("Quán trang trí đẹp, thức uống ngon.");
+        feedbackDto.setImage(null);
+        this.mockMvc
+                .perform(MockMvcRequestBuilders
+                        .post("/feedback/create")
+                        .content(this.objectMapper.writeValueAsString(feedbackDto))
+                        .contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+
+ /**
+     * Created by: DiepTT
      * Date created: 10/08/2022
      * Function: Check required of "image"
      *
@@ -262,6 +558,57 @@ public class FeedbackRestController_createFeedback {
         feedbackDto.setRating(5);
         feedbackDto.setContent("Quán trang trí đẹp, thức uống ngon.");
         feedbackDto.setImage("");
+        this.mockMvc
+                .perform(MockMvcRequestBuilders
+                        .post("/feedback/create")
+                        .content(this.objectMapper.writeValueAsString(feedbackDto))
+                        .contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+ /**
+     * Created by: DiepTT
+     * Date created: 11/08/2022
+     * Function: Check min length (5 characters) of "image url"
+     *
+     * @throws Exception
+     */
+    @Test
+    public void createFeedback_image_16() throws Exception {
+
+        FeedbackDto feedbackDto = new FeedbackDto();
+
+        feedbackDto.setCreator("Nguyễn Thị Hoa");
+        feedbackDto.setEmail("nguyenthihoa@gmail.com");
+        feedbackDto.setRating(5);
+        feedbackDto.setContent("Quán trang trí đẹp, thức uống ngon.");
+        feedbackDto.setImage(".jpg");
+        this.mockMvc
+                .perform(MockMvcRequestBuilders
+                        .post("/feedback/create")
+                        .content(this.objectMapper.writeValueAsString(feedbackDto))
+                        .contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+
+/**
+     * Created by: DiepTT
+     * Date created: 11/08/2022
+     * Function: Check max length (70 characters) of "image url"
+     *
+     * @throws Exception
+     */
+    @Test
+    public void createFeedback_image_17() throws Exception {
+
+        FeedbackDto feedbackDto = new FeedbackDto();
+
+        feedbackDto.setCreator("Nguyễn Thị Hoa");
+        feedbackDto.setEmail("nguyenthihoa@gmail.com");
+        feedbackDto.setRating(5);
+        feedbackDto.setContent("Quán trang trí đẹp, thức uống ngon.");
+        feedbackDto.setImage("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.jpg");
         this.mockMvc
                 .perform(MockMvcRequestBuilders
                         .post("/feedback/create")
@@ -297,6 +644,4 @@ public class FeedbackRestController_createFeedback {
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful());
     }
-
-
 }
