@@ -2,24 +2,16 @@ package com.coffee.service.impl;
 
 
 
-<<<<<<< HEAD
 import com.coffee.model.account.AppRole;
 import com.coffee.model.account.AppUser;
 import com.coffee.model.account.UserRole;
 import com.coffee.model.employee.Employee;
-=======
-import com.coffee.dto.employe.IEmployeeDTO;
-
-
->>>>>>> 6b95ecb89627f5df07aeb272d8eddaac17c96bdd
 import com.coffee.repository.IEmployeeRepository;
 import com.coffee.service.IAppUserService;
 import com.coffee.service.IEmployeeService;
 import com.coffee.service.IUserRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 
 import org.springframework.stereotype.Service;
 
@@ -40,7 +32,9 @@ public class EmployeeServiceImpl implements IEmployeeService {
 
 
 
-<<<<<<< HEAD
+
+
+
     /**
      * @creator TaiLV
      * Date 09/08/2022
@@ -98,6 +92,5 @@ public class EmployeeServiceImpl implements IEmployeeService {
 
 
 
-=======
->>>>>>> 6b95ecb89627f5df07aeb272d8eddaac17c96bdd
+
 }

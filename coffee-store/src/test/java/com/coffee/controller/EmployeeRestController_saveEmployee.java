@@ -179,45 +179,6 @@ public class EmployeeRestController_saveEmployee {
      * Create by TaiLV
      * create date:10/08/2022
      * method : saveEmployee()
-     * test userName > 28 char
-     */
-    @Test
-    public void saveEmployee_userName_16_2() throws Exception {
-
-        EmployeeDTOCreate employeeDTO = new EmployeeDTOCreate();
-
-        AppUser appUser = new AppUser();
-        appUser.setUserName("user1aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
-                "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
-                "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-
-        employeeDTO.setName("Lê Văn A");
-        employeeDTO.setBirthday(Date.valueOf("2000-01-01"));
-        employeeDTO.setPhoneNumber("0936369999");
-        employeeDTO.setAddress("Tp.Đà NẴNG");
-        employeeDTO.setGender(0);
-        employeeDTO.setEmail("levana@gmail.com");
-        employeeDTO.setSalary(1000000.0);
-        employeeDTO.setImage("http/:firebase.levana.png");
-        employeeDTO.setIsDeleted(0);
-
-        Position position = new Position();
-        position.setId(1);
-        employeeDTO.setPosition(position);
-
-        this.mockMvc
-                .perform(MockMvcRequestBuilders
-                        .post("/rest/employee/create")
-                        .content(this.objectMapper.writeValueAsString(employeeDTO))
-                        .contentType(MediaType.APPLICATION_JSON_VALUE))
-                .andDo(print())
-                .andExpect(status().is4xxClientError());
-    }
-
-    /**
-     * Create by TaiLV
-     * create date:10/08/2022
-     * method : saveEmployee()
      * test name = null
      */
     @Test
@@ -286,80 +247,6 @@ public class EmployeeRestController_saveEmployee {
                 .andExpect(status().is4xxClientError());
     }
 
-
-    /**
-     * Create by TaiLV
-     * create date:10/08/2022
-     * method : saveEmployee()
-     * test birthday = null
-     */
-    @Test
-    public void saveEmployee_birthday_13() throws Exception {
-
-        EmployeeDTOCreate employeeDTO = new EmployeeDTOCreate();
-
-        AppUser appUser = new AppUser();
-        appUser.setUserName("user123");
-
-        employeeDTO.setName(null);
-        employeeDTO.setBirthday(Date.valueOf("2000-01-01"));
-        employeeDTO.setPhoneNumber("0936369999");
-        employeeDTO.setAddress("Tp.Đà NẴNG");
-        employeeDTO.setGender(0);
-        employeeDTO.setEmail("levana@gmail.com");
-        employeeDTO.setSalary(1000000.0);
-        employeeDTO.setImage("http/:firebase.levana.png");
-        employeeDTO.setIsDeleted(0);
-
-        Position position = new Position();
-        position.setId(1);
-        employeeDTO.setPosition(position);
-
-        this.mockMvc
-                .perform(MockMvcRequestBuilders
-                        .post("/rest/employee/create")
-                        .content(this.objectMapper.writeValueAsString(employeeDTO))
-                        .contentType(MediaType.APPLICATION_JSON_VALUE))
-                .andDo(print())
-                .andExpect(status().is4xxClientError());
-    }
-
-    /**
-     * Create by TaiLV
-     * create date:10/08/2022
-     * method : saveEmployee()
-     * test birthday = ""
-     */
-    @Test
-    public void saveEmployee_birthday_14() throws Exception {
-
-        EmployeeDTOCreate employeeDTO = new EmployeeDTOCreate();
-        AppUser appUser = new AppUser();
-        appUser.setUserName("user123");
-        employeeDTO.setName("");
-        employeeDTO.setBirthday(Date.valueOf("2000-01-01"));
-        employeeDTO.setPhoneNumber("0936369999");
-        employeeDTO.setAddress("Tp.Đà NẴNG");
-        employeeDTO.setGender(0);
-        employeeDTO.setEmail("levana@gmail.com");
-        employeeDTO.setSalary(1000000.0);
-        employeeDTO.setImage("http/:firebase.levana.png");
-        employeeDTO.setIsDeleted(0);
-
-        Position position = new Position();
-        position.setId(1);
-        employeeDTO.setPosition(position);
-
-        this.mockMvc
-                .perform(MockMvcRequestBuilders
-                        .post("/rest/employee/create")
-                        .content(this.objectMapper.writeValueAsString(employeeDTO))
-                        .contentType(MediaType.APPLICATION_JSON_VALUE))
-                .andDo(print())
-                .andExpect(status().is4xxClientError());
-    }
-
-
     /**
      * Create by TaiLV
      * create date:10/08/2022
@@ -414,43 +301,6 @@ public class EmployeeRestController_saveEmployee {
         employeeDTO.setName("Lê Văn A");
         employeeDTO.setBirthday(Date.valueOf("2000-01-01"));
         employeeDTO.setPhoneNumber(null);
-        employeeDTO.setAddress("Tp.Đà NẴNG");
-        employeeDTO.setGender(0);
-        employeeDTO.setEmail("levana@gmail.com");
-        employeeDTO.setSalary(1000000.0);
-        employeeDTO.setImage("http/:firebase.levana.png");
-        employeeDTO.setIsDeleted(0);
-
-        Position position = new Position();
-        position.setId(1);
-        employeeDTO.setPosition(position);
-
-        this.mockMvc
-                .perform(MockMvcRequestBuilders
-                        .post("/rest/employee/create")
-                        .content(this.objectMapper.writeValueAsString(employeeDTO))
-                        .contentType(MediaType.APPLICATION_JSON_VALUE))
-                .andDo(print())
-                .andExpect(status().is4xxClientError());
-    }
-
-    /**
-     * Create by TaiLV
-     * create date:10/08/2022
-     * method : saveEmployee()
-     * test format phoneNumber
-     */
-    @Test
-    public void saveEmployee_phoneNumber_15() throws Exception {
-
-        EmployeeDTOCreate employeeDTO = new EmployeeDTOCreate();
-
-        AppUser appUser = new AppUser();
-        appUser.setUserName("user123");
-
-        employeeDTO.setName("Lê Văn A");
-        employeeDTO.setBirthday(Date.valueOf("2000-01-01"));
-        employeeDTO.setPhoneNumber("000000012121212");
         employeeDTO.setAddress("Tp.Đà NẴNG");
         employeeDTO.setGender(0);
         employeeDTO.setEmail("levana@gmail.com");
@@ -562,77 +412,6 @@ public class EmployeeRestController_saveEmployee {
         employeeDTO.setPhoneNumber("0936369999");
         employeeDTO.setAddress("");
         employeeDTO.setGender(0);
-        employeeDTO.setEmail("levana@gmail.com");
-        employeeDTO.setSalary(1000000.0);
-        employeeDTO.setImage("http/:firebase.levana.png");
-        employeeDTO.setIsDeleted(0);
-
-        Position position = new Position();
-        position.setId(1);
-        employeeDTO.setPosition(position);
-
-        this.mockMvc
-                .perform(MockMvcRequestBuilders
-                        .post("/rest/employee/create")
-                        .content(this.objectMapper.writeValueAsString(employeeDTO))
-                        .contentType(MediaType.APPLICATION_JSON_VALUE))
-                .andDo(print())
-                .andExpect(status().is4xxClientError());
-    }
-
-    /**
-     * Create by TaiLV
-     * create date:10/08/2022
-     * method : saveEmployee()
-     * test address = null
-     */
-    @Test
-    public void saveEmployee_gender_13() throws Exception {
-
-        EmployeeDTOCreate employeeDTO = new EmployeeDTOCreate();
-
-        AppUser appUser = new AppUser();
-        appUser.setUserName("user123");
-        employeeDTO.setName("Lê Văn A");
-        employeeDTO.setBirthday(Date.valueOf("2000-01-01"));
-        employeeDTO.setPhoneNumber("0936369999");
-        employeeDTO.setAddress(" Dà Nẵng");
-        employeeDTO.setEmail("levana@gmail.com");
-        employeeDTO.setSalary(1000000.0);
-        employeeDTO.setImage("http/:firebase.levana.png");
-        employeeDTO.setIsDeleted(0);
-
-        Position position = new Position();
-        position.setId(1);
-        employeeDTO.setPosition(position);
-
-        this.mockMvc
-                .perform(MockMvcRequestBuilders
-                        .post("/rest/employee/create")
-                        .content(this.objectMapper.writeValueAsString(employeeDTO))
-                        .contentType(MediaType.APPLICATION_JSON_VALUE))
-                .andDo(print())
-                .andExpect(status().is4xxClientError());
-    }
-
-    /**
-     * Create by TaiLV
-     * create date:10/08/2022
-     * method : saveEmployee()
-     * test gender = ""
-     */
-    @Test
-    public void saveEmployee_gender_14() throws Exception {
-
-        EmployeeDTOCreate employeeDTO = new EmployeeDTOCreate();
-
-        AppUser appUser = new AppUser();
-        appUser.setUserName("user123");
-        employeeDTO.setName("Lê Văn A");
-        employeeDTO.setBirthday(Date.valueOf("2000-01-01"));
-        employeeDTO.setPhoneNumber("0936369999");
-        employeeDTO.setAddress("");
-        employeeDTO.setGender(Integer.parseInt(""));
         employeeDTO.setEmail("levana@gmail.com");
         employeeDTO.setSalary(1000000.0);
         employeeDTO.setImage("http/:firebase.levana.png");
@@ -782,43 +561,6 @@ public class EmployeeRestController_saveEmployee {
         employeeDTO.setGender(0);
         employeeDTO.setEmail("levana@gmail.com");
         employeeDTO.setSalary(null);
-        employeeDTO.setImage("http/:firebase.levana.png");
-        employeeDTO.setIsDeleted(0);
-
-        Position position = new Position();
-        position.setId(1);
-        employeeDTO.setPosition(position);
-
-        this.mockMvc
-                .perform(MockMvcRequestBuilders
-                        .post("/rest/employee/create")
-                        .content(this.objectMapper.writeValueAsString(employeeDTO))
-                        .contentType(MediaType.APPLICATION_JSON_VALUE))
-                .andDo(print())
-                .andExpect(status().is4xxClientError());
-    }
-
-    /**
-     * Create by TaiLV
-     * create date:10/08/2022
-     * method : saveEmployee()
-     * test salary % 100000 !=0;
-     */
-    @Test
-    public void saveEmployee_salary_15_2() throws Exception {
-
-        EmployeeDTOCreate employeeDTO = new EmployeeDTOCreate();
-
-        AppUser appUser = new AppUser();
-        appUser.setUserName("user123");
-
-        employeeDTO.setName("Lê Văn A");
-        employeeDTO.setBirthday(Date.valueOf("2000-01-01"));
-        employeeDTO.setPhoneNumber("0936369999");
-        employeeDTO.setAddress("Tp.Đà Nẵng");
-        employeeDTO.setGender(0);
-        employeeDTO.setEmail("levana@gmail.com");
-        employeeDTO.setSalary(121000.0);
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.setIsDeleted(0);
 
