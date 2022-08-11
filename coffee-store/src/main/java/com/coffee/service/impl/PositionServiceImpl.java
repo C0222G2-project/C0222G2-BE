@@ -15,10 +15,10 @@ public class PositionServiceImpl implements IPositionService {
     private IPositionRepository iPositionRepository;
 
     /**
-     * @param
-     * @return Position list
      * @creator TaiLV
      * Date 09/08/2022
+     * @param
+     * @return  Position list
      */
     @Override
     public List<Position> getAllPosition() {

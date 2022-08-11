@@ -11,10 +11,6 @@ public class UserRoleServiceImpl implements IUserRoleService {
     @Autowired
     private IUserRoleRepository iUserRoleRepository;
 
-    /**
-     *
-     * @param userRole
-     */
     @Override
     public void save(UserRole userRole) {
         iUserRoleRepository.save(userRole);

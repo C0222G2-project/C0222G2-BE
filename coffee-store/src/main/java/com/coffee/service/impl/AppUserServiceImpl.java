@@ -15,10 +15,10 @@ public class AppUserServiceImpl implements IAppUserService {
     private IAppUserRepository iUserRepository;
 
     /**
-     * @param
-     * @return AppUser list
      * @creator TaiLV
      * Date 09/08/2022
+     * @param
+     * @return  AppUser list
      */
     @Override
     public List<AppUser> getAllUser() {
