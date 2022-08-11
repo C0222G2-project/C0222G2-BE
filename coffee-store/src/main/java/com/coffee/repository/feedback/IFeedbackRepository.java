@@ -17,12 +17,12 @@ import java.util.Optional;
 @Repository
 public interface IFeedbackRepository extends JpaRepository<Feedback, Integer> {
 
+
     /**
      * Created by: DiepTT
      * Date created: 09/08/2022
      * Function: Create feedback (User send feedback)
      */
-
     @Modifying
     @Query(value = " insert into feedback (code, feedback_date, creator, email, content, rating, image) " +
             " values (:code, :feedback_date, :creator, :email, :content, :rating, :image) ",
@@ -33,6 +33,7 @@ public interface IFeedbackRepository extends JpaRepository<Feedback, Integer> {
 
     @Query(value = "select max(id) from feedback ", nativeQuery = true)
     Integer findLastFeedbackId();
+
 
     /**
      * Created by : LuanTV
@@ -45,7 +46,6 @@ public interface IFeedbackRepository extends JpaRepository<Feedback, Integer> {
      * @param endDate
      * @return
      */
-
     @Query(value = " select feedback.id, feedback.code, feedback.content, feedback.creator, feedback.email,  " +
             " feedback.feedback_date, feedback.image, feedback.rating, feedback.is_deleted  " +
             " from feedback where feedback.creator like :creator and (feedback.feedback_date between :startDate and :endDate) and feedback.is_deleted = 0 ", nativeQuery = true,
@@ -55,6 +55,7 @@ public interface IFeedbackRepository extends JpaRepository<Feedback, Integer> {
     Page<Feedback> findAllFeedback(Pageable pageable,
                                    @Param("creator") String creator, String startDate, String endDate);
 
+
     /**
      * Created by : LuanTV
      * Date created: 09/08/2022
@@ -63,7 +64,6 @@ public interface IFeedbackRepository extends JpaRepository<Feedback, Integer> {
      * @param id
      * @return
      */
-
     @Query(value = " select feedback.id, feedback.code, feedback.content, feedback.creator, feedback.email,  " +
             " feedback.feedback_date, feedback.image, feedback.rating, feedback.is_deleted  " +
             " from feedback where feedback.id =:idDetail and feedback.is_deleted = 0 ", nativeQuery = true)
