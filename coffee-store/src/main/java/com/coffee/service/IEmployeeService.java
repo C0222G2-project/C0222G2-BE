@@ -1,42 +1,39 @@
 package com.coffee.service;
 
 
-
-import com.coffee.model.account.AppUser;
-import com.coffee.model.employee.Employee;
+import com.coffee.dto.employe.IEmployeeDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 public interface IEmployeeService {
-
-
     /**
-     * @creator TaiLV
-     * Date 09/08/2022
-     * @param employee
-     * if employee null : Create new employee
-     * @return  create Employee success
+     * Create by TuyenTN
+     * Data: 9-8-2022
+     *
+     * @param pageable
+     * @param searchByName
+     * @param searchByPhone
+     * @param searchByAccount
+     * @return
      */
-    void saveEmployee(Employee employee);
+    Page<IEmployeeDTO> getAllEmployee(Pageable pageable, String searchByName, String searchByPhone, String searchByAccount);
 
     /**
-     * @creator TaiLV
-     * Date 09/08/2022
+     * Create: TuyenTN
+     * Data:9-8-2022
+     *
      * @param id
-     * if id null : Bad request
-     * @return  object Employee
+     * @return
      */
-    Employee findById(Integer id);
+    IEmployeeDTO findEmployeeById(Integer id);
 
     /**
-     * @creator TaiLV
-     * Date 09/08/2022
-     * @param employee
-     * @return  true: edit employee success, status 200 / false: status 404
-     * if employee null : Create new employee
-     * @return  update Employee success
+     * Create:TuyenTN
+     * Data:9-8-2022
+     *
+     * @param id
      */
-    void editEmployee(Employee employee);
+    void deleteEmployeeById(Integer id);
 
 
 }
