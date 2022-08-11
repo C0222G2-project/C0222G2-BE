@@ -26,6 +26,8 @@ public class Employee {
 
     private Date birthday;
 
+    private Integer gender;
+
     @Column(unique = true)
     private String phoneNumber;
 
