@@ -34,10 +34,11 @@ public class EmployeeRestController {
 
 
     /**
+     * @param
+     * @return Position list
+     * @func
      * @creator TaiLV
      * Date 09/08/2022
-     * @param
-     * @return  Position list
      */
     @GetMapping("/position")
     public ResponseEntity<List<Position>> getAllPosition() {
@@ -46,10 +47,10 @@ public class EmployeeRestController {
     }
 
     /**
+     * @param
+     * @return AppUser list
      * @creator TaiLV
      * Date 09/08/2022
-     * @param
-     * @return  AppUser list
      */
     @GetMapping("/user")
     public ResponseEntity<List<AppUser>> getAllUser() {
@@ -58,11 +59,11 @@ public class EmployeeRestController {
     }
 
     /**
-     * @function ( find the employee of the id )
-     * @creator TaiLV
-     * @date-create 09/08/2022
      * @param id
      * @return true: id status 200 / false: status 404
+     * @function (find the employee of the id)
+     * @creator TaiLV
+     * @date-create 09/08/2022
      */
     @GetMapping("/employee/findId/{id}")
     public ResponseEntity<Employee> findById(@PathVariable Integer id) {
@@ -73,59 +74,54 @@ public class EmployeeRestController {
     }
 
 
-
     /**
-     * @creator TaiLV
-     * @function ( create the value of the employee )
-     * Date 09/08/2022
      * @param employeeDTO
-     * @param bindingResult
-     * if employee null : Create new employee
-     * @return  true: employee, status 200 / false: status 404
+     * @param bindingResult if employee null : Create new employee
+     * @return true: employee, status 200 / false: status 404
+     * @creator TaiLV
+     * @function (create the value of the employee)
+     * Date 09/08/2022
      */
     @PostMapping("/employee/create")
-    public ResponseEntity<Void> saveEmployee(@Valid @RequestBody EmployeeDTOCreate employeeDTO , BindingResult bindingResult) {
+    public ResponseEntity<Void> saveEmployee(@Valid @RequestBody EmployeeDTOCreate employeeDTO, BindingResult bindingResult) {
 
-        new EmployeeDTOCreate().validate(employeeDTO,bindingResult);
+        new EmployeeDTOCreate().validate(employeeDTO, bindingResult);
 
-        if(bindingResult.hasErrors()){
+        if (bindingResult.hasErrors()) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        Employee employee =new Employee();
+        Employee employee = new Employee();
         BeanUtils.copyProperties(employeeDTO, employee);
-
 
         iEmployeeService.saveEmployee(employee);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     /**
-     * @creator TaiLV
-     * @function ( edit the value of the employee )
-     * Date 09/08/2022
      * @param employeeDTOEdit
-     * @param bindingResult
-     * if employee null : Create new employee
-     * @return  true: employee, status 200 / false: status 404
+     * @param bindingResult   if employee null : Create new employee
+     * @return true: employee, status 200 / false: status 404
+     * @creator TaiLV
+     * @function (edit the value of the employee)
+     * Date 09/08/2022
      */
     @PatchMapping(value = "/employee/edit")
-    public ResponseEntity<Void> editEmployee(@Valid @RequestBody EmployeeDTOEdit employeeDTOEdit , BindingResult bindingResult) {
+    public ResponseEntity<Void> editEmployee(@Valid @RequestBody EmployeeDTOEdit employeeDTOEdit, BindingResult bindingResult) {
 
         Employee employee = this.iEmployeeService.findById(employeeDTOEdit.getId());
 
-        if(employee == null){
+        if (employee == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
 
-        new EmployeeDTOEdit().validate(employeeDTOEdit,bindingResult);
-        if(bindingResult.hasErrors()){
+        new EmployeeDTOEdit().validate(employeeDTOEdit, bindingResult);
+        if (bindingResult.hasErrors()) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
         BeanUtils.copyProperties(employeeDTOEdit, employee);
         iEmployeeService.editEmployee(employee);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
-
 
 
 }

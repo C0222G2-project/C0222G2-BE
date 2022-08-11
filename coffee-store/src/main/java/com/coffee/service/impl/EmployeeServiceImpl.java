@@ -1,7 +1,6 @@
 package com.coffee.service.impl;
 
 
-
 import com.coffee.model.account.AppRole;
 import com.coffee.model.account.AppUser;
 import com.coffee.model.account.UserRole;
@@ -31,17 +30,12 @@ public class EmployeeServiceImpl implements IEmployeeService {
     private IUserRoleService iUserRoleService;
 
 
-
-
-
-
     /**
+     * @param employee if employee null : Create new employee
+     * @return true: create employee success, status 200 / false: status 404
+     * @return create Employee success
      * @creator TaiLV
      * Date 09/08/2022
-     * @param employee
-     * if employee null : Create new employee
-     * @return  true: create employee success, status 200 / false: status 404
-     * @return  create Employee success
      */
     @Override
     public void saveEmployee(Employee employee) {
@@ -66,11 +60,10 @@ public class EmployeeServiceImpl implements IEmployeeService {
     }
 
     /**
+     * @param id if id null : Bad request
+     * @return object Employee
      * @creator TaiLV
      * Date 09/08/2022
-     * @param id
-     * if id null : Bad request
-     * @return  object Employee
      */
     @Override
     public Employee findById(Integer id) {
@@ -78,19 +71,16 @@ public class EmployeeServiceImpl implements IEmployeeService {
     }
 
     /**
+     * @param employee if employee null : Create new employee
+     * @return true: edit employee success, status 200 / false: status 404
      * @creator TaiLV
      * Date 09/08/2022
-     * @param employee
-     * if employee null : Create new employee
-     * @return  true: edit employee success, status 200 / false: status 404
      */
 
     @Override
     public void editEmployee(Employee employee) {
-         iEmployeeRepository.editEmployee(employee);
+        iEmployeeRepository.editEmployee(employee);
     }
-
-
 
 
 }
