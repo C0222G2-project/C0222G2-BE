@@ -50,4 +50,5 @@ public class Feedback {
     public int hashCode() {
         return getClass().hashCode();
     }
+
 }
