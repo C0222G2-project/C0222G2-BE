@@ -30,12 +30,13 @@ public class PaymentRestController {
      *
      * @param id
      */
-    @GetMapping("list/{id}")
+    @GetMapping("/list/{id}")
     public ResponseEntity<List<ICoffeeTableDto>> displayDishOrderByIdTable(@PathVariable("id") Integer id) {
         List<ICoffeeTableDto> iCoffeeTableDtoList = this.iCoffeeTableService.findByIdTable(id);
         if (iCoffeeTableDtoList == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+
         return new ResponseEntity<>(iCoffeeTableDtoList, HttpStatus.OK);
     }
 
@@ -48,17 +49,21 @@ public class PaymentRestController {
      */
     @GetMapping("/page")
     public ResponseEntity<Page<ICoffeeTableDto>> getCoffeeTablePage(@PageableDefault(size = 6) Pageable pageable) {
-        Page<ICoffeeTableDto> iCoffeeTableDtos = this.iCoffeeTableService.displayCoffeeTableByPage(pageable);
-        if (iCoffeeTableDtos.isEmpty()) {
+        Page<ICoffeeTableDto> iCoffeeTableDtoPage = this.iCoffeeTableService.displayCoffeeTableByPage(pageable);
+        if (iCoffeeTableDtoPage.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<>(iCoffeeTableDtos, HttpStatus.OK);
+        if (iCoffeeTableDtoPage.getTotalPages() != pageable.getPageNumber()){
+
+            return new ResponseEntity<>(iCoffeeTableDtoPage, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     /**
      * Create: HoaNN
      * Date create: 09/08/2022
-     * function use calculation payment
+     * function used to payment
      *
      * @param id
      */
