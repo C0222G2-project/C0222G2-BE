@@ -22,6 +22,47 @@ public class BillRestController_getAllBill {
 
     /**
      * Created by: HauLT
+     * Date created: 11/08/2022
+     * function: check case returns list with size 0
+     * @throws Exception
+     */
+
+    @Test
+    public void getAllBill_5() throws Exception {
+
+        this.mockMvc.perform(
+                        MockMvcRequestBuilders
+                                .get("/rest/bill/"))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+
+
+    /**
+     * Created by: HauLT
+     * Date created: 11/08/2022
+     * function: check case returns list with size greater than 0
+     * @throws Exception
+     */
+
+    @Test
+    public void getAllBill_6() throws Exception {
+
+        this.mockMvc.perform(
+                        MockMvcRequestBuilders
+                                .get("/rest/bill/"))
+                .andDo(print())
+                .andExpect(status().is2xxSuccessful())
+                .andExpect(jsonPath("totalPages").value(2))
+                .andExpect(jsonPath("totalElements").value(13))
+                .andExpect(jsonPath("content[0].billCode").value("BIll-1"))
+                .andExpect(jsonPath("content[0].creationDate").value("2022-12-12"));
+
+    }
+
+
+    /**
+     * Created by: HauLT
      * Date created: 10/08/2022
      * function: check with case 1 field equals null
      * @throws Exception
@@ -173,6 +214,13 @@ public class BillRestController_getAllBill {
                 .andExpect(status().is(204));
     }
 
+    /**
+     * Created by: HauLT
+     * Date created: 10/08/2022
+     * function: checks for existence but returns a list of size 0
+     * @throws Exception
+     */
+
     @Test
     public void getAllBill_10() throws Exception {
 
@@ -202,7 +250,5 @@ public class BillRestController_getAllBill {
                 .andExpect(jsonPath("content[0].billCode").value("BIll-1"))
                 .andExpect(jsonPath("content[0].creationDate").value("2022-12-12"));
     }
-
-
 
 }
