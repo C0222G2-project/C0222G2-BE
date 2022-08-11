@@ -25,7 +25,7 @@ public class EmployeeRestController_findEmployeeById {
      */
     //find id = null
     @Test
-    public void findEmployeeById_id_1() {
+    public  void findEmployeeById_id_1() {
         try {
             this.mockMvc.perform(MockMvcRequestBuilders.get("/rest/employee/find/null"))
                     .andDo(print()).andExpect(status().is4xxClientError());
@@ -33,7 +33,6 @@ public class EmployeeRestController_findEmployeeById {
             e.printStackTrace();
         }
     }
-
     /**
      * Create by TuyenTN
      * create date:10/08/2022
@@ -44,7 +43,6 @@ public class EmployeeRestController_findEmployeeById {
         this.mockMvc.perform(MockMvcRequestBuilders.get("/rest/employee/find/"))
                 .andDo(print()).andExpect(status().is4xxClientError());
     }
-
     /**
      * Create by TuyenTN
      * create date:10/08/2022
@@ -55,7 +53,6 @@ public class EmployeeRestController_findEmployeeById {
         this.mockMvc.perform(MockMvcRequestBuilders.get("/rest/employee/find/15"))
                 .andDo(print()).andExpect(status().is4xxClientError());
     }
-
     /**
      * Create by TuyenTN
      * create date:10/08/2022

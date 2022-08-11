@@ -1,7 +1,6 @@
 package com.coffee.model.account;
 
 import com.coffee.model.employee.Employee;
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;

@@ -15,7 +15,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class EmployeeRestController_deleteEmployeeById {
     @Autowired
     private MockMvc mockMvc;
-
     /**
      * Create by TuyenTN
      * create date:10/08/2022
@@ -26,7 +25,6 @@ public class EmployeeRestController_deleteEmployeeById {
         this.mockMvc.perform(MockMvcRequestBuilders.delete("/rest/employee/delete/null"))
                 .andDo(print()).andExpect(status().is4xxClientError());
     }
-
     /**
      * Create by TuyenTN
      * create date:10/08/2022
@@ -37,7 +35,6 @@ public class EmployeeRestController_deleteEmployeeById {
         this.mockMvc.perform(MockMvcRequestBuilders.delete("/rest/employee/delete/"))
                 .andDo(print()).andExpect(status().is4xxClientError());
     }
-
     /**
      * Create by TuyenTN
      * create date:10/08/2022
@@ -48,7 +45,6 @@ public class EmployeeRestController_deleteEmployeeById {
         this.mockMvc.perform(MockMvcRequestBuilders.delete("/rest/employee/delete/15"))
                 .andDo(print()).andExpect(status().is4xxClientError());
     }
-
     /**
      * Create by TuyenTN
      * create date:10/08/2022

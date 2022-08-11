@@ -41,10 +41,9 @@ public class EmployeeRestController_getAllEmployee {
                 .andExpect(jsonPath("$.content[0].gender").value(1))
                 .andExpect(jsonPath("$.content[0].phoneNumber").value("0935912341"))
                 .andExpect(jsonPath("$.content[0].salary").value(1500000))
-                .andExpect(jsonPath("$.content[0].appUser").value("admin"))
+                .andExpect(jsonPath("$.content[0].appUser").value( "admin"))
                 .andExpect(jsonPath("$.content[0].birthday").value("1990-01-01"));
     }
-
     /**
      * Create by TuyenTN
      * create date:10/08/2022
@@ -68,10 +67,9 @@ public class EmployeeRestController_getAllEmployee {
                 .andExpect(jsonPath("$.content[0].gender").value(1))
                 .andExpect(jsonPath("$.content[0].phoneNumber").value("0935912341"))
                 .andExpect(jsonPath("$.content[0].salary").value(1500000))
-                .andExpect(jsonPath("$.content[0].appUser").value("admin"))
+                .andExpect(jsonPath("$.content[0].appUser").value( "admin"))
                 .andExpect(jsonPath("$.content[0].birthday").value("1990-01-01"));
     }
-
     /**
      * Create by TuyenTN
      * create date:10/08/2022
@@ -109,7 +107,7 @@ public class EmployeeRestController_getAllEmployee {
                 .andExpect(jsonPath("$.content[0].gender").value(1))
                 .andExpect(jsonPath("$.content[0].phoneNumber").value("0935912341"))
                 .andExpect(jsonPath("$.content[0].salary").value(1500000))
-                .andExpect(jsonPath("$.content[0].appUser").value("admin"))
+                .andExpect(jsonPath("$.content[0].appUser").value( "admin"))
                 .andExpect(jsonPath("$.content[0].birthday").value("1990-01-01"));
     }
 
@@ -136,7 +134,7 @@ public class EmployeeRestController_getAllEmployee {
                 .andExpect(jsonPath("$.content[0].gender").value(1))
                 .andExpect(jsonPath("$.content[0].phoneNumber").value("0935912341"))
                 .andExpect(jsonPath("$.content[0].salary").value(1500000))
-                .andExpect(jsonPath("$.content[0].appUser").value("admin"))
+                .andExpect(jsonPath("$.content[0].appUser").value( "admin"))
                 .andExpect(jsonPath("$.content[0].birthday").value("1990-01-01"));
     }
 
@@ -153,7 +151,6 @@ public class EmployeeRestController_getAllEmployee {
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
-
     /**
      * Create by TuyenTN
      * create date:10/08/2022
@@ -191,11 +188,10 @@ public class EmployeeRestController_getAllEmployee {
                 .andExpect(jsonPath("$.content[0].gender").value(1))
                 .andExpect(jsonPath("$.content[0].phoneNumber").value("0935912341"))
                 .andExpect(jsonPath("$.content[0].salary").value(1500000))
-                .andExpect(jsonPath("$.content[0].appUser").value("admin"))
+                .andExpect(jsonPath("$.content[0].appUser").value( "admin"))
                 .andExpect(jsonPath("$.content[0].birthday").value("1990-01-01"));
     }
     //test searchAccount = null
-
     /**
      * Create by TuyenTN
      * create date:10/08/2022
@@ -219,7 +215,7 @@ public class EmployeeRestController_getAllEmployee {
                 .andExpect(jsonPath("$.content[0].gender").value(1))
                 .andExpect(jsonPath("$.content[0].phoneNumber").value("0935912341"))
                 .andExpect(jsonPath("$.content[0].salary").value(1500000))
-                .andExpect(jsonPath("$.content[0].appUser").value("admin"))
+                .andExpect(jsonPath("$.content[0].appUser").value( "admin"))
                 .andExpect(jsonPath("$.content[0].birthday").value("1990-01-01"));
     }
 
@@ -246,7 +242,7 @@ public class EmployeeRestController_getAllEmployee {
                 .andExpect(jsonPath("$.content[0].gender").value(1))
                 .andExpect(jsonPath("$.content[0].phoneNumber").value("0935912341"))
                 .andExpect(jsonPath("$.content[0].salary").value(1500000))
-                .andExpect(jsonPath("$.content[0].appUser").value("admin"))
+                .andExpect(jsonPath("$.content[0].appUser").value( "admin"))
                 .andExpect(jsonPath("$.content[0].birthday").value("1990-01-01"));
     }
 }
