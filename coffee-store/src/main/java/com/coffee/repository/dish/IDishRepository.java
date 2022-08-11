@@ -15,7 +15,7 @@ import javax.transaction.Transactional;
 @Repository
 @Transactional
 public interface IDishRepository extends JpaRepository<Dish, Integer> {
-    @Query(value = "SELECT id,`code`,creation_date,image,is_deleted,`name`,price,dish_type_id FROM dish and d.is_deleted = 0", nativeQuery = true)
+    @Query(value = "SELECT id,`code`,creation_date,image,is_deleted,`name`,price,dish_type_id FROM dish d where d.is_deleted = 0", nativeQuery = true)
     Page<Dish> selectAllDishPage(Pageable pageable);
 
     @Query(value = " SELECT d.id,d.`code`,d.creation_date,d.image,d.is_deleted,d.`name`,d.price,d.dish_type_id " +
