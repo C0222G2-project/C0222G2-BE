@@ -50,7 +50,7 @@ public class FeedbackRestController_createFeedback {
                 .andExpect(status().is4xxClientError());
     }
 
-  /**
+    /**
      * Created by: DiepTT
      * Date created: 10/08/2022
      * Function: Check required of "creator"
@@ -186,7 +186,7 @@ public class FeedbackRestController_createFeedback {
                 .andExpect(status().is4xxClientError());
     }
 
- /**
+    /**
      * Created by: DiepTT
      * Date created: 10/08/2022
      * Function: Check required of "email"
@@ -371,7 +371,7 @@ public class FeedbackRestController_createFeedback {
         feedbackDto.setContent("");
         feedbackDto.setImage("anh-quan-cafe-1.jpg");
 
-         this.mockMvc
+        this.mockMvc
                 .perform(MockMvcRequestBuilders
                         .post("/feedback/create")
                         .content(this.objectMapper.writeValueAsString(feedbackDto))
@@ -380,7 +380,7 @@ public class FeedbackRestController_createFeedback {
                 .andExpect(status().is4xxClientError());
     }
 
- /**
+    /**
      * Created by: DiepTT
      * Date created: 10/08/2022
      * Function: Check required of "content"
@@ -398,7 +398,7 @@ public class FeedbackRestController_createFeedback {
         feedbackDto.setContent("");
         feedbackDto.setImage("anh-quan-cafe-1.jpg");
 
-         this.mockMvc
+        this.mockMvc
                 .perform(MockMvcRequestBuilders
                         .post("/feedback/create")
                         .content(this.objectMapper.writeValueAsString(feedbackDto))
@@ -407,7 +407,7 @@ public class FeedbackRestController_createFeedback {
                 .andExpect(status().is4xxClientError());
     }
 
- /**
+    /**
      * Created by: DiepTT
      * Date created: 11/08/2022
      * Function: Check min length (1 character) of "content"
@@ -425,7 +425,7 @@ public class FeedbackRestController_createFeedback {
         feedbackDto.setContent("Q");
         feedbackDto.setImage("anh-quan-cafe-1.jpg");
 
-         this.mockMvc
+        this.mockMvc
                 .perform(MockMvcRequestBuilders
                         .post("/feedback/create")
                         .content(this.objectMapper.writeValueAsString(feedbackDto))
@@ -541,7 +541,7 @@ public class FeedbackRestController_createFeedback {
                 .andExpect(status().is4xxClientError());
     }
 
- /**
+    /**
      * Created by: DiepTT
      * Date created: 10/08/2022
      * Function: Check required of "image"
@@ -566,7 +566,8 @@ public class FeedbackRestController_createFeedback {
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
- /**
+
+    /**
      * Created by: DiepTT
      * Date created: 11/08/2022
      * Function: Check min length (5 characters) of "image url"
@@ -592,7 +593,7 @@ public class FeedbackRestController_createFeedback {
                 .andExpect(status().is4xxClientError());
     }
 
-/**
+    /**
      * Created by: DiepTT
      * Date created: 11/08/2022
      * Function: Check max length (70 characters) of "image url"
