@@ -17,6 +17,7 @@ public class FeedbackServiceImpl implements IFeedbackService {
     @Autowired
     private IFeedbackRepository feedbackRepository;
 
+
     /**
      * Created by : LuanTV
      * Date created: 09/08/2022
@@ -28,11 +29,11 @@ public class FeedbackServiceImpl implements IFeedbackService {
      * @param endDate
      * @return Page<Feedback>
      */
-
     @Override
     public Page<Feedback> findAllFeedback(Pageable pageable, String creator, String startDate, String endDate) {
         return feedbackRepository.findAllFeedback(pageable, "%" + creator + "%", startDate, endDate);
     }
+
 
     /**
      * Created by : LuanTV
@@ -42,11 +43,11 @@ public class FeedbackServiceImpl implements IFeedbackService {
      * @param id
      * @return Feedback
      */
-
     @Override
     public Optional<Feedback> findFeedbackById(int id) {
         return feedbackRepository.findFeedbackById(id);
     }
+
 
     /**
      * Created by: DiepTT

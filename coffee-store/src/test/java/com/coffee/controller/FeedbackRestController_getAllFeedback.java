@@ -22,12 +22,10 @@ public class FeedbackRestController_getAllFeedback {
     /**
      * Created by : LuanTV
      * Date created: 10/08/2022
-     * function: check searchCreator
+     * Function: check searchCreator
      *
      * @throws Exception
      */
-
-
     @Test
     public void getAllFeedback_7_searchCreator() throws Exception {
 
@@ -67,22 +65,21 @@ public class FeedbackRestController_getAllFeedback {
     /**
      * Created by : LuanTV
      * Date created: 10/08/2022
-     * function: check searchStartDate, searchEndDate
+     * Function: check searchStartDate
      *
      * @throws Exception
      */
-
     @Test
-    public void getAllFeedback_7_searchStartDate_searchEndDate() throws Exception {
+    public void getAllFeedback_7_searchStartDate() throws Exception {
 
         this.mockMvc.perform(
-                MockMvcRequestBuilders.get("/feedback/page?searchStartDate=null&searchEndDate=null"))
+                MockMvcRequestBuilders.get("/feedback/page?searchStartDate=null&searchEndDate=2022-02-04"))
                 .andDo(print())
                 .andExpect(status().is(204));
     }
 
     @Test
-    public void getAllFeedback_8_searchStartDate_searchEndDate() throws Exception {
+    public void getAllFeedback_8_searchStartDate() throws Exception {
 
         this.mockMvc.perform(
                 MockMvcRequestBuilders.get("/feedback/page?searchStartDate= &searchEndDate= "))
@@ -90,7 +87,7 @@ public class FeedbackRestController_getAllFeedback {
                 .andExpect(status().is(204));
     }
     @Test
-    public void getAllFeedback_9_searchStartDate_searchEndDate() throws Exception {
+    public void getAllFeedback_9_searchStartDate() throws Exception {
 
         this.mockMvc.perform(
                 MockMvcRequestBuilders.get("/feedback/page?searchStartDate=2022-03-05&searchEndDate=2022-03-30"))
@@ -99,7 +96,7 @@ public class FeedbackRestController_getAllFeedback {
     }
 
     @Test
-    public void getAllFeedback_10_searchStartDate_searchEndDate() throws Exception {
+    public void getAllFeedback_10_searchStartDate() throws Exception {
 
         this.mockMvc.perform(
                 MockMvcRequestBuilders.get("/feedback/page?searchStartDate=2022-02-06&searchEndDate=2022-02-06"))
@@ -107,14 +104,57 @@ public class FeedbackRestController_getAllFeedback {
                 .andExpect(status().is(204));
     }
 
+
     /**
      * Created by : LuanTV
-     * Date created: 10/08/2022
-     * function: check exact search results
+     * Date created: 11/08/2022
+     * Function: check searchEndDate
      *
      * @throws Exception
      */
+    @Test
+    public void getAllFeedback_7_searchEndDate() throws Exception {
 
+        this.mockMvc.perform(
+                MockMvcRequestBuilders.get("/feedback/page?searchStartDate=2022-02-04&searchEndDate=null"))
+                .andDo(print())
+                .andExpect(status().is(204));
+    }
+
+    @Test
+    public void getAllFeedback_8_searchEndDate() throws Exception {
+
+        this.mockMvc.perform(
+                MockMvcRequestBuilders.get("/feedback/page?searchStartDate=2022-02-04&searchEndDate= "))
+                .andDo(print())
+                .andExpect(status().is(204));
+    }
+    @Test
+    public void getAllFeedback_9_searchEndDate() throws Exception {
+
+        this.mockMvc.perform(
+                MockMvcRequestBuilders.get("/feedback/page?searchStartDate=2022-02-19&searchEndDate=2022-02-28"))
+                .andDo(print())
+                .andExpect(status().is(204));
+    }
+
+    @Test
+    public void getAllFeedback_10_searchEndDate() throws Exception {
+
+        this.mockMvc.perform(
+                MockMvcRequestBuilders.get("/feedback/page?searchStartDate=2022-02-06&searchEndDate=2022-02-06"))
+                .andDo(print())
+                .andExpect(status().is(204));
+    }
+
+
+    /**
+     * Created by : LuanTV
+     * Date created: 10/08/2022
+     * Function: check exact search results
+     *
+     * @throws Exception
+     */
     @Test
     public void getAllFeedback_11() throws Exception {
 
@@ -134,5 +174,4 @@ public class FeedbackRestController_getAllFeedback {
                 .andExpect(jsonPath("content[0].image").value("https://www.vivosmartphone.vn/uploads/MANGOADS/ch%E1%BB%A5p%20%E1%BA%A3nh/%E1%BA%A2nh%20%C4%91%E1%BB%93%20u%E1%BB%91ng/fD6Mguu.jpg"));
 
     }
-
 }
