@@ -2,6 +2,8 @@ package com.coffee.repository;
 
 import com.coffee.model.dish.Dish;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -13,9 +15,9 @@ import java.util.Optional;
 public interface IDishRepository extends JpaRepository<Dish, Integer> {
     @Transactional
     @Modifying
-    @Query(value = " INSERT INTO dish (`dish_type_id`, image, `name`, code, price, creation_date) " +
+    @Query(value = " INSERT INTO dish (`dish_type_id`, image, `name`, code, price, creation_date,is_deleted) " +
             " VALUES (:#{#dish.dishType.id}, :#{#dish.image}, :#{#dish.name}, :#{#dish.code}, " +
-            " :#{#dish.price}, :#{#dish.creationDate} ); ", nativeQuery = true)
+            " :#{#dish.price}, :#{#dish.creationDate}, :#{#dish.isDeleted}); ", nativeQuery = true)
     void saveDish(Dish dish);
 
     @Query(value = "select * from dish where id = :id", nativeQuery = true)
@@ -26,5 +28,24 @@ public interface IDishRepository extends JpaRepository<Dish, Integer> {
     @Query(value = " update dish set `name`= :#{#dish.name}, image = :#{#dish.image}, code = :#{#dish.code},  price = :#{#dish.price}, creation_date = :#{#dish.creationDate}, is_deleted = :#{#dish.isDeleted}, dish_type_id = :#{#dish.dishType.id} where id= :#{#dish.id}",
             nativeQuery = true)
     void editDish(Dish dish);
+
+    @Query(value = "SELECT id,`code`,creation_date,image,is_deleted,`name`,price,dish_type_id FROM dish d where d.is_deleted = 0", nativeQuery = true)
+    Page<Dish> selectAllDishPage(Pageable pageable);
+
+    @Query(value = " select d.id, d.code, d.creation_date, d.image, d.is_deleted, d.name, d.price, d.dish_type_id from dish d " +
+            " join dish_type dt on dt.id = d.dish_type_id " +
+            " where d.name like :name and d.code like :code and d.price like :price and d.dish_type_id like :dishType and d.is_deleted = 0 ", nativeQuery = true,
+            countQuery = " select count(*) from ( select d.id, d.code, d.creation_date, d.image, d.is_deleted, d.name, d.price, d.dish_type_id from dish d " +
+                    " join dish_type dt on dt.id = d.dish_type_id " +
+                    " where d.name like :name and d.code like :code and d.price like :price and d.dish_type_id like :dishType and d.is_deleted = 0 ) temp_table ")
+    Page<Dish> searchDishPage(@Param("name") String name, @Param("code") String code, @Param("price") String price, @Param("dishType") String dishType, Pageable pageable);
+
+
+    @Query(value = "SELECT id,`code`,creation_date,image,is_deleted,`name`,price,dish_type_id  from dish d where d.id =:dishId", nativeQuery = true)
+    Dish selectDishById(@Param("dishId") Integer id);
+    @Transactional
+    @Modifying
+    @Query(value = " update dish d set is_deleted = 1 where  d.id =:dishId and d.is_deleted = 0", nativeQuery = true)
+    int deleteDishById(@Param("dishId") Integer id);
 
 }

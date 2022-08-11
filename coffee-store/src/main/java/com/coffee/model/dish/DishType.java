@@ -1,6 +1,6 @@
 package com.coffee.model.dish;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -27,8 +27,8 @@ public class DishType {
     @Column(columnDefinition = "bit(1) default 0")
     private Boolean isDeleted;
 
-    @JsonBackReference
     @OneToMany(mappedBy = "dishType")
+    @JsonIgnore
     private List<Dish> dishes;
 
     @Override
