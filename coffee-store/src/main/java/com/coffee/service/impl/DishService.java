@@ -55,6 +55,7 @@ public class DishService implements IDishService {
      * Created By: HieuCD
      * Date created: 10/08/2022
      * function: search dish by dish name,code
+     *
      * @param name
      * @param code
      * @param price
@@ -64,7 +65,7 @@ public class DishService implements IDishService {
      */
 
     @Override
-    public Page<Dish> searchDish(String name, String code, String price, Integer dishType,Pageable pageable) {
-        return iDishRepository.searchDishPage("%" + name + "%", "%" + code + "%","%" + price + "%",dishType,pageable);
+    public Page<Dish> searchDish(String name, String code, String price, String dishType, Pageable pageable) {
+        return iDishRepository.searchDishPage("%" + name + "%", "%" + code + "%", "%" + price + "%", dishType, pageable);
     }
 }

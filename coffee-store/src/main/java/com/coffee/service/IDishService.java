@@ -9,5 +9,5 @@ public interface IDishService {
     Page<Dish> findAllDish(Pageable pageable);
     Dish findDishById(Integer id);
     void deleteDish(Integer id);
-    Page<Dish> searchDish(String name, String code, String price, Integer dishTypeId,Pageable pageable);
+    Page<Dish> searchDish(String name, String code, String price, String dishTypeId,Pageable pageable);
 }

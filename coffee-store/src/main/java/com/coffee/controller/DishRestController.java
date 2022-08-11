@@ -28,12 +28,11 @@ public class DishRestController {
      * function: show dish page
      *
      * @param pageable
-     * @return
-     * HTTP status  200(OK) : return Page<Dish> dishPage
+     * @return HTTP status  200(OK) : return Page<Dish> dishPage
      * HTTP status  204(NO_CONTENT): return dishPage is empty
      */
     @GetMapping("/getDishPage")
-    public ResponseEntity<Page<Dish>> getAllDish(@PageableDefault(10) Pageable pageable) {
+    public ResponseEntity<Page<Dish>> getAllDish(@PageableDefault(4) Pageable pageable) {
         Page<Dish> dishPage = this.iDishService.findAllDish(pageable);
         if (dishPage.isEmpty()) {
             return new ResponseEntity<>(dishPage, HttpStatus.NO_CONTENT);
@@ -46,24 +45,28 @@ public class DishRestController {
      * Created by: HieuCD
      * Date created: 09/08/2022
      * function: search dish
+     *
      * @param pageable
      * @param dishName
      * @param dishCode
      * @param dishPrice
      * @param dishTypeId
-     * @return
-     *      * HTTP status  200(OK) : return Page<Dish> dishPage
-     *      * HTTP status  204(NO_CONTENT): return dishPage is empty
+     * @return * HTTP status  200(OK) : return Page<Dish> dishPage
+     * * HTTP status  204(NO_CONTENT): return dishPage is empty
      */
     @GetMapping("/searchDish")
     public ResponseEntity<Page<Dish>> getAllDish(@PageableDefault(10) Pageable pageable,
                                                  Optional<String> dishName,
                                                  Optional<String> dishCode,
                                                  Optional<String> dishPrice,
-                                                 Integer dishTypeId) {
+                                                 Optional<String> dishTypeId) {
         String name = dishName.orElse("");
         String code = dishCode.orElse("");
         String price = dishPrice.orElse("");
+        String typeId = dishTypeId.orElse("");
+        if (typeId.equals("")) {
+            typeId = "%" + typeId + "%";
+        }
 
         if (name.equals("null")) {
             name = "";
@@ -75,7 +78,7 @@ public class DishRestController {
             price = "";
         }
 
-        Page<Dish> dishPage = this.iDishService.searchDish(name, code, price, dishTypeId, pageable);
+        Page<Dish> dishPage = this.iDishService.searchDish(name, code, price, typeId, pageable);
         if (dishPage.isEmpty()) {
             return new ResponseEntity<>(dishPage, HttpStatus.NO_CONTENT);
         } else {
@@ -92,10 +95,10 @@ public class DishRestController {
      * @return HTTP status  204(NO_CONTENT) : id = null
      * HTTP status  200(OK) : return a dish
      */
-    @GetMapping("/findById{id}")
+    @GetMapping("/findById/{id}")
     public ResponseEntity<Dish> findById(@PathVariable Integer id) {
         Dish dish = this.iDishService.findDishById(id);
-        if (id == null) {
+        if (dish == null) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(dish, HttpStatus.OK);
@@ -113,9 +116,6 @@ public class DishRestController {
     @PatchMapping("/delete/{id}")
     public ResponseEntity<Void> deleteDish(@PathVariable Integer id) {
         this.iDishService.deleteDish(id);
-        if (id == null) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

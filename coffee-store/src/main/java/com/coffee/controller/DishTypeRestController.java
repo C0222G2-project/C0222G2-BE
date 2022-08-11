@@ -52,7 +52,7 @@ public class DishTypeRestController {
      *      * HTTP status  204(NO_CONTENT) : id = null
      *      * HTTP status  200(OK) : return a dishType
      */
-    @GetMapping("/findById{id}")
+    @GetMapping("/findById/{id}")
     public ResponseEntity<DishType> findById(@PathVariable Integer id) {
         DishType dishType = this.iDishTypeService.findDishTypeById(id);
         if (id == null) {
