@@ -1,6 +1,7 @@
 package com.coffee.controller;
 
 import com.coffee.model.dish.Dish;
+import com.coffee.model.dish.DishType;
 import com.coffee.service.IDishService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -9,6 +10,8 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 
 @RestController
@@ -25,13 +28,40 @@ public class DishRestController {
      * function: show dish page
      *
      * @param pageable
-     * @return
-     * HTTP status  200(OK) : return Page<Dish> dishPage
+     * @return HTTP status  200(OK) : return Page<Dish> dishPage
      * HTTP status  204(NO_CONTENT): return dishPage is empty
      */
     @GetMapping("/getDishPage")
     public ResponseEntity<Page<Dish>> getAllDish(@PageableDefault(10) Pageable pageable) {
         Page<Dish> dishPage = this.iDishService.findAllDish(pageable);
+        if (dishPage.isEmpty()) {
+            return new ResponseEntity<>(dishPage, HttpStatus.NO_CONTENT);
+        } else {
+            return new ResponseEntity<>(dishPage, HttpStatus.OK);
+        }
+    }
+
+    @GetMapping("/searchDish")
+    public ResponseEntity<Page<Dish>> getAllDish(@PageableDefault(10) Pageable pageable,
+                                                 Optional<String> dishName,
+                                                 Optional<String> dishCode,
+                                                 Optional<String> dishPrice,
+                                                 Integer dishTypeId) {
+        String name = dishName.orElse("");
+        String code = dishCode.orElse("");
+        String price = dishPrice.orElse("");
+
+        if (name.equals("null")) {
+            name = "";
+        }
+        if (code.equals("null")) {
+            code = "";
+        }
+        if (price.equals("null")) {
+            price = "";
+        }
+
+        Page<Dish> dishPage = this.iDishService.searchDish(name, code, price, dishTypeId, pageable);
         if (dishPage.isEmpty()) {
             return new ResponseEntity<>(dishPage, HttpStatus.NO_CONTENT);
         } else {
@@ -45,8 +75,7 @@ public class DishRestController {
      * function: get dish by dish
      *
      * @param id
-     * @return
-     * HTTP status  204(NO_CONTENT) : id = null
+     * @return HTTP status  204(NO_CONTENT) : id = null
      * HTTP status  200(OK) : return a dish
      */
     @GetMapping("/findById{id}")
@@ -64,8 +93,7 @@ public class DishRestController {
      * function: delete dish by dish
      *
      * @param id
-     * @return
-     * HTTP status  204(NO_CONTENT) : id = null
+     * @return HTTP status  204(NO_CONTENT) : id = null
      * HTTP status  200(OK) : deleted
      */
     @PatchMapping("/delete/{id}")

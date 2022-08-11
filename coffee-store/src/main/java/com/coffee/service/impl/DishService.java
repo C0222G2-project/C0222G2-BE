@@ -1,6 +1,7 @@
 package com.coffee.service.impl;
 
 import com.coffee.model.dish.Dish;
+import com.coffee.model.dish.DishType;
 import com.coffee.repository.dish.IDishRepository;
 import com.coffee.service.IDishService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ public class DishService implements IDishService {
      * Created By: HieuCD
      * Date created: 09/08/2022
      * function: get dish page
+     *
      * @param pageable
      * @return Page<Dish> dishPage
      */
@@ -29,8 +31,9 @@ public class DishService implements IDishService {
      * Created By: HieuCD
      * Date created: 09/08/2022
      * function: get dish by dish id
+     *
      * @param id
-     * @return  dish
+     * @return dish
      */
     @Override
     public Dish findDishById(Integer id) {
@@ -41,10 +44,28 @@ public class DishService implements IDishService {
      * Created By: HieuCD
      * Date created: 09/08/2022
      * function: delete dish by dish id
+     *
      * @param id
      */
     @Override
     public void deleteDish(Integer id) {
         iDishRepository.deleteDishById(id);
+    }
+
+    /**
+     * Created By: HieuCD
+     * Date created: 10/08/2022
+     * function: search dish by dish name,code
+     * @param name
+     * @param code
+     * @param price
+     * @param dishType
+     * @param pageable
+     * @return dishPage (search)
+     */
+
+    @Override
+    public Page<Dish> searchDish(String name, String code, String price, Integer dishType,Pageable pageable) {
+        return iDishRepository.searchDishPage("%" + name + "%", "%" + code + "%","%" + price + "%",dishType,pageable);
     }
 }

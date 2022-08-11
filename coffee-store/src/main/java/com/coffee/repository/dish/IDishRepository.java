@@ -1,6 +1,7 @@
 package com.coffee.repository.dish;
 
 import com.coffee.model.dish.Dish;
+import com.coffee.model.dish.DishType;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -13,9 +14,20 @@ import javax.transaction.Transactional;
 
 @Repository
 @Transactional
-public interface IDishRepository extends JpaRepository<Dish,Integer> {
+public interface IDishRepository extends JpaRepository<Dish, Integer> {
     @Query(value = "SELECT id,`code`,creation_date,image,is_deleted,`name`,price,dish_type_id FROM dish", nativeQuery = true)
     Page<Dish> selectAllDishPage(Pageable pageable);
+
+    @Query(value = " SELECT d.id,d.`code`,d.creation_date,d.image,d.is_deleted,d.`name`,d.price,d.dish_type_id " +
+            "FROM dish d " +
+            "join dish_type on d.dish_type_id = dish_type.id " +
+            "where d.name like :name and d.code like :code and d.price like :price and dish_type.`id` like :dishType", nativeQuery = true,
+    countQuery =" select count(*) from(SELECT id,`code`,creation_date,image," +
+            "d.is_deleted,`name`,price,dish_type_id FROM dish d " +
+            "where d.name like :name and d.code like :code and d.price like :price and dish_type.`id` like :dishType) temp_table")
+    Page<Dish> searchDishPage(@Param("name") String name, @Param("code") String code, @Param("price") String price,@Param("dishType") Integer dishType, Pageable pageable);
+
+
 
     @Query(value = "SELECT id,`code`,creation_date,image,is_deleted,`name`,price,dish_type_id  from dish d where d.id =:dishId", nativeQuery = true)
     Dish selectDishById(@Param("dishId") Integer id);
