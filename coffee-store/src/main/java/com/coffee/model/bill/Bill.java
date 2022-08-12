@@ -2,6 +2,7 @@ package com.coffee.model.bill;
 
 import com.coffee.model.dish_order.DishOrder;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
