@@ -33,10 +33,10 @@ public class DishOrderServiceImpl implements IDishOrderService {
      **/
     @Override
     public void createOrder(DishOrder orderDish) {
-        dishOrderRepository.
-        createOrder(orderDish.getCoffeeTable().getId(), orderDish.getCode(),
-                orderDish.getQuantity(), orderDish.getDish().getId(), orderDish.getBill().getId(),
-                orderDish.getEmployee().getId());
+        dishOrderRepository.createOrder(orderDish);
+//        createOrder(orderDish.getCoffeeTable().getId(), orderDish.getCode(),
+//                orderDish.getQuantity(), orderDish.getDish().getId(), orderDish.getBill().getId(),
+//                orderDish.getEmployee().getId());
     }
 
 
@@ -48,5 +48,10 @@ public class DishOrderServiceImpl implements IDishOrderService {
     @Override
     public List<DishOrder> getOrderHaveCode(String param) {
         return dishOrderRepository.getOrderHaveCode(param);
+    }
+
+    @Override
+    public void deleteDishOrder(String param) {
+        dishOrderRepository.deleteOrder(param);
     }
 }

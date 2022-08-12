@@ -30,4 +30,6 @@ public interface IDishOrderService {
      **/
 
     List<DishOrder> getOrderHaveCode(String param);
+
+    void deleteDishOrder(String param);
 }

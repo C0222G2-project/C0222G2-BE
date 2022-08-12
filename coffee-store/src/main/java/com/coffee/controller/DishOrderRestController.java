@@ -28,43 +28,7 @@ import java.util.Optional;
 @RequestMapping("/dish-order")
 public class DishOrderRestController {
     @Autowired
-    private IDishService iDishService;
-    @Autowired
-    private IDishTypeService iDishTypeService;
-    @Autowired
     private IDishOrderService iDishOrderService;
-
-
-    /**
-     *   Author: BinhPX
-     *   Date created: 09/08/2022
-     *   This function will return data can get, @param pageable, @return
-     **/
-    @GetMapping("/dish")
-    public ResponseEntity<Page<Dish>> getAllDish(@PageableDefault(4)Pageable pageable,
-                                                 @RequestParam("page") Optional<Integer> page,
-                                                 @RequestParam("size") Optional<Integer> size){
-        Page<Dish> dishes = iDishService.findAll(pageable);
-        if(dishes.isEmpty()){
-            return new ResponseEntity<>(HttpStatus.BAD_GATEWAY);
-        }
-        return new ResponseEntity<>(dishes, HttpStatus.OK);
-    }
-
-    /**
-     *   Author: BinhPX
-     *   Date created: 09/08/2022
-     *   This function will return all data can get, @return
-     **/
-    @GetMapping("/dish-type")
-    public ResponseEntity<List<DishType>> getAllDishType(){
-        List<DishType> dishesType = iDishTypeService.findAll();
-        if(dishesType.isEmpty()){
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
-        return new ResponseEntity<>(dishesType, HttpStatus.OK);
-    }
-
 
     /**
      *   Author: BinhPX
@@ -79,19 +43,8 @@ public class DishOrderRestController {
         if(bindingResult.hasErrors()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
+        System.out.println(numberCode);
         BeanUtils.copyProperties(dishOrderDto, dishOrder);
-        Bill bill = new Bill();
-        bill.setId(dishOrderDto.getBill().getId());
-        dishOrder.setBill(bill);
-        Employee employee = new Employee();
-        employee.setId(dishOrderDto.getEmployee().getId());
-        dishOrder.setEmployee(employee);
-        Dish dish = new Dish();
-        dish.setId(dishOrderDto.getDish().getId());
-        dishOrder.setDish(dish);
-        CoffeeTable coffeeTable = new CoffeeTable();
-        coffeeTable.setId(dishOrderDto.getCoffeeTable().getId());
-        dishOrder.setCoffeeTable(coffeeTable);
         iDishOrderService.createOrder(dishOrder);
         return new ResponseEntity<>(HttpStatus.OK);
     }
@@ -122,7 +75,7 @@ public class DishOrderRestController {
     @GetMapping("/get-order-have-code/{code}")
     public ResponseEntity<List<DishOrder>> getOrderHaveCode(@PathVariable Optional<Integer> code){
         if(code.isPresent()){
-            List<DishOrder> dishOrders = iDishOrderService.getOrderHaveCode(code.get());
+            List<DishOrder> dishOrders = iDishOrderService.getOrderHaveCode(String.valueOf(code.get()));
             if(dishOrders.isEmpty()){
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
             }
@@ -131,6 +84,21 @@ public class DishOrderRestController {
             }
         }
         return new ResponseEntity<>(HttpStatus.BAD_GATEWAY);
+    }
+
+
+    /**
+     *   Author: BinhPX
+     *   Date created: 12/08/2022
+     *   This function delete order have @param is a code, @return status ok if deleted
+     **/
+    @DeleteMapping("/delete-code/{code}")
+    public ResponseEntity<List<FieldError>> deleteOrderHaveCode(@PathVariable String code){
+        if(code == null){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        this.iDishOrderService.deleteDishOrder(code);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 }

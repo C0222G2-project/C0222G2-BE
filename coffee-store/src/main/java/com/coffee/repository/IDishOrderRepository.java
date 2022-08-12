@@ -14,7 +14,6 @@ import java.util.List;
 
 
 @Repository
-@Transactional
 public interface IDishOrderRepository extends JpaRepository<DishOrder, Integer> {
 
     /**
@@ -23,8 +22,8 @@ public interface IDishOrderRepository extends JpaRepository<DishOrder, Integer> 
      *   This function will return all data can get below database use native query
      *   .@param pageable, @return
      **/
-    @Query(value = "select coffee_table_id, `code`, quantity, dish_id, bill_id, " +
-            "employee_id from dish_order where is_deleted = 0", nativeQuery = true)
+    @Query(value = "select id, coffee_table_id, `code`, quantity, dish_id, bill_id, " +
+            "employee_id, is_deleted from dish_order where is_deleted = 0", nativeQuery = true)
     Page<DishOrder> getAllOrder(Pageable pageable);
 
 
@@ -34,12 +33,12 @@ public interface IDishOrderRepository extends JpaRepository<DishOrder, Integer> 
      *   This function create order menu and insert into database, use native query
      *   .@param is object, @return
      **/
+    @Transactional
     @Modifying
-    @Query(value = "insert into dish_order(coffee_table_id, `code`, quantity, dish_id, bill_id, employee_id)" +
-            "values (:table_id, :order_code, :quantity, :dish, :bill_id, :employee_id)", nativeQuery = true)
-    void createOrder(@Param("table_id") int tableId, @Param("order_code") String orderCode,
-                          @Param("quantity") Integer quantity, @Param("dish") Integer dish,
-                          @Param("bill_id") Integer billId, @Param("employee_id") Integer employeeId);
+    @Query(value = "insert into dish_order(coffee_table_id, code, quantity, dish_id, bill_id, employee_id)" +
+            "values (:#{#dishOrder.coffeeTable.id}, :#{#dishOrder.code}, :#{#dishOrder.quantity}, " +
+            ":#{#dishOrder.dish.id}, :#{#dishOrder.bill.id}, :#{#dishOrder.employee.id})", nativeQuery = true)
+    void createOrder(DishOrder dishOrder);
 
 
     /**
@@ -51,4 +50,16 @@ public interface IDishOrderRepository extends JpaRepository<DishOrder, Integer> 
     @Query(value = "select coffee_table_id, `code`, quantity, dish_id, bill_id, " +
             "employee_id from dish_order where is_deleted = 0 and coffee_table_id = :param", nativeQuery = true)
     List<DishOrder> getOrderHaveCode(@Param("param") String param);
+
+
+    /**
+     *   Author: BinhPX
+     *   Date created: 12/08/2022
+     *   This function delete order have code order match param.
+     *   .@param table id, @return
+     **/
+    @Transactional
+    @Modifying
+    @Query(value = "update dish_order set is_deleted = 1 where code = :code", nativeQuery = true)
+    void deleteOrder(@Param("code") String code);
 }
