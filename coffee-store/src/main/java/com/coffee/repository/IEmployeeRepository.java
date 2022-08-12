@@ -17,6 +17,7 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Integer> {
      * Create by TuyenTN
      * Date: 16:30 pm  9-8-2022
      * method show list and search and paging
+     *  tuyentn-list-employee-2
      *
      * @param pageable
      * @param searchByName
@@ -39,6 +40,7 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Integer> {
                     " join app_user on app_user.id = employee.user_id " +
                     " join position on employee.position_id = position.id " +
                     " where employee.is_deleted =0 and employee.name like :keyZero and employee.phone_number like :keyOne " +
+
                     " and app_user.user_name like :keyTwo ) templol ", nativeQuery = true)
     Page<IEmployeeDTO> getAllEmployee(Pageable pageable, @Param("keyZero") String searchByName,
                                       @Param("keyOne") String searchByPhone,
@@ -47,6 +49,7 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Integer> {
     /**
      * Create by TuyenTN
      * Date: 16:30 pm  9-8-2022
+     * tuyentn-list-employee-2
      *
      * @param id
      * @return
@@ -62,14 +65,14 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Integer> {
     /**
      * Create by TuyenTN
      * Date: 16:30 pm  9-8-2022
-     *
+     * tuyentn-list-employee-2
      * @param id
      * @return
      */
     @Transactional
     @Modifying
     @Query(value = " update employee set is_deleted = 1 where id = :id ", nativeQuery = true)
-    void deleteEmployeeById(Integer id);
+            void deleteEmployeeById(Integer id);
 
 
     /**
@@ -120,7 +123,6 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Integer> {
             " employee.birthday, employee.salary, employee.position_id , employee.user_id, employee.is_deleted from employee " +
             " where employee.id = :id and employee.is_deleted = 0", nativeQuery = true)
     Employee findByIdEmployee(@Param("id") Integer id);
-
 
 
 }

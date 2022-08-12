@@ -22,20 +22,16 @@ public interface ICoffeeTableRepository extends JpaRepository<CoffeeTable, Integ
      * @param id
      * @return
      */
-    @Query(value = "select dto_table.id, dto_table.name,dto_table.price,dto_table.quantity,dto_table.code, dto_table.tong_tien " +
-            " as payment " +
-            " from (select  coffee_table.id, dish.name , dish.price , dish_order.quantity , coffee_table.code," +
-            " ifnull((dish.price * dish_order.quantity),0) as tong_tien " +
+    @Query(value = "select dto_table.id, dto_table.name ,dto_table.price, sum(dto_table.quantity) as quantity , dto_table.code, sum(dto_table.tong_tien) " +
+            " as payment, dto_table.dish_id as dishId " +
+            " from (select coffee_table.id, dish.name , dish.price , dish_order.quantity , coffee_table.code," +
+            " ifnull((dish.price * dish_order.quantity), 0) as tong_tien, dish.id as dish_id " +
             " from dish_order " +
             " join dish on dish.id = dish_order.dish_id " +
             " join coffee_table on dish_order.coffee_table_id = coffee_table.id " +
-            " where coffee_table.id = :idKey) as dto_table",
+            " where coffee_table.id = :idKey) as dto_table group by(dishId) ",
             nativeQuery = true)
     List<ICoffeeTableDto> displayTableById(@Param("idKey") Integer id);
-
-
-
-
 
 
     /**
@@ -45,21 +41,19 @@ public interface ICoffeeTableRepository extends JpaRepository<CoffeeTable, Integ
      * @param pageable
      * @return
      */
-    @Query(value = " select id, code " +
+    @Query(value = " select id, code, status " +
             " from coffee_table ",
             countQuery = " select count(*) from " +
-                    "( select id, code from coffee_table ) temp ",
+                    "( select id, code, status from coffee_table ) temp ",
             nativeQuery = true)
     Page<ICoffeeTableDto> displayCoffeeTableByPage(Pageable pageable);
-
-
-
 
 
     /**
      * Create HoaNN
      * Date create 10/08/2022
-     *+
+     * +
+     *
      * @param id
      * @return
      */
@@ -71,10 +65,8 @@ public interface ICoffeeTableRepository extends JpaRepository<CoffeeTable, Integ
             " join dish on dish.id = dish_order.dish_id " +
             " join coffee_table on dish_order.coffee_table_id = coffee_table.id " +
             " where coffee_table.id = :idKey2) as dto_table",
-            nativeQuery = true )
+            nativeQuery = true)
     ITotalPaymentDto totalPayment(@Param("idKey2") Integer id);
-
-
 
 
 }

@@ -1,6 +1,7 @@
 package com.coffee.service.impl;
 
 
+
 import com.coffee.dto.IEmployeeDTO;
 import com.coffee.model.account.AppRole;
 import com.coffee.model.account.AppUser;
@@ -15,8 +16,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+
 import java.sql.Date;
 import java.time.LocalDate;
+
 
 @Service
 public class EmployeeServiceImpl implements IEmployeeService {
@@ -45,13 +48,14 @@ public class EmployeeServiceImpl implements IEmployeeService {
     public Page<IEmployeeDTO> getAllEmployee(Pageable pageable, String searchByName, String searchByPhone, String searchByAccount) {
         return iEmployeeRepository.getAllEmployee(pageable, "%" + searchByName + "%", "%" + searchByPhone + "%",
                 "%" + searchByAccount + "%");
+
     }
 
     /**
      * Create by TuyenTN
      * Date: 9-8-2022
      * findEmployeeById(id)
-     *
+
      * @param id
      * @return
      */
@@ -64,13 +68,13 @@ public class EmployeeServiceImpl implements IEmployeeService {
      * Create by TuyenTN
      * Date: 9-8-2022
      * deleteEmployeeById()
-     *
      * @param id
      */
     @Override
     public void deleteEmployeeById(Integer id) {
         this.iEmployeeRepository.deleteEmployeeById(id);
     }
+
 
 
     /**
@@ -135,6 +139,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
     public void editEmployee(Employee employee) {
         iEmployeeRepository.editEmployee(employee);
     }
+
 
 
 }
