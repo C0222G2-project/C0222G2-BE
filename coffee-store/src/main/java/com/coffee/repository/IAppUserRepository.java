@@ -17,16 +17,19 @@ public interface IAppUserRepository extends JpaRepository<AppUser, Integer> {
      * @param
      * @return  AppUser list
      */
-    @Query(value = " select app_user.id, app_user.user_name,app_user.creation_date, app_user.password, app_user.is_deleted from app_user " +
+    @Query(value = " select app_user.id, app_user.user_name,app_user.creation_date," +
+            " app_user.password, app_user.is_deleted from app_user " +
             " where is_deleted = 0 ", nativeQuery = true)
     List<AppUser> findAllUser();
 
     @Transactional
     @Modifying
     @Query(value = " INSERT INTO `app_user` " +
-            " (`creation_date`, `password`, `user_name`) VALUES (:#{#appUser.creationDate}, :#{#appUser.password}, :#{#appUser.userName}) ",nativeQuery = true)
+            " (`creation_date`, `password`, `user_name`) VALUES (:#{#appUser.creationDate}, :#{#appUser.password}," +
+            " :#{#appUser.userName}) ",nativeQuery = true)
     void saveAppUser(AppUser appUser);
 
-    @Query(value = " SELECT app_user.id, app_user.user_name,app_user.creation_date, app_user.password, app_user.is_deleted FROM coffee_store.app_user where user_name = :username ", nativeQuery = true)
+    @Query(value = " SELECT app_user.id, app_user.user_name,app_user.creation_date, app_user.password," +
+            " app_user.is_deleted FROM coffee_store.app_user where user_name = :username ", nativeQuery = true)
     AppUser findAppUserByUserName(@Param("username") String userName);
 }

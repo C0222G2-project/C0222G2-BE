@@ -156,8 +156,6 @@ public class EmployeeRestController {
         return new ResponseEntity<>(iEmployeeService.findById(id), HttpStatus.OK);
     }
 
-
-
     /**
      * @creator TaiLV
      * @function ( create the value of the employee )
@@ -177,8 +175,6 @@ public class EmployeeRestController {
         }
         Employee employee =new Employee();
         BeanUtils.copyProperties(employeeDTO, employee);
-
-
         iEmployeeService.saveEmployee(employee);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
@@ -206,6 +202,7 @@ public class EmployeeRestController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
         BeanUtils.copyProperties(employeeDTOEdit, employee);
+
         iEmployeeService.editEmployee(employee);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }

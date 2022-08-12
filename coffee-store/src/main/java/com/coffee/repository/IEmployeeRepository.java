@@ -91,10 +91,11 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Integer> {
      */
     @Modifying
     @Transactional
-    @Query(value = " INSERT INTO employee (name, image, phone_number, address, email, gender, birthday, salary, position_id, `user_id`) " +
+    @Query(value = " INSERT INTO employee (name, image, phone_number, address, email," +
+            " gender, birthday, salary, position_id, `user_id`) " +
             " VALUES (:#{#employee.name}, :#{#employee.image}, :#{#employee.phoneNumber}, " +
-            " :#{#employee.address}, :#{#employee.email}, :#{#employee.gender}, :#{#employee.birthday}, :#{#employee.salary}, " +
-            " :#{#employee.position.id} , :#{#employee.appUser.id}); ", nativeQuery = true)
+            " :#{#employee.address}, :#{#employee.email}, :#{#employee.gender}, :#{#employee.birthday}," +
+            " :#{#employee.salary}, :#{#employee.position.id} , :#{#employee.appUser.id}); ", nativeQuery = true)
     void saveEmployee(@Param("employee") Employee employee);
 
     /**
@@ -107,8 +108,9 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Integer> {
     @Modifying
     @Query(value = " update employee set `name` = :#{#employee.name}, image = :#{#employee.image}," +
             " birthday = :#{#employee.birthday}, email = :#{#employee.email} , gender = :#{#employee.gender}," +
-            " phone_number = :#{#employee.phoneNumber}, address = :#{#employee.address}, salary = :#{#employee.salary}" +
-            " where id = :#{#employee.id} ", nativeQuery = true)
+            " phone_number = :#{#employee.phoneNumber}, address = :#{#employee.address}, salary = :#{#employee.salary} " +
+//            " user_id = :#{#employee.appUser.id} , position_id = :#{#employee.position.id} " +
+            " where id = :#{#employee.id} ", nativeQuery = true )
     void editEmployee(Employee employee);
 
     /**
@@ -117,8 +119,10 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Integer> {
      * @creator TaiLV
      * Date 09/08/2022
      */
-    @Query(value = " select employee.id, employee.name, employee.image,employee.phone_number , employee.address , employee.email, employee.gender, " +
-            " employee.birthday, employee.salary, employee.position_id , employee.user_id, employee.is_deleted from employee " +
+    @Query(value = " select employee.id, employee.name, employee.image,employee.phone_number ," +
+            " employee.address , employee.email, employee.gender, " +
+            " employee.birthday, employee.salary, employee.position_id ," +
+            " employee.user_id, employee.is_deleted from employee " +
             " where employee.id = :id and employee.is_deleted = 0", nativeQuery = true)
     Employee findByIdEmployee(@Param("id") Integer id);
 
