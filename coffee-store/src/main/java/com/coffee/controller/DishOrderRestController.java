@@ -101,9 +101,9 @@ public class DishOrderRestController {
      *   and return status bad gateway if size equal 0
      **/
     @GetMapping("/get-order-have-code/{code}")
-    public ResponseEntity<List<DishOrder>> getOrderHaveCode(@PathVariable Optional<Integer> code){
-        if(code.isPresent()){
-            List<DishOrder> dishOrders = iDishOrderService.getOrderHaveCode(String.valueOf(code.get()));
+    public ResponseEntity<List<DishOrder>> getOrderHaveCode(@PathVariable String code){
+        if(code != null){
+            List<DishOrder> dishOrders = iDishOrderService.getOrderHaveCode(code);
             if(dishOrders.isEmpty()){
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
             }

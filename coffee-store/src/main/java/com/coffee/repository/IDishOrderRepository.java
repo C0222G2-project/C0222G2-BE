@@ -25,7 +25,10 @@ public interface IDishOrderRepository extends JpaRepository<DishOrder, Integer> 
      * .@param pageable, @return
      **/
     @Query(value = "select id, coffee_table_id, `code`, quantity, dish_id, bill_id, " +
-            "employee_id, is_deleted from dish_order where is_deleted = 0", nativeQuery = true)
+            "employee_id, is_deleted from dish_order where is_deleted = 0",countQuery = "select count(*) from" +
+            " ( select id, coffee_table_id, `code`, quantity, dish_id, bill_id, employee_id, is_deleted " +
+            "from dish_order where is_deleted = 0 ) as dishOrder",
+            nativeQuery = true)
     Page<DishOrder> getAllOrder(Pageable pageable);
 
 
@@ -54,8 +57,8 @@ public interface IDishOrderRepository extends JpaRepository<DishOrder, Integer> 
      * This function find any order have table id match param.
      * .@param table id, @return
      **/
-    @Query(value = "select coffee_table_id, `code`, quantity, dish_id, bill_id, " +
-            "employee_id from dish_order where is_deleted = 0 and coffee_table_id = :param", nativeQuery = true)
+    @Query(value = "select id, coffee_table_id, `code`, quantity, dish_id, bill_id, " +
+            "employee_id, is_deleted from dish_order where is_deleted = 0 and coffee_table_id = :param", nativeQuery = true)
     List<DishOrder> getOrderHaveCode(@Param("param") String param);
 
 
