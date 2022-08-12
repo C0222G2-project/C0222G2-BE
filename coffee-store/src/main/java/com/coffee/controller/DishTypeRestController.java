@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
+
 @Controller
 @CrossOrigin
 @RequestMapping("/dishType")
@@ -59,5 +60,25 @@ public class DishTypeRestController {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(dishType, HttpStatus.OK);
+    }
+    /**
+     * @function ( find the dish of the id )
+     * @creator PhucLV
+     * @date-create 09/08/2022
+     * @param id
+     * @return true: id status 200 / false: status 404
+     */
+
+
+    /**
+     * @function ( get all List of the dishType )
+     * @creator PhucLV
+     * @date-create 10/08/2022
+     * @return true: list   status 200
+     */
+    @GetMapping("/list_dish_type")
+    public ResponseEntity<List<DishType>> getSanPham() {
+        List<DishType> dishTypeList = this.iDishTypeService.getAllListDishType();
+        return new ResponseEntity<>(dishTypeList, HttpStatus.OK);
     }
 }

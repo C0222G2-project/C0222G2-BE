@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -53,6 +54,15 @@ public class DishService implements IDishService {
     @Override
     public void editDish( Dish dish) {
         iDishRepository.editDish(dish);
+    }
+
+    /**
+     * phúc test
+     * @return
+     */
+    @Override
+    public List<Dish> getAllDishtext() {
+        return iDishRepository.findAll();
     }
 
     /**

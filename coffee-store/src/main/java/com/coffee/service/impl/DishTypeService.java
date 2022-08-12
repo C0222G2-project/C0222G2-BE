@@ -8,6 +8,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class DishTypeService implements IDishTypeService {
     @Autowired
@@ -34,6 +36,19 @@ public class DishTypeService implements IDishTypeService {
     @Override
     public DishType findDishTypeById(Integer id) {
         return iDishTypeRepository.selectDishById(id);
+    }
+
+
+    /**
+     * @function ( get all List of the dishType )
+     * @creator PhucLV
+     * @date-create 10/08/2022
+     * @return true: list status 200
+     */
+
+    @Override
+    public List<DishType> getAllListDishType() {
+        return iDishTypeRepository.findAll();
     }
 
 }

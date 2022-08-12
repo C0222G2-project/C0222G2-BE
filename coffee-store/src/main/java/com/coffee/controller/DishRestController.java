@@ -17,6 +17,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.validation.Valid;
@@ -30,6 +31,11 @@ public class DishRestController {
 
     @Autowired
     private IDishService iDishService;
+    @GetMapping("/DishLish")
+    public ResponseEntity<List<Dish>> getAlltext() {
+        List<Dish> dishList = this.iDishService.getAllDishtext();
+        return new ResponseEntity<>(dishList, HttpStatus.OK);
+    }
 
     /**
 <<<<<<< HEAD
