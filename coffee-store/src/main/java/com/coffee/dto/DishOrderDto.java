@@ -22,16 +22,16 @@ public class DishOrderDto {
     private Integer quantity;
 
     @NotNull
-    private CoffeTableDto coffeeTable;
+    private CoffeeTable coffeeTable;
 
     @NotNull
-    private BillDto bill;
-
-
-    @NotNull
-    private EmployeeDto employee;
+    private Bill bill;
 
 
     @NotNull
-    private DishDto dish;
+    private Employee employee;
+
+
+    @NotNull
+    private Dish dish;
 }

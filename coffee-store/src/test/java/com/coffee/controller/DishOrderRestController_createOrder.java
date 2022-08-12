@@ -1,6 +1,10 @@
 package com.coffee.controller;
 
 import com.coffee.dto.*;
+import com.coffee.model.bill.Bill;
+import com.coffee.model.coffee_table.CoffeeTable;
+import com.coffee.model.dish.Dish;
+import com.coffee.model.employee.Employee;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,16 +34,16 @@ public class DishOrderRestController_createOrder {
     @Test
     public void createOrder_18() throws Exception {
         DishOrderDto dishOrderDto = new DishOrderDto();
-        DishDto dishDto = new DishDto();
+        Dish dishDto = new Dish();
         dishDto.setId(1);
         dishOrderDto.setDish(dishDto);
-        BillDto billDto = new BillDto();
+        Bill billDto = new Bill();
         billDto.setId(1);
         dishOrderDto.setBill(billDto);
-        EmployeeDto employeeDto = new EmployeeDto();
+        Employee employeeDto = new Employee();
         employeeDto.setId(1);
         dishOrderDto.setEmployee(employeeDto);
-        CoffeTableDto coffeeTableDto = new CoffeTableDto();
+        CoffeeTable coffeeTableDto = new CoffeeTable();
         coffeeTableDto.setId(1);
         dishOrderDto.setCoffeeTable(coffeeTableDto);
         dishOrderDto.setQuantity(2);
@@ -62,13 +66,13 @@ public class DishOrderRestController_createOrder {
     public void createOrder_dish_13() throws Exception {
         DishOrderDto dishOrderDto = new DishOrderDto();
         dishOrderDto.setDish(null);
-        BillDto billDto = new BillDto();
+        Bill billDto = new Bill();
         billDto.setId(1);
         dishOrderDto.setBill(billDto);
-        EmployeeDto employeeDto = new EmployeeDto();
+        Employee employeeDto = new Employee();
         employeeDto.setId(1);
         dishOrderDto.setEmployee(employeeDto);
-        CoffeTableDto coffeeTableDto = new CoffeTableDto();
+        CoffeeTable coffeeTableDto = new CoffeeTable();
         coffeeTableDto.setId(1);
         dishOrderDto.setCoffeeTable(coffeeTableDto);
         dishOrderDto.setQuantity(2);
@@ -90,14 +94,14 @@ public class DishOrderRestController_createOrder {
     @Test
     public void createOrder_bill_13() throws Exception {
         DishOrderDto dishOrderDto = new DishOrderDto();
-        DishDto dishDto = new DishDto();
+        Dish dishDto = new Dish();
         dishDto.setId(1);
         dishOrderDto.setDish(dishDto);
         dishOrderDto.setBill(null);
-        EmployeeDto employeeDto = new EmployeeDto();
+        Employee employeeDto = new Employee();
         employeeDto.setId(1);
         dishOrderDto.setEmployee(employeeDto);
-        CoffeTableDto coffeeTableDto = new CoffeTableDto();
+        CoffeeTable coffeeTableDto = new CoffeeTable();
         coffeeTableDto.setId(1);
         dishOrderDto.setCoffeeTable(coffeeTableDto);
         dishOrderDto.setQuantity(2);
@@ -119,14 +123,14 @@ public class DishOrderRestController_createOrder {
     @Test
     public void createOrder_employee_13() throws Exception {
         DishOrderDto dishOrderDto = new DishOrderDto();
-        DishDto dishDto = new DishDto();
+        Dish dishDto = new Dish();
         dishDto.setId(1);
         dishOrderDto.setDish(dishDto);
-        BillDto billDto = new BillDto();
+        Bill billDto = new Bill();
         billDto.setId(1);
         dishOrderDto.setBill(billDto);
         dishOrderDto.setEmployee(null);
-        CoffeTableDto coffeeTableDto = new CoffeTableDto();
+        CoffeeTable coffeeTableDto = new CoffeeTable();
         coffeeTableDto.setId(1);
         dishOrderDto.setCoffeeTable(coffeeTableDto);
         dishOrderDto.setQuantity(2);
@@ -148,13 +152,13 @@ public class DishOrderRestController_createOrder {
     @Test
     public void createOrder_coffeeTable_13() throws Exception {
         DishOrderDto dishOrderDto = new DishOrderDto();
-        DishDto dishDto = new DishDto();
+        Dish dishDto = new Dish();
         dishDto.setId(1);
         dishOrderDto.setDish(dishDto);
-        BillDto billDto = new BillDto();
+        Bill billDto = new Bill();
         billDto.setId(1);
         dishOrderDto.setBill(billDto);
-        EmployeeDto employeeDto = new EmployeeDto();
+        Employee employeeDto = new Employee();
         employeeDto.setId(1);
         dishOrderDto.setEmployee(employeeDto);
         dishOrderDto.setCoffeeTable(null);
@@ -177,16 +181,16 @@ public class DishOrderRestController_createOrder {
     @Test
     public void createOrder_quantity_13() throws Exception {
         DishOrderDto dishOrderDto = new DishOrderDto();
-        DishDto dishDto = new DishDto();
+        Dish dishDto = new Dish();
         dishDto.setId(1);
         dishOrderDto.setDish(dishDto);
-        BillDto billDto = new BillDto();
+        Bill billDto = new Bill();
         billDto.setId(1);
         dishOrderDto.setBill(billDto);
-        EmployeeDto employeeDto = new EmployeeDto();
+        Employee employeeDto = new Employee();
         employeeDto.setId(1);
         dishOrderDto.setEmployee(employeeDto);
-        CoffeTableDto coffeTableDto = new CoffeTableDto();
+        CoffeeTable coffeTableDto = new CoffeeTable();
         coffeTableDto.setId(1);
         dishOrderDto.setCoffeeTable(coffeTableDto);
         dishOrderDto.setQuantity(null);
@@ -208,16 +212,16 @@ public class DishOrderRestController_createOrder {
     @Test
     public void createOrder_quantity_16() throws Exception {
         DishOrderDto dishOrderDto = new DishOrderDto();
-        DishDto dishDto = new DishDto();
+        Dish dishDto = new Dish();
         dishDto.setId(1);
         dishOrderDto.setDish(dishDto);
-        BillDto billDto = new BillDto();
+        Bill billDto = new Bill();
         billDto.setId(1);
         dishOrderDto.setBill(billDto);
-        EmployeeDto employeeDto = new EmployeeDto();
+        Employee employeeDto = new Employee();
         employeeDto.setId(1);
         dishOrderDto.setEmployee(employeeDto);
-        CoffeTableDto coffeTableDto = new CoffeTableDto();
+        CoffeeTable coffeTableDto = new CoffeeTable();
         coffeTableDto.setId(1);
         dishOrderDto.setCoffeeTable(coffeTableDto);
         dishOrderDto.setQuantity(0);

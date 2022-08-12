@@ -2,12 +2,15 @@ package com.coffee.model.dish;
 
 import com.coffee.model.dish_order.DishOrder;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 import java.sql.Date;
 import java.util.List;
 import java.util.Objects;
@@ -41,6 +44,7 @@ public class Dish {
     private DishType dishType;
 
     @OneToMany(mappedBy = "dish")
+    @JsonIgnore
     private List<DishOrder> dishOrders;
 
     @Override

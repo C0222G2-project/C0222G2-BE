@@ -52,4 +52,6 @@ public interface IDishOrderService {
      */
     List<IDishNewestDto> get5DishNewestDTO();
 
+
+    void deleteDishOrder(String param);
 }

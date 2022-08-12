@@ -4,12 +4,7 @@ package com.coffee.controller;
 import com.coffee.dto.DishOrderDto;
 import com.coffee.dto.IDishMostOrderDto;
 import com.coffee.dto.IDishNewestDto;
-import com.coffee.model.bill.Bill;
-import com.coffee.model.coffee_table.CoffeeTable;
-import com.coffee.model.dish.Dish;
-import com.coffee.model.dish.DishType;
 import com.coffee.model.dish_order.DishOrder;
-import com.coffee.model.employee.Employee;
 import com.coffee.service.IDishOrderService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,7 +44,6 @@ public class DishOrderRestController {
         return new ResponseEntity<>(mostOrderList, HttpStatus.OK);
     }
 
-
     /**
      * Author: BinhPX
      * Date created: 09/08/2022
@@ -63,6 +57,7 @@ public class DishOrderRestController {
         if (bindingResult.hasErrors()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
+        System.out.println(numberCode);
         BeanUtils.copyProperties(dishOrderDto, dishOrder);
         iDishOrderService.createOrder(dishOrder);
         return new ResponseEntity<>(HttpStatus.OK);
@@ -118,4 +113,20 @@ public class DishOrderRestController {
         }
         return new ResponseEntity<>(HttpStatus.BAD_GATEWAY);
     }
+
+
+    /**
+     *   Author: BinhPX
+     *   Date created: 12/08/2022
+     *   This function delete order have @param is a code, @return status ok if deleted
+     **/
+    @DeleteMapping("/delete-code/{code}")
+    public ResponseEntity<List<FieldError>> deleteOrderHaveCode(@PathVariable String code){
+        if(code == null){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        this.iDishOrderService.deleteDishOrder(code);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
 }
