@@ -19,8 +19,10 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.sql.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -52,9 +54,12 @@ public class JwtAuthenticationController {
      * @date-create 9/8/2022
      */
     @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
-    public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws Exception {
+    public ResponseEntity<?> createAuthenticationToken(@Valid @RequestBody JwtRequest authenticationRequest, BindingResult bindingResult) throws Exception {
         if (authenticationRequest.getUsername() == null || authenticationRequest.getPassword() == null) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
+        if (bindingResult.hasErrors()) {
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
 
         final UserDetails userDetails = userDetailsService

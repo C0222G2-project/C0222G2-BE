@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.io.IOException;
 import java.sql.Date;
+import java.util.List;
 
 @RestController
 @CrossOrigin
@@ -39,13 +40,13 @@ public class SimpleEmailController {
     @Value("${spring.mail.username}")
     private String myEmail;
 
-    private String token;
+    private List<String> tokenList;
 
     /**
-     * @creator: PhuongTD
-     * @date-create 9/8/2022
      * @param jwtRequest
      * @return
+     * @creator: PhuongTD
+     * @date-create 9/8/2022
      */
     @PostMapping("/sendSimpleEmail")
     public ResponseEntity<?> sendSimpleEmail(@RequestBody JwtRequest jwtRequest) {
@@ -59,33 +60,35 @@ public class SimpleEmailController {
             message.setFrom(this.myEmail);
             message.setTo(appUser.getEmployee().getEmail());
             message.setSubject("Find password");
-            this.token = jwtTokenUtil.generateToken(jwtRequest.getUsername());
-            message.setText("http://localhost:8080/forgotPassword/" + this.token);
+            String token = jwtTokenUtil.generateToken(jwtRequest.getUsername());
+            this.tokenList.add(token);
+            message.setText("http://localhost:8080/forgotPassword/" + token);
 
             // Send Message!
             this.emailSender.send(message);
-            return ResponseEntity.ok(new JwtResponse(this.token));
+            return ResponseEntity.ok(new JwtResponse(token));
         }
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
     /**
-     *
-     * @creator: PhuongTD
-     * @date-create 9/8/2022
      * @param token
      * @param response
      * @return redirect to change password form if true or redirect to login form if false
      * @throws IOException
+     * @creator: PhuongTD
+     * @date-create 9/8/2022
      */
     @GetMapping("/forgotPassword/{token}")
     public ResponseEntity<?> getUsernameForChangePassword(@PathVariable String token, HttpServletResponse response) throws IOException {
-        if (this.token == null) {
+        if (this.tokenList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
-        if (this.token.equals(token)) {
-            response.sendRedirect("http://localhost:4200/forgot/" + token);
-            return new ResponseEntity<>(HttpStatus.OK);
+        for (String tokenVal: this.tokenList) {
+            if (tokenVal.equals(token)) {
+                response.sendRedirect("http://localhost:4200/forgot/" + token);
+                return new ResponseEntity<>(HttpStatus.OK);
+            }
         }
         response.sendRedirect("http://localhost:4200/login");
         return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
@@ -93,33 +96,39 @@ public class SimpleEmailController {
 
     /**
      * Method change password
-     * @creator: PhuongTD
-     * @date-create 9/8/2022
+     *
      * @param jwtRequest
      * @return status 401 if token null
+     * @creator: PhuongTD
+     * @date-create 9/8/2022
      */
     @PostMapping("/changePassword")
     public ResponseEntity<?> changePassword(@Valid @RequestBody JwtRequest jwtRequest, BindingResult bindingResult) {
-        if (this.token == null) {
+        if (this.tokenList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
-        if (this.token.equals(jwtRequest.getToken())) {
-            AppUser appUser = this.appUserService.findAppUserByUsername(jwtTokenUtil.getUsernameFromToken(jwtRequest.getToken()));
-            if (appUser != null) {
-                if (bindingResult.hasErrors()) {
-                    return new ResponseEntity<>(bindingResult.getFieldErrors(), HttpStatus.OK);
-                }
-                if (jwtRequest.getPassword().equals(jwtRequest.getConfirmPassword())) {
-                    appUser.setPassword(encrytedPasswordUtils.encrytePassword(jwtRequest.getPassword()));
-                    Date date = new Date(System.currentTimeMillis());
-                    appUser.setCreationDate(date);
-                    this.appUserService.updatePassword(appUser);
-                    this.token = "";
+        for (String tokenVal: this.tokenList) {
+            if (tokenVal.equals(jwtRequest.getToken())) {
+                AppUser appUser = this.appUserService.findAppUserByUsername(jwtTokenUtil.getUsernameFromToken(jwtRequest.getToken()));
+                if (appUser != null) {
+                    if (bindingResult.hasErrors()) {
+                        return new ResponseEntity<>(bindingResult.getFieldErrors(), HttpStatus.OK);
+                    }
+                    if (jwtRequest.getPassword().equals(jwtRequest.getConfirmPassword())) {
+                        appUser.setPassword(encrytedPasswordUtils.encrytePassword(jwtRequest.getPassword()));
+                        Date date = new Date(System.currentTimeMillis());
+                        appUser.setCreationDate(date);
+                        this.appUserService.updatePassword(appUser);
+                        this.tokenList.remove(jwtRequest.getToken());
+                        return new ResponseEntity<>(HttpStatus.OK);
+                    } else {
+                        return new ResponseEntity<>("Password Not Same", HttpStatus.OK);
+                    }
                 } else {
-                    return new ResponseEntity<>("Password Not Same", HttpStatus.OK);
+                    return new ResponseEntity<>(HttpStatus.NO_CONTENT);
                 }
             } else {
-                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+                return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
             }
         }
         return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
