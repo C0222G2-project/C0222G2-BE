@@ -2,6 +2,7 @@ package com.coffee.model.bill;
 
 import com.coffee.model.dish_order.DishOrder;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -29,8 +30,8 @@ public class Bill {
     @Column(columnDefinition = "bit(1) default 0")
     private Boolean isDeleted;
 
-    @JsonBackReference
     @OneToMany(mappedBy = "bill")
+    @JsonIgnore
     private List<DishOrder> dishOrders;
 
     @Override

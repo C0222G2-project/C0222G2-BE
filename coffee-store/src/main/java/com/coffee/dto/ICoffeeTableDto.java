@@ -9,4 +9,6 @@ public interface ICoffeeTableDto {
     Integer getQuantity();
     String getCode();
     Double getPayment();
+    Integer getDishId();
+    Boolean getStatus();
 }

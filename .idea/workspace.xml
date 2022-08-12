@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="71555c35-6cd7-4788-91ea-881817dc2b84" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/coffee-store/src/main/java/com/coffee/controller/EmployeeRestController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/coffee-store/src/main/java/com/coffee/dto/EmployeeDTOCreate.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/coffee-store/src/main/java/com/coffee/dto/EmployeeDTOEdit.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/coffee-store/src/main/java/com/coffee/dto/IEmployeeDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/coffee-store/src/main/java/com/coffee/repository/IAppUserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/coffee-store/src/main/java/com/coffee/repository/IEmployeeRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/coffee-store/src/main/java/com/coffee/repository/IPositionRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/coffee-store/src/main/java/com/coffee/repository/IUserRoleRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/coffee-store/src/main/java/com/coffee/service/IAppUserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/coffee-store/src/main/java/com/coffee/service/IEmployeeService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/coffee-store/src/main/java/com/coffee/service/IPositionService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/coffee-store/src/main/java/com/coffee/service/IUserRoleService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/coffee-store/src/main/java/com/coffee/service/impl/AppUserServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/coffee-store/src/main/java/com/coffee/service/impl/EmployeeServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/coffee-store/src/main/java/com/coffee/service/impl/PositionServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/coffee-store/src/main/java/com/coffee/service/impl/UserRoleServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/coffee-store/src/test/java/com/coffee/controller/EmployeeRestController_deleteEmployeeById.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/coffee-store/src/test/java/com/coffee/controller/EmployeeRestController_editEmployee.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/coffee-store/src/test/java/com/coffee/controller/EmployeeRestController_findById.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/coffee-store/src/test/java/com/coffee/controller/EmployeeRestController_findEmployeeById.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/coffee-store/src/test/java/com/coffee/controller/EmployeeRestController_getAllEmployee.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/coffee-store/src/test/java/com/coffee/controller/EmployeeRestController_getAllPosition.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/coffee-store/src/test/java/com/coffee/controller/EmployeeRestController_getAllUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/coffee-store/src/test/java/com/coffee/controller/EmployeeRestController_saveEmployee.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$/coffee-store">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JpbToolWindowState">
+    <option name="myId2FirstActivated">
+      <map>
+        <entry key="com.haulmont.jpb.jpaInspector" value="true" />
+        <entry key="com.haulmont.jpb.jpaPalette" value="true" />
+        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
+      </map>
+    </option>
+    <option name="myId2Visible">
+      <map>
+        <entry key="com.haulmont.jpb.jpaInspector" value="false" />
+        <entry key="com.haulmont.jpb.jpaPalette" value="false" />
+        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectId" id="2DFmKR47MiXkDQDbFiRu2Bo86pq" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/coffee-store" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="71555c35-6cd7-4788-91ea-881817dc2b84" name="Changes" comment="" />
+      <created>1660303144853</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1660303144853</updated>
+      <workItem from="1660303150496" duration="69000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
