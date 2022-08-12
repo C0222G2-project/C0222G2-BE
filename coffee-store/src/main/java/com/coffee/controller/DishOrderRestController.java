@@ -4,6 +4,7 @@ import com.coffee.dto.DishMostOrderDTO;
 import com.coffee.dto.DishNewestDTO;
 import com.coffee.service.IDishOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -67,7 +68,6 @@ public class DishOrderRestController {
         if (bindingResult.hasErrors()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        System.out.println(numberCode);
         BeanUtils.copyProperties(dishOrderDto, dishOrder);
         iDishOrderService.createOrder(dishOrder);
         return new ResponseEntity<>(HttpStatus.OK);
