@@ -82,11 +82,10 @@ public class FeedbackRestController {
             @RequestParam Optional<String> searchStartDate,
             @RequestParam Optional<String> searchEndDate) {
 
-        Sort sortable = Sort.by(sort);
+        Sort sortable;
         if (sort.equals("ASC")) {
             sortable = Sort.by("id").ascending();
-        }
-        if (!sort.equals("ASC")) {
+        } else {
             sortable = Sort.by("rating").ascending();
         }
         Pageable pageable = PageRequest.of(page, size, sortable);
