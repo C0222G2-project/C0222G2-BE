@@ -33,6 +33,7 @@ public class DishRestController {
     private IDishService iDishService;
 
     /**
+<<<<<<< HEAD
      * @function ( get all list of the dish)
      * @return dish List
      * @creator PhucLV
@@ -46,6 +47,8 @@ public class DishRestController {
     }
 
     /**
+=======
+>>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
      * @function ( create new Dish)
      * @param dishDto
      * @return dish, status 201

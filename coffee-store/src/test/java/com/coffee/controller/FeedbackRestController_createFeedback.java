@@ -595,8 +595,8 @@ public class FeedbackRestController_createFeedback {
 
     /**
      * Created by: DiepTT
-     * Date created: 11/08/2022
-     * Function: Check max length (70 characters) of "image url"
+     * Date created: 12/08/2022 (DiepTT)
+     * Function: Check max length (200 characters) of "image url"
      *
      * @throws Exception
      */
@@ -609,7 +609,10 @@ public class FeedbackRestController_createFeedback {
         feedbackDto.setEmail("nguyenthihoa@gmail.com");
         feedbackDto.setRating(5);
         feedbackDto.setContent("Quán trang trí đẹp, thức uống ngon.");
-        feedbackDto.setImage("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.jpg");
+        feedbackDto.setImage("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
+                "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
+                "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
+                "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.jpg");
         this.mockMvc
                 .perform(MockMvcRequestBuilders
                         .post("/feedback/create")

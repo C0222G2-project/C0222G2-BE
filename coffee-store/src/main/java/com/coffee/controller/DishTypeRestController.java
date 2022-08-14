@@ -76,6 +76,7 @@ public class DishTypeRestController {
      * @date-create 10/08/2022
      * @return true: list   status 200
      */
+
     @GetMapping("/list_dish_type")
     public ResponseEntity<List<DishType>> getAllDishTypeList() {
         List<DishType> dishTypeList = this.iDishTypeService.getAllListDishType();

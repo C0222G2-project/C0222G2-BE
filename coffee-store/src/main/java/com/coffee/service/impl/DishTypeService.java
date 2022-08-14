@@ -48,7 +48,7 @@ public class DishTypeService implements IDishTypeService {
 
     @Override
     public List<DishType> getAllListDishType() {
-        return iDishTypeRepository.findAll();
+        return iDishTypeRepository.findAllDishType();
     }
 
 }
