@@ -1,11 +1,16 @@
 package com.coffee.controller;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import com.coffee.dto.EmployeeDTO;
 =======
 import com.coffee.dto.employe.EmployeeDTOCreate;
 import com.coffee.model.account.AppUser;
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+import com.coffee.dto.employe.EmployeeDTOCreate;
+import com.coffee.model.account.AppUser;
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 import com.coffee.model.employee.Position;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
@@ -17,10 +22,15 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import java.sql.Date;
 
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+import java.sql.Date;
+
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -34,6 +44,7 @@ public class EmployeeRestController_saveEmployee {
     @Autowired
     private ObjectMapper objectMapper;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     // test userName = null
     @Test
@@ -51,6 +62,8 @@ public class EmployeeRestController_saveEmployee {
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.getIsDeleted(0);
 =======
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
     /**
      * Create by TaiLV
      * create date:10/08/2022
@@ -74,7 +87,10 @@ public class EmployeeRestController_saveEmployee {
         employeeDTO.setSalary(1000000.0);
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.setIsDeleted(0);
+<<<<<<< HEAD
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 
         Position position = new Position();
         position.setId(1);
@@ -89,6 +105,7 @@ public class EmployeeRestController_saveEmployee {
                 .andExpect(status().is4xxClientError());
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     // test userName = ""
     @Test
@@ -106,6 +123,8 @@ public class EmployeeRestController_saveEmployee {
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.getIsDeleted(0);
 =======
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
     /**
      * Create by TaiLV
      * create date:10/08/2022
@@ -129,7 +148,10 @@ public class EmployeeRestController_saveEmployee {
         employeeDTO.setSalary(1000000.0);
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.setIsDeleted(0);
+<<<<<<< HEAD
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 
         Position position = new Position();
         position.setId(1);
@@ -144,6 +166,7 @@ public class EmployeeRestController_saveEmployee {
                 .andExpect(status().is4xxClientError());
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     // test userName = first input = number
     @Test
@@ -161,6 +184,8 @@ public class EmployeeRestController_saveEmployee {
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.getIsDeleted(0);
 =======
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
     /**
      * Create by TaiLV
      * create date:10/08/2022
@@ -184,7 +209,10 @@ public class EmployeeRestController_saveEmployee {
         employeeDTO.setSalary(1000000.0);
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.setIsDeleted(0);
+<<<<<<< HEAD
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 
         Position position = new Position();
         position.setId(1);
@@ -199,6 +227,7 @@ public class EmployeeRestController_saveEmployee {
                 .andExpect(status().is4xxClientError());
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     // test userName < 6 char
     @Test
@@ -216,6 +245,8 @@ public class EmployeeRestController_saveEmployee {
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.getIsDeleted(0);
 =======
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
     /**
      * Create by TaiLV
      * create date:10/08/2022
@@ -239,7 +270,10 @@ public class EmployeeRestController_saveEmployee {
         employeeDTO.setSalary(1000000.0);
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.setIsDeleted(0);
+<<<<<<< HEAD
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 
         Position position = new Position();
         position.setId(1);
@@ -253,6 +287,7 @@ public class EmployeeRestController_saveEmployee {
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
+<<<<<<< HEAD
 <<<<<<< HEAD
     // test name null
     @Test
@@ -270,6 +305,8 @@ public class EmployeeRestController_saveEmployee {
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.getIsDeleted(0);
 =======
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 
     /**
      * Create by TaiLV
@@ -333,7 +370,10 @@ public class EmployeeRestController_saveEmployee {
         employeeDTO.setSalary(1000000.0);
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.setIsDeleted(0);
+<<<<<<< HEAD
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 
         Position position = new Position();
         position.setId(1);
@@ -348,6 +388,7 @@ public class EmployeeRestController_saveEmployee {
                 .andExpect(status().is4xxClientError());
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     // test name ""
     @Test
@@ -365,6 +406,8 @@ public class EmployeeRestController_saveEmployee {
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.getIsDeleted(0);
 =======
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
     /**
      * Create by TaiLV
      * create date:10/08/2022
@@ -386,7 +429,10 @@ public class EmployeeRestController_saveEmployee {
         employeeDTO.setSalary(1000000.0);
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.setIsDeleted(0);
+<<<<<<< HEAD
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 
         Position position = new Position();
         position.setId(1);
@@ -401,6 +447,7 @@ public class EmployeeRestController_saveEmployee {
                 .andExpect(status().is4xxClientError());
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     // test format birthday
     @Test
@@ -418,6 +465,8 @@ public class EmployeeRestController_saveEmployee {
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.getIsDeleted(0);
 =======
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
     /**
      * Create by TaiLV
      * create date:10/08/2022
@@ -441,7 +490,10 @@ public class EmployeeRestController_saveEmployee {
         employeeDTO.setSalary(1000000.0);
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.setIsDeleted(0);
+<<<<<<< HEAD
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 
         Position position = new Position();
         position.setId(1);
@@ -456,6 +508,7 @@ public class EmployeeRestController_saveEmployee {
                 .andExpect(status().is4xxClientError());
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     // test phoneNumber = null
     @Test
@@ -473,6 +526,8 @@ public class EmployeeRestController_saveEmployee {
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.getIsDeleted(0);
 =======
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
     /**
      * Create by TaiLV
      * create date:10/08/2022
@@ -569,7 +624,10 @@ public class EmployeeRestController_saveEmployee {
         employeeDTO.setSalary(1000000.0);
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.setIsDeleted(0);
+<<<<<<< HEAD
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 
         Position position = new Position();
         position.setId(1);
@@ -584,6 +642,7 @@ public class EmployeeRestController_saveEmployee {
                 .andExpect(status().is4xxClientError());
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     // test phoneNumber = ""
     @Test
@@ -601,6 +660,8 @@ public class EmployeeRestController_saveEmployee {
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.getIsDeleted(0);
 =======
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
     /**
      * Create by TaiLV
      * create date:10/08/2022
@@ -624,7 +685,10 @@ public class EmployeeRestController_saveEmployee {
         employeeDTO.setSalary(1000000.0);
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.setIsDeleted(0);
+<<<<<<< HEAD
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 
         Position position = new Position();
         position.setId(1);
@@ -639,6 +703,7 @@ public class EmployeeRestController_saveEmployee {
                 .andExpect(status().is4xxClientError());
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     // test address = null
     @Test
@@ -656,6 +721,8 @@ public class EmployeeRestController_saveEmployee {
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.getIsDeleted(0);
 =======
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 
     /**
      * Create by TaiLV
@@ -715,7 +782,10 @@ public class EmployeeRestController_saveEmployee {
         employeeDTO.setSalary(1000000.0);
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.setIsDeleted(0);
+<<<<<<< HEAD
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 
         Position position = new Position();
         position.setId(1);
@@ -730,6 +800,7 @@ public class EmployeeRestController_saveEmployee {
                 .andExpect(status().is4xxClientError());
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     // test address = ""
     @Test
@@ -747,6 +818,8 @@ public class EmployeeRestController_saveEmployee {
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.getIsDeleted(0);
 =======
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
     /**
      * Create by TaiLV
      * create date:10/08/2022
@@ -769,7 +842,10 @@ public class EmployeeRestController_saveEmployee {
         employeeDTO.setSalary(1000000.0);
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.setIsDeleted(0);
+<<<<<<< HEAD
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 
         Position position = new Position();
         position.setId(1);
@@ -784,6 +860,7 @@ public class EmployeeRestController_saveEmployee {
                 .andExpect(status().is4xxClientError());
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     // test email = null
     @Test
@@ -801,6 +878,8 @@ public class EmployeeRestController_saveEmployee {
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.getIsDeleted(0);
 =======
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
     /**
      * Create by TaiLV
      * create date:10/08/2022
@@ -858,7 +937,10 @@ public class EmployeeRestController_saveEmployee {
         employeeDTO.setSalary(1000000.0);
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.setIsDeleted(0);
+<<<<<<< HEAD
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 
         Position position = new Position();
         position.setId(1);
@@ -873,6 +955,7 @@ public class EmployeeRestController_saveEmployee {
                 .andExpect(status().is4xxClientError());
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     // test email = ""
     @Test
@@ -890,6 +973,8 @@ public class EmployeeRestController_saveEmployee {
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.getIsDeleted(0);
 =======
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
     /**
      * Create by TaiLV
      * create date:10/08/2022
@@ -913,7 +998,10 @@ public class EmployeeRestController_saveEmployee {
         employeeDTO.setSalary(1000000.0);
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.setIsDeleted(0);
+<<<<<<< HEAD
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 
         Position position = new Position();
         position.setId(1);
@@ -928,6 +1016,7 @@ public class EmployeeRestController_saveEmployee {
                 .andExpect(status().is4xxClientError());
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     // test format email
     @Test
@@ -945,6 +1034,8 @@ public class EmployeeRestController_saveEmployee {
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.getIsDeleted(0);
 =======
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
     /**
      * Create by TaiLV
      * create date:10/08/2022
@@ -968,7 +1059,10 @@ public class EmployeeRestController_saveEmployee {
         employeeDTO.setSalary(1000000.0);
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.setIsDeleted(0);
+<<<<<<< HEAD
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 
         Position position = new Position();
         position.setId(1);
@@ -984,6 +1078,7 @@ public class EmployeeRestController_saveEmployee {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // test salary = null
     @Test
     public void saveEmployee_salary_13() throws Exception {
@@ -994,6 +1089,8 @@ public class EmployeeRestController_saveEmployee {
         employeeDTO.getBirthday("2000-01-01");
         employeeDTO.getPhoneNumber("0936369999");
 =======
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
     /**
      * Create by TaiLV
      * create date:10/08/2022
@@ -1011,17 +1108,24 @@ public class EmployeeRestController_saveEmployee {
         employeeDTO.setName("Lê Văn A");
         employeeDTO.setBirthday(Date.valueOf("2000-01-01"));
         employeeDTO.setPhoneNumber("0936369999");
+<<<<<<< HEAD
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
         employeeDTO.setAddress("Tp.Đà Nẵng");
         employeeDTO.setGender(0);
         employeeDTO.setEmail("levana@gmail.com");
         employeeDTO.setSalary(null);
         employeeDTO.setImage("http/:firebase.levana.png");
 <<<<<<< HEAD
+<<<<<<< HEAD
         employeeDTO.getIsDeleted(0);
 =======
         employeeDTO.setIsDeleted(0);
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+        employeeDTO.setIsDeleted(0);
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 
         Position position = new Position();
         position.setId(1);
@@ -1037,6 +1141,7 @@ public class EmployeeRestController_saveEmployee {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 // test salary < 0
     @Test
     public void saveEmployee_salary_15() throws Exception {
@@ -1047,6 +1152,8 @@ public class EmployeeRestController_saveEmployee {
         employeeDTO.getBirthday("2000-01-01");
         employeeDTO.getPhoneNumber("0936369999");
 =======
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
     /**
      * Create by TaiLV
      * create date:10/08/2022
@@ -1064,17 +1171,24 @@ public class EmployeeRestController_saveEmployee {
         employeeDTO.setName("Lê Văn A");
         employeeDTO.setBirthday(Date.valueOf("2000-01-01"));
         employeeDTO.setPhoneNumber("0936369999");
+<<<<<<< HEAD
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
         employeeDTO.setAddress("Tp.Đà Nẵng");
         employeeDTO.setGender(0);
         employeeDTO.setEmail("levana@gmail.com");
         employeeDTO.setSalary(-11.0);
         employeeDTO.setImage("http/:firebase.levana.png");
 <<<<<<< HEAD
+<<<<<<< HEAD
         employeeDTO.getIsDeleted(0);
 =======
         employeeDTO.setIsDeleted(0);
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+        employeeDTO.setIsDeleted(0);
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 
         Position position = new Position();
         position.setId(1);
@@ -1089,6 +1203,7 @@ public class EmployeeRestController_saveEmployee {
                 .andExpect(status().is4xxClientError());
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     // test save success
     @Test
@@ -1106,6 +1221,8 @@ public class EmployeeRestController_saveEmployee {
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.getIsDeleted(0);
 =======
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
     /**
      * Create by TaiLV
      * create date:10/08/2022
@@ -1129,7 +1246,10 @@ public class EmployeeRestController_saveEmployee {
         employeeDTO.setSalary(1000000.0);
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.setIsDeleted(0);
+<<<<<<< HEAD
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 
         Position position = new Position();
         position.setId(1);

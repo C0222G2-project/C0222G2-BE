@@ -26,10 +26,14 @@ public class EmployeeRestController_findEmployeeById {
     //find id = null
     @Test
 <<<<<<< HEAD
+<<<<<<< HEAD
     public  void findEmployeeById_id_1() {
 =======
     public void findEmployeeById_id_1() {
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+    public void findEmployeeById_id_1() {
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
         try {
             this.mockMvc.perform(MockMvcRequestBuilders.get("/rest/employee/find/null"))
                     .andDo(print()).andExpect(status().is4xxClientError());
@@ -38,9 +42,13 @@ public class EmployeeRestController_findEmployeeById {
         }
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
     /**
      * Create by TuyenTN
      * create date:10/08/2022
@@ -52,9 +60,13 @@ public class EmployeeRestController_findEmployeeById {
                 .andDo(print()).andExpect(status().is4xxClientError());
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
     /**
      * Create by TuyenTN
      * create date:10/08/2022
@@ -66,9 +78,13 @@ public class EmployeeRestController_findEmployeeById {
                 .andDo(print()).andExpect(status().is4xxClientError());
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
     /**
      * Create by TuyenTN
      * create date:10/08/2022

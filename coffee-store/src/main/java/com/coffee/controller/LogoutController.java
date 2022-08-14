@@ -27,6 +27,9 @@ public class LogoutController {
         if (jwtRequest.getToken().equals("")) {
             return new ResponseEntity<>("isLogout",HttpStatus.UNAUTHORIZED);
         }
+        if (this.tokenUtil.getTokenMap().isEmpty()) {
+            return new ResponseEntity<>("LoginExpired", HttpStatus.UNAUTHORIZED);
+        }
         if (this.tokenUtil.getTokenMap()
                 .get(this.jwtTokenUtil.getUsernameFromToken(jwtRequest.getToken())).equals(jwtRequest.getToken())) {
             this.tokenUtil.getTokenMap().remove(this.jwtTokenUtil.getUsernameFromToken(jwtRequest.getToken()));

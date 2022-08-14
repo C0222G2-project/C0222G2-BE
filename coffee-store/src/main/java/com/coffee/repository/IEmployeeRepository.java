@@ -18,7 +18,6 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Integer> {
      * Date: 16:30 pm  9-8-2022
      * method show list and search and paging
      * tuyentn-list-employee-2
-     *
      * @param pageable
      * @param searchByName
      * @param searchByPhone
@@ -66,7 +65,6 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Integer> {
      * Create by TuyenTN
      * Date: 16:30 pm  9-8-2022
      * tuyentn-list-employee-2
-     *
      * @param id
      * @return
      */

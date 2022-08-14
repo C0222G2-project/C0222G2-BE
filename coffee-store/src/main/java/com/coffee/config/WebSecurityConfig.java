@@ -73,7 +73,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         httpSecurity.authorizeRequests().antMatchers("/staff").access("hasAnyRole('ROLE_STAFF', 'ROLE_ADMIN')");
 
         // Trang chỉ dành cho ADMIN
-        httpSecurity.authorizeRequests().antMatchers("/admin").access("hasRole('ROLE_ADMIN')");
+        httpSecurity.authorizeRequests().antMatchers("/employee/**", "/position", "/user").access("hasRole('ROLE_ADMIN')");
 
         // Khi người dùng đã login, với vai trò XX.
         // Nhưng truy cập vào trang yêu cầu vai trò YY,
@@ -88,8 +88,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/logoutSecurity",
                         "/sendSimpleEmail",
                         "/forgotPassword/**",
-                        "/findPassword",
-                        "/**").permitAll().
+                        "/findPassword", "/**").permitAll().
                 // all other requests need to be authenticated
                         anyRequest().authenticated().and().
                 // make sure we use stateless session; session won't be used to
