@@ -165,7 +165,7 @@ public class FeedbackRestController_getAllFeedback {
                 .andExpect(jsonPath("totalPages").value(1))
                 .andExpect(jsonPath("totalElements").value(1))
                 .andExpect(jsonPath("content[0].id").value(3))
-                .andExpect(jsonPath("content[0].code").value("FB003"))
+                .andExpect(jsonPath("content[0].code").value("FB0003"))
                 .andExpect(jsonPath("content[0].creator").value("Diệp"))
                 .andExpect(jsonPath("content[0].email").value("diepdn@gmail.com"))
                 .andExpect(jsonPath("content[0].content").value("Giá tiền vừa đủ"))
