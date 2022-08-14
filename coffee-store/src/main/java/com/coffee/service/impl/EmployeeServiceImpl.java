@@ -109,7 +109,6 @@ public class EmployeeServiceImpl implements IEmployeeService {
 
         this.iUserRoleService.save(userRole);
         employee.setAppUser(au);
-
         iEmployeeRepository.saveEmployee(employee);
     }
 

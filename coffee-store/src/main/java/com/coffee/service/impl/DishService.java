@@ -17,7 +17,6 @@ public class DishService implements IDishService {
     private IDishRepository iDishRepository;
 
     /**
-<<<<<<< HEAD
      * @function ( create new Dish)
      * @param dish
      * @return dish, status 201

@@ -116,7 +116,8 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Integer> {
      * @creator TaiLV
      * Date 09/08/2022
      */
-    @Query(value = " select employee.id, employee.name, employee.image,employee.phone_number , employee.address , employee.email, employee.gender, " +
+    @Query(value = " select employee.id, employee.name, employee.image,employee.phone_number , employee.address ," +
+            " employee.email, employee.gender, " +
             " employee.birthday, employee.salary, employee.position_id , employee.user_id, employee.is_deleted from employee " +
             " where employee.id = :id and employee.is_deleted = 0", nativeQuery = true)
     Employee findByIdEmployee(@Param("id") Integer id);

@@ -39,7 +39,6 @@ public class DishRestController_createDish {
         dishDto.setPrice(10000.0);
         dishDto.setName("cà phê sữa");
         dishDto.setImage("ảnh");
-        dishDto.setDeleted(false);
 
         DishType dishType = new DishType();
         dishType.setId(1);

@@ -34,9 +34,12 @@ public class AppUser {
     private Boolean isDeleted;
 
     @OneToMany(mappedBy = "appUser")
+    @JsonIgnore
     private List<UserRole> userRoles;
 
+
     @OneToOne(mappedBy = "appUser")
+    @JsonIgnore
     private Employee employee;
 
     @Override
