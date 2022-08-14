@@ -32,7 +32,6 @@ public class SimpleEmailController_sendSimpleEmail {
     @Test
     public void sendSimpleEmail_username_13() throws Exception {
         JwtRequest jwtRequest = new JwtRequest();
-
         this.mockMvc.perform(MockMvcRequestBuilders
                         .post("/sendSimpleEmail")
                         .content(this.objectMapper.writeValueAsString(jwtRequest))
@@ -97,6 +96,36 @@ public class SimpleEmailController_sendSimpleEmail {
     }
 
     /**
+     * func check token null
+     * @creator PhuongTD
+     * date-create 11/8/2022
+     * @throws Exception
+     */
+    @Test
+    public void getUsernameForChangePassword_token_7() throws Exception {
+        String tempToken = null;
+        this.mockMvc.perform(MockMvcRequestBuilders
+                        .get("/forgotPassword/" + tempToken))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+
+    /**
+     * func check token is empty
+     * @creator PhuongTD
+     * date-create 11/8/2022
+     * @throws Exception
+     */
+    @Test
+    public void getUsernameForChangePassword_token_8() throws Exception {
+        String tempToken = "";
+        this.mockMvc.perform(MockMvcRequestBuilders
+                        .get("/forgotPassword/" + tempToken))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+
+    /**
      * Test for wrong token
      * @creator PhuongTD
      * date-create 10/8/2022
@@ -104,17 +133,56 @@ public class SimpleEmailController_sendSimpleEmail {
      */
     // 93. [item] is not same with token's server
     @Test
-    public void changePassword_token_7() throws Exception {
+    public void changePassword_token_93() throws Exception {
         String tempToken = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzdGFmZiIsImV4cCI6MTY2MDEzOTYyNiwiaWF0IjoxNjYwMTIxNjI2fQ.wCAsQ1bTO2kj6c5qvBSLFcWPtsCBxogqO3XY7smnGgJchLeO4KdKSSAq0yD6qDu__Xilbk1ftbsunyUS19G7NQ";
         JwtRequest jwtRequest = new JwtRequest();
         jwtRequest.setToken(tempToken);
         this.mockMvc.perform(MockMvcRequestBuilders
-                        .post("/changePassword/" + tempToken)
+                        .post("/changePassword/" + jwtRequest.getToken())
                         .content(this.objectMapper.writeValueAsString(jwtRequest))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
+
+    /**
+     * func check token null
+     * @creator PhuongTD
+     * date-create 11/8/2022
+     * @throws Exception
+     */
+    @Test
+    public void changePassword_token_7() throws Exception {
+        String tempToken = null;
+        JwtRequest jwtRequest = new JwtRequest();
+        jwtRequest.setToken(tempToken);
+        this.mockMvc.perform(MockMvcRequestBuilders
+                        .post("/changePassword/" + jwtRequest.getToken())
+                        .content(this.objectMapper.writeValueAsString(jwtRequest))
+                        .contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+
+    /**
+     * func check token is empty
+     * @creator PhuongTD
+     * date-create 11/8/2022
+     * @throws Exception
+     */
+    @Test
+    public void changePassword_token_8() throws Exception {
+        String tempToken = "";
+        JwtRequest jwtRequest = new JwtRequest();
+        jwtRequest.setToken(tempToken);
+        this.mockMvc.perform(MockMvcRequestBuilders
+                        .post("/changePassword/" + jwtRequest.getToken())
+                        .content(this.objectMapper.writeValueAsString(jwtRequest))
+                        .contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+
     /**
      * READ ME!
      * Because token auto generate, i can't write full test for method getUsernameForChangePassword and changePassword

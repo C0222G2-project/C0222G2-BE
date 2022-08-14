@@ -44,6 +44,25 @@ public class jwtAuthenticationEntryPoint_createAuthenticationToken {
     }
 
     /**
+     * Test for username is empty
+     * @creator PhuongTD
+     * date-create 11/8/2022
+     * @throws Exception
+     */
+    @Test
+    public void createAuthenticationToken_username_8() throws Exception {
+        JwtRequest jwtRequest = new JwtRequest();
+        jwtRequest.setUsername("");
+
+        this.mockMvc.perform(MockMvcRequestBuilders
+                        .post("/authenticate")
+                        .content(this.objectMapper.writeValueAsString(jwtRequest))
+                        .contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+
+    /**
      * Test for password null
      * @creator PhuongTD
      * date-create 10/8/2022
@@ -53,6 +72,25 @@ public class jwtAuthenticationEntryPoint_createAuthenticationToken {
     public void createAuthenticationToken_password_7() throws Exception {
         JwtRequest jwtRequest = new JwtRequest();
         jwtRequest.setUsername("admin");
+
+        this.mockMvc.perform(MockMvcRequestBuilders
+                        .post("/authenticate")
+                        .content(this.objectMapper.writeValueAsString(jwtRequest))
+                        .contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+
+    /**
+     * Test for password is empty
+     * @creator PhuongTD
+     * date-create 11/8/2022
+     * @throws Exception
+     */
+    @Test
+    public void createAuthenticationToken_password_8() throws Exception {
+        JwtRequest jwtRequest = new JwtRequest();
+        jwtRequest.setPassword("");
 
         this.mockMvc.perform(MockMvcRequestBuilders
                         .post("/authenticate")

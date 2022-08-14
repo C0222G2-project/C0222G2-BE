@@ -4,7 +4,6 @@ import com.coffee.model.account.AppUser;
 import com.coffee.model.jwt.JwtRequest;
 import com.coffee.model.jwt.JwtResponse;
 import com.coffee.service.account.IAppUserService;
-import com.coffee.service.account.impl.AppUserService;
 import com.coffee.service.jwt.JwtUserDetailsService;
 import com.coffee.util.JwtTokenUtil;
 import com.coffee.util.TokenUtil;
@@ -17,10 +16,12 @@ import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.sql.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -52,9 +53,18 @@ public class JwtAuthenticationController {
      * @date-create 9/8/2022
      */
     @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
-    public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws Exception {
+    public ResponseEntity<?> createAuthenticationToken(@Valid @RequestBody JwtRequest authenticationRequest,
+                                                       BindingResult bindingResult) throws Exception {
+        if (!this.tokenUtil.getTokenMap().isEmpty()) {
+            if (this.tokenUtil.getTokenMap().get(authenticationRequest.getUsername()) != null) {
+                return new ResponseEntity<>("isLogin", HttpStatus.UNAUTHORIZED);
+            }
+        }
         if (authenticationRequest.getUsername() == null || authenticationRequest.getPassword() == null) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
+        if (bindingResult.hasErrors()) {
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
 
         final UserDetails userDetails = userDetailsService
@@ -63,7 +73,9 @@ public class JwtAuthenticationController {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
 
-        authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
+        SecurityContextHolder.getContext()
+                .setAuthentication(authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword()));
+
         AppUser appUser = this.appUserService.findAppUserByUsername(authenticationRequest.getUsername());
         Date date = new Date(System.currentTimeMillis());
 
@@ -89,9 +101,9 @@ public class JwtAuthenticationController {
      * @creator: PhuongTD
      * @date-create 9/8/2022
      */
-    private void authenticate(String username, String password) throws Exception {
+    private Authentication authenticate(String username, String password) throws Exception {
         try {
-            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
+            return authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
         } catch (DisabledException e) {
             throw new Exception("USER_DISABLED", e);
         } catch (BadCredentialsException e) {
