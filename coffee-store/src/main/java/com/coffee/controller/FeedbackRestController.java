@@ -72,7 +72,6 @@ public class FeedbackRestController {
      * @param searchEndDate
      * @return Page<Feedback>
      */
-
     @GetMapping("/page")
     public ResponseEntity<Page<Feedback>> getAllFeedback(
             @RequestParam(name = "page", required = false, defaultValue = "0") Integer page,
@@ -100,9 +99,6 @@ public class FeedbackRestController {
             return new ResponseEntity<>(feedbackPage, HttpStatus.OK);
         }
     }
-
-
-
     /**
      * Created by : LuanTV
      * Date created: 09/08/2022
