@@ -2,14 +2,16 @@ package com.coffee.dto;
 
 
 import com.coffee.model.dish.DishType;
-import lombok.Data;
+import lombok.*;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
 import javax.validation.constraints.*;
 import java.sql.Date;
 
-@Data
+@Getter
+@Setter
+@RequiredArgsConstructor
 public class DishDto implements Validator {
 
     private Integer id;
@@ -45,4 +47,5 @@ public class DishDto implements Validator {
     public void validate(Object target, Errors errors) {
 
     }
+
 }

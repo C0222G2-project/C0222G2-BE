@@ -90,8 +90,8 @@ public class DishRestController_deleteDish {
     @Test
     public void deleteDish_24() throws Exception {
         this.mockMvc.perform(
-                MockMvcRequestBuilders.get("/dishType/delete/1")
-        ).andDo(print()).andExpect(status().is4xxClientError());
+                MockMvcRequestBuilders.patch("/dish/delete/3")
+        ).andDo(print()).andExpect(status().is2xxSuccessful());
     }
 
 }

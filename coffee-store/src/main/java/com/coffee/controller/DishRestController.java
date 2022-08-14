@@ -32,7 +32,6 @@ public class DishRestController {
     private IDishService iDishService;
 
     /**
-<<<<<<< HEAD
      * @function ( create new Dish)
      * @param dishDto
      * @return dish, status 201
