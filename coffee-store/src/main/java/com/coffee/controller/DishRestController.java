@@ -31,14 +31,21 @@ public class DishRestController {
 
     @Autowired
     private IDishService iDishService;
-    @GetMapping("/DishLish")
-    public ResponseEntity<List<Dish>> getAlltext() {
-        List<Dish> dishList = this.iDishService.getAllDishtext();
+
+    /**
+     * @function ( get all list of the dish)
+     * @return dish List
+     * @creator PhucLV
+     * @date-create 13/08/2022
+     */
+
+    @GetMapping("/dish_list")
+    public ResponseEntity<List<Dish>> getAllDishListTest() {
+        List<Dish> dishList = this.iDishService.getAllDishListTest();
         return new ResponseEntity<>(dishList, HttpStatus.OK);
     }
 
     /**
-<<<<<<< HEAD
      * @function ( create new Dish)
      * @param dishDto
      * @return dish, status 201
@@ -192,6 +199,7 @@ public class DishRestController {
      * @return HTTP status  204(NO_CONTENT) : id = null
      * HTTP status  200(OK) : deleted
      */
+
     @PatchMapping("/delete/{id}")
     public ResponseEntity<Void> deleteDish(@PathVariable Integer id) {
         this.iDishService.deleteDish(id);

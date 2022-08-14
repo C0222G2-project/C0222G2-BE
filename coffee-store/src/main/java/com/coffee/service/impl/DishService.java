@@ -61,7 +61,7 @@ public class DishService implements IDishService {
      * @return
      */
     @Override
-    public List<Dish> getAllDishtext() {
+    public List<Dish> getAllDishListTest() {
         return iDishRepository.findAll();
     }
 

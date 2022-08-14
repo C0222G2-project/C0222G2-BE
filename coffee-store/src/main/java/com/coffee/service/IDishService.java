@@ -22,5 +22,5 @@ public interface IDishService {
 
     void editDish(Dish dish);
 
-    List<Dish> getAllDishtext();
+    List<Dish> getAllDishListTest();
 }
