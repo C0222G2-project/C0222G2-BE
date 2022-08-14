@@ -99,7 +99,6 @@ public class FeedbackRestController {
             return new ResponseEntity<>(feedbackPage, HttpStatus.OK);
         }
     }
-
     /**
      * Created by : LuanTV
      * Date created: 09/08/2022

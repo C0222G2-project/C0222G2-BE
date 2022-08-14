@@ -2,11 +2,16 @@ package com.coffee.controller;
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import com.coffee.dto.EmployeeDTO;
 =======
 import com.coffee.dto.employe.EmployeeDTOCreate;
 import com.coffee.model.account.AppUser;
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+import com.coffee.dto.employe.EmployeeDTOCreate;
+import com.coffee.model.account.AppUser;
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 import com.coffee.dto.employe.EmployeeDTOCreate;
 import com.coffee.model.account.AppUser;
@@ -23,10 +28,15 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import java.sql.Date;
 
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+import java.sql.Date;
+
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 import java.sql.Date;
 
@@ -46,6 +56,7 @@ public class EmployeeRestController_editEmployee {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 // test edit name = null,where id = 1
     @Test
     public void editEmployee_name_13() throws Exception {
@@ -61,6 +72,8 @@ public class EmployeeRestController_editEmployee {
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.getIsDeleted(0);
 =======
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
     /**
@@ -274,7 +287,10 @@ public class EmployeeRestController_editEmployee {
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.setIsDeleted(0);
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 
@@ -286,10 +302,14 @@ public class EmployeeRestController_editEmployee {
                 .perform(MockMvcRequestBuilders
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                         .patch("/rest/employee/edit/1")
 =======
                         .patch("/rest/employee/edit")
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+                        .patch("/rest/employee/edit")
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
                         .patch("/rest/employee/edit")
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
@@ -298,6 +318,7 @@ public class EmployeeRestController_editEmployee {
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 // test edit name = "",where id = 1
@@ -315,6 +336,8 @@ public class EmployeeRestController_editEmployee {
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.getIsDeleted(0);
 =======
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 
@@ -340,7 +363,10 @@ public class EmployeeRestController_editEmployee {
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.setIsDeleted(0);
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 
@@ -352,10 +378,14 @@ public class EmployeeRestController_editEmployee {
                 .perform(MockMvcRequestBuilders
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                         .patch("/rest/employee/edit/1")
 =======
                         .patch("/rest/employee/edit")
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+                        .patch("/rest/employee/edit")
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
                         .patch("/rest/employee/edit")
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
@@ -365,6 +395,7 @@ public class EmployeeRestController_editEmployee {
                 .andExpect(status().is4xxClientError());
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     // test edit format birthday,where id = 1
@@ -382,6 +413,8 @@ public class EmployeeRestController_editEmployee {
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.getIsDeleted(0);
 =======
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
     /**
@@ -445,7 +478,10 @@ public class EmployeeRestController_editEmployee {
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.setIsDeleted(0);
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 
@@ -457,10 +493,14 @@ public class EmployeeRestController_editEmployee {
                 .perform(MockMvcRequestBuilders
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                         .patch("/rest/employee/edit/1")
 =======
                         .patch("/rest/employee/edit")
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+                        .patch("/rest/employee/edit")
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
                         .patch("/rest/employee/edit")
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
@@ -470,6 +510,7 @@ public class EmployeeRestController_editEmployee {
                 .andExpect(status().is4xxClientError());
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     // test edit phone = null,where id = 1
@@ -487,6 +528,8 @@ public class EmployeeRestController_editEmployee {
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.getIsDeleted(0);
 =======
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
     /**
@@ -549,7 +592,10 @@ public class EmployeeRestController_editEmployee {
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.setIsDeleted(0);
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 
@@ -561,10 +607,14 @@ public class EmployeeRestController_editEmployee {
                 .perform(MockMvcRequestBuilders
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                         .patch("/rest/employee/edit/1")
 =======
                         .patch("/rest/employee/edit")
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+                        .patch("/rest/employee/edit")
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
                         .patch("/rest/employee/edit")
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
@@ -574,6 +624,7 @@ public class EmployeeRestController_editEmployee {
                 .andExpect(status().is4xxClientError());
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     // test edit phoneNumber = "",where id = 1
@@ -591,6 +642,8 @@ public class EmployeeRestController_editEmployee {
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.getIsDeleted(0);
 =======
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
     /**
@@ -617,7 +670,10 @@ public class EmployeeRestController_editEmployee {
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.setIsDeleted(0);
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 
@@ -629,10 +685,14 @@ public class EmployeeRestController_editEmployee {
                 .perform(MockMvcRequestBuilders
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                         .patch("/rest/employee/edit/1")
 =======
                         .patch("/rest/employee/edit")
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+                        .patch("/rest/employee/edit")
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
                         .patch("/rest/employee/edit")
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
@@ -642,6 +702,7 @@ public class EmployeeRestController_editEmployee {
                 .andExpect(status().is4xxClientError());
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     // test edit address = null,where id = 1
@@ -659,6 +720,8 @@ public class EmployeeRestController_editEmployee {
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.getIsDeleted(0);
 =======
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 
@@ -721,7 +784,10 @@ public class EmployeeRestController_editEmployee {
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.setIsDeleted(0);
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 
@@ -733,10 +799,14 @@ public class EmployeeRestController_editEmployee {
                 .perform(MockMvcRequestBuilders
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                         .patch("/rest/employee/edit/1")
 =======
                         .patch("/rest/employee/edit")
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+                        .patch("/rest/employee/edit")
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
                         .patch("/rest/employee/edit")
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
@@ -746,6 +816,7 @@ public class EmployeeRestController_editEmployee {
                 .andExpect(status().is4xxClientError());
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 
@@ -764,6 +835,8 @@ public class EmployeeRestController_editEmployee {
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.getIsDeleted(0);
 =======
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
     /**
@@ -789,7 +862,10 @@ public class EmployeeRestController_editEmployee {
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.setIsDeleted(0);
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 
@@ -801,10 +877,14 @@ public class EmployeeRestController_editEmployee {
                 .perform(MockMvcRequestBuilders
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                         .patch("/rest/employee/edit/1")
 =======
                         .patch("/rest/employee/edit")
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+                        .patch("/rest/employee/edit")
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
                         .patch("/rest/employee/edit")
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
@@ -814,6 +894,7 @@ public class EmployeeRestController_editEmployee {
                 .andExpect(status().is4xxClientError());
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     // test edit email = null,where id = 1
@@ -831,6 +912,8 @@ public class EmployeeRestController_editEmployee {
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.getIsDeleted(0);
 =======
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
     /**
@@ -891,7 +974,10 @@ public class EmployeeRestController_editEmployee {
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.setIsDeleted(0);
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 
@@ -903,10 +989,14 @@ public class EmployeeRestController_editEmployee {
                 .perform(MockMvcRequestBuilders
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                         .patch("/rest/employee/edit/1")
 =======
                         .patch("/rest/employee/edit")
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+                        .patch("/rest/employee/edit")
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
                         .patch("/rest/employee/edit")
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
@@ -916,6 +1006,7 @@ public class EmployeeRestController_editEmployee {
                 .andExpect(status().is4xxClientError());
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     // test edit email = "" ,where id = 1
@@ -933,6 +1024,8 @@ public class EmployeeRestController_editEmployee {
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.getIsDeleted(0);
 =======
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
     /**
@@ -959,7 +1052,10 @@ public class EmployeeRestController_editEmployee {
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.setIsDeleted(0);
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 
@@ -971,10 +1067,14 @@ public class EmployeeRestController_editEmployee {
                 .perform(MockMvcRequestBuilders
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                         .patch("/rest/employee/edit/1")
 =======
                         .patch("/rest/employee/edit")
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+                        .patch("/rest/employee/edit")
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
                         .patch("/rest/employee/edit")
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
@@ -984,6 +1084,7 @@ public class EmployeeRestController_editEmployee {
                 .andExpect(status().is4xxClientError());
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     // test edit format email where id = 1
@@ -1001,6 +1102,8 @@ public class EmployeeRestController_editEmployee {
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.getIsDeleted(0);
 =======
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
     /**
@@ -1027,7 +1130,10 @@ public class EmployeeRestController_editEmployee {
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.setIsDeleted(0);
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 
@@ -1039,10 +1145,14 @@ public class EmployeeRestController_editEmployee {
                 .perform(MockMvcRequestBuilders
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                         .patch("/rest/employee/edit/1")
 =======
                         .patch("/rest/employee/edit")
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+                        .patch("/rest/employee/edit")
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
                         .patch("/rest/employee/edit")
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
@@ -1054,6 +1164,7 @@ public class EmployeeRestController_editEmployee {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     // test edit salary = null where id = 1
     @Test
     public void editEmployee_salary_13() throws Exception {
@@ -1063,6 +1174,8 @@ public class EmployeeRestController_editEmployee {
         employeeDTO.getBirthday("2000-01-01");
         employeeDTO.getPhoneNumber("0936369999");
 =======
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
     /**
@@ -1083,7 +1196,10 @@ public class EmployeeRestController_editEmployee {
         employeeDTO.setBirthday(Date.valueOf("2000-01-01"));
         employeeDTO.setPhoneNumber("0936369999");
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
         employeeDTO.setAddress("Tp.Đà Nẵng");
@@ -1093,10 +1209,14 @@ public class EmployeeRestController_editEmployee {
         employeeDTO.setImage("http/:firebase.levana.png");
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         employeeDTO.getIsDeleted(0);
 =======
         employeeDTO.setIsDeleted(0);
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+        employeeDTO.setIsDeleted(0);
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
         employeeDTO.setIsDeleted(0);
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
@@ -1109,10 +1229,14 @@ public class EmployeeRestController_editEmployee {
                 .perform(MockMvcRequestBuilders
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                         .patch("/rest/employee/edit/1")
 =======
                         .patch("/rest/employee/edit")
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+                        .patch("/rest/employee/edit")
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
                         .patch("/rest/employee/edit")
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
@@ -1124,6 +1248,7 @@ public class EmployeeRestController_editEmployee {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 // test edit salary < 0 where id = 1
     @Test
     public void editEmployee_salary_15() throws Exception {
@@ -1133,6 +1258,8 @@ public class EmployeeRestController_editEmployee {
         employeeDTO.getBirthday("2000-01-01");
         employeeDTO.getPhoneNumber("0936369999");
 =======
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
     /**
@@ -1153,7 +1280,10 @@ public class EmployeeRestController_editEmployee {
         employeeDTO.setBirthday(Date.valueOf("2000-01-01"));
         employeeDTO.setPhoneNumber("0936369999");
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
         employeeDTO.setAddress("Tp.Đà Nẵng");
@@ -1163,10 +1293,14 @@ public class EmployeeRestController_editEmployee {
         employeeDTO.setImage("http/:firebase.levana.png");
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         employeeDTO.getIsDeleted(0);
 =======
         employeeDTO.setIsDeleted(0);
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+        employeeDTO.setIsDeleted(0);
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
         employeeDTO.setIsDeleted(0);
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
@@ -1179,10 +1313,14 @@ public class EmployeeRestController_editEmployee {
                 .perform(MockMvcRequestBuilders
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                         .post("/employee/edit/1")
 =======
                         .patch("/rest/employee/edit")
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+                        .patch("/rest/employee/edit")
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
                         .patch("/rest/employee/edit")
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
@@ -1192,6 +1330,7 @@ public class EmployeeRestController_editEmployee {
                 .andExpect(status().is4xxClientError());
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     // test edit employee id = 1 success
@@ -1209,6 +1348,8 @@ public class EmployeeRestController_editEmployee {
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.getIsDeleted(0);
 =======
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
     /**
@@ -1235,7 +1376,10 @@ public class EmployeeRestController_editEmployee {
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.setIsDeleted(0);
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 
@@ -1247,10 +1391,14 @@ public class EmployeeRestController_editEmployee {
                 .perform(MockMvcRequestBuilders
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                         .post("/employee/edit/1")
 =======
                         .patch("/rest/employee/edit")
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+                        .patch("/rest/employee/edit")
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
                         .patch("/rest/employee/edit")
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3

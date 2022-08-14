@@ -43,10 +43,13 @@ public class EmployeeRestController_getAllEmployee {
                 .andExpect(jsonPath("$.content[0].salary").value(1500000))
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                 .andExpect(jsonPath("$.content[0].appUser").value( "admin"))
                 .andExpect(jsonPath("$.content[0].birthday").value("1990-01-01"));
     }
 =======
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
                 .andExpect(jsonPath("$.content[0].appUser").value("admin"))
@@ -54,7 +57,10 @@ public class EmployeeRestController_getAllEmployee {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
     /**
@@ -82,10 +88,13 @@ public class EmployeeRestController_getAllEmployee {
                 .andExpect(jsonPath("$.content[0].salary").value(1500000))
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                 .andExpect(jsonPath("$.content[0].appUser").value( "admin"))
                 .andExpect(jsonPath("$.content[0].birthday").value("1990-01-01"));
     }
 =======
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
                 .andExpect(jsonPath("$.content[0].appUser").value("admin"))
@@ -93,7 +102,10 @@ public class EmployeeRestController_getAllEmployee {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
     /**
@@ -135,10 +147,14 @@ public class EmployeeRestController_getAllEmployee {
                 .andExpect(jsonPath("$.content[0].salary").value(1500000))
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                 .andExpect(jsonPath("$.content[0].appUser").value( "admin"))
 =======
                 .andExpect(jsonPath("$.content[0].appUser").value("admin"))
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+                .andExpect(jsonPath("$.content[0].appUser").value("admin"))
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
                 .andExpect(jsonPath("$.content[0].appUser").value("admin"))
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
@@ -170,10 +186,14 @@ public class EmployeeRestController_getAllEmployee {
                 .andExpect(jsonPath("$.content[0].salary").value(1500000))
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                 .andExpect(jsonPath("$.content[0].appUser").value( "admin"))
 =======
                 .andExpect(jsonPath("$.content[0].appUser").value("admin"))
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+                .andExpect(jsonPath("$.content[0].appUser").value("admin"))
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
                 .andExpect(jsonPath("$.content[0].appUser").value("admin"))
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
@@ -195,9 +215,13 @@ public class EmployeeRestController_getAllEmployee {
     }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
@@ -240,11 +264,14 @@ public class EmployeeRestController_getAllEmployee {
                 .andExpect(jsonPath("$.content[0].salary").value(1500000))
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                 .andExpect(jsonPath("$.content[0].appUser").value( "admin"))
                 .andExpect(jsonPath("$.content[0].birthday").value("1990-01-01"));
     }
     //test searchAccount = null
 =======
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
                 .andExpect(jsonPath("$.content[0].appUser").value("admin"))
@@ -253,7 +280,10 @@ public class EmployeeRestController_getAllEmployee {
     //test searchAccount = null
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
     /**
@@ -281,10 +311,14 @@ public class EmployeeRestController_getAllEmployee {
                 .andExpect(jsonPath("$.content[0].salary").value(1500000))
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                 .andExpect(jsonPath("$.content[0].appUser").value( "admin"))
 =======
                 .andExpect(jsonPath("$.content[0].appUser").value("admin"))
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+                .andExpect(jsonPath("$.content[0].appUser").value("admin"))
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
                 .andExpect(jsonPath("$.content[0].appUser").value("admin"))
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
@@ -316,10 +350,14 @@ public class EmployeeRestController_getAllEmployee {
                 .andExpect(jsonPath("$.content[0].salary").value(1500000))
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                 .andExpect(jsonPath("$.content[0].appUser").value( "admin"))
 =======
                 .andExpect(jsonPath("$.content[0].appUser").value("admin"))
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+                .andExpect(jsonPath("$.content[0].appUser").value("admin"))
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
                 .andExpect(jsonPath("$.content[0].appUser").value("admin"))
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3

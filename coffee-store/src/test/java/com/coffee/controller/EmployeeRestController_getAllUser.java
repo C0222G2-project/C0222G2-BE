@@ -19,8 +19,11 @@ public class EmployeeRestController_getAllUser {
     private MockMvc mockMvc;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
     /**
@@ -30,7 +33,10 @@ public class EmployeeRestController_getAllUser {
      * test appUser dont have in database
      */
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
     @Test
@@ -44,8 +50,11 @@ public class EmployeeRestController_getAllUser {
     }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
     /**
@@ -55,7 +64,10 @@ public class EmployeeRestController_getAllUser {
      * test appUser have in database
      */
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
     @Test
