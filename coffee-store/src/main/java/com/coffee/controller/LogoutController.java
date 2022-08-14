@@ -25,7 +25,7 @@ public class LogoutController {
     public ResponseEntity<?> logoutSecurity(@RequestBody Optional<JwtRequest> jwtRequestBody) {
         JwtRequest jwtRequest = jwtRequestBody.orElse(new JwtRequest());
         if (jwtRequest.getToken().equals("")) {
-            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+            return new ResponseEntity<>("isLogout",HttpStatus.UNAUTHORIZED);
         }
         if (this.tokenUtil.getTokenMap()
                 .get(this.jwtTokenUtil.getUsernameFromToken(jwtRequest.getToken())).equals(jwtRequest.getToken())) {

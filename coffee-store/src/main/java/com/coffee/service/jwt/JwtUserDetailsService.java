@@ -2,7 +2,7 @@ package com.coffee.service.jwt;
 
 import com.coffee.model.account.AppUser;
 import com.coffee.model.account.UserRole;
-import com.coffee.repository.account.IAppUserRepository;
+import com.coffee.repository.IAppUserRepository;
 import com.coffee.repository.account.IUserRoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -36,7 +36,7 @@ public class JwtUserDetailsService implements UserDetailsService {
      */
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-        AppUser appUser = this.IAppUserRepository.getAppUserByUsername(userName);
+        AppUser appUser = this.IAppUserRepository.findAppUserByUserName(userName);
 
         if (appUser == null) {
             return null;

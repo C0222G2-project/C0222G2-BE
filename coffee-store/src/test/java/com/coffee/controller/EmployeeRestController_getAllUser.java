@@ -17,7 +17,16 @@ public class EmployeeRestController_getAllUser {
 
     @Autowired
     private MockMvc mockMvc;
+<<<<<<< HEAD
 
+=======
+    /**
+     * Create by TaiLV
+     * create date:10/08/2022
+     * method : getAllPosition()
+     * test appUser dont have in database
+     */
+>>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
     @Test
     public void getAllUser_5() throws Exception {
 
@@ -27,7 +36,16 @@ public class EmployeeRestController_getAllUser {
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
+<<<<<<< HEAD
 
+=======
+    /**
+     * Create by TaiLV
+     * create date:10/08/2022
+     * method : getAllPosition()
+     * test appUser have in database
+     */
+>>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
     @Test
     public void getAllUser_6() throws Exception {
         this.mockMvc.perform(

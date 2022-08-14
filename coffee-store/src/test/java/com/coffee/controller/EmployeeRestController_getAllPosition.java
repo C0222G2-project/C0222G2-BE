@@ -18,22 +18,48 @@ public class EmployeeRestController_getAllPosition {
     @Autowired
     private MockMvc mockMvc;
 
+<<<<<<< HEAD
+=======
+    /**
+     * Create by TaiLV
+     * create date:10/08/2022
+     * method : getAllPosition()
+     * test position not have in database
+     */
+>>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
     @Test
     public void getAllPosition_5() throws Exception {
 
         this.mockMvc.perform(
                         MockMvcRequestBuilders
+<<<<<<< HEAD
                                 .get("/rest/position/"))
+=======
+                                .get("/rest/position"))
+>>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
 
+<<<<<<< HEAD
+=======
+    /**
+     * Create by TaiLV
+     * create date:10/08/2022
+     * method : getAllPosition()
+     * test position have in database
+     */
+>>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
     @Test
     public void getAllPosition_6() throws Exception {
 
         this.mockMvc.perform(
                         MockMvcRequestBuilders
+<<<<<<< HEAD
                                 .get("/rest/position/"))
+=======
+                                .get("/rest/position"))
+>>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful())
                 .andExpect(jsonPath("content[0].id").value(1))

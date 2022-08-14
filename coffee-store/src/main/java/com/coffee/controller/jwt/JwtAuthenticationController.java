@@ -55,6 +55,11 @@ public class JwtAuthenticationController {
     @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
     public ResponseEntity<?> createAuthenticationToken(@Valid @RequestBody JwtRequest authenticationRequest,
                                                        BindingResult bindingResult) throws Exception {
+        if (!this.tokenUtil.getTokenMap().isEmpty()) {
+            if (this.tokenUtil.getTokenMap().get(authenticationRequest.getUsername()) != null) {
+                return new ResponseEntity<>("isLogin", HttpStatus.UNAUTHORIZED);
+            }
+        }
         if (authenticationRequest.getUsername() == null || authenticationRequest.getPassword() == null) {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }

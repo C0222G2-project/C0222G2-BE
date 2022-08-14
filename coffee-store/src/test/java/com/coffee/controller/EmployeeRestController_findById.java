@@ -18,6 +18,15 @@ public class EmployeeRestController_findById {
     @Autowired
     private MockMvc mockMvc;
 
+<<<<<<< HEAD
+=======
+    /**
+     * Create by TaiLV
+     * create date:10/08/2022
+     * method : findById() param id
+     * test employee id = null
+     */
+>>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
     @Test
     public void findById_id_1() throws Exception {
     this.mockMvc.perform(
@@ -25,7 +34,16 @@ public class EmployeeRestController_findById {
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
+<<<<<<< HEAD
 
+=======
+    /**
+     * Create by TaiLV
+     * create date:10/08/2022
+     * method : findById() param id
+     * test employee id = 1
+     */
+>>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
     @Test
     public void findById_id_4() throws Exception {
 

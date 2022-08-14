@@ -1,7 +1,7 @@
 package com.coffee.service.account.impl;
 
 import com.coffee.model.account.AppUser;
-import com.coffee.repository.account.IAppUserRepository;
+import com.coffee.repository.IAppUserRepository;
 import com.coffee.service.account.IAppUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,7 +21,7 @@ public class AppUserService implements IAppUserService {
      */
     @Override
     public AppUser findAppUserByUsername(String username) {
-        return this.IAppUserRepository.getAppUserByUsername(username);
+        return this.IAppUserRepository.findAppUserByUserName(username);
     }
 
     /**

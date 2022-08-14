@@ -3,6 +3,7 @@ package com.coffee.model.employee;
 import com.coffee.model.account.AppUser;
 import com.coffee.model.dish_order.DishOrder;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -49,11 +50,11 @@ public class Employee {
     private Position position;
 
     @OneToOne
-    @JsonBackReference
     @JoinColumn(name = "user_id")
     private AppUser appUser;
 
     @OneToMany(mappedBy = "employee")
+    @JsonIgnore
     private List<DishOrder> dishOrders;
 
     @Override
