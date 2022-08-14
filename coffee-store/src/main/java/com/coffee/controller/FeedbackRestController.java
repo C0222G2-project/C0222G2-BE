@@ -73,7 +73,6 @@ public class FeedbackRestController {
      * @return Page<Feedback>
      */
 
-
     @GetMapping("/page")
     public ResponseEntity<Page<Feedback>> getAllFeedback(
             @RequestParam(name = "page", required = false, defaultValue = "0") Integer page,
@@ -83,9 +82,11 @@ public class FeedbackRestController {
             @RequestParam Optional<String> searchStartDate,
             @RequestParam Optional<String> searchEndDate) {
 
-        Sort sortable = Sort.by(sort);
+        Sort sortable;
         if (sort.equals("ASC")) {
             sortable = Sort.by("id").ascending();
+        } else {
+            sortable = Sort.by("rating").ascending();
         }
         Pageable pageable = PageRequest.of(page, size, sortable);
         String creator = searchCreator.orElse("");
@@ -99,6 +100,7 @@ public class FeedbackRestController {
             return new ResponseEntity<>(feedbackPage, HttpStatus.OK);
         }
     }
+
 
 
     /**
