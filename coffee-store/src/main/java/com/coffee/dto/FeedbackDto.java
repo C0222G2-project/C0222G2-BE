@@ -37,7 +37,6 @@ public class FeedbackDto {
     private Integer rating;
 
     @NotBlank(message = "Vui lòng đính kèm ảnh phản hồi thực tế.")
-    @Size(min = 5, max = 70, message = "Vui lòng đặt tên ảnh từ 5 đến 70 ký tự.")
     private String image;
 
 

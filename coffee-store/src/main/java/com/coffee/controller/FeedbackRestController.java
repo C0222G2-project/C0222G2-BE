@@ -74,6 +74,33 @@ public class FeedbackRestController {
      */
 
 
+//    @GetMapping("/page")
+//    public ResponseEntity<Page<Feedback>> getAllFeedback(
+//            @RequestParam(name = "page", required = false, defaultValue = "0") Integer page,
+//            @RequestParam(name = "size", required = false, defaultValue = "10") Integer size,
+//            @RequestParam(name = "sort", required = false, defaultValue = "ASC") String sort,
+//            @RequestParam Optional<String> searchCreator,
+//            @RequestParam Optional<String> searchStartDate,
+//            @RequestParam Optional<String> searchEndDate) {
+//
+//        Sort sortable = Sort.by(sort);
+//        if (sort.equals("ASC")) {
+//            sortable = Sort.by("id").ascending();
+//        }
+//        Pageable pageable = PageRequest.of(page, size, sortable);
+//        String creator = searchCreator.orElse("");
+//        String startDate = searchStartDate.orElse("1000-01-01");
+//        String endDate = searchEndDate.orElse("8000-01-01");
+//        Page<Feedback> feedbackPage = feedbackService.findAllFeedback(pageable, creator, startDate, endDate);
+//        if (feedbackPage.isEmpty()) {
+//            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//
+//        } else {
+//            return new ResponseEntity<>(feedbackPage, HttpStatus.OK);
+//        }
+//    }
+
+
     @GetMapping("/page")
     public ResponseEntity<Page<Feedback>> getAllFeedback(
             @RequestParam(name = "page", required = false, defaultValue = "0") Integer page,
@@ -87,6 +114,9 @@ public class FeedbackRestController {
         if (sort.equals("ASC")) {
             sortable = Sort.by("id").ascending();
         }
+        if (!sort.equals("ASC")) {
+            sortable = Sort.by("rating").ascending();
+        }
         Pageable pageable = PageRequest.of(page, size, sortable);
         String creator = searchCreator.orElse("");
         String startDate = searchStartDate.orElse("1000-01-01");
@@ -99,6 +129,11 @@ public class FeedbackRestController {
             return new ResponseEntity<>(feedbackPage, HttpStatus.OK);
         }
     }
+
+
+
+
+
 
 
     /**
