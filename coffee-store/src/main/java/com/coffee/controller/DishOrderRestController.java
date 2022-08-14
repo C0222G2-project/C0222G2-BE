@@ -64,18 +64,6 @@ public class DishOrderRestController {
         return new ResponseEntity<>(dishOrders, HttpStatus.OK);
     }
 
-    @GetMapping("/get-dish-list")
-    public ResponseEntity<Page<DishOrder>> getAllOrder(@PageableDefault(4)Pageable pageable,
-                                                       @RequestParam("page") Optional<Integer> page,
-                                                       @RequestParam("size") Optional<Integer> size,
-                                                       @RequestParam("dishTypeId") Optional<Integer> dishTypeId){
-        Page<DishOrder> dishOrders = iDishOrderService.getAllOrder(pageable);
-        if(dishOrders.isEmpty()){
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-        return new ResponseEntity<>(dishOrders, HttpStatus.OK);
-    }
-
     /**
      *   Author: BinhPX
      *   Date created: 10/08/2022

@@ -56,6 +56,20 @@ public class DishService implements IDishService {
     }
 
     /**
+     * Created By: BinhPX
+     * Date created: 14/08/2022
+     * function: get Dish list
+     *
+     * @param id of dish type
+     * @param pageable
+     * @return dishPage
+     */
+    @Override
+    public Page<Dish> getDishByDishType(int id, Pageable pageable) {
+        return iDishRepository.findAllDishFindByeId(id, pageable);
+    }
+
+    /**
      * Created By: HieuCD
      * Date created: 09/08/2022
      * function: get dish page
