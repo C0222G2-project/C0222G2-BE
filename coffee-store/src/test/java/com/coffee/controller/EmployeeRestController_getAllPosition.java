@@ -20,7 +20,10 @@ public class EmployeeRestController_getAllPosition {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
     /**
@@ -30,7 +33,10 @@ public class EmployeeRestController_getAllPosition {
      * test position not have in database
      */
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
     @Test
@@ -40,10 +46,14 @@ public class EmployeeRestController_getAllPosition {
                         MockMvcRequestBuilders
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                                 .get("/rest/position/"))
 =======
                                 .get("/rest/position"))
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+                                .get("/rest/position"))
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
                                 .get("/rest/position"))
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
@@ -53,7 +63,10 @@ public class EmployeeRestController_getAllPosition {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
     /**
@@ -63,7 +76,10 @@ public class EmployeeRestController_getAllPosition {
      * test position have in database
      */
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
     @Test
@@ -73,10 +89,14 @@ public class EmployeeRestController_getAllPosition {
                         MockMvcRequestBuilders
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                                 .get("/rest/position/"))
 =======
                                 .get("/rest/position"))
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+                                .get("/rest/position"))
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
                                 .get("/rest/position"))
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3

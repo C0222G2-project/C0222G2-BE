@@ -2,11 +2,16 @@ package com.coffee.controller;
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import com.coffee.dto.EmployeeDTO;
 =======
 import com.coffee.dto.employe.EmployeeDTOCreate;
 import com.coffee.model.account.AppUser;
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+import com.coffee.dto.employe.EmployeeDTOCreate;
+import com.coffee.model.account.AppUser;
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 import com.coffee.dto.employe.EmployeeDTOCreate;
 import com.coffee.model.account.AppUser;
@@ -23,10 +28,15 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import java.sql.Date;
 
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+import java.sql.Date;
+
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 import java.sql.Date;
 
@@ -46,6 +56,7 @@ public class EmployeeRestController_saveEmployee {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     // test userName = null
     @Test
     public void saveEmployee_userName_13() throws Exception {
@@ -62,6 +73,8 @@ public class EmployeeRestController_saveEmployee {
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.getIsDeleted(0);
 =======
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
     /**
@@ -88,7 +101,10 @@ public class EmployeeRestController_saveEmployee {
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.setIsDeleted(0);
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 
@@ -107,6 +123,7 @@ public class EmployeeRestController_saveEmployee {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     // test userName = ""
     @Test
     public void saveEmployee_userName_14() throws Exception {
@@ -123,6 +140,8 @@ public class EmployeeRestController_saveEmployee {
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.getIsDeleted(0);
 =======
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
     /**
@@ -149,7 +168,10 @@ public class EmployeeRestController_saveEmployee {
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.setIsDeleted(0);
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 
@@ -168,6 +190,7 @@ public class EmployeeRestController_saveEmployee {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     // test userName = first input = number
     @Test
     public void saveEmployee_userName_15() throws Exception {
@@ -184,6 +207,8 @@ public class EmployeeRestController_saveEmployee {
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.getIsDeleted(0);
 =======
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
     /**
@@ -210,7 +235,10 @@ public class EmployeeRestController_saveEmployee {
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.setIsDeleted(0);
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 
@@ -229,6 +257,7 @@ public class EmployeeRestController_saveEmployee {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     // test userName < 6 char
     @Test
     public void saveEmployee_userName_16() throws Exception {
@@ -245,6 +274,8 @@ public class EmployeeRestController_saveEmployee {
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.getIsDeleted(0);
 =======
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
     /**
@@ -271,7 +302,10 @@ public class EmployeeRestController_saveEmployee {
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.setIsDeleted(0);
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 
@@ -287,6 +321,7 @@ public class EmployeeRestController_saveEmployee {
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     // test name null
@@ -305,6 +340,8 @@ public class EmployeeRestController_saveEmployee {
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.getIsDeleted(0);
 =======
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 
@@ -371,7 +408,10 @@ public class EmployeeRestController_saveEmployee {
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.setIsDeleted(0);
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 
@@ -390,6 +430,7 @@ public class EmployeeRestController_saveEmployee {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     // test name ""
     @Test
     public void saveEmployee_name_14() throws Exception {
@@ -406,6 +447,8 @@ public class EmployeeRestController_saveEmployee {
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.getIsDeleted(0);
 =======
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
     /**
@@ -430,7 +473,10 @@ public class EmployeeRestController_saveEmployee {
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.setIsDeleted(0);
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 
@@ -449,6 +495,7 @@ public class EmployeeRestController_saveEmployee {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     // test format birthday
     @Test
     public void saveEmployee_birthday_15() throws Exception {
@@ -465,6 +512,8 @@ public class EmployeeRestController_saveEmployee {
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.getIsDeleted(0);
 =======
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
     /**
@@ -491,7 +540,10 @@ public class EmployeeRestController_saveEmployee {
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.setIsDeleted(0);
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 
@@ -510,6 +562,7 @@ public class EmployeeRestController_saveEmployee {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     // test phoneNumber = null
     @Test
     public void saveEmployee_phoneNumber_13() throws Exception {
@@ -526,6 +579,8 @@ public class EmployeeRestController_saveEmployee {
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.getIsDeleted(0);
 =======
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
     /**
@@ -625,7 +680,10 @@ public class EmployeeRestController_saveEmployee {
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.setIsDeleted(0);
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 
@@ -644,6 +702,7 @@ public class EmployeeRestController_saveEmployee {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     // test phoneNumber = ""
     @Test
     public void saveEmployee_phoneNumber_14() throws Exception {
@@ -660,6 +719,8 @@ public class EmployeeRestController_saveEmployee {
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.getIsDeleted(0);
 =======
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
     /**
@@ -686,7 +747,10 @@ public class EmployeeRestController_saveEmployee {
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.setIsDeleted(0);
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 
@@ -705,6 +769,7 @@ public class EmployeeRestController_saveEmployee {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     // test address = null
     @Test
     public void saveEmployee_address_13() throws Exception {
@@ -721,6 +786,8 @@ public class EmployeeRestController_saveEmployee {
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.getIsDeleted(0);
 =======
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 
@@ -783,7 +850,10 @@ public class EmployeeRestController_saveEmployee {
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.setIsDeleted(0);
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 
@@ -802,6 +872,7 @@ public class EmployeeRestController_saveEmployee {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     // test address = ""
     @Test
     public void saveEmployee_address_14() throws Exception {
@@ -818,6 +889,8 @@ public class EmployeeRestController_saveEmployee {
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.getIsDeleted(0);
 =======
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
     /**
@@ -843,7 +916,10 @@ public class EmployeeRestController_saveEmployee {
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.setIsDeleted(0);
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 
@@ -862,6 +938,7 @@ public class EmployeeRestController_saveEmployee {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     // test email = null
     @Test
     public void saveEmployee_email_13() throws Exception {
@@ -878,6 +955,8 @@ public class EmployeeRestController_saveEmployee {
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.getIsDeleted(0);
 =======
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
     /**
@@ -938,7 +1017,10 @@ public class EmployeeRestController_saveEmployee {
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.setIsDeleted(0);
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 
@@ -957,6 +1039,7 @@ public class EmployeeRestController_saveEmployee {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     // test email = ""
     @Test
     public void saveEmployee_email_14() throws Exception {
@@ -973,6 +1056,8 @@ public class EmployeeRestController_saveEmployee {
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.getIsDeleted(0);
 =======
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
     /**
@@ -999,7 +1084,10 @@ public class EmployeeRestController_saveEmployee {
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.setIsDeleted(0);
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 
@@ -1018,6 +1106,7 @@ public class EmployeeRestController_saveEmployee {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     // test format email
     @Test
     public void saveEmployee_email_15() throws Exception {
@@ -1034,6 +1123,8 @@ public class EmployeeRestController_saveEmployee {
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.getIsDeleted(0);
 =======
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
     /**
@@ -1060,7 +1151,10 @@ public class EmployeeRestController_saveEmployee {
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.setIsDeleted(0);
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 
@@ -1079,6 +1173,7 @@ public class EmployeeRestController_saveEmployee {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     // test salary = null
     @Test
     public void saveEmployee_salary_13() throws Exception {
@@ -1089,6 +1184,8 @@ public class EmployeeRestController_saveEmployee {
         employeeDTO.getBirthday("2000-01-01");
         employeeDTO.getPhoneNumber("0936369999");
 =======
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
     /**
@@ -1109,7 +1206,10 @@ public class EmployeeRestController_saveEmployee {
         employeeDTO.setBirthday(Date.valueOf("2000-01-01"));
         employeeDTO.setPhoneNumber("0936369999");
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
         employeeDTO.setAddress("Tp.Đà Nẵng");
@@ -1119,10 +1219,14 @@ public class EmployeeRestController_saveEmployee {
         employeeDTO.setImage("http/:firebase.levana.png");
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         employeeDTO.getIsDeleted(0);
 =======
         employeeDTO.setIsDeleted(0);
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+        employeeDTO.setIsDeleted(0);
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
         employeeDTO.setIsDeleted(0);
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
@@ -1142,6 +1246,7 @@ public class EmployeeRestController_saveEmployee {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 // test salary < 0
     @Test
     public void saveEmployee_salary_15() throws Exception {
@@ -1152,6 +1257,8 @@ public class EmployeeRestController_saveEmployee {
         employeeDTO.getBirthday("2000-01-01");
         employeeDTO.getPhoneNumber("0936369999");
 =======
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
     /**
@@ -1172,7 +1279,10 @@ public class EmployeeRestController_saveEmployee {
         employeeDTO.setBirthday(Date.valueOf("2000-01-01"));
         employeeDTO.setPhoneNumber("0936369999");
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
         employeeDTO.setAddress("Tp.Đà Nẵng");
@@ -1182,10 +1292,14 @@ public class EmployeeRestController_saveEmployee {
         employeeDTO.setImage("http/:firebase.levana.png");
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         employeeDTO.getIsDeleted(0);
 =======
         employeeDTO.setIsDeleted(0);
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+        employeeDTO.setIsDeleted(0);
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
         employeeDTO.setIsDeleted(0);
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
@@ -1205,6 +1319,7 @@ public class EmployeeRestController_saveEmployee {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     // test save success
     @Test
     public void saveEmployee_18() throws Exception {
@@ -1221,6 +1336,8 @@ public class EmployeeRestController_saveEmployee {
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.getIsDeleted(0);
 =======
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
     /**
@@ -1247,7 +1364,10 @@ public class EmployeeRestController_saveEmployee {
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.setIsDeleted(0);
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
+=======
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 

@@ -166,7 +166,11 @@ public class FeedbackRestController_getAllFeedback {
                 .andExpect(jsonPath("totalElements").value(1))
                 .andExpect(jsonPath("content[0].id").value(3))
 <<<<<<< HEAD
+<<<<<<< HEAD
                 .andExpect(jsonPath("content[0].code").value("FB003"))
+=======
+                .andExpect(jsonPath("content[0].code").value("FB0003"))
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 =======
                 .andExpect(jsonPath("content[0].code").value("FB0003"))
 >>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
