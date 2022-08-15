@@ -17,8 +17,12 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Integer> {
      * Create by TuyenTN
      * Date: 16:30 pm  9-8-2022
      * method show list and search and paging
+<<<<<<< HEAD
+     * tuyentn-list-employee-2
+=======
      *  tuyentn-list-employee-2
      *
+>>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
      * @param pageable
      * @param searchByName
      * @param searchByPhone
@@ -27,14 +31,14 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Integer> {
      */
 
 
-    @Query(value = " select employee.`name`,employee.phone_number as phoneNumber,position.name as position, " +
+    @Query(value = " select employee.`name` as name ,employee.phone_number as phoneNumber,position.name as position, " +
             " app_user.user_name as appUser,employee.id,employee.birthday,employee.image,employee.address,employee.salary, " +
             " employee.gender,employee.email from employee " +
             " join app_user on app_user.id = employee.user_id " +
             " join position on employee.position_id = position.id " +
             " where employee.is_deleted =0 and employee.name like :keyZero and employee.phone_number like :keyOne " +
             " and app_user.user_name like :keyTwo ",
-            countQuery = " select count(*) from (select employee.`name`,employee.phone_number as phoneNumber, " +
+            countQuery = " select count(*) from (select employee.`name` as name,employee.phone_number as phoneNumber, " +
                     " app_user.user_name as appUser,position.name as position,employee.id,employee.birthday,employee.image, " +
                     " employee.address,employee.salary, employee.gender,employee.email from employee " +
                     " join app_user on app_user.id = employee.user_id " +
@@ -72,7 +76,7 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Integer> {
     @Transactional
     @Modifying
     @Query(value = " update employee set is_deleted = 1 where id = :id ", nativeQuery = true)
-            void deleteEmployeeById(Integer id);
+    void deleteEmployeeById(Integer id);
 
 
     /**

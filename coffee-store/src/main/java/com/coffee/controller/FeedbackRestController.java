@@ -72,20 +72,21 @@ public class FeedbackRestController {
      * @param searchEndDate
      * @return Page<Feedback>
      */
-
     @GetMapping("/page")
     public ResponseEntity<Page<Feedback>> getAllFeedback(
             @RequestParam(name = "page", required = false, defaultValue = "0") Integer page,
-            @RequestParam(name = "size", required = false, defaultValue = "10") Integer size,
+            @RequestParam(name = "size", required = false, defaultValue = "5") Integer size,
             @RequestParam(name = "sort", required = false, defaultValue = "ASC") String sort,
             @RequestParam Optional<String> searchCreator,
             @RequestParam Optional<String> searchStartDate,
             @RequestParam Optional<String> searchEndDate) {
 
-        Sort sortable;
+        Sort sortable = null;
         if (sort.equals("ASC")) {
             sortable = Sort.by("id").ascending();
-        } else {
+        } else if(!sort.equals("DESC")){
+            sortable = Sort.by("rating").descending();
+        }else {
             sortable = Sort.by("rating").ascending();
         }
         Pageable pageable = PageRequest.of(page, size, sortable);
@@ -100,9 +101,6 @@ public class FeedbackRestController {
             return new ResponseEntity<>(feedbackPage, HttpStatus.OK);
         }
     }
-
-
-
     /**
      * Created by : LuanTV
      * Date created: 09/08/2022
