@@ -22,7 +22,7 @@ public class EncrytedPasswordUtils {
         String password = "123456a@";
         String encrytedPassword = new EncrytedPasswordUtils().encrytePassword(password);
 
-        System.out.println("Encryted Password: " + encrytedPassword);
+        System.out.println(new BCryptPasswordEncoder().matches(password, encrytedPassword));
 
     }
 
