@@ -41,7 +41,6 @@ public class DishOrderRestController {
         if (bindingResult.hasErrors()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        System.out.println(numberCode);
         BeanUtils.copyProperties(dishOrderDto, dishOrder);
         iDishOrderService.createOrder(dishOrder);
         return new ResponseEntity<>(HttpStatus.OK);
