@@ -59,15 +59,6 @@ public class SimpleEmailController {
         }
         AppUser appUser = this.appUserService.findAppUserByUsername(jwtRequest.getUsername());
         if (appUser != null) {
-//            SimpleMailMessage message = new SimpleMailMessage();
-//            message.setFrom(this.myEmail);
-//            message.setTo(appUser.getEmployee().getEmail());
-//            message.setSubject("Find password");
-//            String token = jwtTokenUtil.generateToken(jwtRequest.getUsername());
-//            this.tokenList.add(token);
-//            message.setText("http://localhost:8080/forgotPassword/" + token);
-//
-//            this.emailSender.send(message);
 
             MimeMessage message = emailSender.createMimeMessage();
 
@@ -166,7 +157,7 @@ public class SimpleEmailController {
      * @date-create 14/8/2022
      */
     private String createHTMLMailForm(String token, String name) {
-        String htmlMsg = "<!doctype html>\n" +
+        return "<!doctype html>\n" +
                 "<html lang=\"en-US\">\n" +
                 "\n" +
                 "<head>\n" +
@@ -256,7 +247,5 @@ public class SimpleEmailController {
                 "</body>\n" +
                 "\n" +
                 "</html>\n";
-
-        return htmlMsg;
     }
 }
