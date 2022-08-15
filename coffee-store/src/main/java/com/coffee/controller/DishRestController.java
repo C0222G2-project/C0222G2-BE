@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
@@ -38,7 +39,6 @@ public class DishRestController {
      * @creator PhucLV
      * @date-create 09/08/2022
      */
-
     @PostMapping(value = "/create")
     public ResponseEntity<FieldError> createDish( @RequestBody @Valid DishDto dishDto,
                                                   BindingResult bindingResult) {
