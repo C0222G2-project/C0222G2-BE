@@ -50,4 +50,9 @@ public class CoffeeTableService implements ICoffeeTableService {
         return this.iCoffeeTableRepository.totalPayment(id);
     }
 
+    @Override
+    public void updateStatus(int idTable) {
+        this.iCoffeeTableRepository.updateStatus(idTable);
+    }
+
 }
