@@ -8,7 +8,7 @@ public class JwtRequest implements Serializable {
 
     private static final long serialVersionUID = 5926468583005150707L;
 
-    @Size(max = 50)
+    @Pattern(regexp = "^[A-Za-z][A-Za-z0-9_]{3,50}$")
     private String username;
 
     @Size(max = 100)
