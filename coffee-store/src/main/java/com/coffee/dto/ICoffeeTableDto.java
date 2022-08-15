@@ -1,12 +1,20 @@
 package com.coffee.dto;
+
 /**
- create HoaNN
+ * create HoaNN
  */
 public interface ICoffeeTableDto {
     Integer getId();
+
     String getName();
+
     Double getPrice();
+
     Integer getQuantity();
+
     String getCode();
+
     Double getPayment();
+
+    Boolean getStatus();
 }
