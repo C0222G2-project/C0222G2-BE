@@ -99,6 +99,7 @@ public class PaymentRestController {
         Bill billAfter = this.billRepository.findByCodeBill(code);
         this.dishOrderRepository.updateBill(billAfter, idTable);
         this.iCoffeeTableService.updateStatus(idTable);
+        this.iCoffeeTableService.deleteList(idTable);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

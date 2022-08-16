@@ -31,9 +31,15 @@ public interface ICoffeeTableRepository extends JpaRepository<CoffeeTable, Integ
             " from dish_order " +
             " join dish on dish.id = dish_order.dish_id " +
             " join coffee_table on dish_order.coffee_table_id = coffee_table.id " +
-            " where coffee_table.id = :idKey) as dto_table group by(dishId) ",
+            " where coffee_table.id = :idKey and dish_order.is_deleted  = 0) as dto_table group by(dishId) ",
             nativeQuery = true)
     List<ICoffeeTableDto> displayTableById(@Param("idKey") Integer id);
+
+    @Transactional
+    @Modifying
+    @Query(value = " UPDATE dish_order SET is_deleted = 1 WHERE ( coffee_table_id = :idKey)",
+            nativeQuery = true)
+    void deleteList(@Param("idKey") Integer id);
 
 
     /**
@@ -66,7 +72,7 @@ public interface ICoffeeTableRepository extends JpaRepository<CoffeeTable, Integ
             " from dish_order " +
             " join dish on dish.id = dish_order.dish_id " +
             " join coffee_table on dish_order.coffee_table_id = coffee_table.id " +
-            " where coffee_table.id = :idKey2) as dto_table",
+            " where coffee_table.id = :idKey2 and dish_order.is_deleted  = 0 ) as dto_table",
             nativeQuery = true)
     ITotalPaymentDto totalPayment(@Param("idKey2") Integer id);
 

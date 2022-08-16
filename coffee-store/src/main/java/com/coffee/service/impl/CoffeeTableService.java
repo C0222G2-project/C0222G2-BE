@@ -20,6 +20,7 @@ public class CoffeeTableService implements ICoffeeTableService {
     /**
      * Create HoaNN
      * Date create 10/08/2022
+     *
      * @param id
      * @return
      */
@@ -31,6 +32,7 @@ public class CoffeeTableService implements ICoffeeTableService {
     /**
      * Create HoaNN
      * Date create 10/08/2022
+     *
      * @param pageable
      * @return
      */
@@ -42,6 +44,7 @@ public class CoffeeTableService implements ICoffeeTableService {
     /**
      * Create HoaNN
      * Date create 10/08/2022
+     *
      * @param id
      * @return
      */
@@ -53,6 +56,11 @@ public class CoffeeTableService implements ICoffeeTableService {
     @Override
     public void updateStatus(int idTable) {
         this.iCoffeeTableRepository.updateStatus(idTable);
+    }
+
+    @Override
+    public void deleteList(Integer id) {
+        this.iCoffeeTableRepository.deleteList(id);
     }
 
 }
