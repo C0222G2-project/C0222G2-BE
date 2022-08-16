@@ -25,8 +25,7 @@ public class EmployeeRestController_findEmployeeById {
      */
     //find id = null
     @Test
-
-    public  void findEmployeeById_id_1() {
+    public void findEmployeeById_id_1() {
         try {
             this.mockMvc.perform(MockMvcRequestBuilders.get("/rest/employee/find/null"))
                     .andDo(print()).andExpect(status().is4xxClientError());
