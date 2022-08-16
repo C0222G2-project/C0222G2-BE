@@ -1,7 +1,6 @@
 package com.coffee.service;
 
 import com.coffee.dto.IEmployeeDTO;
-
 import com.coffee.model.employee.Employee;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -9,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import java.util.List;
 
 public interface IEmployeeService {
+
 
     /**
      * Create by TuyenTN
@@ -25,7 +25,6 @@ public interface IEmployeeService {
     /**
      * Create: TuyenTN
      * Data:9-8-2022
-     *
      * @param id
      * @return
      */
@@ -77,6 +76,7 @@ public interface IEmployeeService {
      * @return  update Employee success
      */
     void editEmployee(Employee employee);
+
 
     /**
      * @return list Employee

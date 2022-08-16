@@ -16,6 +16,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -47,8 +48,9 @@ public class EmployeeRestController {
      * @param searchAccount
      * @return
      */
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @GetMapping("/employee/page")
-    public ResponseEntity<Page<IEmployeeDTO>> getAllEmployee(@PageableDefault(5) Pageable pageable,
+    public ResponseEntity<Page<IEmployeeDTO>> getAllEmployee(@PageableDefault(10) Pageable pageable,
                                                              Optional<String> searchName,
                                                              Optional<String> searchPhone,
                                                              Optional<String> searchAccount) {
@@ -66,7 +68,7 @@ public class EmployeeRestController {
         }
         Page<IEmployeeDTO> employeePage = this.iEmployeeService.getAllEmployee(pageable, searchByName, searchByPhone, searchByAccount);
         if (employeePage.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(employeePage, HttpStatus.OK);
     }
@@ -79,6 +81,7 @@ public class EmployeeRestController {
      * @param id
      * @return
      */
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @GetMapping("/employee/find/{id}")
     public ResponseEntity<IEmployeeDTO> findEmployeeById(@PathVariable Integer id) {
         IEmployeeDTO iEmployeeDTO = this.iEmployeeService.findEmployeeById(id);
@@ -96,7 +99,7 @@ public class EmployeeRestController {
      * @param id
      * @return
      */
-
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @DeleteMapping("/employee/delete/{id}")
     public ResponseEntity<Void> deleteEmployeeById(@PathVariable Integer id) {
         IEmployeeDTO iEmployeeDTO = this.iEmployeeService.findEmployeeById(id);
@@ -122,6 +125,7 @@ public class EmployeeRestController {
      * @param
      * @return  Position list
      */
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @GetMapping("/position")
     public ResponseEntity<List<Position>> getAllPosition() {
         List<Position> positionList = iPositionService.getAllPosition();
@@ -147,6 +151,7 @@ public class EmployeeRestController {
      * @param username
      * @return true: id status 200 / false: status 404
      */
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @GetMapping("/employee/findUserName/{username}")
     public ResponseEntity<AppUser> findByUserName(@PathVariable String username) {
         if (username == null) {
@@ -162,6 +167,7 @@ public class EmployeeRestController {
      * @param id
      * @return true: id status 200 / false: status 404
      */
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @GetMapping("/employee/findId/{id}")
     public ResponseEntity<Employee> findById(@PathVariable Integer id) {
         if (id == null) {
@@ -180,6 +186,7 @@ public class EmployeeRestController {
      * if employee null : Create new employee
      * @return  true: employee, status 200 / false: status 404
      */
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @PostMapping("/employee/create")
     public ResponseEntity<?> saveEmployee(@Valid @RequestBody EmployeeDTOCreate employeeDTO , BindingResult bindingResult) {
         EmployeeDTOCreate employeeDTOCreate = new EmployeeDTOCreate();
@@ -206,6 +213,7 @@ public class EmployeeRestController {
      * if employee null : Create new employee
      * @return  true: employee, status 200 / false: status 404
      */
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @PatchMapping(value = "/employee/edit")
     public ResponseEntity<Void> editEmployee(@Valid @RequestBody EmployeeDTOEdit employeeDTOEdit , BindingResult bindingResult) {
 
@@ -223,7 +231,4 @@ public class EmployeeRestController {
         iEmployeeService.editEmployee(employee);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
-
-
-
 }

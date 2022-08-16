@@ -28,14 +28,14 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Integer> {
      */
 
 
-    @Query(value = " select employee.`name`,employee.phone_number as phoneNumber,position.name as position, " +
+    @Query(value = " select employee.`name` as name,employee.phone_number as phoneNumber,position.name as position, " +
             " app_user.user_name as appUser,employee.id,employee.birthday,employee.image,employee.address,employee.salary, " +
             " employee.gender,employee.email from employee " +
             " join app_user on app_user.id = employee.user_id " +
             " join position on employee.position_id = position.id " +
             " where employee.is_deleted =0 and employee.name like :keyZero and employee.phone_number like :keyOne " +
             " and app_user.user_name like :keyTwo ",
-            countQuery = " select count(*) from (select employee.`name`,employee.phone_number as phoneNumber, " +
+            countQuery = " select count(*) from (select employee.`name` as name,employee.phone_number as phoneNumber, " +
                     " app_user.user_name as appUser,position.name as position,employee.id,employee.birthday,employee.image, " +
                     " employee.address,employee.salary, employee.gender,employee.email from employee " +
                     " join app_user on app_user.id = employee.user_id " +
