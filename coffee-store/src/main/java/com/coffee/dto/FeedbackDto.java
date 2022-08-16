@@ -16,7 +16,7 @@ public class FeedbackDto {
     @NotBlank(message = "Vui lòng nhập họ và tên.")
     @Pattern(regexp = "^([A-ZÁÀẢÃẠĂẮẰẲẴẶÂẤẦẨẬẪÉÈẺẼẸÊẾỀỂỄỆÍÌỈĨỊÓÒỎÕỌÔỐỒỔỖỘƠỚỜỞỠỢÚÙỦŨỤƯỨỪỬỮỰÝỲỶỸỴĐ]" +
             "[a-záàảãạăắằẳẵặâấầẩậẫéèẻẽẹêếềểễệíìỉĩịóòỏõọôốồổỗộơớờởỡợúùủũụưứừửữựýỳỷỹỵđ]*" +
-            "( ))*([A-ZÁÀẢÃẠĂẮẰẲẴẶÂẤẦẨẬẪÉÈẺẼẸÊẾỀỂỄỆÍÌỈĨỊÓÒỎÕỌÔỐỒỔỖỘƠỚỜỞỠỢÚÙỦŨỤƯỨỪỬỮỰÝỲỶỸỴĐ]" +
+            "( )){0,14}([A-ZÁÀẢÃẠĂẮẰẲẴẶÂẤẦẨẬẪÉÈẺẼẸÊẾỀỂỄỆÍÌỈĨỊÓÒỎÕỌÔỐỒỔỖỘƠỚỜỞỠỢÚÙỦŨỤƯỨỪỬỮỰÝỲỶỸỴĐ]" +
             "[a-záàảãạăắằẳẵặâấầẩậẫéèẻẽẹêếềểễệíìỉĩịóòỏõọôốồổỗộơớờởỡợúùủũụưứừửữựýỳỷỹỵđ]*)$",
             message = "Vui lòng nhập đúng định dạng họ và tên: " +
                     "viết hoa chữ cái đầu mỗi từ, không chứa ký tự đặc biệt...")
@@ -33,11 +33,10 @@ public class FeedbackDto {
     private String content;
 
     @NotNull(message = "Vui lòng đánh giá sao trước khi phản hồi.")
-    @Range(min = 1, max = 5, message = "Vui lòng đánh giá 1-5 sao.")
+    @Range(min = 1, max = 5, message = "Vui lòng đánh giá 1 - 5 sao.")
     private Integer rating;
 
     @NotBlank(message = "Vui lòng đính kèm ảnh phản hồi thực tế.")
-    @Size(min = 5, max = 200, message = "Vui lòng đặt tên ảnh từ 5 đến 200 ký tự.")
     private String image;
 
 
