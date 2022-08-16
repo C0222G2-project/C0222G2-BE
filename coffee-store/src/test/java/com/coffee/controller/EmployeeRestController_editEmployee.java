@@ -1,21 +1,7 @@
 package com.coffee.controller;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-import com.coffee.dto.EmployeeDTO;
-=======
-import com.coffee.dto.employe.EmployeeDTOCreate;
+import com.coffee.dto.EmployeeDTOCreate;
 import com.coffee.model.account.AppUser;
->>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
-=======
-import com.coffee.dto.employe.EmployeeDTOCreate;
-import com.coffee.model.account.AppUser;
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
-=======
-import com.coffee.dto.employe.EmployeeDTOCreate;
-import com.coffee.model.account.AppUser;
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 import com.coffee.model.employee.Position;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
@@ -26,21 +12,8 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 import java.sql.Date;
 
->>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
-=======
-import java.sql.Date;
-
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
-=======
-import java.sql.Date;
-
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -54,28 +27,6 @@ public class EmployeeRestController_editEmployee {
     @Autowired
     private ObjectMapper objectMapper;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-// test edit name = null,where id = 1
-    @Test
-    public void editEmployee_name_13() throws Exception {
-
-        EmployeeDTO employeeDTO = new EmployeeDTO();
-        employeeDTO.setName(null);
-        employeeDTO.getBirthday("2000-01-01");
-        employeeDTO.getPhoneNumber("0936369999");
-        employeeDTO.setAddress("Tp.Đà NẴNG");
-        employeeDTO.setGender(0);
-        employeeDTO.setEmail("levana@gmail.com");
-        employeeDTO.setSalary(10.0);
-        employeeDTO.setImage("http/:firebase.levana.png");
-        employeeDTO.getIsDeleted(0);
-=======
-=======
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
-=======
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
     /**
      * Create by TaiLV
      * create date:10/08/2022
@@ -286,13 +237,6 @@ public class EmployeeRestController_editEmployee {
         employeeDTO.setSalary(1000000.0);
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.setIsDeleted(0);
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
-=======
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
-=======
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 
         Position position = new Position();
         position.setId(1);
@@ -300,46 +244,12 @@ public class EmployeeRestController_editEmployee {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-                        .patch("/rest/employee/edit/1")
-=======
                         .patch("/rest/employee/edit")
->>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
-=======
-                        .patch("/rest/employee/edit")
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
-=======
-                        .patch("/rest/employee/edit")
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
                         .content(this.objectMapper.writeValueAsString(employeeDTO))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-// test edit name = "",where id = 1
-    @Test
-    public void editEmployee_name_14() throws Exception {
-
-        EmployeeDTO employeeDTO = new EmployeeDTO();
-        employeeDTO.setName("");
-        employeeDTO.getBirthday("2000-01-01");
-        employeeDTO.getPhoneNumber("0936369999");
-        employeeDTO.setAddress("Tp.Đà NẴNG");
-        employeeDTO.setGender(0);
-        employeeDTO.setEmail("levana@gmail.com");
-        employeeDTO.setSalary(10.0);
-        employeeDTO.setImage("http/:firebase.levana.png");
-        employeeDTO.getIsDeleted(0);
-=======
-=======
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
-=======
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 
     /**
      * Create by TaiLV
@@ -362,13 +272,6 @@ public class EmployeeRestController_editEmployee {
         employeeDTO.setSalary(1000000.0);
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.setIsDeleted(0);
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
-=======
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
-=======
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 
         Position position = new Position();
         position.setId(1);
@@ -376,47 +279,13 @@ public class EmployeeRestController_editEmployee {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-                        .patch("/rest/employee/edit/1")
-=======
                         .patch("/rest/employee/edit")
->>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
-=======
-                        .patch("/rest/employee/edit")
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
-=======
-                        .patch("/rest/employee/edit")
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
                         .content(this.objectMapper.writeValueAsString(employeeDTO))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    // test edit format birthday,where id = 1
-    @Test
-    public void editEmployee_birthday_15() throws Exception {
-
-        EmployeeDTO employeeDTO = new EmployeeDTO();
-        employeeDTO.setName("Lê Văn A");
-        employeeDTO.getBirthday("20000101");
-        employeeDTO.getPhoneNumber("0936369999");
-        employeeDTO.setAddress("Tp.Đà NẴNG");
-        employeeDTO.setGender(0);
-        employeeDTO.setEmail("levana@gmail.com");
-        employeeDTO.setSalary(10.0);
-        employeeDTO.setImage("http/:firebase.levana.png");
-        employeeDTO.getIsDeleted(0);
-=======
-=======
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
-=======
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
     /**
      * Create by TaiLV
      * create date:10/08/2022
@@ -477,13 +346,6 @@ public class EmployeeRestController_editEmployee {
         employeeDTO.setSalary(1000000.0);
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.setIsDeleted(0);
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
-=======
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
-=======
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 
         Position position = new Position();
         position.setId(1);
@@ -491,47 +353,13 @@ public class EmployeeRestController_editEmployee {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-                        .patch("/rest/employee/edit/1")
-=======
                         .patch("/rest/employee/edit")
->>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
-=======
-                        .patch("/rest/employee/edit")
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
-=======
-                        .patch("/rest/employee/edit")
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
                         .content(this.objectMapper.writeValueAsString(employeeDTO))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    // test edit phone = null,where id = 1
-    @Test
-    public void editEmployee_phoneNumber_13() throws Exception {
-
-        EmployeeDTO employeeDTO = new EmployeeDTO();
-        employeeDTO.setName("Lê Văn A");
-        employeeDTO.getBirthday("2000-01-01");
-        employeeDTO.getPhoneNumber(null);
-        employeeDTO.setAddress("Tp.Đà NẴNG");
-        employeeDTO.setGender(0);
-        employeeDTO.setEmail("levana@gmail.com");
-        employeeDTO.setSalary(10.0);
-        employeeDTO.setImage("http/:firebase.levana.png");
-        employeeDTO.getIsDeleted(0);
-=======
-=======
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
-=======
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
     /**
      * Create by TaiLV
      * create date:10/08/2022
@@ -591,13 +419,6 @@ public class EmployeeRestController_editEmployee {
         employeeDTO.setSalary(1000000.0);
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.setIsDeleted(0);
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
-=======
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
-=======
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 
         Position position = new Position();
         position.setId(1);
@@ -605,47 +426,13 @@ public class EmployeeRestController_editEmployee {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-                        .patch("/rest/employee/edit/1")
-=======
                         .patch("/rest/employee/edit")
->>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
-=======
-                        .patch("/rest/employee/edit")
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
-=======
-                        .patch("/rest/employee/edit")
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
                         .content(this.objectMapper.writeValueAsString(employeeDTO))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    // test edit phoneNumber = "",where id = 1
-    @Test
-    public void editEmployee_phoneNumber_14() throws Exception {
-
-        EmployeeDTO employeeDTO = new EmployeeDTO();
-        employeeDTO.setName("Lê Văn A");
-        employeeDTO.getBirthday("2000-01-01");
-        employeeDTO.getPhoneNumber("");
-        employeeDTO.setAddress("Tp.Đà NẴNG");
-        employeeDTO.setGender(0);
-        employeeDTO.setEmail("levana@gmail.com");
-        employeeDTO.setSalary(10.0);
-        employeeDTO.setImage("http/:firebase.levana.png");
-        employeeDTO.getIsDeleted(0);
-=======
-=======
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
-=======
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
     /**
      * Create by TaiLV
      * create date:10/08/2022
@@ -669,13 +456,6 @@ public class EmployeeRestController_editEmployee {
         employeeDTO.setSalary(1000000.0);
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.setIsDeleted(0);
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
-=======
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
-=======
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 
         Position position = new Position();
         position.setId(1);
@@ -683,47 +463,13 @@ public class EmployeeRestController_editEmployee {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-                        .patch("/rest/employee/edit/1")
-=======
                         .patch("/rest/employee/edit")
->>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
-=======
-                        .patch("/rest/employee/edit")
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
-=======
-                        .patch("/rest/employee/edit")
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
                         .content(this.objectMapper.writeValueAsString(employeeDTO))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    // test edit address = null,where id = 1
-    @Test
-    public void editEmployee_address_13() throws Exception {
-
-        EmployeeDTO employeeDTO = new EmployeeDTO();
-        employeeDTO.setName("Lê Văn A");
-        employeeDTO.getBirthday("2000-01-01");
-        employeeDTO.getPhoneNumber("0936369999");
-        employeeDTO.setAddress(null);
-        employeeDTO.setGender(0);
-        employeeDTO.setEmail("levana@gmail.com");
-        employeeDTO.setSalary(10.0);
-        employeeDTO.setImage("http/:firebase.levana.png");
-        employeeDTO.getIsDeleted(0);
-=======
-=======
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
-=======
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 
     /**
      * Create by TaiLV
@@ -783,13 +529,6 @@ public class EmployeeRestController_editEmployee {
         employeeDTO.setSalary(1000000.0);
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.setIsDeleted(0);
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
-=======
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
-=======
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 
         Position position = new Position();
         position.setId(1);
@@ -797,48 +536,13 @@ public class EmployeeRestController_editEmployee {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-                        .patch("/rest/employee/edit/1")
-=======
                         .patch("/rest/employee/edit")
->>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
-=======
-                        .patch("/rest/employee/edit")
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
-=======
-                        .patch("/rest/employee/edit")
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
                         .content(this.objectMapper.writeValueAsString(employeeDTO))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-    // test edit address = "",where id = 1
-    @Test
-    public void editEmployee_address_14() throws Exception {
-
-        EmployeeDTO employeeDTO = new EmployeeDTO();
-        employeeDTO.setName("Lê Văn A");
-        employeeDTO.getBirthday("2000-01-01");
-        employeeDTO.getPhoneNumber("0936369999");
-        employeeDTO.setAddress("");
-        employeeDTO.setGender(0);
-        employeeDTO.setEmail("levana@gmail.com");
-        employeeDTO.setSalary(10.0);
-        employeeDTO.setImage("http/:firebase.levana.png");
-        employeeDTO.getIsDeleted(0);
-=======
-=======
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
-=======
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
     /**
      * Create by TaiLV
      * create date:10/08/2022
@@ -861,13 +565,6 @@ public class EmployeeRestController_editEmployee {
         employeeDTO.setSalary(1000000.0);
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.setIsDeleted(0);
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
-=======
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
-=======
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 
         Position position = new Position();
         position.setId(1);
@@ -875,47 +572,13 @@ public class EmployeeRestController_editEmployee {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-                        .patch("/rest/employee/edit/1")
-=======
                         .patch("/rest/employee/edit")
->>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
-=======
-                        .patch("/rest/employee/edit")
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
-=======
-                        .patch("/rest/employee/edit")
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
                         .content(this.objectMapper.writeValueAsString(employeeDTO))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    // test edit email = null,where id = 1
-    @Test
-    public void editEmployee_email_13() throws Exception {
-
-        EmployeeDTO employeeDTO = new EmployeeDTO();
-        employeeDTO.setName("Lê Văn A");
-        employeeDTO.getBirthday("2000-01-01");
-        employeeDTO.getPhoneNumber("0936369999");
-        employeeDTO.setAddress("Tp.Đà Nẵng");
-        employeeDTO.setGender(0);
-        employeeDTO.setEmail(null);
-        employeeDTO.setSalary(10.0);
-        employeeDTO.setImage("http/:firebase.levana.png");
-        employeeDTO.getIsDeleted(0);
-=======
-=======
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
-=======
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
     /**
      * Create by TaiLV
      * create date:10/08/2022
@@ -973,13 +636,6 @@ public class EmployeeRestController_editEmployee {
         employeeDTO.setSalary(1000000.0);
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.setIsDeleted(0);
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
-=======
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
-=======
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 
         Position position = new Position();
         position.setId(1);
@@ -987,47 +643,13 @@ public class EmployeeRestController_editEmployee {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-                        .patch("/rest/employee/edit/1")
-=======
                         .patch("/rest/employee/edit")
->>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
-=======
-                        .patch("/rest/employee/edit")
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
-=======
-                        .patch("/rest/employee/edit")
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
                         .content(this.objectMapper.writeValueAsString(employeeDTO))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    // test edit email = "" ,where id = 1
-    @Test
-    public void editEmployee_email_14() throws Exception {
-
-        EmployeeDTO employeeDTO = new EmployeeDTO();
-        employeeDTO.setName("Lê Văn A");
-        employeeDTO.getBirthday("2000-01-01");
-        employeeDTO.getPhoneNumber("0936369999");
-        employeeDTO.setAddress("Tp.Đà Nẵng");
-        employeeDTO.setGender(0);
-        employeeDTO.setEmail("");
-        employeeDTO.setSalary(10.0);
-        employeeDTO.setImage("http/:firebase.levana.png");
-        employeeDTO.getIsDeleted(0);
-=======
-=======
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
-=======
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
     /**
      * Create by TaiLV
      * create date:10/08/2022
@@ -1051,13 +673,6 @@ public class EmployeeRestController_editEmployee {
         employeeDTO.setSalary(1000000.0);
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.setIsDeleted(0);
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
-=======
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
-=======
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 
         Position position = new Position();
         position.setId(1);
@@ -1065,47 +680,13 @@ public class EmployeeRestController_editEmployee {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-                        .patch("/rest/employee/edit/1")
-=======
                         .patch("/rest/employee/edit")
->>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
-=======
-                        .patch("/rest/employee/edit")
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
-=======
-                        .patch("/rest/employee/edit")
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
                         .content(this.objectMapper.writeValueAsString(employeeDTO))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    // test edit format email where id = 1
-    @Test
-    public void editEmployee_email_15() throws Exception {
-
-        EmployeeDTO employeeDTO = new EmployeeDTO();
-        employeeDTO.setName("Lê Văn A");
-        employeeDTO.getBirthday("2000-01-01");
-        employeeDTO.getPhoneNumber("0936369999");
-        employeeDTO.setAddress("Tp.Đà Nẵng");
-        employeeDTO.setGender(0);
-        employeeDTO.setEmail("levana");
-        employeeDTO.setSalary(10.0);
-        employeeDTO.setImage("http/:firebase.levana.png");
-        employeeDTO.getIsDeleted(0);
-=======
-=======
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
-=======
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
     /**
      * Create by TaiLV
      * create date:10/08/2022
@@ -1129,13 +710,6 @@ public class EmployeeRestController_editEmployee {
         employeeDTO.setSalary(1000000.0);
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.setIsDeleted(0);
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
-=======
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
-=======
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 
         Position position = new Position();
         position.setId(1);
@@ -1143,41 +717,13 @@ public class EmployeeRestController_editEmployee {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-                        .patch("/rest/employee/edit/1")
-=======
                         .patch("/rest/employee/edit")
->>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
-=======
-                        .patch("/rest/employee/edit")
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
-=======
-                        .patch("/rest/employee/edit")
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
                         .content(this.objectMapper.writeValueAsString(employeeDTO))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    // test edit salary = null where id = 1
-    @Test
-    public void editEmployee_salary_13() throws Exception {
-
-        EmployeeDTO employeeDTO = new EmployeeDTO();
-        employeeDTO.setName("Lê Văn A");
-        employeeDTO.getBirthday("2000-01-01");
-        employeeDTO.getPhoneNumber("0936369999");
-=======
-=======
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
-=======
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
     /**
      * Create by TaiLV
      * create date:10/08/2022
@@ -1195,31 +741,12 @@ public class EmployeeRestController_editEmployee {
         employeeDTO.setName("Lê Văn A");
         employeeDTO.setBirthday(Date.valueOf("2000-01-01"));
         employeeDTO.setPhoneNumber("0936369999");
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
-=======
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
-=======
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
         employeeDTO.setAddress("Tp.Đà Nẵng");
         employeeDTO.setGender(0);
         employeeDTO.setEmail("levana@gmail.com");
         employeeDTO.setSalary(null);
         employeeDTO.setImage("http/:firebase.levana.png");
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-        employeeDTO.getIsDeleted(0);
-=======
         employeeDTO.setIsDeleted(0);
->>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
-=======
-        employeeDTO.setIsDeleted(0);
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
-=======
-        employeeDTO.setIsDeleted(0);
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 
         Position position = new Position();
         position.setId(1);
@@ -1227,41 +754,13 @@ public class EmployeeRestController_editEmployee {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-                        .patch("/rest/employee/edit/1")
-=======
                         .patch("/rest/employee/edit")
->>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
-=======
-                        .patch("/rest/employee/edit")
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
-=======
-                        .patch("/rest/employee/edit")
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
                         .content(this.objectMapper.writeValueAsString(employeeDTO))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-// test edit salary < 0 where id = 1
-    @Test
-    public void editEmployee_salary_15() throws Exception {
-
-        EmployeeDTO employeeDTO = new EmployeeDTO();
-        employeeDTO.setName("Lê Văn A");
-        employeeDTO.getBirthday("2000-01-01");
-        employeeDTO.getPhoneNumber("0936369999");
-=======
-=======
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
-=======
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
     /**
      * Create by TaiLV
      * create date:10/08/2022
@@ -1279,31 +778,12 @@ public class EmployeeRestController_editEmployee {
         employeeDTO.setName("Lê Văn A");
         employeeDTO.setBirthday(Date.valueOf("2000-01-01"));
         employeeDTO.setPhoneNumber("0936369999");
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
-=======
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
-=======
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
         employeeDTO.setAddress("Tp.Đà Nẵng");
         employeeDTO.setGender(0);
         employeeDTO.setEmail("levana@gmail.com");
         employeeDTO.setSalary(-11.0);
         employeeDTO.setImage("http/:firebase.levana.png");
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-        employeeDTO.getIsDeleted(0);
-=======
         employeeDTO.setIsDeleted(0);
->>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
-=======
-        employeeDTO.setIsDeleted(0);
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
-=======
-        employeeDTO.setIsDeleted(0);
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 
         Position position = new Position();
         position.setId(1);
@@ -1311,47 +791,13 @@ public class EmployeeRestController_editEmployee {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-                        .post("/employee/edit/1")
-=======
                         .patch("/rest/employee/edit")
->>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
-=======
-                        .patch("/rest/employee/edit")
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
-=======
-                        .patch("/rest/employee/edit")
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
                         .content(this.objectMapper.writeValueAsString(employeeDTO))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    // test edit employee id = 1 success
-    @Test
-    public void editEmployee_18() throws Exception {
-
-        EmployeeDTO employeeDTO = new EmployeeDTO();
-        employeeDTO.setName("Lê Văn A");
-        employeeDTO.getBirthday("2000-01-01");
-        employeeDTO.getPhoneNumber("0936369999");
-        employeeDTO.setAddress("Tp.Đà NẴNG");
-        employeeDTO.setGender(0);
-        employeeDTO.setEmail("levana@gmail.com");
-        employeeDTO.setSalary(10.0);
-        employeeDTO.setImage("http/:firebase.levana.png");
-        employeeDTO.getIsDeleted(0);
-=======
-=======
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
-=======
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
     /**
      * Create by TaiLV
      * create date:10/08/2022
@@ -1375,13 +821,6 @@ public class EmployeeRestController_editEmployee {
         employeeDTO.setSalary(1000000.0);
         employeeDTO.setImage("http/:firebase.levana.png");
         employeeDTO.setIsDeleted(0);
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
-=======
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
-=======
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
 
         Position position = new Position();
         position.setId(1);
@@ -1389,19 +828,7 @@ public class EmployeeRestController_editEmployee {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-                        .post("/employee/edit/1")
-=======
                         .patch("/rest/employee/edit")
->>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
-=======
-                        .patch("/rest/employee/edit")
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
-=======
-                        .patch("/rest/employee/edit")
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
                         .content(this.objectMapper.writeValueAsString(employeeDTO))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
