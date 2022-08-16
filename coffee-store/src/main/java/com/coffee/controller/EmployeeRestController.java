@@ -19,6 +19,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -53,7 +54,6 @@ public class EmployeeRestController {
      * @param searchAccount
      * @return
      */
-
     @GetMapping("/employee/page")
     public ResponseEntity<Page<IEmployeeDTO>> getAllEmployee(@PageableDefault(5) Pageable pageable,
                                                              Optional<String> searchName,
@@ -74,7 +74,6 @@ public class EmployeeRestController {
 
         Page<IEmployeeDTO> employeePage = this.iEmployeeService.getAllEmployee(pageable, searchByName, searchByPhone,searchByAccount);
 
-        System.out.println(employeePage);
         if (employeePage.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
@@ -217,5 +216,4 @@ public class EmployeeRestController {
         iEmployeeService.editEmployee(employee);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
-
 }
