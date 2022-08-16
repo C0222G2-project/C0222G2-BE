@@ -18,8 +18,8 @@ public class FeedbackDto {
             "[a-záàảãạăắằẳẵặâấầẩậẫéèẻẽẹêếềểễệíìỉĩịóòỏõọôốồổỗộơớờởỡợúùủũụưứừửữựýỳỷỹỵđ]*" +
             "( )){0,14}([A-ZÁÀẢÃẠĂẮẰẲẴẶÂẤẦẨẬẪÉÈẺẼẸÊẾỀỂỄỆÍÌỈĨỊÓÒỎÕỌÔỐỒỔỖỘƠỚỜỞỠỢÚÙỦŨỤƯỨỪỬỮỰÝỲỶỸỴĐ]" +
             "[a-záàảãạăắằẳẵặâấầẩậẫéèẻẽẹêếềểễệíìỉĩịóòỏõọôốồổỗộơớờởỡợúùủũụưứừửữựýỳỷỹỵđ]*)$",
-            message = "Vui lòng nhập đúng định dạng họ và tên: " +
-                    "viết hoa chữ cái đầu mỗi từ, không chứa ký tự đặc biệt...")
+            message = "Vui lòng nhập họ và tên, từ 2 đến 30 ký tự, đúng định dạng" +
+                    "                (chỉ viết hoa chữ cái đầu mỗi từ, không chứa số và ký tự đặc biệt, không chứa khoảng trắng thừa, ...).")
     @Size(min = 2, max = 30, message = "Vui lòng nhập 2 - 30 ký tự.")
     private String creator;
 
