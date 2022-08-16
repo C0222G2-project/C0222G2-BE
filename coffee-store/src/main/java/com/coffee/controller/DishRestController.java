@@ -5,23 +5,18 @@ import com.coffee.model.dish.Dish;
 import com.coffee.service.IDishService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PageableDefault;
-
-
-import java.util.Optional;
-
 import javax.validation.Valid;
-
-
+import java.util.Optional;
 
 @RestController
 @CrossOrigin
@@ -32,17 +27,16 @@ public class DishRestController {
     private IDishService iDishService;
 
     /**
-     * @function ( create new Dish)
      * @param dishDto
      * @return dish, status 201
+     * @function (create new Dish)
      * @creator PhucLV
      * @date-create 09/08/2022
      */
-
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @PostMapping(value = "/create")
-    public ResponseEntity<FieldError> createDish( @RequestBody @Valid DishDto dishDto,
-                                                  BindingResult bindingResult) {
-
+    public ResponseEntity<FieldError> createDish(@RequestBody @Valid DishDto dishDto,
+                                                 BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return new ResponseEntity<>(bindingResult.getFieldError(), HttpStatus.UPGRADE_REQUIRED);
         }
@@ -51,14 +45,15 @@ public class DishRestController {
         iDishService.save(dish);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
+
     /**
-     * @function ( find the dish of the id )
-     * @creator PhucLV
-     * @date-create 09/08/2022
      * @param id
      * @return true: id status 200 / false: status 404
+     * @function (find the dish of the id)
+     * @creator PhucLV
+     * @date-create 09/08/2022
      */
-
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @GetMapping("/{id}")
     public ResponseEntity<Dish> findById(@PathVariable int id) {
         Optional<Dish> dishOptional = iDishService.findById(id);
@@ -69,16 +64,15 @@ public class DishRestController {
     }
 
     /**
-     * @function ( edit the value of the dish )
-     * @param id
-//     * @param dishDto
+     * @param id //     * @param dishDto
      * @return true: dish, status 200 / false: status 404
+     * @function (edit the value of the dish)
      * @creator PhucLV
      * @date-create 09/08/2022
      */
-
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @PatchMapping("/edit/{id}")
-    public ResponseEntity<FieldError> updateDish( @PathVariable int id, @RequestBody @Valid DishDto dishDto ,BindingResult bindingResult) {
+    public ResponseEntity<FieldError> updateDish(@PathVariable int id, @RequestBody @Valid DishDto dishDto, BindingResult bindingResult) {
         Optional<Dish> dishOptional = iDishService.findById(id);
         if (!dishOptional.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -91,7 +85,7 @@ public class DishRestController {
         BeanUtils.copyProperties(dishDto, dish);
 
         iDishService.editDish(dish);
-        return new ResponseEntity<>( HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     /**
@@ -103,6 +97,7 @@ public class DishRestController {
      * @return HTTP status  200(OK) : return Page<Dish> dishPage
      * HTTP status  204(NO_CONTENT): return dishPage is empty
      */
+    @PreAuthorize("isAuthenticated()")
     @GetMapping("/getDishPage")
     public ResponseEntity<Page<Dish>> getAllDish(@PageableDefault(4) Pageable pageable) {
         Page<Dish> dishPage = this.iDishService.findAllDish(pageable);
@@ -126,6 +121,7 @@ public class DishRestController {
      * @return * HTTP status  200(OK) : return Page<Dish> dishPage
      * * HTTP status  204(NO_CONTENT): return dishPage is empty
      */
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @GetMapping("/searchDish")
     public ResponseEntity<Page<Dish>> getAllDish(@PageableDefault(10) Pageable pageable,
                                                  Optional<String> dishName,
@@ -167,6 +163,7 @@ public class DishRestController {
      * @return HTTP status  204(NO_CONTENT) : id = null
      * HTTP status  200(OK) : return a dish
      */
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @GetMapping("/findById/{id}")
     public ResponseEntity<Dish> findById(@PathVariable Integer id) {
         Dish dish = this.iDishService.findDishById(id);
@@ -185,6 +182,7 @@ public class DishRestController {
      * @return HTTP status  204(NO_CONTENT) : id = null
      * HTTP status  200(OK) : deleted
      */
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @PatchMapping("/delete/{id}")
     public ResponseEntity<Void> deleteDish(@PathVariable Integer id) {
         this.iDishService.deleteDish(id);

@@ -17,7 +17,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
+@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true, jsr250Enabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -33,10 +33,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private AppConfig appConfig;
 
     /**
-     * @creator: PhuongTD
-     * @date-create 9/8/2022
      * @param auth
      * @throws Exception
+     * @creator: PhuongTD
+     * @date-create 9/8/2022
      */
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
@@ -47,10 +47,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     /**
-     * @creator: PhuongTD
-     * @date-create 9/8/2022
      * @return
      * @throws Exception
+     * @creator: PhuongTD
+     * @date-create 9/8/2022
      */
     @Bean
     @Override
@@ -59,33 +59,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     /**
-     * @creator: PhuongTD
-     * @date-create 9/8/2022
      * @param httpSecurity
      * @throws Exception
+     * @creator: PhuongTD
+     * @date-create 9/8/2022
      */
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
-
-        httpSecurity.authorizeRequests().antMatchers("/home").access("hasAnyRole('ROLE_STAFF', 'ROLE_ADMIN', 'ROLE_USER')");
-        // Trang /userInfo yêu cầu phải login với vai trò ROLE_USER hoặc ROLE_ADMIN.
-        // Nếu chưa login, nó sẽ redirect tới trang /login.
-        httpSecurity.authorizeRequests().antMatchers("/staff").access("hasAnyRole('ROLE_STAFF', 'ROLE_ADMIN')");
-
-        // Trang chỉ dành cho ADMIN
-        httpSecurity.authorizeRequests().antMatchers("/employee/**", "/position", "/user").access("hasRole('ROLE_ADMIN')");
-
-        // Khi người dùng đã login, với vai trò XX.
-        // Nhưng truy cập vào trang yêu cầu vai trò YY,
-        // Ngoại lệ AccessDeniedException sẽ ném ra.
-        httpSecurity.authorizeRequests().and().exceptionHandling().accessDeniedPage("/authenticate");
-
         // We don't need CSRF for this example
         httpSecurity.csrf().disable()
                 // dont authenticate this particular request
                 .authorizeRequests().antMatchers(
                         "/authenticate",
-                        "/logoutSecurity",
                         "/sendSimpleEmail",
                         "/forgotPassword/**",
                         "/findPassword", "/**").permitAll().
