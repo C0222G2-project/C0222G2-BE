@@ -49,4 +49,5 @@ public interface IDishRepository extends JpaRepository<Dish, Integer> {
     @Query(value = " update dish d set is_deleted = 1 where  d.id =:dishId and d.is_deleted = 0", nativeQuery = true)
     int deleteDishById(@Param("dishId") Integer id);
 
+
 }

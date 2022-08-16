@@ -33,22 +33,6 @@ public class DishRestController {
     private IDishService iDishService;
 
     /**
-<<<<<<< HEAD
-     * @function ( get all list of the dish)
-     * @return dish List
-     * @creator PhucLV
-     * @date-create 13/08/2022
-     */
-
-    @GetMapping("/dish_list")
-    public ResponseEntity<List<Dish>> getAllDishListTest() {
-        List<Dish> dishList = this.iDishService.getAllDishListTest();
-        return new ResponseEntity<>(dishList, HttpStatus.OK);
-    }
-
-    /**
-=======
->>>>>>> 81ebf118ad076574228d96c866a50213048fad1c
      * @function ( create new Dish)
      * @param dishDto
      * @return dish, status 201
@@ -88,7 +72,7 @@ public class DishRestController {
     /**
      * @function ( edit the value of the dish )
      * @param id
-//     * @param dishDto
+     * @param dishDto
      * @return true: dish, status 200 / false: status 404
      * @creator PhucLV
      * @date-create 09/08/2022
@@ -96,6 +80,8 @@ public class DishRestController {
 
     @PatchMapping("/edit/{id}")
     public ResponseEntity<FieldError> updateDish( @PathVariable int id, @RequestBody @Valid DishDto dishDto ,BindingResult bindingResult) {
+
+
         Optional<Dish> dishOptional = iDishService.findById(id);
         if (!dishOptional.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -106,9 +92,9 @@ public class DishRestController {
         dishDto.setId(dishOptional.get().getId());
         Dish dish = new Dish();
         BeanUtils.copyProperties(dishDto, dish);
-
         iDishService.editDish(dish);
         return new ResponseEntity<>( HttpStatus.OK);
+
     }
 
     /**
