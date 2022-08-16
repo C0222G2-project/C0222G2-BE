@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -30,18 +31,18 @@ public class BillRestController {
      * @param searchParamDate
      * @return Page<Bill>
      */
-
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @GetMapping("/bill")
     public ResponseEntity<Page<IBillDto>> getAllBill(@PageableDefault(10) Pageable pageable,
-                                                 @RequestParam Optional<String> searchParamCode,
-                                                 @RequestParam Optional<String> searchParamDate){
+                                                     @RequestParam Optional<String> searchParamCode,
+                                                     @RequestParam Optional<String> searchParamDate) {
         String searchCode = searchParamCode.orElse("");
         String searchDate = searchParamDate.orElse("");
         Page<IBillDto> billDtoPage = this.iBillService.getAll(pageable, searchCode, searchDate);
-        if (billDtoPage.isEmpty()){
+        if (billDtoPage.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }else {
-            return new ResponseEntity<>(billDtoPage,HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(billDtoPage, HttpStatus.OK);
         }
     }
 
@@ -53,15 +54,13 @@ public class BillRestController {
      * @param id
      * @return object Bill
      */
-
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @GetMapping("/bill/detail/{id}")
-    public ResponseEntity<IBillDto> getById(@PathVariable Integer id){
+    public ResponseEntity<IBillDto> getById(@PathVariable Integer id) {
         IBillDto iBillDto = this.iBillService.findById(id);
-        if (iBillDto == null){
+        if (iBillDto == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(iBillDto, HttpStatus.OK);
     }
-
-
 }

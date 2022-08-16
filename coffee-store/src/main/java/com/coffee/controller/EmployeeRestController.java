@@ -1,7 +1,5 @@
 package com.coffee.controller;
 
-
-
 import com.coffee.dto.EmployeeDTOCreate;
 import com.coffee.dto.EmployeeDTOEdit;
 import com.coffee.dto.IEmployeeDTO;
@@ -12,7 +10,6 @@ import com.coffee.service.IAppUserService;
 import com.coffee.service.IEmployeeService;
 import com.coffee.service.IPositionService;
 import org.springframework.beans.BeanUtils;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -28,12 +25,10 @@ import java.util.List;
 import java.util.Optional;
 
 
-
 @RestController
 @CrossOrigin
 @RequestMapping("/rest")
 public class EmployeeRestController {
-
 
     @Autowired
     private IEmployeeService iEmployeeService;
@@ -41,7 +36,6 @@ public class EmployeeRestController {
     private IPositionService iPositionService;
     @Autowired
     private IAppUserService iUserService;
-
 
     /**
      * Create by TuyenTN
@@ -54,8 +48,9 @@ public class EmployeeRestController {
      * @param searchAccount
      * @return
      */
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @GetMapping("/employee/page")
-    public ResponseEntity<Page<IEmployeeDTO>> getAllEmployee(@PageableDefault(5) Pageable pageable,
+    public ResponseEntity<Page<IEmployeeDTO>> getAllEmployee(@PageableDefault(10) Pageable pageable,
                                                              Optional<String> searchName,
                                                              Optional<String> searchPhone,
                                                              Optional<String> searchAccount) {
@@ -71,11 +66,9 @@ public class EmployeeRestController {
         if (searchByAccount.equals("null")) {
             searchByPhone = "";
         }
-
-        Page<IEmployeeDTO> employeePage = this.iEmployeeService.getAllEmployee(pageable, searchByName, searchByPhone,searchByAccount);
-
+        Page<IEmployeeDTO> employeePage = this.iEmployeeService.getAllEmployee(pageable, searchByName, searchByPhone, searchByAccount);
         if (employeePage.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(employeePage, HttpStatus.OK);
     }
@@ -84,11 +77,12 @@ public class EmployeeRestController {
      * Create by TuyenTN
      * Create data: 9-8-2022 23:14
      * findEmployeeById(id)
+     *
      * @param id
      * @return
      */
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @GetMapping("/employee/find/{id}")
-
     public ResponseEntity<IEmployeeDTO> findEmployeeById(@PathVariable Integer id) {
         IEmployeeDTO iEmployeeDTO = this.iEmployeeService.findEmployeeById(id);
         if (iEmployeeDTO == null) {
@@ -101,15 +95,15 @@ public class EmployeeRestController {
      * Create by TuyenTN
      * Create data: 9-8-2022 23:14
      * deleteEmployeeById(id)
-
+     *
      * @param id
      * @return
      */
-
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @DeleteMapping("/employee/delete/{id}")
     public ResponseEntity<Void> deleteEmployeeById(@PathVariable Integer id) {
         IEmployeeDTO iEmployeeDTO = this.iEmployeeService.findEmployeeById(id);
-        if (iEmployeeDTO == null){
+        if (iEmployeeDTO == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         this.iEmployeeService.deleteEmployeeById(id);
@@ -131,6 +125,7 @@ public class EmployeeRestController {
      * @param
      * @return  Position list
      */
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @GetMapping("/position")
     public ResponseEntity<List<Position>> getAllPosition() {
         List<Position> positionList = iPositionService.getAllPosition();
@@ -153,9 +148,26 @@ public class EmployeeRestController {
      * @function ( find the employee of the id )
      * @creator TaiLV
      * @date-create 09/08/2022
+     * @param username
+     * @return true: id status 200 / false: status 404
+     */
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @GetMapping("/employee/findUserName/{username}")
+    public ResponseEntity<AppUser> findByUserName(@PathVariable String username) {
+        if (username == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(iUserService.findAppUserByUserName(username), HttpStatus.OK);
+    }
+
+    /**
+     * @function ( find the employee of the id )
+     * @creator TaiLV
+     * @date-create 12/08/2022
      * @param id
      * @return true: id status 200 / false: status 404
      */
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @GetMapping("/employee/findId/{id}")
     public ResponseEntity<Employee> findById(@PathVariable Integer id) {
         if (id == null) {
@@ -163,7 +175,6 @@ public class EmployeeRestController {
         }
         return new ResponseEntity<>(iEmployeeService.findById(id), HttpStatus.OK);
     }
-
 
 
     /**
@@ -175,13 +186,16 @@ public class EmployeeRestController {
      * if employee null : Create new employee
      * @return  true: employee, status 200 / false: status 404
      */
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @PostMapping("/employee/create")
-    public ResponseEntity<Void> saveEmployee(@Valid @RequestBody EmployeeDTOCreate employeeDTO , BindingResult bindingResult) {
+    public ResponseEntity<?> saveEmployee(@Valid @RequestBody EmployeeDTOCreate employeeDTO , BindingResult bindingResult) {
+        EmployeeDTOCreate employeeDTOCreate = new EmployeeDTOCreate();
+        employeeDTOCreate.setEmployeeList(this.iEmployeeService.findAll());
 
-        new EmployeeDTOCreate().validate(employeeDTO,bindingResult);
+        employeeDTOCreate.validate(employeeDTO,bindingResult);
 
         if(bindingResult.hasErrors()){
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(bindingResult.getFieldError(),HttpStatus.INTERNAL_SERVER_ERROR);
         }
         Employee employee =new Employee();
         BeanUtils.copyProperties(employeeDTO, employee);
@@ -199,6 +213,7 @@ public class EmployeeRestController {
      * if employee null : Create new employee
      * @return  true: employee, status 200 / false: status 404
      */
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @PatchMapping(value = "/employee/edit")
     public ResponseEntity<Void> editEmployee(@Valid @RequestBody EmployeeDTOEdit employeeDTOEdit , BindingResult bindingResult) {
 

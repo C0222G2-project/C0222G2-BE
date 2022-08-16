@@ -14,6 +14,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
@@ -41,6 +42,7 @@ public class PaymentRestController {
      *
      * @param id
      */
+    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_STAFF')")
     @GetMapping("/list/{id}")
     public ResponseEntity<List<ICoffeeTableDto>> displayDishOrderByIdTable(@PathVariable("id") Integer id) {
         List<ICoffeeTableDto> iCoffeeTableDtoList = this.iCoffeeTableService.findByIdTable(id);
@@ -57,7 +59,7 @@ public class PaymentRestController {
      *
      * @param pageable
      */
-
+    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_STAFF')")
     @GetMapping("/page")
     public ResponseEntity<Page<ICoffeeTableDto>> getCoffeeTablePage(@PageableDefault(size = 6) Pageable pageable) {
         Page<ICoffeeTableDto> iCoffeeTableDtoPage = this.iCoffeeTableService.displayCoffeeTableByPage(pageable);
@@ -78,6 +80,7 @@ public class PaymentRestController {
      *
      * @param id
      */
+    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_STAFF')")
     @GetMapping("/total/{id}")
     public ResponseEntity<ITotalPaymentDto> calculation(@PathVariable("id") Integer id) {
         ITotalPaymentDto iTotalPaymentDto = this.iCoffeeTableService.calcultion(id);
