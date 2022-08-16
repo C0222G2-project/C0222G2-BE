@@ -4,7 +4,6 @@ package com.coffee.controller;
 import com.coffee.dto.ICoffeeTableDto;
 import com.coffee.dto.ITotalPaymentDto;
 import com.coffee.model.bill.Bill;
-import com.coffee.model.dish_order.DishOrder;
 import com.coffee.repository.IBillRepository;
 import com.coffee.repository.IDishOrderRepository;
 import com.coffee.repository.IPaymentInBillRepository;
