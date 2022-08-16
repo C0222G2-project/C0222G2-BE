@@ -21,9 +21,6 @@ public class EncrytedPasswordUtils {
     public static void main(String[] args) {
         String password = "123456a@";
         String encrytedPassword = new EncrytedPasswordUtils().encrytePassword(password);
-
         System.out.println("Encryted Password: " + encrytedPassword);
-
     }
-
 }

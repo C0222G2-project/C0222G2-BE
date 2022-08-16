@@ -1,7 +1,5 @@
 package com.coffee.controller;
 
-
-
 import com.coffee.dto.EmployeeDTOCreate;
 import com.coffee.dto.EmployeeDTOEdit;
 import com.coffee.dto.IEmployeeDTO;
@@ -12,7 +10,6 @@ import com.coffee.service.IAppUserService;
 import com.coffee.service.IEmployeeService;
 import com.coffee.service.IPositionService;
 import org.springframework.beans.BeanUtils;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -27,13 +24,10 @@ import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
-
-
 @RestController
 @CrossOrigin
 @RequestMapping("/rest")
 public class EmployeeRestController {
-
 
     @Autowired
     private IEmployeeService iEmployeeService;
@@ -41,7 +35,6 @@ public class EmployeeRestController {
     private IPositionService iPositionService;
     @Autowired
     private IAppUserService iUserService;
-
 
     /**
      * Create by TuyenTN
@@ -54,6 +47,7 @@ public class EmployeeRestController {
      * @param searchAccount
      * @return
      */
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @GetMapping("/employee/page")
     public ResponseEntity<Page<IEmployeeDTO>> getAllEmployee(@PageableDefault(5) Pageable pageable,
                                                              Optional<String> searchName,
@@ -72,7 +66,7 @@ public class EmployeeRestController {
             searchByPhone = "";
         }
 
-        Page<IEmployeeDTO> employeePage = this.iEmployeeService.getAllEmployee(pageable, searchByName, searchByPhone,searchByAccount);
+        Page<IEmployeeDTO> employeePage = this.iEmployeeService.getAllEmployee(pageable, searchByName, searchByPhone, searchByAccount);
 
         if (employeePage.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -84,11 +78,12 @@ public class EmployeeRestController {
      * Create by TuyenTN
      * Create data: 9-8-2022 23:14
      * findEmployeeById(id)
+     *
      * @param id
      * @return
      */
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @GetMapping("/employee/find/{id}")
-
     public ResponseEntity<IEmployeeDTO> findEmployeeById(@PathVariable Integer id) {
         IEmployeeDTO iEmployeeDTO = this.iEmployeeService.findEmployeeById(id);
         if (iEmployeeDTO == null) {
@@ -101,15 +96,15 @@ public class EmployeeRestController {
      * Create by TuyenTN
      * Create data: 9-8-2022 23:14
      * deleteEmployeeById(id)
-
+     *
      * @param id
      * @return
      */
-
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @DeleteMapping("/employee/delete/{id}")
     public ResponseEntity<Void> deleteEmployeeById(@PathVariable Integer id) {
         IEmployeeDTO iEmployeeDTO = this.iEmployeeService.findEmployeeById(id);
-        if (iEmployeeDTO == null){
+        if (iEmployeeDTO == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         this.iEmployeeService.deleteEmployeeById(id);
@@ -126,11 +121,12 @@ public class EmployeeRestController {
      */
 
     /**
+     * @param
+     * @return Position list
      * @creator TaiLV
      * Date 09/08/2022
-     * @param
-     * @return  Position list
      */
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @GetMapping("/position")
     public ResponseEntity<List<Position>> getAllPosition() {
         List<Position> positionList = iPositionService.getAllPosition();
@@ -138,11 +134,12 @@ public class EmployeeRestController {
     }
 
     /**
+     * @param
+     * @return AppUser list
      * @creator TaiLV
      * Date 09/08/2022
-     * @param
-     * @return  AppUser list
      */
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @GetMapping("/user")
     public ResponseEntity<List<AppUser>> getAllUser() {
         List<AppUser> userList = iUserService.getAllUser();
@@ -150,12 +147,13 @@ public class EmployeeRestController {
     }
 
     /**
-     * @function ( find the employee of the id )
-     * @creator TaiLV
-     * @date-create 09/08/2022
      * @param id
      * @return true: id status 200 / false: status 404
+     * @function (find the employee of the id)
+     * @creator TaiLV
+     * @date-create 09/08/2022
      */
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @GetMapping("/employee/findId/{id}")
     public ResponseEntity<Employee> findById(@PathVariable Integer id) {
         if (id == null) {
@@ -165,25 +163,24 @@ public class EmployeeRestController {
     }
 
 
-
     /**
-     * @creator TaiLV
-     * @function ( create the value of the employee )
-     * Date 09/08/2022
      * @param employeeDTO
-     * @param bindingResult
-     * if employee null : Create new employee
-     * @return  true: employee, status 200 / false: status 404
+     * @param bindingResult if employee null : Create new employee
+     * @return true: employee, status 200 / false: status 404
+     * @creator TaiLV
+     * @function (create the value of the employee)
+     * Date 09/08/2022
      */
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @PostMapping("/employee/create")
-    public ResponseEntity<Void> saveEmployee(@Valid @RequestBody EmployeeDTOCreate employeeDTO , BindingResult bindingResult) {
+    public ResponseEntity<Void> saveEmployee(@Valid @RequestBody EmployeeDTOCreate employeeDTO, BindingResult bindingResult) {
 
-        new EmployeeDTOCreate().validate(employeeDTO,bindingResult);
+        new EmployeeDTOCreate().validate(employeeDTO, bindingResult);
 
-        if(bindingResult.hasErrors()){
+        if (bindingResult.hasErrors()) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        Employee employee =new Employee();
+        Employee employee = new Employee();
         BeanUtils.copyProperties(employeeDTO, employee);
 
         iEmployeeService.saveEmployee(employee);
@@ -191,25 +188,25 @@ public class EmployeeRestController {
     }
 
     /**
-     * @creator TaiLV
-     * @function ( edit the value of the employee )
-     * Date 09/08/2022
      * @param employeeDTOEdit
-     * @param bindingResult
-     * if employee null : Create new employee
-     * @return  true: employee, status 200 / false: status 404
+     * @param bindingResult   if employee null : Create new employee
+     * @return true: employee, status 200 / false: status 404
+     * @creator TaiLV
+     * @function (edit the value of the employee)
+     * Date 09/08/2022
      */
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @PatchMapping(value = "/employee/edit")
-    public ResponseEntity<Void> editEmployee(@Valid @RequestBody EmployeeDTOEdit employeeDTOEdit , BindingResult bindingResult) {
+    public ResponseEntity<Void> editEmployee(@Valid @RequestBody EmployeeDTOEdit employeeDTOEdit, BindingResult bindingResult) {
 
         Employee employee = this.iEmployeeService.findById(employeeDTOEdit.getId());
 
-        if(employee == null){
+        if (employee == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
 
-        new EmployeeDTOEdit().validate(employeeDTOEdit,bindingResult);
-        if(bindingResult.hasErrors()){
+        new EmployeeDTOEdit().validate(employeeDTOEdit, bindingResult);
+        if (bindingResult.hasErrors()) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
         BeanUtils.copyProperties(employeeDTOEdit, employee);
