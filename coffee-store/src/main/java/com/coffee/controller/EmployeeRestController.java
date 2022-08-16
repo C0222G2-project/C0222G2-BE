@@ -1,6 +1,5 @@
 package com.coffee.controller;
 
-
 import com.coffee.dto.EmployeeDTOCreate;
 import com.coffee.dto.EmployeeDTOEdit;
 import com.coffee.dto.IEmployeeDTO;
@@ -48,7 +47,7 @@ public class EmployeeRestController {
      * @param searchAccount
      * @return
      */
-    @GetMapping("/employee/list")
+    @GetMapping("/employee/page")
     public ResponseEntity<Page<IEmployeeDTO>> getAllEmployee(@PageableDefault(5) Pageable pageable,
                                                              Optional<String> searchName,
                                                              Optional<String> searchPhone,
@@ -66,7 +65,6 @@ public class EmployeeRestController {
             searchByPhone = "";
         }
         Page<IEmployeeDTO> employeePage = this.iEmployeeService.getAllEmployee(pageable, searchByName, searchByPhone, searchByAccount);
-        System.out.println(employeePage);
         if (employeePage.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
@@ -146,6 +144,21 @@ public class EmployeeRestController {
      * @function ( find the employee of the id )
      * @creator TaiLV
      * @date-create 09/08/2022
+     * @param username
+     * @return true: id status 200 / false: status 404
+     */
+    @GetMapping("/employee/findUserName/{username}")
+    public ResponseEntity<AppUser> findByUserName(@PathVariable String username) {
+        if (username == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(iUserService.findAppUserByUserName(username), HttpStatus.OK);
+    }
+
+    /**
+     * @function ( find the employee of the id )
+     * @creator TaiLV
+     * @date-create 12/08/2022
      * @param id
      * @return true: id status 200 / false: status 404
      */
@@ -158,7 +171,6 @@ public class EmployeeRestController {
     }
 
 
-
     /**
      * @creator TaiLV
      * @function ( create the value of the employee )
@@ -169,12 +181,14 @@ public class EmployeeRestController {
      * @return  true: employee, status 200 / false: status 404
      */
     @PostMapping("/employee/create")
-    public ResponseEntity<Void> saveEmployee(@Valid @RequestBody EmployeeDTOCreate employeeDTO , BindingResult bindingResult) {
+    public ResponseEntity<?> saveEmployee(@Valid @RequestBody EmployeeDTOCreate employeeDTO , BindingResult bindingResult) {
+        EmployeeDTOCreate employeeDTOCreate = new EmployeeDTOCreate();
+        employeeDTOCreate.setEmployeeList(this.iEmployeeService.findAll());
 
-        new EmployeeDTOCreate().validate(employeeDTO,bindingResult);
+        employeeDTOCreate.validate(employeeDTO,bindingResult);
 
         if(bindingResult.hasErrors()){
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(bindingResult.getFieldError(),HttpStatus.INTERNAL_SERVER_ERROR);
         }
         Employee employee =new Employee();
         BeanUtils.copyProperties(employeeDTO, employee);

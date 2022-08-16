@@ -28,7 +28,6 @@ public class Employee {
 
     private Integer gender;
 
-    @Column(unique = true)
     private String phoneNumber;
 
     private String address;

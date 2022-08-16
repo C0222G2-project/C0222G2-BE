@@ -11,6 +11,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 public interface IEmployeeRepository extends JpaRepository<Employee, Integer> {
 
     /**
@@ -122,6 +124,14 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Integer> {
             " where employee.id = :id and employee.is_deleted = 0", nativeQuery = true)
     Employee findByIdEmployee(@Param("id") Integer id);
 
-
+    /**
+     * @return list Employee
+     * @creator TaiLV
+     * Date 13/08/2022
+     */
+    @Query(value = " select employee.id, employee.name, employee.image,employee.phone_number , employee.address, " +
+            " employee.email, employee.gender, employee.birthday, employee.salary, employee.position_id , " +
+            " employee.user_id, employee.is_deleted from employee where employee.is_deleted = 0 ", nativeQuery = true)
+    List<Employee> findAllEmployee();
 
 }
