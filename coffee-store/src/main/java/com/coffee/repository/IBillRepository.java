@@ -33,6 +33,7 @@ public interface IBillRepository extends JpaRepository<Bill, Integer> {
             " join employee on dish_order.employee_id = employee.id " +
             " join coffee_table on dish_order.coffee_table_id = coffee_table.id " +
             " join dish on dish_order.dish_id = dish.id " +
+
             " where bill.code like :searchCode and bill.creation_date like :searchDate and bill.is_deleted = 0 " +
             " group by dish_order.bill_id order by bill_id desc ", nativeQuery = true,
             countQuery = "select count(*) " +
@@ -114,7 +115,8 @@ public interface IBillRepository extends JpaRepository<Bill, Integer> {
      * @param code
      * @return
      */
-    @Query(value = " select * from bill where `code` = :code ", nativeQuery = true)
+
+    @Query(value = " select *  from bill where `code` = :code ", nativeQuery = true)
     Bill findByCodeBill(@Param("code") int code);
 
 }
