@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 public interface IDishTypeRepository extends JpaRepository<DishType, Integer> {
+
     @Query(value = " select  id,`code`,is_deleted,`name` from dish_type", nativeQuery = true)
     Page<DishType> selectAllDishTypePage(Pageable pageable);
 

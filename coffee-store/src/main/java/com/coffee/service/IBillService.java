@@ -4,10 +4,12 @@ import com.coffee.dto.IBillDto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.List;
+
 public interface IBillService {
 
     /**
-     Created by: HauLT
+     * Created by: HauLT
      * Date created: 09/08/2022
      * function: Show bill list, with pagination,search by bill number and creation date
      *
@@ -28,4 +30,16 @@ public interface IBillService {
      */
 
     IBillDto findById(Integer id);
+
+
+    /**
+     * Created by: HauLT
+     * Date created: 17/08/2022
+     * function: get the list of dishes
+     *
+     * @param id
+     * @return
+     */
+
+    List<IBillDto> getAllDish(Integer id);
 }

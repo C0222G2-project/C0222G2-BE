@@ -1,6 +1,7 @@
 package com.coffee.model.coffee_table;
 
 import com.coffee.model.dish_order.DishOrder;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -32,6 +33,7 @@ public class CoffeeTable {
     private Boolean isDeleted;
 
     @OneToMany(mappedBy = "coffeeTable")
+    @JsonIgnore
     private List<DishOrder> dishOrders;
 
     @Override

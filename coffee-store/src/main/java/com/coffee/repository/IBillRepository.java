@@ -8,6 +8,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.util.List;
+
 public interface IBillRepository extends JpaRepository<Bill, Integer> {
 
 
@@ -24,26 +26,28 @@ public interface IBillRepository extends JpaRepository<Bill, Integer> {
 
     @Query(value = "select bill.id as id, bill.code as billCode, bill.creation_date as creationDate, " +
             " bill.is_deleted as isDeleted, employee.name as employeeName, coffee_table.code as coffeeTableCode, " +
-            " dish_order.quantity as dishOrderQuantity, dish.name as dishName, dish.price as dishPrice " +
+            " dish_order.quantity as dishOrderQuantity, dish.name as dishName, dish.price as dishPrice, " +
+            " sum(ifnull((dish.price * dish_order.quantity),0)) as totalBill " +
             " from bill " +
             " join dish_order on bill.id = dish_order.bill_id " +
             " join employee on dish_order.employee_id = employee.id " +
             " join coffee_table on dish_order.coffee_table_id = coffee_table.id " +
             " join dish on dish_order.dish_id = dish.id " +
-            " where bill.code like :searchCode and bill.creation_date like :searchDate and bill.is_deleted = 0 ", nativeQuery = true,
-            countQuery ="select count(*) " +
+            " where bill.code like :searchCode and bill.creation_date like :searchDate and bill.is_deleted = 0  group by dish_order.bill_id ", nativeQuery = true,
+            countQuery = "select count(*) " +
                     " from " +
                     " (select bill.id, bill.code as billCode, bill.creation_date as creationDate, " +
                     " bill.is_deleted as isDeleted, employee.name as employeeName, coffee_table.code as coffeeTableCode, " +
-                    " dish_order.quantity as dishOrderQuantity, dish.name as dishName, dish.price as dishPrice " +
+                    " dish_order.quantity as dishOrderQuantity, dish.name as dishName, dish.price as dishPrice, " +
+                    " sum(ifnull((dish.price * dish_order.quantity),0)) as totalBill " +
                     " from bill " +
                     " join dish_order on bill.id = dish_order.bill_id " +
                     " join employee on dish_order.employee_id = employee.id " +
                     " join coffee_table on dish_order.coffee_table_id = coffee_table.id " +
                     " join dish on dish_order.dish_id = dish.id " +
-                    " where bill.code like :searchCode and bill.creation_date like :searchDate and bill.is_deleted = 0) temp_table")
+                    " where bill.code like :searchCode and bill.creation_date like :searchDate and bill.is_deleted = 0 group by dish_order.bill_id) temp_table")
     Page<IBillDto> getAllBill(Pageable pageable, @Param("searchCode") String searchCode,
-                          @Param("searchDate") String searchDate);
+                              @Param("searchDate") String searchDate);
 
 
     /**
@@ -67,4 +71,37 @@ public interface IBillRepository extends JpaRepository<Bill, Integer> {
     IBillDto getByIdBill(@Param("idDetail") Integer id);
 
 
+
+    /**
+     * Created by: HauLT
+     * Date created: 17/08/2022
+     * function: get the list of dishes
+     *
+     * @param id
+     * @return
+     */
+
+    @Query(value = "select bill.id as id, bill.code as billCode, bill.creation_date as creationDate, " +
+            " bill.is_deleted as isDeleted, employee.name as employeeName, coffee_table.code as coffeeTableCode, " +
+            " sum(dish_order.quantity) as dishOrderQuantity, dish.name as dishName, dish.price as dishPrice, " +
+            " sum(ifnull((dish.price * dish_order.quantity),0)) as totalBill " +
+            " from bill " +
+            " join dish_order on bill.id = dish_order.bill_id " +
+            " join employee on dish_order.employee_id = employee.id " +
+            " join coffee_table on dish_order.coffee_table_id = coffee_table.id " +
+            " join dish on dish_order.dish_id = dish.id " +
+            " where dish_order.bill_id = :idDish and  bill.is_deleted = 0  group by dish_order.dish_id, dish_order.bill_id", nativeQuery = true,
+            countQuery = "select count(*) " +
+                    " from " +
+                    " (select bill.id, bill.code as billCode, bill.creation_date as creationDate, " +
+                    " bill.is_deleted as isDeleted, employee.name as employeeName, coffee_table.code as coffeeTableCode, " +
+                    " dish_order.quantity as dishOrderQuantity, dish.name as dishName, dish.price as dishPrice, " +
+                    " sum(ifnull((dish.price * dish_order.quantity),0)) as totalBill " +
+                    " from bill " +
+                    " join dish_order on bill.id = dish_order.bill_id " +
+                    " join employee on dish_order.employee_id = employee.id " +
+                    " join coffee_table on dish_order.coffee_table_id = coffee_table.id " +
+                    " join dish on dish_order.dish_id = dish.id " +
+                    " where dish_order.bill_id = :idDish and bill.is_deleted = 0  group by dish_order.dish_id, dish_order.bill_id) temp_table")
+    List<IBillDto> getAllDish(@Param("idDish")Integer id);
 }
