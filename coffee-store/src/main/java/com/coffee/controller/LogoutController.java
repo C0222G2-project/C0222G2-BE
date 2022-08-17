@@ -28,6 +28,12 @@ public class LogoutController {
     private JwtTokenUtil jwtTokenUtil;
 
 
+    /**
+     * @author: PhuongTD
+     * @date-create 15/8/2022
+     * @param jwtRequestBody
+     * @return
+     */
     @ResponseBody
     @PreAuthorize("isAuthenticated()")
     @PostMapping("/logoutSecurity")

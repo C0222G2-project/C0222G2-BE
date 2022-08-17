@@ -11,18 +11,15 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 public interface IEmployeeRepository extends JpaRepository<Employee, Integer> {
 
     /**
      * Create by TuyenTN
      * Date: 16:30 pm  9-8-2022
      * method show list and search and paging
-<<<<<<< HEAD
-     * tuyentn-list-employee-2
-=======
-     *  tuyentn-list-employee-2
      *
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
      * @param pageable
      * @param searchByName
      * @param searchByPhone
@@ -31,7 +28,7 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Integer> {
      */
 
 
-    @Query(value = " select employee.`name` as name ,employee.phone_number as phoneNumber,position.name as position, " +
+    @Query(value = " select employee.`name` as name,employee.phone_number as phoneNumber,position.name as position, " +
             " app_user.user_name as appUser,employee.id,employee.birthday,employee.image,employee.address,employee.salary, " +
             " employee.gender,employee.email from employee " +
             " join app_user on app_user.id = employee.user_id " +
@@ -44,7 +41,6 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Integer> {
                     " join app_user on app_user.id = employee.user_id " +
                     " join position on employee.position_id = position.id " +
                     " where employee.is_deleted =0 and employee.name like :keyZero and employee.phone_number like :keyOne " +
-
                     " and app_user.user_name like :keyTwo ) templol ", nativeQuery = true)
     Page<IEmployeeDTO> getAllEmployee(Pageable pageable, @Param("keyZero") String searchByName,
                                       @Param("keyOne") String searchByPhone,
@@ -53,7 +49,6 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Integer> {
     /**
      * Create by TuyenTN
      * Date: 16:30 pm  9-8-2022
-     * tuyentn-list-employee-2
      *
      * @param id
      * @return
@@ -69,7 +64,7 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Integer> {
     /**
      * Create by TuyenTN
      * Date: 16:30 pm  9-8-2022
-     * tuyentn-list-employee-2
+     *
      * @param id
      * @return
      */
@@ -123,10 +118,20 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Integer> {
      * @creator TaiLV
      * Date 09/08/2022
      */
-    @Query(value = " select employee.id, employee.name, employee.image,employee.phone_number , employee.address , employee.email, employee.gender, " +
+    @Query(value = " select employee.id, employee.name, employee.image,employee.phone_number , employee.address ," +
+            " employee.email, employee.gender, " +
             " employee.birthday, employee.salary, employee.position_id , employee.user_id, employee.is_deleted from employee " +
             " where employee.id = :id and employee.is_deleted = 0", nativeQuery = true)
     Employee findByIdEmployee(@Param("id") Integer id);
 
+    /**
+     * @return list Employee
+     * @creator TaiLV
+     * Date 13/08/2022
+     */
+    @Query(value = " select employee.id, employee.name, employee.image,employee.phone_number , employee.address, " +
+            " employee.email, employee.gender, employee.birthday, employee.salary, employee.position_id , " +
+            " employee.user_id, employee.is_deleted from employee where employee.is_deleted = 0 ", nativeQuery = true)
+    List<Employee> findAllEmployee();
 
 }

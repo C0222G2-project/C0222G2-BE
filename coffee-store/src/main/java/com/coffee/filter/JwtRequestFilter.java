@@ -29,7 +29,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
     /**
      * @function After setting the Authentication in the context,
      * we specify that the current user is authenticated. So it passes the Spring Security Configurations successfully.
-     * @creator: PhuongTD
+     * @author: PhuongTD
      * @date-create 9/8/2022
      * @param request
      * @param response
@@ -42,7 +42,6 @@ public class JwtRequestFilter extends OncePerRequestFilter {
             throws ServletException, IOException {
 
         final String requestTokenHeader = request.getHeader("authorization");
-        System.out.println(requestTokenHeader);
         String username = null;
         String jwtToken = null;
         // JWT Token is in the form "Bearer token". Remove Bearer word and get

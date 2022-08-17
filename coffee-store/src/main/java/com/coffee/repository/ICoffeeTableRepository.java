@@ -6,10 +6,12 @@ import com.coffee.model.coffee_table.CoffeeTable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Repository
@@ -29,9 +31,15 @@ public interface ICoffeeTableRepository extends JpaRepository<CoffeeTable, Integ
             " from dish_order " +
             " join dish on dish.id = dish_order.dish_id " +
             " join coffee_table on dish_order.coffee_table_id = coffee_table.id " +
-            " where coffee_table.id = :idKey) as dto_table group by(dishId) ",
+            " where coffee_table.id = :idKey and dish_order.is_deleted  = 0) as dto_table group by(dishId) ",
             nativeQuery = true)
     List<ICoffeeTableDto> displayTableById(@Param("idKey") Integer id);
+
+    @Transactional
+    @Modifying
+    @Query(value = " UPDATE dish_order SET is_deleted = 1 WHERE ( coffee_table_id = :idKey)",
+            nativeQuery = true)
+    void deleteList(@Param("idKey") Integer id);
 
 
     /**
@@ -64,9 +72,20 @@ public interface ICoffeeTableRepository extends JpaRepository<CoffeeTable, Integ
             " from dish_order " +
             " join dish on dish.id = dish_order.dish_id " +
             " join coffee_table on dish_order.coffee_table_id = coffee_table.id " +
-            " where coffee_table.id = :idKey2) as dto_table",
+            " where coffee_table.id = :idKey2 and dish_order.is_deleted  = 0 ) as dto_table",
             nativeQuery = true)
     ITotalPaymentDto totalPayment(@Param("idKey2") Integer id);
 
-
+    /**
+     * Create HoaNN
+     * Date create 14/08/2022
+     * +
+     *
+     * @param id
+     * @return
+     */
+    @Transactional
+    @Modifying
+    @Query(value = " UPDATE `coffee_table` SET `status` = 0 WHERE (`id` = :idTable) ", nativeQuery = true)
+    void updateStatus(@Param("idTable") int idTable);
 }

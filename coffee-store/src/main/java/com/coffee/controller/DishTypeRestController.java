@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,10 +28,10 @@ public class DishTypeRestController {
      * Created by: HieuCD
      * Date created: 09/08/2022
      * function: get type of dish Page
+     *
      * @param pageable
-     * @return
-     *    HTTP status  200(OK) : return Page<DishType> dishTypePage
-     *    HTTP status  204(NO_CONTENT): return dishTypePage is empty
+     * @return HTTP status  200(OK) : return Page<DishType> dishTypePage
+     * HTTP status  204(NO_CONTENT): return dishTypePage is empty
      */
     @GetMapping("/getDishTypePage")
     public ResponseEntity<Page<DishType>> getAllDishType(@PageableDefault(10) Pageable pageable) {
@@ -46,10 +47,10 @@ public class DishTypeRestController {
      * Created by: HieuCD
      * Date created: 10/08/2022
      * function: get type of dish Page
+     *
      * @param id
-     * @return
-     *      * HTTP status  204(NO_CONTENT) : id = null
-     *      * HTTP status  200(OK) : return a dishType
+     * @return * HTTP status  204(NO_CONTENT) : id = null
+     * * HTTP status  200(OK) : return a dishType
      */
     @GetMapping("/findById/{id}")
     public ResponseEntity<DishType> findById(@PathVariable Integer id) {

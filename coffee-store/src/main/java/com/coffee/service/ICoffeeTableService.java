@@ -23,4 +23,7 @@ public interface ICoffeeTableService {
 
     ITotalPaymentDto calcultion(Integer id);
 
+    void updateStatus(int idTable);
+
+    void deleteList(Integer id);
 }
