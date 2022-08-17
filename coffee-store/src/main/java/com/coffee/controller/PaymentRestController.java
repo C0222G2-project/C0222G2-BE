@@ -108,7 +108,7 @@ public class PaymentRestController {
     private int getRandomNumber(List<Bill> billList) {
         int randomNumber = 10000;
         while (checkExists(billList, randomNumber)) {
-            randomNumber = (int) ((Math.random() * 89999) + 10001);
+            randomNumber = (int) ( (Math.random() * 89999) + 10001);
         }
         return randomNumber;
     }
@@ -120,9 +120,5 @@ public class PaymentRestController {
             }
         }
         return false;
-
-
-
-
     }
 }
