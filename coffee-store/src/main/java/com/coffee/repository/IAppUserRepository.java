@@ -27,7 +27,7 @@ public interface IAppUserRepository extends JpaRepository<AppUser, Integer> {
             " (`creation_date`, `password`, `user_name`) VALUES (:#{#appUser.creationDate}, :#{#appUser.password}, :#{#appUser.userName}) ",nativeQuery = true)
     void saveAppUser(AppUser appUser);
 
-    @Query(value = " SELECT app_user.id, app_user.user_name,app_user.creation_date, app_user.password, app_user.is_deleted FROM coffee_store.app_user where user_name = :username ", nativeQuery = true)
+    @Query(value = " SELECT app_user.id, app_user.user_name,app_user.creation_date, app_user.password, app_user.is_deleted FROM app_user where user_name = :username ", nativeQuery = true)
     AppUser findAppUserByUserName(@Param("username") String userName);
 
     @Transactional

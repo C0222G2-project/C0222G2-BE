@@ -33,7 +33,6 @@ public class DishTypeRestController {
      * @return HTTP status  200(OK) : return Page<DishType> dishTypePage
      * HTTP status  204(NO_CONTENT): return dishTypePage is empty
      */
-//    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @GetMapping("/getDishTypePage")
     public ResponseEntity<Page<DishType>> getAllDishType(@PageableDefault(10) Pageable pageable) {
         Page<DishType> dishTypePage = this.iDishTypeService.findAllDishType(pageable);
@@ -53,7 +52,6 @@ public class DishTypeRestController {
      * @return * HTTP status  204(NO_CONTENT) : id = null
      * * HTTP status  200(OK) : return a dishType
      */
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @GetMapping("/findById/{id}")
     public ResponseEntity<DishType> findById(@PathVariable Integer id) {
         DishType dishType = this.iDishTypeService.findDishTypeById(id);
