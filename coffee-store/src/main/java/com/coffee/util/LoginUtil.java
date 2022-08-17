@@ -8,6 +8,6 @@ import java.util.Map;
 
 @Component
 @Data
-public class TokenUtil {
+public class LoginUtil {
     private Map<String, String> tokenMap = new HashMap<>();
 }

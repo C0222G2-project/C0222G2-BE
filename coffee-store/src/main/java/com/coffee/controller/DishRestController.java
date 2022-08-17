@@ -164,6 +164,7 @@ public class DishRestController {
      * HTTP status  200(OK) : return a dish
      */
 //    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PreAuthorize("isAuthenticated()")
     @GetMapping("/findById/{id}")
     public ResponseEntity<Dish> findById(@PathVariable Integer id) {
         Dish dish = this.iDishService.findDishById(id);
@@ -198,6 +199,7 @@ public class DishRestController {
      * @return HTTP status  204(NO_CONTENT) : id = null
      * HTTP status  200(OK) : deleted
      */
+    @PreAuthorize("isAuthenticated()")
     @GetMapping("/getDishFindIdDishType/{id}")
     public ResponseEntity<Page<Dish>> getAllDishFindIdDishType(@PathVariable Integer id,
                                                                @PageableDefault(4) Pageable pageable,

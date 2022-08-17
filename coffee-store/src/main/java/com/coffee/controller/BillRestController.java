@@ -31,7 +31,7 @@ public class BillRestController {
      * @param searchParamDate
      * @return Page<Bill>
      */
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PreAuthorize("hasAnyAuthority('ROLE_STAFF', 'ROLE_ADMIN')")
     @GetMapping("/bill")
     public ResponseEntity<Page<IBillDto>> getAllBill(@PageableDefault(10) Pageable pageable,
                                                      @RequestParam Optional<String> searchParamCode,
@@ -54,7 +54,7 @@ public class BillRestController {
      * @param id
      * @return object Bill
      */
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PreAuthorize("hasAnyAuthority('ROLE_STAFF', 'ROLE_ADMIN')")
     @GetMapping("/bill/detail/{id}")
     public ResponseEntity<IBillDto> getById(@PathVariable Integer id) {
         IBillDto iBillDto = this.iBillService.findById(id);
