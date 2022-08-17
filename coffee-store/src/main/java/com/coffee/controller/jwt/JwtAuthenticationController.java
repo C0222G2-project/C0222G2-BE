@@ -73,7 +73,6 @@ public class JwtAuthenticationController {
         if (userDetails == null) {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
-
         SecurityContextHolder.getContext()
                 .setAuthentication(authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword()));
 

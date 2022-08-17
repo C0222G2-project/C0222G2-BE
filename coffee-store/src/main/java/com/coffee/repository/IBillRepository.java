@@ -67,4 +67,12 @@ public interface IBillRepository extends JpaRepository<Bill, Integer> {
     IBillDto getByIdBill(@Param("idDetail") Integer id);
 
 
+    /**
+     * Athor: Hoann
+     * Date create: 14/08/2022
+     * @param code
+     * @return
+     */
+    @Query(value = " select * from bill where `code` = :code ", nativeQuery =  true)
+    Bill findByCodeBill(@Param("code") int code);
 }
