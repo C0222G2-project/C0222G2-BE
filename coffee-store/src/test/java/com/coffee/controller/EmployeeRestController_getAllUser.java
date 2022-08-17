@@ -17,14 +17,12 @@ public class EmployeeRestController_getAllUser {
 
     @Autowired
     private MockMvc mockMvc;
-
     /**
      * Create by TaiLV
      * create date:10/08/2022
      * method : getAllPosition()
      * test appUser dont have in database
      */
-
     @Test
     public void getAllUser_5() throws Exception {
 
@@ -34,14 +32,12 @@ public class EmployeeRestController_getAllUser {
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
-
     /**
      * Create by TaiLV
      * create date:10/08/2022
      * method : getAllPosition()
      * test appUser have in database
      */
-
     @Test
     public void getAllUser_6() throws Exception {
         this.mockMvc.perform(

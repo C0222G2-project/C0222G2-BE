@@ -11,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
@@ -37,6 +38,7 @@ public class FeedbackRestController {
      * @param bindingResult
      * @return feedback in the database
      */
+    @PreAuthorize("isAuthenticated()")
     @PostMapping("/create")
     public ResponseEntity<List<FieldError>> createFeedback(
             @Validated @RequestBody FeedbackDto feedbackDto,
@@ -45,7 +47,6 @@ public class FeedbackRestController {
         if (bindingResult.hasFieldErrors()) {
             return new ResponseEntity<>(bindingResult.getFieldErrors(), HttpStatus.BAD_REQUEST);
         }
-
 
         Feedback feedback = new Feedback();
 
@@ -72,6 +73,7 @@ public class FeedbackRestController {
      * @param searchEndDate
      * @return Page<Feedback>
      */
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @GetMapping("/page")
     public ResponseEntity<Page<Feedback>> getAllFeedback(
             @RequestParam(name = "page", required = false, defaultValue = "0") Integer page,
@@ -101,6 +103,7 @@ public class FeedbackRestController {
             return new ResponseEntity<>(feedbackPage, HttpStatus.OK);
         }
     }
+
     /**
      * Created by : LuanTV
      * Date created: 09/08/2022
@@ -110,7 +113,7 @@ public class FeedbackRestController {
      * @param id
      * @return Feedback
      */
-
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @GetMapping("/{id}")
     public ResponseEntity<Feedback> getFeedbackById(@PathVariable int id) {
         Optional<Feedback> feedback = feedbackService.findFeedbackById(id);

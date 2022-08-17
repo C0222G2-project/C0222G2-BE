@@ -24,7 +24,6 @@ public class EmployeeRestController_getAllPosition {
      * method : getAllPosition()
      * test position not have in database
      */
-
     @Test
     public void getAllPosition_5() throws Exception {
 
@@ -41,7 +40,6 @@ public class EmployeeRestController_getAllPosition {
      * method : getAllPosition()
      * test position have in database
      */
-
     @Test
     public void getAllPosition_6() throws Exception {
 
