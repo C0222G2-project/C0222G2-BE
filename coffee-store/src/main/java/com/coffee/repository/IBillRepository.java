@@ -31,7 +31,7 @@ public interface IBillRepository extends JpaRepository<Bill, Integer> {
             " join coffee_table on dish_order.coffee_table_id = coffee_table.id " +
             " join dish on dish_order.dish_id = dish.id " +
             " where bill.code like :searchCode and bill.creation_date like :searchDate and bill.is_deleted = 0 ", nativeQuery = true,
-            countQuery ="select count(*) " +
+            countQuery = "select count(*) " +
                     " from " +
                     " (select bill.id, bill.code as billCode, bill.creation_date as creationDate, " +
                     " bill.is_deleted as isDeleted, employee.name as employeeName, coffee_table.code as coffeeTableCode, " +
@@ -43,7 +43,7 @@ public interface IBillRepository extends JpaRepository<Bill, Integer> {
                     " join dish on dish_order.dish_id = dish.id " +
                     " where bill.code like :searchCode and bill.creation_date like :searchDate and bill.is_deleted = 0) temp_table")
     Page<IBillDto> getAllBill(Pageable pageable, @Param("searchCode") String searchCode,
-                          @Param("searchDate") String searchDate);
+                              @Param("searchDate") String searchDate);
 
 
     /**
@@ -70,9 +70,10 @@ public interface IBillRepository extends JpaRepository<Bill, Integer> {
     /**
      * Athor: Hoann
      * Date create: 14/08/2022
+     *
      * @param code
      * @return
      */
-    @Query(value = " select * from bill where `code` = :code ", nativeQuery =  true)
+    @Query(value = " select *  from bill where `code` = :code ", nativeQuery = true)
     Bill findByCodeBill(@Param("code") int code);
 }
