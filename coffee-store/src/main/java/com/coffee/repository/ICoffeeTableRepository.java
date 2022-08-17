@@ -31,7 +31,7 @@ public interface ICoffeeTableRepository extends JpaRepository<CoffeeTable, Integ
             " from dish_order " +
             " join dish on dish.id = dish_order.dish_id " +
             " join coffee_table on dish_order.coffee_table_id = coffee_table.id " +
-            " where coffee_table.id = :idKey and dish_order.is_deleted  = 0) as dto_table group by(dishId) ",
+            " where coffee_table.id = :idKey and dish_order.is_deleted  = 0 ) as dto_table group by(dishId) ",
             nativeQuery = true)
     List<ICoffeeTableDto> displayTableById(@Param("idKey") Integer id);
 
@@ -79,13 +79,12 @@ public interface ICoffeeTableRepository extends JpaRepository<CoffeeTable, Integ
     /**
      * Create HoaNN
      * Date create 14/08/2022
-     * +
      *
-     * @param id
+     * @param idTable
      * @return
      */
     @Transactional
     @Modifying
-    @Query(value = " UPDATE `coffee_table` SET `status` = 0 WHERE (`id` = :idTable) ", nativeQuery = true)
+    @Query(value = " UPDATE `coffee_table` SET `status` = 1 WHERE (`id` = :idTable) ", nativeQuery = true)
     void updateStatus(@Param("idTable") int idTable);
 }
