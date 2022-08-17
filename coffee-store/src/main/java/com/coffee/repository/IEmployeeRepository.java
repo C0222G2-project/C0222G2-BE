@@ -17,12 +17,9 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Integer> {
      * Create by TuyenTN
      * Date: 16:30 pm  9-8-2022
      * method show list and search and paging
-<<<<<<< HEAD
      * tuyentn-list-employee-2
-=======
      *  tuyentn-list-employee-2
      *
->>>>>>> 0dd84c9fdad5a52defe92a1d8eb8da514746caf3
      * @param pageable
      * @param searchByName
      * @param searchByPhone

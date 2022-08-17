@@ -1,6 +1,7 @@
 package com.coffee.model.account;
 
 import com.coffee.model.employee.Employee;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -34,9 +35,11 @@ public class AppUser {
     private Boolean isDeleted;
 
     @OneToMany(mappedBy = "appUser")
+    @JsonIgnore
     private List<UserRole> userRoles;
 
     @OneToOne(mappedBy = "appUser")
+    @JsonIgnore
     private Employee employee;
 
     @Override

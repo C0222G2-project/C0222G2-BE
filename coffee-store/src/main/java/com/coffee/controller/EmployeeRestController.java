@@ -55,7 +55,7 @@ public class EmployeeRestController {
      * @return
      */
     @GetMapping("/employee/page")
-    public ResponseEntity<Page<IEmployeeDTO>> getAllEmployee(@PageableDefault(5) Pageable pageable,
+    public ResponseEntity<Page<IEmployeeDTO>> getAllEmployee(@PageableDefault(10) Pageable pageable,
                                                              Optional<String> searchName,
                                                              Optional<String> searchPhone,
                                                              Optional<String> searchAccount) {
@@ -75,7 +75,7 @@ public class EmployeeRestController {
         Page<IEmployeeDTO> employeePage = this.iEmployeeService.getAllEmployee(pageable, searchByName, searchByPhone,searchByAccount);
 
         if (employeePage.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(employeePage, HttpStatus.OK);
     }
@@ -163,7 +163,6 @@ public class EmployeeRestController {
         }
         return new ResponseEntity<>(iEmployeeService.findById(id), HttpStatus.OK);
     }
-
 
 
     /**
