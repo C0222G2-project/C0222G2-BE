@@ -20,4 +20,6 @@ public interface IDishService {
     Optional<Dish> findById(int id);
 
     void editDish(Dish dish);
+
+    Page<Dish> getDishByDishType(int id, Pageable pageable);
 }
