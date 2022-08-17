@@ -6,36 +6,44 @@ import lombok.Data;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.PositiveOrZero;
+import javax.validation.constraints.*;
 import java.sql.Date;
 
 @Data
 public class EmployeeDTOEdit implements Validator {
     private Integer id;
 
-    @NotBlank(message = "vui lòng điền thông tin")
+    @NotBlank(message = "vui lòng điền thông tin.")
+    @Size(min = 6,max = 30,message = "Vui lòng nhập name lớn hơn 6 nhỏ hơn 30 kí tự.")
+    @Pattern(regexp = "^([A-Z][^A-Z0-9\\s]+)(\\s[A-Z][^A-Z0-9\\s]+)*$", message = "Vui lòng nhập chữ cái đầu In Hoa mỗi từ ")
     private String name;
 
-    private Date birthday;
-
-    private int gender;
-    @NotBlank(message = "vui lòng điền thông tin")
-    private String phoneNumber;
-
-    @NotBlank(message = "vui lòng điền thông tin")
-    private String address;
-
-    @NotBlank(message = "vui lòng điền thông tin")
-    @Email(message = "vui lòng nhập đúng định dạng email")
-    private String email;
-
-    @NotBlank(message = "vui lòng điền thông tin")
+    @NotBlank(message = "vui lòng điền thông tin.")
+    @Size(max = 255,message = "Vui lòng nhập hình ảnh nhỏ hơn 255 kí tự")
     private String image;
 
-    @PositiveOrZero(message = "vui lòng nhập lương lớn hơn 0 ")
+    @NotBlank(message = "vui lòng điền thông tin.")
+    @Pattern(regexp = "^(09|\\(84\\)\\+9)[01]\\d{7}$", message = "Vui lòng nhập 10 số vs đầu số dạng 090, 091 , (84)+90 , (84)+91")
+    private String phoneNumber;
+
+    @NotBlank(message = "vui lòng điền thông tin.")
+    @Size(min = 6,max = 255,message = "Vui lòng nhập địa chỉ lớn hơn 6 nhỏ hơn 255 kí tự.")
+    private String address;
+
+    @NotBlank(message = "vui lòng điền thông tin.")
+    @Email(message = "vui lòng nhập đúng định dạng email.")
+    @Size(min = 6,max = 50,message = "Vui lòng nhập địa chỉ lớn hơn 6 nhỏ hơn 50 kí tự.")
+    private String email;
+
+    private int gender;
+
+    @PastOrPresent(message = "vui lòng không nhập quá ngày hiện tại.")
+    private Date birthday;
+
+    @PositiveOrZero(message = "vui lòng nhập lương lớn hơn 0 .")
+    @Max(value = 100000000)
     private Double salary;
+
     private Integer isDeleted;
 
     private Position position;
