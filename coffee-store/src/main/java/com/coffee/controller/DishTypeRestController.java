@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+
 
 @Controller
 @CrossOrigin
@@ -53,7 +55,7 @@ public class DishTypeRestController {
      * @return * HTTP status  204(NO_CONTENT) : id = null
      * * HTTP status  200(OK) : return a dishType
      */
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+//    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @GetMapping("/findById/{id}")
     public ResponseEntity<DishType> findById(@PathVariable Integer id) {
         DishType dishType = this.iDishTypeService.findDishTypeById(id);
@@ -61,5 +63,17 @@ public class DishTypeRestController {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(dishType, HttpStatus.OK);
+    }
+    /**
+     * @function ( get all List of the dishType )
+     * @creator PhucLV
+     * @date-create 10/08/2022
+     * @return true: list   status 200
+     */
+
+    @GetMapping("/list_dish_type")
+    public ResponseEntity<List<DishType>> getAllDishTypeList() {
+        List<DishType> dishTypeList = this.iDishTypeService.getAllListDishType();
+        return new ResponseEntity<>(dishTypeList, HttpStatus.OK);
     }
 }
