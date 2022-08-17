@@ -80,8 +80,7 @@ public interface ICoffeeTableRepository extends JpaRepository<CoffeeTable, Integ
      * Create HoaNN
      * Date create 14/08/2022
      *
-     *
-     * @param id
+     * @param idTable
      * @return
      */
     @Transactional
