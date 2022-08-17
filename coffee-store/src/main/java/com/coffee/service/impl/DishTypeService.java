@@ -17,13 +17,12 @@ public class DishTypeService implements IDishTypeService {
     /**
      * Created By: HieuCD
      * Date created: 09/08/2022
-     * function: get dish by dish id
-     * @param pageable
+     * function: get dish list
      * @return Page<DishType> dishPage
      */
     @Override
-    public Page<DishType> findAllDishType(Pageable pageable) {
-        return iDishTypeRepository.selectAllDishTypePage(pageable);
+    public List<DishType> findAllDishType() {
+        return iDishTypeRepository.selectAllDishTypeList();
     }
 
     /**

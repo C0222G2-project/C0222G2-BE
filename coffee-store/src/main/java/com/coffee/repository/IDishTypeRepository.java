@@ -12,7 +12,7 @@ import java.util.List;
 public interface IDishTypeRepository extends JpaRepository<DishType, Integer> {
 
     @Query(value = " select  id,`code`,is_deleted,`name` from dish_type", nativeQuery = true)
-    Page<DishType> selectAllDishTypePage(Pageable pageable);
+    List<DishType> selectAllDishTypeList();
 
     @Query(value = " select  id,`code`,is_deleted,`name` from dish_type d where d.id =:dishId", nativeQuery = true)
     DishType selectDishById(@Param("dishId") Integer id);
