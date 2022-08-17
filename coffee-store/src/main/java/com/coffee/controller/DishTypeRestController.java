@@ -53,7 +53,6 @@ public class DishTypeRestController {
      * @return * HTTP status  204(NO_CONTENT) : id = null
      * * HTTP status  200(OK) : return a dishType
      */
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @GetMapping("/findById/{id}")
     public ResponseEntity<DishType> findById(@PathVariable Integer id) {
         DishType dishType = this.iDishTypeService.findDishTypeById(id);

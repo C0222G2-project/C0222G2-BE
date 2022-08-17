@@ -191,7 +191,7 @@ public class SimpleEmailController {
                 "                <tr>\n" +
                 "                    <td style=\"text-align:center;\">\n" +
                 "                        <img width=\"60\"\n" +
-                "                             src=\"https://static.topcv.vn/company_logos/0ZT9refQobeAkpzsYWBdyaki10IlbFB4_1655288503____f48c9fc932b36c4eec44ec23d223fa18.png\"\n" +
+                "                             src=\"https://firebasestorage.googleapis.com/v0/b/c0222g2-4cf09.appspot.com/o/17-08-YYY%5Bobject%20File%5D?alt=media&token=d42fbe05-990f-41a2-8d61-2c194d11ee1d\"\n" +
                 "                             title=\"logo\"\n" +
                 "                             alt=\"logo\" style=\"border-radius: 10px\">\n" +
                 "                    </td>\n" +
