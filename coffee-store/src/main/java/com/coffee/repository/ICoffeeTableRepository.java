@@ -41,7 +41,6 @@ public interface ICoffeeTableRepository extends JpaRepository<CoffeeTable, Integ
             nativeQuery = true)
     void deleteList(@Param("idKey") Integer id);
 
-
     /**
      * Create HoaNN
      * Date create 10/08/2022
@@ -55,7 +54,6 @@ public interface ICoffeeTableRepository extends JpaRepository<CoffeeTable, Integ
                     "( select id, code, status from coffee_table ) temp ",
             nativeQuery = true)
     Page<ICoffeeTableDto> displayCoffeeTableByPage(Pageable pageable);
-
 
     /**
      * Create HoaNN

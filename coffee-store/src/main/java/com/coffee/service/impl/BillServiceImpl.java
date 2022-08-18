@@ -8,6 +8,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class BillServiceImpl implements IBillService {
 
@@ -37,9 +39,22 @@ public class BillServiceImpl implements IBillService {
      * @param id
      * @return Bill
      */
-
     @Override
     public IBillDto findById(Integer id) {
         return this.iBillRepository.getByIdBill(id);
     }
+
+    /**
+     * Created by: HauLT
+     * Date created: 17/08/2022
+     * function: get the list of dishes
+     *
+     * @param id
+     * @return Bill
+     */
+    @Override
+    public List<IBillDto> getAllDish(Integer id) {
+        return this.iBillRepository.getAllDish(id);
+    }
+
 }

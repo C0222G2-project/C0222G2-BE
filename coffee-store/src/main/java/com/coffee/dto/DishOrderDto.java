@@ -29,10 +29,8 @@ public class DishOrderDto {
     @NotNull
     private Bill bill;
 
-
     @NotNull
     private Employee employee;
-
 
     @NotNull
     private Dish dish;

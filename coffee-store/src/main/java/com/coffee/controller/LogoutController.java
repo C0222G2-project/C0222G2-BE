@@ -21,7 +21,6 @@ public class LogoutController {
     @Autowired
     private JwtTokenUtil jwtTokenUtil;
 
-
     /**
      * @author: PhuongTD
      * @date-create 15/8/2022

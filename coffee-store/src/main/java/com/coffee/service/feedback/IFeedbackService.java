@@ -8,14 +8,12 @@ import java.util.Optional;
 
 public interface IFeedbackService {
 
-
     /**
      * Created by: DiepTT
      * Date created: 09/08/2022
      * Function: Create feedback (User send feedback)
      */
     void createFeedback(Feedback feedback);
-
 
     /**
      * Created by : LuanTV
@@ -29,7 +27,6 @@ public interface IFeedbackService {
      * @return
      */
     Page<Feedback> findAllFeedback(Pageable pageable, String creator, String startDate, String endDate);
-
 
     /**
      * Created by : LuanTV
