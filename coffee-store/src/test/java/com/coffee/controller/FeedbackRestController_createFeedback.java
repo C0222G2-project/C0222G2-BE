@@ -567,60 +567,6 @@ public class FeedbackRestController_createFeedback {
                 .andExpect(status().is4xxClientError());
     }
 
-    /**
-     * Created by: DiepTT
-     * Date created: 11/08/2022
-     * Function: Check min length (5 characters) of "image url"
-     *
-     * @throws Exception
-     */
-    @Test
-    public void createFeedback_image_16() throws Exception {
-
-        FeedbackDto feedbackDto = new FeedbackDto();
-
-        feedbackDto.setCreator("Nguyễn Thị Hoa");
-        feedbackDto.setEmail("nguyenthihoa@gmail.com");
-        feedbackDto.setRating(5);
-        feedbackDto.setContent("Quán trang trí đẹp, thức uống ngon.");
-        feedbackDto.setImage(".jpg");
-        this.mockMvc
-                .perform(MockMvcRequestBuilders
-                        .post("/feedback/create")
-                        .content(this.objectMapper.writeValueAsString(feedbackDto))
-                        .contentType(MediaType.APPLICATION_JSON_VALUE))
-                .andDo(print())
-                .andExpect(status().is4xxClientError());
-    }
-
-    /**
-     * Created by: DiepTT
-     * Date created: 12/08/2022 (DiepTT)
-     * Function: Check max length (200 characters) of "image url"
-     *
-     * @throws Exception
-     */
-    @Test
-    public void createFeedback_image_17() throws Exception {
-
-        FeedbackDto feedbackDto = new FeedbackDto();
-
-        feedbackDto.setCreator("Nguyễn Thị Hoa");
-        feedbackDto.setEmail("nguyenthihoa@gmail.com");
-        feedbackDto.setRating(5);
-        feedbackDto.setContent("Quán trang trí đẹp, thức uống ngon.");
-        feedbackDto.setImage("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
-                "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
-                "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
-                "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.jpg");
-        this.mockMvc
-                .perform(MockMvcRequestBuilders
-                        .post("/feedback/create")
-                        .content(this.objectMapper.writeValueAsString(feedbackDto))
-                        .contentType(MediaType.APPLICATION_JSON_VALUE))
-                .andDo(print())
-                .andExpect(status().is4xxClientError());
-    }
 
     /**
      * Created by: DiepTT

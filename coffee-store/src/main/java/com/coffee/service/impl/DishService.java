@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -17,7 +18,7 @@ public class DishService implements IDishService {
     private IDishRepository iDishRepository;
 
     /**
-<<<<<<< HEAD
+
      * @function ( create new Dish)
      * @param dish
      * @return dish, status 201
@@ -124,4 +125,18 @@ public class DishService implements IDishService {
     public Page<Dish> getDishByDishType(int id, Pageable pageable) {
         return iDishRepository.findAllDishFindByeId(id, pageable);
     }
+
+    /**
+     * @function ( Get All dishList)
+     * @creator PhucLV
+     * @date-create 17/08/2022
+     *
+     * @return dish
+     */
+
+    @Override
+    public List<Dish> findAll() {
+        return iDishRepository.findAll();
+    }
+
 }

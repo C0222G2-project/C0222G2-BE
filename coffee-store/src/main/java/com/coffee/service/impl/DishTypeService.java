@@ -37,4 +37,16 @@ public class DishTypeService implements IDishTypeService {
         return iDishTypeRepository.selectDishById(id);
     }
 
+    /**
+     * @function ( get all List of the dishType )
+     * @creator PhucLV
+     * @date-create 10/08/2022
+     * @return true: list status 200
+     */
+
+    @Override
+    public List<DishType> getAllListDishType() {
+        return iDishTypeRepository.findAllDishType();
+    }
+
 }
