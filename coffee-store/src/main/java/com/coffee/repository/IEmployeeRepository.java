@@ -26,8 +26,6 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Integer> {
      * @param searchByAccount
      * @return
      */
-
-
     @Query(value = " select employee.`name` as name,employee.phone_number as phoneNumber,position.name as position, " +
             " app_user.user_name as appUser,employee.id,employee.birthday,employee.image,employee.address,employee.salary, " +
             " employee.gender,employee.email from employee " +

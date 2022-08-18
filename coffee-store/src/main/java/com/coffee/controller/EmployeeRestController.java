@@ -176,7 +176,6 @@ public class EmployeeRestController {
         return new ResponseEntity<>(iEmployeeService.findById(id), HttpStatus.OK);
     }
 
-
     /**
      * @creator TaiLV
      * @function ( create the value of the employee )

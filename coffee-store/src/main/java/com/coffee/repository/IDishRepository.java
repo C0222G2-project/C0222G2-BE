@@ -57,6 +57,4 @@ public interface IDishRepository extends JpaRepository<Dish, Integer> {
     @Query(value = "select d.* from dish d join dish_type dt on dt.id = d.dish_type_id where d.dish_type_id = :id ", nativeQuery = true,
             countQuery = " select count(*) from (select d.* from dish d join dish_type dt on dt.id = d.dish_type_id where d.dish_type_id= :id ) temp_table")
     Page<Dish> findAllDishFindByeId(@Param("id") Integer id, Pageable pageable);
-
-
 }

@@ -62,5 +62,4 @@ public class CoffeeTableService implements ICoffeeTableService {
     public void deleteList(Integer id) {
         this.iCoffeeTableRepository.deleteList(id);
     }
-
 }
