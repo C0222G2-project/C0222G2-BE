@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RequestMapping("/rest")
@@ -31,7 +32,7 @@ public class BillRestController {
      * @param searchParamDate
      * @return Page<Bill>
      */
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PreAuthorize("hasAnyAuthority('ROLE_STAFF', 'ROLE_ADMIN')")
     @GetMapping("/bill")
     public ResponseEntity<Page<IBillDto>> getAllBill(@PageableDefault(10) Pageable pageable,
                                                      @RequestParam Optional<String> searchParamCode,
@@ -54,7 +55,7 @@ public class BillRestController {
      * @param id
      * @return object Bill
      */
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PreAuthorize("hasAnyAuthority('ROLE_STAFF', 'ROLE_ADMIN')")
     @GetMapping("/bill/detail/{id}")
     public ResponseEntity<IBillDto> getById(@PathVariable Integer id) {
         IBillDto iBillDto = this.iBillService.findById(id);
@@ -62,5 +63,25 @@ public class BillRestController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(iBillDto, HttpStatus.OK);
+    }
+
+
+    /**
+     * Created by: HauLT
+     * Date created: 17/08/2022
+     * function: get the list of dishes
+     *
+     * @param id
+     * @return
+     */
+
+    @GetMapping("/bill/dish/{id}")
+    public ResponseEntity<List<IBillDto>> getAllDish(@PathVariable Integer id){
+        List<IBillDto> iBillDtoList = this.iBillService.getAllDish(id);
+        if (iBillDtoList == null){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }else {
+            return new ResponseEntity<>(iBillDtoList,HttpStatus.OK);
+        }
     }
 }
