@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -17,7 +18,6 @@ public class DishService implements IDishService {
     private IDishRepository iDishRepository;
 
     /**
-<<<<<<< HEAD
      * @function ( create new Dish)
      * @param dish
      * @return dish, status 201
@@ -36,7 +36,6 @@ public class DishService implements IDishService {
      * @param id
      * @return  id
      */
-
     @Override
     public Optional<Dish> findById(int id) {
         return iDishRepository.findByIdDish(id);
@@ -49,7 +48,6 @@ public class DishService implements IDishService {
      * @param dish
      * @return dish
      */
-
     @Override
     public void editDish( Dish dish) {
         iDishRepository.editDish(dish);
@@ -105,7 +103,6 @@ public class DishService implements IDishService {
      * @param pageable
      * @return dishPage (search)
      */
-
     @Override
     public Page<Dish> searchDish(String name, String code, String price, String dishType, Pageable pageable) {
         return iDishRepository.searchDishPage("%" + name + "%", "%" + code + "%", "%" + price + "%", dishType, pageable);
@@ -124,4 +121,17 @@ public class DishService implements IDishService {
     public Page<Dish> getDishByDishType(int id, Pageable pageable) {
         return iDishRepository.findAllDishFindByeId(id, pageable);
     }
+
+    /**
+     * @function ( Get All dishList)
+     * @creator PhucLV
+     * @date-create 17/08/2022
+     *
+     * @return dish
+     */
+    @Override
+    public List<Dish> findAll() {
+        return iDishRepository.findAll();
+    }
+
 }

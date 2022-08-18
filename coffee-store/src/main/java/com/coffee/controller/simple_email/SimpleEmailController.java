@@ -99,15 +99,7 @@ public class SimpleEmailController {
         for (String tokenVal : this.tokenList) {
             if (tokenVal.equals(token)) {
                 response.sendRedirect("http://localhost:4200/forgot/" + token);
-                for (Map.Entry<String, String> entry: this.loginUtil.getTokenMap().entrySet()) {
-                    System.out.println(entry.getKey());
-                    System.out.println(entry.getValue());
-                }
                 this.loginUtil.getTokenMap().remove(this.jwtTokenUtil.getUsernameFromToken(token));
-                for (Map.Entry<String, String> entry: this.loginUtil.getTokenMap().entrySet()) {
-                    System.out.println(entry.getKey());
-                    System.out.println(entry.getValue());
-                }
                 return new ResponseEntity<>(HttpStatus.OK);
             }
         }
