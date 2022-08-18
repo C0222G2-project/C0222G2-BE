@@ -35,10 +35,10 @@ public class DishRestController {
      */
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @PostMapping(value = "/create")
-    public ResponseEntity<FieldError> createDish( @RequestBody @Valid DishDto dishDto,
-                                                  BindingResult bindingResult) {
+    public ResponseEntity<FieldError> createDish(@RequestBody @Valid DishDto dishDto,
+                                                 BindingResult bindingResult) {
         dishDto.setDishList(this.iDishService.findAll());
-        dishDto.validate(dishDto,bindingResult);
+        dishDto.validate(dishDto, bindingResult);
 
         if (bindingResult.hasErrors()) {
             return new ResponseEntity<>(bindingResult.getFieldError(), HttpStatus.INTERNAL_SERVER_ERROR);
@@ -76,7 +76,7 @@ public class DishRestController {
      */
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @PatchMapping("/edit/{id}")
-    public ResponseEntity<FieldError> updateDish( @PathVariable int id, @RequestBody @Valid DishDto dishDto ,BindingResult bindingResult) {
+    public ResponseEntity<FieldError> updateDish(@PathVariable int id, @RequestBody @Valid DishDto dishDto, BindingResult bindingResult) {
         Optional<Dish> dishOptional = iDishService.findById(id);
         if (!dishOptional.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -89,7 +89,7 @@ public class DishRestController {
         BeanUtils.copyProperties(dishDto, dish);
 
         iDishService.editDish(dish);
-        return new ResponseEntity<>( HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     /**
@@ -185,7 +185,7 @@ public class DishRestController {
      * @param id
      * @return HTTP status  204(NO_CONTENT) : id = null
      * HTTP status  200(OK) : deleted
-//     */
+     */
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @PatchMapping("/delete/{id}")
     public ResponseEntity<Void> deleteDish(@PathVariable Integer id) {
@@ -206,8 +206,8 @@ public class DishRestController {
     @GetMapping("/getDishFindIdDishType/{id}")
     public ResponseEntity<Page<Dish>> getAllDishFindIdDishType(@PathVariable Integer id,
                                                                @PageableDefault(4) Pageable pageable,
-                                                               @RequestParam("page") Optional<Integer> page){
-        Page<Dish> dishPage = this.iDishService.getDishByDishType(id,pageable);
+                                                               @RequestParam("page") Optional<Integer> page) {
+        Page<Dish> dishPage = this.iDishService.getDishByDishType(id, pageable);
         if (dishPage.isEmpty()) {
             return new ResponseEntity<>(dishPage, HttpStatus.NO_CONTENT);
         } else {

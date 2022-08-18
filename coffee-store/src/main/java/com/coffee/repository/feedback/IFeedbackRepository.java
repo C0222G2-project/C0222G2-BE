@@ -17,7 +17,6 @@ import java.util.Optional;
 @Repository
 public interface IFeedbackRepository extends JpaRepository<Feedback, Integer> {
 
-
     /**
      * Created by: DiepTT
      * Date created: 09/08/2022
@@ -33,7 +32,6 @@ public interface IFeedbackRepository extends JpaRepository<Feedback, Integer> {
 
     @Query(value = "select max(id) from feedback ", nativeQuery = true)
     Integer findLastFeedbackId();
-
 
     /**
      * Created by : LuanTV
@@ -54,7 +52,6 @@ public interface IFeedbackRepository extends JpaRepository<Feedback, Integer> {
                     " from feedback where feedback.creator like :creator and (feedback.feedback_date between :startDate and :endDate) and feedback.is_deleted = 0 ) feedback")
     Page<Feedback> findAllFeedback(Pageable pageable,
                                    @Param("creator") String creator, String startDate, String endDate);
-
 
     /**
      * Created by : LuanTV

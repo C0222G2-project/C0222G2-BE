@@ -18,7 +18,6 @@ public class DishService implements IDishService {
     private IDishRepository iDishRepository;
 
     /**
-
      * @function ( create new Dish)
      * @param dish
      * @return dish, status 201
@@ -37,7 +36,6 @@ public class DishService implements IDishService {
      * @param id
      * @return  id
      */
-
     @Override
     public Optional<Dish> findById(int id) {
         return iDishRepository.findByIdDish(id);
@@ -50,7 +48,6 @@ public class DishService implements IDishService {
      * @param dish
      * @return dish
      */
-
     @Override
     public void editDish( Dish dish) {
         iDishRepository.editDish(dish);
@@ -106,7 +103,6 @@ public class DishService implements IDishService {
      * @param pageable
      * @return dishPage (search)
      */
-
     @Override
     public Page<Dish> searchDish(String name, String code, String price, String dishType, Pageable pageable) {
         return iDishRepository.searchDishPage("%" + name + "%", "%" + code + "%", "%" + price + "%", dishType, pageable);
@@ -133,7 +129,6 @@ public class DishService implements IDishService {
      *
      * @return dish
      */
-
     @Override
     public List<Dish> findAll() {
         return iDishRepository.findAll();

@@ -90,7 +90,6 @@ public class PaymentRestController {
         return new ResponseEntity<>(iTotalPaymentDto, HttpStatus.OK);
     }
 
-
     @GetMapping("/in-bill")
     public ResponseEntity<Void> inBill(@RequestParam int idTable) {
         int code = this.getRandomNumber(this.billRepository.findAll());
