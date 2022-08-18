@@ -24,5 +24,7 @@ public interface ICoffeeTableService {
 
     void updateStatus(int idTable);
 
+    void updateStatusIsName(String nameTable);
+
     void deleteList(Integer id);
 }

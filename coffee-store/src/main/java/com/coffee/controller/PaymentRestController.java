@@ -120,4 +120,10 @@ public class PaymentRestController {
         }
         return false;
     }
+
+    @PatchMapping ("/total/{id}")
+    public ResponseEntity<ITotalPaymentDto> setStatus(@PathVariable("id") String nameTable) {
+        this.iCoffeeTableService.updateStatusIsName(nameTable);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }

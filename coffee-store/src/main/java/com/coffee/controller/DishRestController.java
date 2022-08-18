@@ -167,6 +167,7 @@ public class DishRestController {
      * @return HTTP status  204(NO_CONTENT) : id = null
      * HTTP status  200(OK) : return a dish
      */
+//    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @PreAuthorize("isAuthenticated()")
     @GetMapping("/findById/{id}")
     public ResponseEntity<Dish> findById(@PathVariable Integer id) {
