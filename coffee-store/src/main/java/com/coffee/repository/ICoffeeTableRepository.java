@@ -41,7 +41,6 @@ public interface ICoffeeTableRepository extends JpaRepository<CoffeeTable, Integ
             nativeQuery = true)
     void deleteList(@Param("idKey") Integer id);
 
-
     /**
      * Create HoaNN
      * Date create 10/08/2022
@@ -55,7 +54,6 @@ public interface ICoffeeTableRepository extends JpaRepository<CoffeeTable, Integ
                     "( select id, code, status from coffee_table ) temp ",
             nativeQuery = true)
     Page<ICoffeeTableDto> displayCoffeeTableByPage(Pageable pageable);
-
 
     /**
      * Create HoaNN
@@ -80,12 +78,23 @@ public interface ICoffeeTableRepository extends JpaRepository<CoffeeTable, Integ
      * Create HoaNN
      * Date create 14/08/2022
      *
-     *
-     * @param id
+     * @param idTable
      * @return
      */
     @Transactional
     @Modifying
     @Query(value = " UPDATE `coffee_table` SET `status` = 1 WHERE (`id` = :idTable) ", nativeQuery = true)
     void updateStatus(@Param("idTable") int idTable);
+
+    /**
+     * Create BinhPX
+     * Date create 18/08/2022
+     *
+     * @param nameTable
+     * @return
+     */
+    @Transactional
+    @Modifying
+    @Query(value = " UPDATE `coffee_table` SET `status` = 0 WHERE (`code` = :nameTable) ", nativeQuery = true)
+    void updateStatusIsName(@Param("nameTable") String nameTable);
 }

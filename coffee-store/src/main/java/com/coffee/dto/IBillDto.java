@@ -12,4 +12,5 @@ public interface IBillDto {
     Integer getDishOrderQuantity();
     String getDishName();
     Double getDishPrice();
+    Double getTotalBill();
 }

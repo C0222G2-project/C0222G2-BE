@@ -59,5 +59,16 @@ public class DishTypeRestController {
         return new ResponseEntity<>(dishType, HttpStatus.OK);
     }
 
+    /**
+     * @function ( get all List of the dishType )
+     * @creator PhucLV
+     * @date-create 10/08/2022
+     * @return true: list   status 200
+     */
+    @GetMapping("/list_dish_type")
+    public ResponseEntity<List<DishType>> getAllDishTypeList() {
+        List<DishType> dishTypeList = this.iDishTypeService.getAllListDishType();
+        return new ResponseEntity<>(dishTypeList, HttpStatus.OK);
+    }
 
 }

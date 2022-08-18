@@ -6,6 +6,7 @@ import com.coffee.model.jwt.JwtResponse;
 import com.coffee.service.account.IAppUserService;
 import com.coffee.util.EncrytedPasswordUtils;
 import com.coffee.util.JwtTokenUtil;
+import com.coffee.util.LoginUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -23,6 +24,7 @@ import java.io.IOException;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @CrossOrigin
@@ -42,6 +44,9 @@ public class SimpleEmailController {
 
     @Value("${spring.mail.username}")
     private String myEmail;
+
+    @Autowired
+    private LoginUtil loginUtil;
 
     private List<String> tokenList = new ArrayList<>();
 
@@ -64,7 +69,7 @@ public class SimpleEmailController {
             MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
             String token = jwtTokenUtil.generateToken(jwtRequest.getUsername());
             this.tokenList.add(token);
-            String htmlMsg = createHTMLMailForm(token, appUser.getEmployee().getName());
+            String htmlMsg = createHTMLMailForm(token, appUser.getUserName());
             message.setContent(htmlMsg, "text/html; charset=UTF-8");
 
             helper.setTo(appUser.getEmployee().getEmail());
@@ -94,6 +99,7 @@ public class SimpleEmailController {
         for (String tokenVal : this.tokenList) {
             if (tokenVal.equals(token)) {
                 response.sendRedirect("http://localhost:4200/forgot/" + token);
+                this.loginUtil.getTokenMap().remove(this.jwtTokenUtil.getUsernameFromToken(token));
                 return new ResponseEntity<>(HttpStatus.OK);
             }
         }
@@ -149,13 +155,13 @@ public class SimpleEmailController {
 
     /**
      * @param token
-     * @param name
+     * @param username
      * @return
      * @func create html form
      * @creator: PhuongTD
      * @date-create 14/8/2022
      */
-    private String createHTMLMailForm(String token, String name) {
+    private String createHTMLMailForm(String token, String username) {
         return "<!doctype html>\n" +
                 "<html lang=\"en-US\">\n" +
                 "\n" +
@@ -191,7 +197,7 @@ public class SimpleEmailController {
                 "                <tr>\n" +
                 "                    <td style=\"text-align:center;\">\n" +
                 "                        <img width=\"60\"\n" +
-                "                             src=\"https://firebasestorage.googleapis.com/v0/b/c0222g2-4cf09.appspot.com/o/17-08-YYY%5Bobject%20File%5D?alt=media&token=d42fbe05-990f-41a2-8d61-2c194d11ee1d\"\n" +
+                "                             src=\"https://image.similarpng.com/very-thumbnail/2021/09/Coffee-shop-logo-design-template-on-transparent-background-PNG.png\"\n" +
                 "                             title=\"logo\"\n" +
                 "                             alt=\"logo\" style=\"border-radius: 10px\">\n" +
                 "                    </td>\n" +
@@ -209,7 +215,7 @@ public class SimpleEmailController {
                 "                            <tr>\n" +
                 "                                <td style=\"padding:0 35px;\">\n" +
                 "                                    <h1 style=\"color:#1e1e2d; font-weight:500; margin:0;font-size:28px;font-family:'Rubik',sans-serif;\">\n" +
-                "                                        Chào " + name + "! có vẻ như bạn đã quên mất mật khẩu của mình </h1>\n" +
+                "                                        Chào " + username + "! có vẻ như bạn đã quên mất mật khẩu của mình </h1>\n" +
                 "                                    <span\n" +
                 "                                            style=\"display:inline-block; vertical-align:middle; margin:29px 0 26px; border-bottom:1px solid #cecece; width:100px;\"></span>\n" +
                 "                                    <p style=\"color:#455056; font-size:15px;line-height:24px; margin:0;\">\n" +

@@ -37,8 +37,11 @@ public class DishRestController {
     @PostMapping(value = "/create")
     public ResponseEntity<FieldError> createDish(@RequestBody @Valid DishDto dishDto,
                                                  BindingResult bindingResult) {
+        dishDto.setDishList(this.iDishService.findAll());
+        dishDto.validate(dishDto, bindingResult);
+
         if (bindingResult.hasErrors()) {
-            return new ResponseEntity<>(bindingResult.getFieldError(), HttpStatus.UPGRADE_REQUIRED);
+            return new ResponseEntity<>(bindingResult.getFieldError(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
         Dish dish = new Dish();
         BeanUtils.copyProperties(dishDto, dish);
@@ -53,7 +56,8 @@ public class DishRestController {
      * @creator PhucLV
      * @date-create 09/08/2022
      */
-//    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+
     @GetMapping("/{id}")
     public ResponseEntity<Dish> findById(@PathVariable int id) {
         Optional<Dish> dishOptional = iDishService.findById(id);
@@ -164,6 +168,7 @@ public class DishRestController {
      * HTTP status  200(OK) : return a dish
      */
 //    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PreAuthorize("isAuthenticated()")
     @GetMapping("/findById/{id}")
     public ResponseEntity<Dish> findById(@PathVariable Integer id) {
         Dish dish = this.iDishService.findDishById(id);
@@ -198,11 +203,12 @@ public class DishRestController {
      * @return HTTP status  204(NO_CONTENT) : id = null
      * HTTP status  200(OK) : deleted
      */
+    @PreAuthorize("isAuthenticated()")
     @GetMapping("/getDishFindIdDishType/{id}")
     public ResponseEntity<Page<Dish>> getAllDishFindIdDishType(@PathVariable Integer id,
                                                                @PageableDefault(4) Pageable pageable,
-                                                               @RequestParam("page") Optional<Integer> page){
-        Page<Dish> dishPage = this.iDishService.getDishByDishType(id,pageable);
+                                                               @RequestParam("page") Optional<Integer> page) {
+        Page<Dish> dishPage = this.iDishService.getDishByDishType(id, pageable);
         if (dishPage.isEmpty()) {
             return new ResponseEntity<>(dishPage, HttpStatus.NO_CONTENT);
         } else {

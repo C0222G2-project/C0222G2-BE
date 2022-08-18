@@ -17,7 +17,6 @@ public interface IDishOrderService {
      */
     List<DishMostOrderDTO> get5DishMostOrderDTO();
 
-
     /**
      * Created by: BaoTQ
      * Date create: 09/08/2022
@@ -32,7 +31,6 @@ public interface IDishOrderService {
      **/
     Page<DishOrder> getAllOrder(Pageable pageable);
 
-
     /**
      *   Author: BinhPX
      *   Date created: 09/08/2022
@@ -45,7 +43,6 @@ public interface IDishOrderService {
      *   Date created: 09/08/2022
      *   This function return order menu could find, @param tableId, @return list DishOrder
      **/
-
     List<DishOrder> getOrderHaveCode(String param);
 
 
