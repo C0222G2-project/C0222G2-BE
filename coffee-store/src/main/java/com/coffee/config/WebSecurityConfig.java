@@ -73,7 +73,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/authenticate",
                         "/sendSimpleEmail",
                         "/forgotPassword/**",
-                        "/findPassword", "/**").permitAll().
+                        "/findPassword").permitAll().
                 // all other requests need to be authenticated
                         anyRequest().authenticated().and().
                 // make sure we use stateless session; session won't be used to
