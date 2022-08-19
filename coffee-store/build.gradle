@@ -5,6 +5,7 @@ plugins {
 }
 
 group = 'com.coffee'
+apply plugin:'war'
 
 configurations {
     compileOnly {
