@@ -23,7 +23,7 @@ import java.util.List;
 @CrossOrigin
 @RestController
 @RequestMapping("/api/payment")
-public class PaymentRestController {
+public class    PaymentRestController {
 
     @Autowired
     private ICoffeeTableService iCoffeeTableService;
@@ -90,7 +90,6 @@ public class PaymentRestController {
         return new ResponseEntity<>(iTotalPaymentDto, HttpStatus.OK);
     }
 
-
     @GetMapping("/in-bill")
     public ResponseEntity<Void> inBill(@RequestParam int idTable) {
         int code = this.getRandomNumber(this.billRepository.findAll());
@@ -120,5 +119,11 @@ public class PaymentRestController {
             }
         }
         return false;
+    }
+
+    @PatchMapping ("/total/{id}")
+    public ResponseEntity<ITotalPaymentDto> setStatus(@PathVariable("id") String nameTable) {
+        this.iCoffeeTableService.updateStatusIsName(nameTable);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

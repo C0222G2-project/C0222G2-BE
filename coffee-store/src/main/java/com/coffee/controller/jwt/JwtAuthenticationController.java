@@ -55,7 +55,9 @@ public class JwtAuthenticationController {
     @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
     public ResponseEntity<?> createAuthenticationToken(@Valid @RequestBody JwtRequest authenticationRequest,
                                                        BindingResult bindingResult) throws Exception {
+        this.loginUtil.getTokenMap().remove(authenticationRequest.getUsername());
         if (!this.loginUtil.getTokenMap().isEmpty()) {
+            System.out.println(this.loginUtil.getTokenMap().get(authenticationRequest.getUsername()));
             if (this.loginUtil.getTokenMap().get(authenticationRequest.getUsername()) != null) {
                 return new ResponseEntity<>("isLogin", HttpStatus.UNAUTHORIZED);
             }

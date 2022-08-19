@@ -1,7 +1,5 @@
 package com.coffee.dto;
 
-import javax.validation.constraints.NotNull;
-
 public class DishTypeDto {
     private Integer id;
     private String code;
@@ -10,7 +8,6 @@ public class DishTypeDto {
 
     public DishTypeDto() {
     }
-
 
     public Integer getId() {
         return id;

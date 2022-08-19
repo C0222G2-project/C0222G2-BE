@@ -59,8 +59,12 @@ public class CoffeeTableService implements ICoffeeTableService {
     }
 
     @Override
+    public void updateStatusIsName(String nameTable) {
+        this.iCoffeeTableRepository.updateStatusIsName(nameTable);
+    }
+
+    @Override
     public void deleteList(Integer id) {
         this.iCoffeeTableRepository.deleteList(id);
     }
-
 }

@@ -28,9 +28,7 @@ public interface IBillService {
      * @param id
      * @return
      */
-
     IBillDto findById(Integer id);
-
 
     /**
      * Created by: HauLT
@@ -40,6 +38,5 @@ public interface IBillService {
      * @param id
      * @return
      */
-
     List<IBillDto> getAllDish(Integer id);
 }
