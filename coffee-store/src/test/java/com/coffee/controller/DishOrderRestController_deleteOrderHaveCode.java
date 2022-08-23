@@ -26,7 +26,9 @@ public class DishOrderRestController_deleteOrderHaveCode {
     public void deleteOrderHaveCode_code_25() throws Exception {
 
         this.mockMvc.perform(
-                        MockMvcRequestBuilders.get("/dish-order/delete-code/null"))
+                        MockMvcRequestBuilders.get("/dish-order/delete-code/null")
+                                .header("authorization",
+                                        "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtYW5hZ2VyIiwiZXhwIjoxNjYxMzE2MTE1LCJpYXQiOjE2NjExMzYxMTV9.F1Vp9fGsVsitdbGum_PiZzh9a7tyjKwrmG5gr9dr32KvAOI7Vh54C6b1mCg3LxywlBivrFUfFj3rnjYoU5i_dg"))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
@@ -41,7 +43,9 @@ public class DishOrderRestController_deleteOrderHaveCode {
     public void deleteOrderHaveCode_code_28() throws Exception {
 
         this.mockMvc.perform(
-                        MockMvcRequestBuilders.get("/dish-order/delete-code/OD-1645"))
+                        MockMvcRequestBuilders.get("/dish-order/delete-code/OD-1645")
+                                .header("authorization",
+                                        "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtYW5hZ2VyIiwiZXhwIjoxNjYxMzE2MTE1LCJpYXQiOjE2NjExMzYxMTV9.F1Vp9fGsVsitdbGum_PiZzh9a7tyjKwrmG5gr9dr32KvAOI7Vh54C6b1mCg3LxywlBivrFUfFj3rnjYoU5i_dg"))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }

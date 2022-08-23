@@ -93,12 +93,12 @@ public class SimpleEmailController {
     @GetMapping("/forgotPassword/{token}")
     public ResponseEntity<?> getUsernameForChangePassword(@PathVariable String token, HttpServletResponse response) throws IOException {
         if (this.tokenList.isEmpty()) {
-            response.sendRedirect("http://localhost:4200/login");
+            response.sendRedirect("https://localhost:4200/login");
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
         for (String tokenVal : this.tokenList) {
             if (tokenVal.equals(token)) {
-                response.sendRedirect("http://localhost:4200/forgot/" + token);
+                response.sendRedirect("https://localhost:4200/forgot/" + token);
                 this.loginUtil.getTokenMap().remove(this.jwtTokenUtil.getUsernameFromToken(token));
                 return new ResponseEntity<>(HttpStatus.OK);
             }

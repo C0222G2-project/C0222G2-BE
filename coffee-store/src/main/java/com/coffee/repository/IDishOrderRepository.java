@@ -73,9 +73,12 @@ public interface IDishOrderRepository extends JpaRepository<DishOrder, Integer> 
      * This function find any order have table id match param.
      * .@param table id, @return
      **/
-    @Query(value = "select id, coffee_table_id, `code`, quantity, dish_id, bill_id, " +
-            "employee_id, is_deleted from dish_order where is_deleted = 0 and coffee_table_id = :param", nativeQuery = true)
-    List<DishOrder> getOrderHaveCode(@Param("param") String param);
+    @Query(value="select dor.id, dor.dish_id, dor.coffee_table_id, sum(dor.quantity) as quantity, dor.code, dor.employee_id, dor.bill_id, " +
+            " dor.is_deleted from dish_order dor \n" +
+            "inner join coffee_table on coffee_table.id = dor.coffee_table_id\n" +
+            "where coffee_table.id = :param\n" +
+            "group by dor.dish_id", nativeQuery = true)
+    List<DishOrder> getOrderHaveCode(@Param("param") int param);
 
      /**
      *   Author: BinhPX
