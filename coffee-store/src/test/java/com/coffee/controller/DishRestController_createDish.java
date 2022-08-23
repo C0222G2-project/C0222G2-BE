@@ -31,7 +31,7 @@ public class DishRestController_createDish {
      */
 
     @Test
-    public void createDish_name_ok() throws Exception {
+    public void createDish_18() throws Exception {
 
         DishDto dishDto = new DishDto();
 
@@ -40,6 +40,7 @@ public class DishRestController_createDish {
         dishDto.setName("cà phê sữa");
         dishDto.setImage("ảnh");
         dishDto.setIsDeleted(false);
+
 
         DishType dishType = new DishType();
         dishType.setId(1);
@@ -53,6 +54,7 @@ public class DishRestController_createDish {
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful());
     }
+
     /**
      * @function:  This function use test validation if the code field is null
      * @throws Exception
@@ -60,7 +62,7 @@ public class DishRestController_createDish {
      * @Time 10/08/2022
      */
     @Test
-    public void createDish_name_not_ok1() throws Exception {
+    public void createDish_code_13() throws Exception {
 
         DishDto dishDto = new DishDto();
 
@@ -88,7 +90,7 @@ public class DishRestController_createDish {
      * @Time 10/08/2022
      */
     @Test
-    public void createDish_name_not_ok2() throws Exception {
+    public void createDish_code_14() throws Exception {
 
         DishDto dishDto = new DishDto();
 
@@ -116,7 +118,7 @@ public class DishRestController_createDish {
      * @Time 10/08/2022
      */
     @Test
-    public void createDish_name_not_ok3() throws Exception {
+    public void createDish_code_15() throws Exception {
 
         DishDto dishDto = new DishDto();
 
@@ -144,7 +146,7 @@ public class DishRestController_createDish {
      * @Time 10/08/2022
      */
     @Test
-    public void createDish_name_not_ok4() throws Exception {
+    public void createDish_price_min() throws Exception {
 
         DishDto dishDto = new DishDto();
 
@@ -173,7 +175,7 @@ public class DishRestController_createDish {
      * @Time 10/08/2022
      */
     @Test
-    public void createDish_name_not_ok5() throws Exception {
+    public void createDish_13_price() throws Exception {
 
         DishDto dishDto = new DishDto();
 
@@ -201,7 +203,7 @@ public class DishRestController_createDish {
      * @Time 10/08/2022
      */
     @Test
-    public void createDish_name_not_ok6() throws Exception {
+    public void createDish_14_name() throws Exception {
 
         DishDto dishDto = new DishDto();
 
@@ -231,7 +233,7 @@ public class DishRestController_createDish {
      */
 
     @Test
-    public void createDish_name_not_ok7() throws Exception {
+    public void createDish_15_name() throws Exception {
 
         DishDto dishDto = new DishDto();
 
@@ -262,7 +264,7 @@ public class DishRestController_createDish {
      */
 
     @Test
-    public void createDish_name_not_ok8() throws Exception {
+    public void createDish_13_name() throws Exception {
 
         DishDto dishDto = new DishDto();
 
@@ -291,7 +293,7 @@ public class DishRestController_createDish {
      * @Time 10/08/2022
      */
     @Test
-    public void createDish_name_not_ok9() throws Exception {
+    public void createDish_14_image() throws Exception {
 
         DishDto dishDto = new DishDto();
 
@@ -320,7 +322,7 @@ public class DishRestController_createDish {
      * @Time 10/08/2022
      */
     @Test
-    public void createDish_name_not_ok10() throws Exception {
+    public void createDish_13_image() throws Exception {
 
         DishDto dishDto = new DishDto();
 

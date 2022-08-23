@@ -55,7 +55,7 @@ public class DishDto implements Validator {
         if (!dishList.isEmpty()) {
             for (Dish dish : dishList) {
                 if (dish.getCode().equals(dishDto.getCode())) {
-                    errors.rejectValue("codeEr", "", "codeExists");
+                    errors.rejectValue("code", "", "codeExists");
                     break;
                 }
 

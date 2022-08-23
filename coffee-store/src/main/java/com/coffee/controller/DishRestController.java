@@ -77,7 +77,9 @@ public class DishRestController {
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @PatchMapping("/edit/{id}")
     public ResponseEntity<FieldError> updateDish(@PathVariable int id, @RequestBody @Valid DishDto dishDto, BindingResult bindingResult) {
+
         Optional<Dish> dishOptional = iDishService.findById(id);
+
         if (!dishOptional.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }

@@ -1,6 +1,5 @@
 package com.coffee.controller;
 
-import com.coffee.model.dish.DishType;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -8,9 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import javax.persistence.Column;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+
 
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -29,9 +26,38 @@ public class DishRestController_findByIdDish {
      * @Time 10/08/2022
      */
     @Test
-    public void findById_id1() throws Exception{
+    public void findById_1() throws Exception{
         this.mockMvc.perform(
                 MockMvcRequestBuilders.get("/dish/null")
+        )
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+    /**
+     * @function: This function is used to check when id is empty
+     * @throws Exception
+     * @creation: PhucLV
+     * @Time 10/08/2022
+     */
+    @Test
+    public void findById_2() throws Exception{
+        this.mockMvc.perform(
+                MockMvcRequestBuilders.get("/dish/       ")
+        )
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+
+    /**
+     * @function: This function is used to check when id is not of the Dish
+     * @throws Exception
+     * @creation: PhucLV
+     * @Time 10/08/2022
+     */
+    @Test
+    public void findById_3() throws Exception{
+        this.mockMvc.perform(
+                MockMvcRequestBuilders.get("/dish/88888")
         )
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
@@ -46,7 +72,7 @@ public class DishRestController_findByIdDish {
      */
 
     @Test
-    public void findById_id_1() throws Exception{
+    public void findById_4() throws Exception{
         this.mockMvc.perform(
                 MockMvcRequestBuilders.get("/dish/1")
         )

@@ -15,7 +15,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 @SpringBootTest
 @AutoConfigureMockMvc
-public class DishRestController_editById {
+public class DishRestController_updateDish {
 
     @Autowired
     private MockMvc mockMvc;
@@ -29,7 +29,7 @@ public class DishRestController_editById {
      */
 
     @Test
-    public void editDish_ok() throws Exception {
+    public void updateDish_24() throws Exception {
         DishDto dishDto = new DishDto();
         dishDto.setCode("CF-002");
         dishDto.setPrice(10000.0);
@@ -55,7 +55,7 @@ public class DishRestController_editById {
      * @Time 10/08/2022
      */
     @Test
-    public void editDish_not_ok1() throws Exception {
+    public void updateDish_19_code() throws Exception {
 
         DishDto dishDto = new DishDto();
 
@@ -83,7 +83,7 @@ public class DishRestController_editById {
      * @Time 10/08/2022
      */
     @Test
-    public void editDish_not_ok2() throws Exception {
+    public void updateDish_20_code() throws Exception {
 
         DishDto dishDto = new DishDto();
 
@@ -111,7 +111,7 @@ public class DishRestController_editById {
      * @Time 10/08/2022
      */
     @Test
-    public void editDish_not_ok3() throws Exception {
+    public void updateDish_21_code() throws Exception {
 
         DishDto dishDto = new DishDto();
 
@@ -139,7 +139,7 @@ public class DishRestController_editById {
      * @Time 10/08/2022
      */
     @Test
-    public void editDish_not_ok4() throws Exception {
+    public void updateDish_min_price() throws Exception {
 
         DishDto dishDto = new DishDto();
 
@@ -168,7 +168,7 @@ public class DishRestController_editById {
      * @Time 10/08/2022
      */
     @Test
-    public void editDish_not_ok5() throws Exception {
+    public void updateDish_19_price() throws Exception {
 
         DishDto dishDto = new DishDto();
 
@@ -196,7 +196,7 @@ public class DishRestController_editById {
      * @Time 10/08/2022
      */
     @Test
-    public void editDish_not_ok6() throws Exception {
+    public void updateDish_20_name() throws Exception {
 
         DishDto dishDto = new DishDto();
 
@@ -226,7 +226,7 @@ public class DishRestController_editById {
      */
 
     @Test
-    public void editDish_not_ok7() throws Exception {
+    public void updateDish_23_name() throws Exception {
 
         DishDto dishDto = new DishDto();
 
@@ -257,7 +257,7 @@ public class DishRestController_editById {
      */
 
     @Test
-    public void editDish_not_ok8() throws Exception {
+    public void updateDish_19_name() throws Exception {
 
         DishDto dishDto = new DishDto();
 
@@ -286,7 +286,7 @@ public class DishRestController_editById {
      * @Time 10/08/2022
      */
     @Test
-    public void editDish_not_ok9() throws Exception {
+    public void updateDish_20_image() throws Exception {
 
         DishDto dishDto = new DishDto();
 
@@ -315,7 +315,7 @@ public class DishRestController_editById {
      * @Time 10/08/2022
      */
     @Test
-    public void editDish_not_ok10() throws Exception {
+    public void updateDish_19_image() throws Exception {
 
         DishDto dishDto = new DishDto();
 
@@ -343,7 +343,7 @@ public class DishRestController_editById {
      * @Time 10/08/2022
      */
     @Test
-    public void editDish_not_ok11() throws Exception {
+    public void updateDish_id_not_of_the_dish() throws Exception {
 
         DishDto dishDto = new DishDto();
 
