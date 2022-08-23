@@ -22,9 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.io.IOException;
 import java.sql.Date;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @RestController
 @CrossOrigin
@@ -48,7 +46,11 @@ public class SimpleEmailController {
     @Autowired
     private LoginUtil loginUtil;
 
-    private List<String> tokenList = new ArrayList<>();
+    private static final List<String> tokenList = new ArrayList<>();
+
+    private static int interval;
+
+    private static Timer timer;
 
     /**
      * @param jwtRequest
@@ -68,7 +70,7 @@ public class SimpleEmailController {
 
             MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
             String token = jwtTokenUtil.generateToken(jwtRequest.getUsername());
-            this.tokenList.add(token);
+            tokenList.add(token);
             String htmlMsg = createHTMLMailForm(token, appUser.getUserName());
             message.setContent(htmlMsg, "text/html; charset=UTF-8");
 
@@ -77,6 +79,19 @@ public class SimpleEmailController {
             helper.setSubject("[C0222G2 - Coffee] Lấy lại mật khẩu");
 
             this.emailSender.send(message);
+
+            timer = new Timer();
+            interval = 300;
+            timer.scheduleAtFixedRate(new TimerTask() {
+                public void run() {
+                    interval--;
+                    if (interval == 0) {
+                        tokenList.clear();
+                        timer.cancel();
+                    }
+                }
+            }, 0, 1000);
+
             return ResponseEntity.ok(new JwtResponse(token));
         }
         return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
@@ -92,11 +107,11 @@ public class SimpleEmailController {
      */
     @GetMapping("/forgotPassword/{token}")
     public ResponseEntity<?> getUsernameForChangePassword(@PathVariable String token, HttpServletResponse response) throws IOException {
-        if (this.tokenList.isEmpty()) {
+        if (tokenList.isEmpty()) {
             response.sendRedirect("http://localhost:4200/login");
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
-        for (String tokenVal : this.tokenList) {
+        for (String tokenVal : tokenList) {
             if (tokenVal.equals(token)) {
                 response.sendRedirect("http://localhost:4200/forgot/" + token);
                 this.loginUtil.getTokenMap().remove(this.jwtTokenUtil.getUsernameFromToken(token));
@@ -117,7 +132,7 @@ public class SimpleEmailController {
      */
     @PostMapping("/findPassword")
     public ResponseEntity<?> changePassword(@Valid @RequestBody JwtRequest jwtRequest, BindingResult bindingResult) throws IOException {
-        if (this.tokenList.isEmpty()) {
+        if (tokenList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
         if (checkTokenExists(jwtRequest.getToken())) {
@@ -131,7 +146,7 @@ public class SimpleEmailController {
                     Date date = new Date(System.currentTimeMillis());
                     appUser.setCreationDate(date);
                     this.appUserService.updatePassword(appUser);
-                    this.tokenList.remove(jwtRequest.getToken());
+                    tokenList.remove(jwtRequest.getToken());
                     return new ResponseEntity<>(HttpStatus.OK);
                 } else {
                     return new ResponseEntity<>("Password Not Same", HttpStatus.OK);
@@ -145,7 +160,7 @@ public class SimpleEmailController {
     }
 
     private boolean checkTokenExists(String token) {
-        for (String tokenVal : this.tokenList) {
+        for (String tokenVal : tokenList) {
             if (token.equals(tokenVal)) {
                 return true;
             }
