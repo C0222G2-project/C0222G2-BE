@@ -101,4 +101,5 @@ public interface ICoffeeTableRepository extends JpaRepository<CoffeeTable, Integ
 
     @Query(value = " select * from `coffee_table` WHERE (`code` = :nameTable) ", nativeQuery = true)
     CoffeeTable getCodeTable(@Param("nameTable") String nameTable);
+
 }

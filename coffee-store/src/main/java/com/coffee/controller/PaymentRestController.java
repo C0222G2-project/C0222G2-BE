@@ -91,6 +91,13 @@ public class PaymentRestController {
         return new ResponseEntity<>(iTotalPaymentDto, HttpStatus.OK);
     }
 
+    /**
+     * Create: HoaNN
+     * Date create: 17/08/2022
+     * function used to print code bill
+     *
+     * @param idTable
+     */
     @GetMapping("/in-bill")
     public ResponseEntity<Void> inBill(@RequestParam int idTable) {
         int code = this.getRandomNumber(this.billRepository.findAll());
@@ -122,11 +129,25 @@ public class PaymentRestController {
         return false;
     }
 
+
+    /**
+     * Create : BinhPX
+     * Create date : 17/08/2022
+     * @param nameTable
+     * @return
+     */
+
     @PatchMapping ("/total/{id}")
     public ResponseEntity<ITotalPaymentDto> setStatus(@PathVariable("id") String nameTable) {
         this.iCoffeeTableService.updateStatusIsName(nameTable);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+    /**
+     * Create : BinhPX
+     * Create date : 17/08/2022
+     * @param nameTable
+     * @return
+     */
 
     @GetMapping ("/getTable/{id}")
     public ResponseEntity<CoffeeTable> getTableCode(@PathVariable("id") String nameTable) {

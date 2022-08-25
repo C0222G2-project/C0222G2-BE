@@ -28,7 +28,8 @@ public class PaymentRestController_getCoffeeTablePage {
      */
     @Test
     public void getCoffeeTablePage_7() throws Exception {
-        this.mockMvc.perform(MockMvcRequestBuilders.get("/api/payment/page=null"))
+        this.mockMvc.perform(MockMvcRequestBuilders.get("/api/payment/page=null").header("authorization",
+                "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtYW5hZ2VyIiwiZXhwIjoxNjYxMzE2MTE1LCJpYXQiOjE2NjExMzYxMTV9.F1Vp9fGsVsitdbGum_PiZzh9a7tyjKwrmG5gr9dr32KvAOI7Vh54C6b1mCg3LxywlBivrFUfFj3rnjYoU5i_dg"))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
@@ -43,7 +44,8 @@ public class PaymentRestController_getCoffeeTablePage {
      */
     @Test
     public void getCoffeeTablePage_8() throws Exception {
-        this.mockMvc.perform(MockMvcRequestBuilders.get("/api/payment/page=' '"))
+        this.mockMvc.perform(MockMvcRequestBuilders.get("/api/payment/page=' '").header("authorization",
+                "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtYW5hZ2VyIiwiZXhwIjoxNjYxMzE2MTE1LCJpYXQiOjE2NjExMzYxMTV9.F1Vp9fGsVsitdbGum_PiZzh9a7tyjKwrmG5gr9dr32KvAOI7Vh54C6b1mCg3LxywlBivrFUfFj3rnjYoU5i_dg"))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
@@ -58,7 +60,8 @@ public class PaymentRestController_getCoffeeTablePage {
      */
     @Test
     public void getCoffeeTablePage_9() throws Exception {
-        this.mockMvc.perform(MockMvcRequestBuilders.get("/api/payment/page=44"))
+        this.mockMvc.perform(MockMvcRequestBuilders.get("/api/payment/page=44").header("authorization",
+                "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtYW5hZ2VyIiwiZXhwIjoxNjYxMzE2MTE1LCJpYXQiOjE2NjExMzYxMTV9.F1Vp9fGsVsitdbGum_PiZzh9a7tyjKwrmG5gr9dr32KvAOI7Vh54C6b1mCg3LxywlBivrFUfFj3rnjYoU5i_dg"))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
 
@@ -74,7 +77,8 @@ public class PaymentRestController_getCoffeeTablePage {
      */
     @Test
     public void getCoffeeTablePage_10() throws Exception {
-        this.mockMvc.perform(MockMvcRequestBuilders.get("/api/payment/page?page=0"))
+        this.mockMvc.perform(MockMvcRequestBuilders.get("/api/payment/page?page=0").header("authorization",
+                "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtYW5hZ2VyIiwiZXhwIjoxNjYxMzE2MTE1LCJpYXQiOjE2NjExMzYxMTV9.F1Vp9fGsVsitdbGum_PiZzh9a7tyjKwrmG5gr9dr32KvAOI7Vh54C6b1mCg3LxywlBivrFUfFj3rnjYoU5i_dg"))
                 .andDo(print())
                 .andExpect(status().is(204));
     }
@@ -89,7 +93,8 @@ public class PaymentRestController_getCoffeeTablePage {
      */
     @Test
     public void getCoffeeTablePage_11() throws Exception {
-        this.mockMvc.perform(MockMvcRequestBuilders.get("/api/payment/page?page=0"))
+        this.mockMvc.perform(MockMvcRequestBuilders.get("/api/payment/page?page=0").header("authorization",
+                "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtYW5hZ2VyIiwiZXhwIjoxNjYxMzE2MTE1LCJpYXQiOjE2NjExMzYxMTV9.F1Vp9fGsVsitdbGum_PiZzh9a7tyjKwrmG5gr9dr32KvAOI7Vh54C6b1mCg3LxywlBivrFUfFj3rnjYoU5i_dg"))
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful());
     }
@@ -104,12 +109,12 @@ public class PaymentRestController_getCoffeeTablePage {
      */
     @Test
     public void getCoffeeTablePage_11_1() throws Exception {
-        this.mockMvc.perform(MockMvcRequestBuilders.get("/api/payment/page?page=0"))
+        this.mockMvc.perform(MockMvcRequestBuilders.get("/api/payment/page?page=0").header("authorization",
+                "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtYW5hZ2VyIiwiZXhwIjoxNjYxMzE2MTE1LCJpYXQiOjE2NjExMzYxMTV9.F1Vp9fGsVsitdbGum_PiZzh9a7tyjKwrmG5gr9dr32KvAOI7Vh54C6b1mCg3LxywlBivrFUfFj3rnjYoU5i_dg"))
                 .andDo(print())
-                .andExpect(status().is2xxSuccessful())
-                .andExpect(jsonPath("totalPages").value(2))
-                .andExpect(jsonPath("totalElements").value(8))
-                .andExpect(jsonPath("content[0].code").value("A-01"))
-                .andExpect(jsonPath("content[0].name").value("Trà sữa"));
+                .andExpect(status().is4xxClientError())
+                .andExpect(jsonPath("totalPages").value(3))
+                .andExpect(jsonPath("totalElements").value(16))
+                .andExpect(jsonPath("content[0].code").value("table9999"));
     }
 }

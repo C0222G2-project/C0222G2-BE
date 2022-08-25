@@ -39,7 +39,7 @@ public class PaymentRestController_calculation {
      * @throws Exception
      */
     @Test
-    public void calculation_id_2() throws Exception {
+    public void calculation_id_8() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders.get("/api/payment/total/' '"))
                 .andDo(print()).andExpect(status().is4xxClientError());
     }
@@ -52,7 +52,7 @@ public class PaymentRestController_calculation {
      * @throws Exception
      */
     @Test
-    public void calculation_id_3() throws Exception {
+    public void calculation_id_9() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders.get("/api/payment/total/100"))
                 .andDo(print()).andExpect(status().is4xxClientError());
     }
@@ -65,8 +65,9 @@ public class PaymentRestController_calculation {
      * @throws Exception
      */
     @Test
-    public void calculation_id_4() throws Exception {
-        this.mockMvc.perform(MockMvcRequestBuilders.get("/api/payment/total/1"))
+    public void calculation_id_11() throws Exception {
+        this.mockMvc.perform(MockMvcRequestBuilders.get("/api/payment/total/1").header("authorization",
+                "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtYW5hZ2VyIiwiZXhwIjoxNjYxMzE2MTE1LCJpYXQiOjE2NjExMzYxMTV9.F1Vp9fGsVsitdbGum_PiZzh9a7tyjKwrmG5gr9dr32KvAOI7Vh54C6b1mCg3LxywlBivrFUfFj3rnjYoU5i_dg"))
                 .andDo(print()).andExpect(status().is2xxSuccessful());
     }
 
@@ -79,7 +80,8 @@ public class PaymentRestController_calculation {
      */
     @Test
     public void calculation_id_5() throws Exception {
-        this.mockMvc.perform(MockMvcRequestBuilders.get("/api/payment/total/1"))
+        this.mockMvc.perform(MockMvcRequestBuilders.get("/api/payment/total/1").header("authorization",
+                "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtYW5hZ2VyIiwiZXhwIjoxNjYxMzE2MTE1LCJpYXQiOjE2NjExMzYxMTV9.F1Vp9fGsVsitdbGum_PiZzh9a7tyjKwrmG5gr9dr32KvAOI7Vh54C6b1mCg3LxywlBivrFUfFj3rnjYoU5i_dg"))
                 .andDo(print()).andExpect(status().is2xxSuccessful())
                 .andExpect(jsonPath("content[1].name").value("Trà sữa"))
                 .andExpect(jsonPath("content[1].price").value("15000"))
@@ -95,7 +97,8 @@ public class PaymentRestController_calculation {
      */
     @Test
     public void calculation_id_6() throws Exception {
-        this.mockMvc.perform(MockMvcRequestBuilders.get("/api/payment/total/2"))
+        this.mockMvc.perform(MockMvcRequestBuilders.get("/api/payment/total/2").header("authorization",
+                "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtYW5hZ2VyIiwiZXhwIjoxNjYxMzE2MTE1LCJpYXQiOjE2NjExMzYxMTV9.F1Vp9fGsVsitdbGum_PiZzh9a7tyjKwrmG5gr9dr32KvAOI7Vh54C6b1mCg3LxywlBivrFUfFj3rnjYoU5i_dg"))
                 .andDo(print()).andExpect(status().is4xxClientError())
                 .andExpect(jsonPath("content[0].code").value("abcde"))
                 .andExpect(jsonPath("content[0].name").value("Trà sữa"))
