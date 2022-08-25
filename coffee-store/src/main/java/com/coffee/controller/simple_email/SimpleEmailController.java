@@ -6,6 +6,7 @@ import com.coffee.model.jwt.JwtResponse;
 import com.coffee.service.account.IAppUserService;
 import com.coffee.util.EncrytedPasswordUtils;
 import com.coffee.util.JwtTokenUtil;
+import com.coffee.util.LoginUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -21,8 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.io.IOException;
 import java.sql.Date;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @RestController
 @CrossOrigin
@@ -43,7 +43,14 @@ public class SimpleEmailController {
     @Value("${spring.mail.username}")
     private String myEmail;
 
-    private List<String> tokenList = new ArrayList<>();
+    @Autowired
+    private LoginUtil loginUtil;
+
+    private static final List<String> tokenList = new ArrayList<>();
+
+    private static int interval;
+
+    private static Timer timer;
 
     /**
      * @param jwtRequest
@@ -63,8 +70,8 @@ public class SimpleEmailController {
 
             MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
             String token = jwtTokenUtil.generateToken(jwtRequest.getUsername());
-            this.tokenList.add(token);
-            String htmlMsg = createHTMLMailForm(token, appUser.getEmployee().getName());
+            tokenList.add(token);
+            String htmlMsg = createHTMLMailForm(token, appUser.getUserName());
             message.setContent(htmlMsg, "text/html; charset=UTF-8");
 
             helper.setTo(appUser.getEmployee().getEmail());
@@ -72,6 +79,19 @@ public class SimpleEmailController {
             helper.setSubject("[C0222G2 - Coffee] Lấy lại mật khẩu");
 
             this.emailSender.send(message);
+
+            timer = new Timer();
+            interval = 300;
+            timer.scheduleAtFixedRate(new TimerTask() {
+                public void run() {
+                    interval--;
+                    if (interval == 0) {
+                        tokenList.clear();
+                        timer.cancel();
+                    }
+                }
+            }, 0, 1000);
+
             return ResponseEntity.ok(new JwtResponse(token));
         }
         return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
@@ -87,13 +107,14 @@ public class SimpleEmailController {
      */
     @GetMapping("/forgotPassword/{token}")
     public ResponseEntity<?> getUsernameForChangePassword(@PathVariable String token, HttpServletResponse response) throws IOException {
-        if (this.tokenList.isEmpty()) {
+        if (tokenList.isEmpty()) {
             response.sendRedirect("http://localhost:4200/login");
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
-        for (String tokenVal : this.tokenList) {
+        for (String tokenVal : tokenList) {
             if (tokenVal.equals(token)) {
                 response.sendRedirect("http://localhost:4200/forgot/" + token);
+                this.loginUtil.getTokenMap().remove(this.jwtTokenUtil.getUsernameFromToken(token));
                 return new ResponseEntity<>(HttpStatus.OK);
             }
         }
@@ -111,7 +132,7 @@ public class SimpleEmailController {
      */
     @PostMapping("/findPassword")
     public ResponseEntity<?> changePassword(@Valid @RequestBody JwtRequest jwtRequest, BindingResult bindingResult) throws IOException {
-        if (this.tokenList.isEmpty()) {
+        if (tokenList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
         if (checkTokenExists(jwtRequest.getToken())) {
@@ -125,7 +146,7 @@ public class SimpleEmailController {
                     Date date = new Date(System.currentTimeMillis());
                     appUser.setCreationDate(date);
                     this.appUserService.updatePassword(appUser);
-                    this.tokenList.remove(jwtRequest.getToken());
+                    tokenList.remove(jwtRequest.getToken());
                     return new ResponseEntity<>(HttpStatus.OK);
                 } else {
                     return new ResponseEntity<>("Password Not Same", HttpStatus.OK);
@@ -139,7 +160,7 @@ public class SimpleEmailController {
     }
 
     private boolean checkTokenExists(String token) {
-        for (String tokenVal : this.tokenList) {
+        for (String tokenVal : tokenList) {
             if (token.equals(tokenVal)) {
                 return true;
             }
@@ -149,13 +170,13 @@ public class SimpleEmailController {
 
     /**
      * @param token
-     * @param name
+     * @param username
      * @return
      * @func create html form
      * @creator: PhuongTD
      * @date-create 14/8/2022
      */
-    private String createHTMLMailForm(String token, String name) {
+    private String createHTMLMailForm(String token, String username) {
         return "<!doctype html>\n" +
                 "<html lang=\"en-US\">\n" +
                 "\n" +
@@ -191,7 +212,7 @@ public class SimpleEmailController {
                 "                <tr>\n" +
                 "                    <td style=\"text-align:center;\">\n" +
                 "                        <img width=\"60\"\n" +
-                "                             src=\"https://firebasestorage.googleapis.com/v0/b/c0222g2-4cf09.appspot.com/o/17-08-YYY%5Bobject%20File%5D?alt=media&token=d42fbe05-990f-41a2-8d61-2c194d11ee1d\"\n" +
+                "                             src=\"https://image.similarpng.com/very-thumbnail/2021/09/Coffee-shop-logo-design-template-on-transparent-background-PNG.png\"\n" +
                 "                             title=\"logo\"\n" +
                 "                             alt=\"logo\" style=\"border-radius: 10px\">\n" +
                 "                    </td>\n" +
@@ -209,7 +230,7 @@ public class SimpleEmailController {
                 "                            <tr>\n" +
                 "                                <td style=\"padding:0 35px;\">\n" +
                 "                                    <h1 style=\"color:#1e1e2d; font-weight:500; margin:0;font-size:28px;font-family:'Rubik',sans-serif;\">\n" +
-                "                                        Chào " + name + "! có vẻ như bạn đã quên mất mật khẩu của mình </h1>\n" +
+                "                                        Chào " + username + "! có vẻ như bạn đã quên mất mật khẩu của mình </h1>\n" +
                 "                                    <span\n" +
                 "                                            style=\"display:inline-block; vertical-align:middle; margin:29px 0 26px; border-bottom:1px solid #cecece; width:100px;\"></span>\n" +
                 "                                    <p style=\"color:#455056; font-size:15px;line-height:24px; margin:0;\">\n" +

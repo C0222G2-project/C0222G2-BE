@@ -50,14 +50,12 @@ public class EmployeeServiceImpl implements IEmployeeService {
     {
         return iEmployeeRepository.getAllEmployee(pageable, "%" + searchByName + "%", "%" + searchByPhone + "%",
                 "%" + searchByAccount + "%");
-
     }
 
     /**
      * Create by TuyenTN
      * Date: 9-8-2022
      * findEmployeeById(id)
-
      * @param id
      * @return
      */
@@ -76,8 +74,6 @@ public class EmployeeServiceImpl implements IEmployeeService {
     public void deleteEmployeeById(Integer id) {
         this.iEmployeeRepository.deleteEmployeeById(id);
     }
-
-
 
     /**
      * end code TuyenTN
@@ -136,7 +132,6 @@ public class EmployeeServiceImpl implements IEmployeeService {
      * @creator TaiLV
      * Date 09/08/2022
      */
-
     @Override
     public void editEmployee(Employee employee) {
         iEmployeeRepository.editEmployee(employee);

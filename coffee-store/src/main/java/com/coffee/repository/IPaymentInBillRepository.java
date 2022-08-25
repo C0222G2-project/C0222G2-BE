@@ -13,5 +13,4 @@ public interface IPaymentInBillRepository extends JpaRepository<Bill, Integer> {
     @Query(value = " INSERT INTO `bill` (`code`, `creation_date`) VALUES (:#{#bill.code}, :#{#bill.creationDate}); ",
             nativeQuery = true)
     void createCodeBill(Bill bill);
-
 }
