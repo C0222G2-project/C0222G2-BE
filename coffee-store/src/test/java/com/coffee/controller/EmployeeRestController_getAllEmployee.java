@@ -27,22 +27,23 @@ public class EmployeeRestController_getAllEmployee {
      */
     @Test
     public void getAllEmployee_9() throws Exception {
-        this.mockMvc.perform(MockMvcRequestBuilders.get("/rest/employee/list?searchName=null&searchPhone=0935912341&searchAccount=admin"))
+        this.mockMvc.perform(MockMvcRequestBuilders.get("/rest/employee/page?searchName=null&searchPhone=0905934232&searchAccount=manager").header("authorization",
+                        "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtYW5hZ2VyIiwiZXhwIjoxNjYxMzE2MTE1LCJpYXQiOjE2NjExMzYxMTV9.F1Vp9fGsVsitdbGum_PiZzh9a7tyjKwrmG5gr9dr32KvAOI7Vh54C6b1mCg3LxywlBivrFUfFj3rnjYoU5i_dg"))
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful())
                 .andExpect(jsonPath("totalPages").value(1))
                 .andExpect(jsonPath("totalElements").value(1))
-                .andExpect(jsonPath("$.content[0].id").value(2))
-                .andExpect(jsonPath("$.content[0].name").value("Tuyến 1"))
-                .andExpect(jsonPath("$.content[0].address").value("Đà Nẵng 1"))
-                .andExpect(jsonPath("$.content[0].position").value("Phục Vụ"))
-                .andExpect(jsonPath("$.content[0].email").value("abc1@gmail.com"))
-                .andExpect(jsonPath("$.content[0].image").value("aaaaaaa2"))
+                .andExpect(jsonPath("$.content[0].id").value(1))
+                .andExpect(jsonPath("$.content[0].name").value("Trần Thiên Minh"))
+                .andExpect(jsonPath("$.content[0].address").value("27-28, ngõ 294 Vạn Phúc, Kim Mã, Hà Nội"))
+                .andExpect(jsonPath("$.content[0].position").value("Quản Lý"))
+                .andExpect(jsonPath("$.content[0].email").value("tranthienminh1351@gmail.com"))
+                .andExpect(jsonPath("$.content[0].image").value("https://toigingiuvedep.vn/wp-content/uploads/2021/07/mau-anh-the-dep-chuan.jpg"))
                 .andExpect(jsonPath("$.content[0].gender").value(1))
-                .andExpect(jsonPath("$.content[0].phoneNumber").value("0935912341"))
-                .andExpect(jsonPath("$.content[0].salary").value(1500000))
-                .andExpect(jsonPath("$.content[0].appUser").value("admin"))
-                .andExpect(jsonPath("$.content[0].birthday").value("1990-01-01"));
+                .andExpect(jsonPath("$.content[0].phoneNumber").value("0905934232"))
+                .andExpect(jsonPath("$.content[0].salary").value(15000000))
+                .andExpect(jsonPath("$.content[0].appUser").value("manager"))
+                .andExpect(jsonPath("$.content[0].birthday").value("1998-11-21"));
     }
 
     /**
@@ -194,7 +195,6 @@ public class EmployeeRestController_getAllEmployee {
                 .andExpect(jsonPath("$.content[0].appUser").value("admin"))
                 .andExpect(jsonPath("$.content[0].birthday").value("1990-01-01"));
     }
-    //test searchAccount = null
 
     /**
      * Create by TuyenTN
