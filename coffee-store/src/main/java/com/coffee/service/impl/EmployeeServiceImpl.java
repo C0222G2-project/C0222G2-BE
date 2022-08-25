@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.List;
 
 
 @Service
@@ -45,7 +46,8 @@ public class EmployeeServiceImpl implements IEmployeeService {
      * @return
      */
     @Override
-    public Page<IEmployeeDTO> getAllEmployee(Pageable pageable, String searchByName, String searchByPhone, String searchByAccount) {
+    public Page<IEmployeeDTO> getAllEmployee(Pageable pageable, String searchByName, String searchByPhone, String searchByAccount)
+    {
         return iEmployeeRepository.getAllEmployee(pageable, "%" + searchByName + "%", "%" + searchByPhone + "%",
                 "%" + searchByAccount + "%");
 
@@ -140,6 +142,10 @@ public class EmployeeServiceImpl implements IEmployeeService {
         iEmployeeRepository.editEmployee(employee);
     }
 
+    @Override
+    public List<Employee> findAll() {
+        return this.iEmployeeRepository.findAllEmployee();
+    }
 
 
 }

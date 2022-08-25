@@ -2,11 +2,7 @@ package com.coffee.repository;
 
 import com.coffee.dto.DishMostOrderDTO;
 import com.coffee.dto.DishNewestDTO;
-import com.coffee.model.dish_order.DishOrder;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.stereotype.Repository;
-
+import com.coffee.model.bill.Bill;
 import com.coffee.model.dish_order.DishOrder;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -93,4 +89,15 @@ public interface IDishOrderRepository extends JpaRepository<DishOrder, Integer> 
     @Modifying
     @Query(value = "update dish_order set is_deleted = 1 where code = :code", nativeQuery = true)
     void deleteOrder(@Param("code") String code);
+
+
+    /**
+     * @param billAfter
+     * @param idTable
+     * @author HoaNN
+     */
+    @Transactional
+    @Modifying
+    @Query(value = " UPDATE `dish_order` SET `bill_id` = :#{#billAfter.id} WHERE (`coffee_table_id` = :idTable) ", nativeQuery = true)
+    void updateBill(Bill billAfter, @Param("idTable") int idTable);
 }

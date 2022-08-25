@@ -11,6 +11,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 public interface IEmployeeRepository extends JpaRepository<Employee, Integer> {
 
     /**
@@ -18,7 +20,6 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Integer> {
      * Date: 16:30 pm  9-8-2022
      * method show list and search and paging
      * tuyentn-list-employee-2
-     *  tuyentn-list-employee-2
      *
      * @param pageable
      * @param searchByName
@@ -26,22 +27,19 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Integer> {
      * @param searchByAccount
      * @return
      */
-
-
-    @Query(value = " select employee.`name` as name ,employee.phone_number as phoneNumber,position.name as position, " +
-            " app_user.user_name as appUser,employee.id,employee.birthday,employee.image,employee.address,employee.salary, " +
-            " employee.gender,employee.email from employee " +
-            " join app_user on app_user.id = employee.user_id " +
-            " join position on employee.position_id = position.id " +
-            " where employee.is_deleted =0 and employee.name like :keyZero and employee.phone_number like :keyOne " +
+    @Query(value = " select e.`name` as name,e.phone_number as phoneNumber,`position`.name as `position`, " +
+            " app_user.user_name as appUser,e.id,e.birthday,e.image,e.address,e.salary, " +
+            " e.gender,e.email from employee e " +
+            " join app_user on app_user.id = e.user_id " +
+            " join `position` on e.position_id = `position`.id " +
+            " where e.is_deleted =0 and e.name like :keyZero and e.phone_number like :keyOne " +
             " and app_user.user_name like :keyTwo ",
-            countQuery = " select count(*) from (select employee.`name` as name,employee.phone_number as phoneNumber, " +
-                    " app_user.user_name as appUser,position.name as position,employee.id,employee.birthday,employee.image, " +
-                    " employee.address,employee.salary, employee.gender,employee.email from employee " +
-                    " join app_user on app_user.id = employee.user_id " +
-                    " join position on employee.position_id = position.id " +
-                    " where employee.is_deleted =0 and employee.name like :keyZero and employee.phone_number like :keyOne " +
-
+            countQuery = " select count(*) from (select e.`name` as name,e.phone_number as phoneNumber, " +
+                    " app_user.user_name as appUser,`position`.name as `position`,e.id,e.birthday,e.image, " +
+                    " e.address,e.salary, e.gender,e.email from employee e " +
+                    " join app_user on app_user.id = e.user_id " +
+                    " join `position` on e.position_id = `position`.id " +
+                    " where e.is_deleted =0 and e.name like :keyZero and e.phone_number like :keyOne " +
                     " and app_user.user_name like :keyTwo ) templol ", nativeQuery = true)
     Page<IEmployeeDTO> getAllEmployee(Pageable pageable, @Param("keyZero") String searchByName,
                                       @Param("keyOne") String searchByPhone,
@@ -50,7 +48,6 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Integer> {
     /**
      * Create by TuyenTN
      * Date: 16:30 pm  9-8-2022
-     * tuyentn-list-employee-2
      *
      * @param id
      * @return
@@ -66,7 +63,7 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Integer> {
     /**
      * Create by TuyenTN
      * Date: 16:30 pm  9-8-2022
-     * tuyentn-list-employee-2
+     *
      * @param id
      * @return
      */
@@ -120,10 +117,20 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Integer> {
      * @creator TaiLV
      * Date 09/08/2022
      */
-    @Query(value = " select employee.id, employee.name, employee.image,employee.phone_number , employee.address , employee.email, employee.gender, " +
+    @Query(value = " select employee.id, employee.name, employee.image,employee.phone_number , employee.address ," +
+            " employee.email, employee.gender, " +
             " employee.birthday, employee.salary, employee.position_id , employee.user_id, employee.is_deleted from employee " +
             " where employee.id = :id and employee.is_deleted = 0", nativeQuery = true)
     Employee findByIdEmployee(@Param("id") Integer id);
 
+    /**
+     * @return list Employee
+     * @creator TaiLV
+     * Date 13/08/2022
+     */
+    @Query(value = " select employee.id, employee.name, employee.image,employee.phone_number , employee.address, " +
+            " employee.email, employee.gender, employee.birthday, employee.salary, employee.position_id , " +
+            " employee.user_id, employee.is_deleted from employee where employee.is_deleted = 0 ", nativeQuery = true)
+    List<Employee> findAllEmployee();
 
 }
