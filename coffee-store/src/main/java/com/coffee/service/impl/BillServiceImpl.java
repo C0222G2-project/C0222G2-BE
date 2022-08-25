@@ -39,7 +39,6 @@ public class BillServiceImpl implements IBillService {
      * @param id
      * @return Bill
      */
-
     @Override
     public IBillDto findById(Integer id) {
         return this.iBillRepository.getByIdBill(id);
@@ -53,7 +52,6 @@ public class BillServiceImpl implements IBillService {
      * @param id
      * @return Bill
      */
-
     @Override
     public List<IBillDto> getAllDish(Integer id) {
         return this.iBillRepository.getAllDish(id);

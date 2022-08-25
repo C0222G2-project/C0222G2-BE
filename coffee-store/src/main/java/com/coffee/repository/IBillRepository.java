@@ -12,7 +12,6 @@ import java.util.List;
 
 public interface IBillRepository extends JpaRepository<Bill, Integer> {
 
-
     /**
      * Created by: HauLT
      * Date created: 09/08/2022
@@ -23,7 +22,6 @@ public interface IBillRepository extends JpaRepository<Bill, Integer> {
      * @param searchDate
      * @return
      */
-
     @Query(value = "select bill.id as id, bill.code as billCode, bill.creation_date as creationDate, " +
             " bill.is_deleted as isDeleted, employee.name as employeeName, coffee_table.code as coffeeTableCode, " +
             " dish_order.quantity as dishOrderQuantity, dish.name as dishName, dish.price as dishPrice, " +
@@ -52,7 +50,6 @@ public interface IBillRepository extends JpaRepository<Bill, Integer> {
     Page<IBillDto> getAllBill(Pageable pageable, @Param("searchCode") String searchCode,
                               @Param("searchDate") String searchDate);
 
-
     /**
      * Created by: HauLT
      * Date created: 09/08/2022
@@ -61,7 +58,6 @@ public interface IBillRepository extends JpaRepository<Bill, Integer> {
      * @param id
      * @return
      */
-
     @Query(value = "select bill.id as id, bill.code as billCode, bill.creation_date as creationDate, " +
             " bill.is_deleted as isDeleted, employee.name as employeeName, coffee_table.code as coffeeTableCode, " +
             " dish_order.quantity as dishOrderQuantity, dish.name as dishName, dish.price as dishPrice " +
@@ -73,7 +69,6 @@ public interface IBillRepository extends JpaRepository<Bill, Integer> {
             " where bill.id = :idDetail and bill.is_deleted = 0 ", nativeQuery = true)
     IBillDto getByIdBill(@Param("idDetail") Integer id);
 
-
     /**
      * Created by: HauLT
      * Date created: 17/08/2022
@@ -82,7 +77,6 @@ public interface IBillRepository extends JpaRepository<Bill, Integer> {
      * @param id
      * @return
      */
-
     @Query(value = "select bill.id as id, bill.code as billCode, bill.creation_date as creationDate, " +
             " bill.is_deleted as isDeleted, employee.name as employeeName, coffee_table.code as coffeeTableCode, " +
             " sum(dish_order.quantity) as dishOrderQuantity, dish.name as dishName, dish.price as dishPrice, " +
@@ -115,7 +109,6 @@ public interface IBillRepository extends JpaRepository<Bill, Integer> {
      * @param code
      * @return
      */
-
     @Query(value = " select *  from bill where `code` = :code ", nativeQuery = true)
     Bill findByCodeBill(@Param("code") int code);
 

@@ -30,7 +30,6 @@ public class DishDto implements Validator {
     @Size(min = 5, message = "Tên món phải nhiều hơn 5 chữ cái")
     private String name;
 
-
     @NotBlank
     @NotNull
     private String image;
@@ -40,6 +39,7 @@ public class DishDto implements Validator {
     private Date creationDate;
 
     private DishType dishType;
+
     private List<Dish> dishList;
 
     @Override
@@ -53,7 +53,7 @@ public class DishDto implements Validator {
         List<Dish> dishList = this.getDishList();
 
         if (!dishList.isEmpty()) {
-            for (Dish dish: dishList) {
+            for (Dish dish : dishList) {
                 if (dish.getCode().equals(dishDto.getCode())) {
                     errors.rejectValue("codeEr", "", "codeExists");
                     break;
@@ -61,7 +61,5 @@ public class DishDto implements Validator {
 
             }
         }
-
     }
-
 }

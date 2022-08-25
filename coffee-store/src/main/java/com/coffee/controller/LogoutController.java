@@ -1,6 +1,5 @@
 package com.coffee.controller;
 
-import com.coffee.model.jwt.JwtRequest;
 import com.coffee.util.JwtTokenUtil;
 import com.coffee.util.LoginUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,8 +7,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Optional;
 
 @CrossOrigin
 @RestController
@@ -20,7 +17,6 @@ public class LogoutController {
 
     @Autowired
     private JwtTokenUtil jwtTokenUtil;
-
 
     /**
      * @author: PhuongTD
@@ -45,6 +41,6 @@ public class LogoutController {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
 
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>("Logout Success",HttpStatus.OK);
     }
 }
