@@ -44,6 +44,8 @@ public class FeedbackRestController_createFeedback {
         this.mockMvc
                 .perform(MockMvcRequestBuilders
                         .post("/feedback/create")
+                        .header("authorization",
+                                "Bearer " + TokenUtil.token)
                         .content(this.objectMapper.writeValueAsString(feedbackDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -71,6 +73,8 @@ public class FeedbackRestController_createFeedback {
         this.mockMvc
                 .perform(MockMvcRequestBuilders
                         .post("/feedback/create")
+                        .header("authorization",
+                                "Bearer " + TokenUtil.token)
                         .content(this.objectMapper.writeValueAsString(feedbackDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -99,6 +103,8 @@ public class FeedbackRestController_createFeedback {
         this.mockMvc
                 .perform(MockMvcRequestBuilders
                         .post("/feedback/create")
+                        .header("authorization",
+                                "Bearer " + TokenUtil.token)
                         .content(this.objectMapper.writeValueAsString(feedbackDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -108,7 +114,7 @@ public class FeedbackRestController_createFeedback {
     /**
      * Created by: DiepTT
      * Date created: 11/08/2022
-     * Function: Check min length (1 character) of "creator"
+     * Function: Check min length (2 characters) of "creator"
      *
      * @throws Exception
      */
@@ -126,6 +132,8 @@ public class FeedbackRestController_createFeedback {
         this.mockMvc
                 .perform(MockMvcRequestBuilders
                         .post("/feedback/create")
+                        .header("authorization",
+                                "Bearer " + TokenUtil.token)
                         .content(this.objectMapper.writeValueAsString(feedbackDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -153,6 +161,8 @@ public class FeedbackRestController_createFeedback {
         this.mockMvc
                 .perform(MockMvcRequestBuilders
                         .post("/feedback/create")
+                        .header("authorization",
+                                "Bearer " + TokenUtil.token)
                         .content(this.objectMapper.writeValueAsString(feedbackDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -180,6 +190,8 @@ public class FeedbackRestController_createFeedback {
         this.mockMvc
                 .perform(MockMvcRequestBuilders
                         .post("/feedback/create")
+                        .header("authorization",
+                                "Bearer " + TokenUtil.token)
                         .content(this.objectMapper.writeValueAsString(feedbackDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -207,6 +219,8 @@ public class FeedbackRestController_createFeedback {
         this.mockMvc
                 .perform(MockMvcRequestBuilders
                         .post("/feedback/create")
+                        .header("authorization",
+                                "Bearer " + TokenUtil.token)
                         .content(this.objectMapper.writeValueAsString(feedbackDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -235,6 +249,8 @@ public class FeedbackRestController_createFeedback {
         this.mockMvc
                 .perform(MockMvcRequestBuilders
                         .post("/feedback/create")
+                        .header("authorization",
+                                "Bearer " + TokenUtil.token)
                         .content(this.objectMapper.writeValueAsString(feedbackDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -262,6 +278,8 @@ public class FeedbackRestController_createFeedback {
         this.mockMvc
                 .perform(MockMvcRequestBuilders
                         .post("/feedback/create")
+                        .header("authorization",
+                                "Bearer " + TokenUtil.token)
                         .content(this.objectMapper.writeValueAsString(feedbackDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -289,6 +307,8 @@ public class FeedbackRestController_createFeedback {
         this.mockMvc
                 .perform(MockMvcRequestBuilders
                         .post("/feedback/create")
+                        .header("authorization",
+                                "Bearer " + TokenUtil.token)
                         .content(this.objectMapper.writeValueAsString(feedbackDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -298,7 +318,7 @@ public class FeedbackRestController_createFeedback {
     /**
      * Created by: DiepTT
      * Date created: 11/08/2022
-     * Function: Check min length (3 characters) of "email"
+     * Function: Check min length (5 characters) of "email"
      *
      * @throws Exception
      */
@@ -308,7 +328,7 @@ public class FeedbackRestController_createFeedback {
         FeedbackDto feedbackDto = new FeedbackDto();
 
         feedbackDto.setCreator("Nguyễn Thị Hoa");
-        feedbackDto.setEmail("n@agit");
+        feedbackDto.setEmail("n@g");
         feedbackDto.setRating(5);
         feedbackDto.setContent("Quán trang trí đẹp, thức uống ngon.");
         feedbackDto.setImage("anh-quan-cafe-1.jpg");
@@ -316,6 +336,8 @@ public class FeedbackRestController_createFeedback {
         this.mockMvc
                 .perform(MockMvcRequestBuilders
                         .post("/feedback/create")
+                        .header("authorization",
+                                "Bearer " + TokenUtil.token)
                         .content(this.objectMapper.writeValueAsString(feedbackDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -325,7 +347,7 @@ public class FeedbackRestController_createFeedback {
     /**
      * Created by: DiepTT
      * Date created: 10/08/2022
-     * Function: Check max length (320 characters) of "email"
+     * Function: Check max length (254 characters) of "email"
      *
      * @throws Exception
      */
@@ -347,6 +369,8 @@ public class FeedbackRestController_createFeedback {
         this.mockMvc
                 .perform(MockMvcRequestBuilders
                         .post("/feedback/create")
+                        .header("authorization",
+                                "Bearer " + TokenUtil.token)
                         .content(this.objectMapper.writeValueAsString(feedbackDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -366,14 +390,16 @@ public class FeedbackRestController_createFeedback {
         FeedbackDto feedbackDto = new FeedbackDto();
 
         feedbackDto.setCreator("Nguyễn Thị Hoa");
-        feedbackDto.setEmail(null);
+        feedbackDto.setEmail("nguyenthihoa@gmail.com");
         feedbackDto.setRating(5);
-        feedbackDto.setContent("");
+        feedbackDto.setContent(null);
         feedbackDto.setImage("anh-quan-cafe-1.jpg");
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
                         .post("/feedback/create")
+                        .header("authorization",
+                                "Bearer " + TokenUtil.token)
                         .content(this.objectMapper.writeValueAsString(feedbackDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -401,6 +427,8 @@ public class FeedbackRestController_createFeedback {
         this.mockMvc
                 .perform(MockMvcRequestBuilders
                         .post("/feedback/create")
+                        .header("authorization",
+                                "Bearer " + TokenUtil.token)
                         .content(this.objectMapper.writeValueAsString(feedbackDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -410,7 +438,7 @@ public class FeedbackRestController_createFeedback {
     /**
      * Created by: DiepTT
      * Date created: 11/08/2022
-     * Function: Check min length (1 character) of "content"
+     * Function: Check min length (2 characters) of "content"
      *
      * @throws Exception
      */
@@ -428,6 +456,8 @@ public class FeedbackRestController_createFeedback {
         this.mockMvc
                 .perform(MockMvcRequestBuilders
                         .post("/feedback/create")
+                        .header("authorization",
+                                "Bearer " + TokenUtil.token)
                         .content(this.objectMapper.writeValueAsString(feedbackDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -455,6 +485,8 @@ public class FeedbackRestController_createFeedback {
         this.mockMvc
                 .perform(MockMvcRequestBuilders
                         .post("/feedback/create")
+                        .header("authorization",
+                                "Bearer " + TokenUtil.token)
                         .content(this.objectMapper.writeValueAsString(feedbackDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -482,6 +514,8 @@ public class FeedbackRestController_createFeedback {
         this.mockMvc
                 .perform(MockMvcRequestBuilders
                         .post("/feedback/create")
+                        .header("authorization",
+                                "Bearer " + TokenUtil.token)
                         .content(this.objectMapper.writeValueAsString(feedbackDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -509,6 +543,8 @@ public class FeedbackRestController_createFeedback {
         this.mockMvc
                 .perform(MockMvcRequestBuilders
                         .post("/feedback/create")
+                        .header("authorization",
+                                "Bearer " + TokenUtil.token)
                         .content(this.objectMapper.writeValueAsString(feedbackDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -518,7 +554,7 @@ public class FeedbackRestController_createFeedback {
     /**
      * Created by: DiepTT
      * Date created: 11/08/2022
-     * Function: Check not-null of "image"
+     * Function: Check null of "image"
      *
      * @throws Exception
      */
@@ -535,16 +571,18 @@ public class FeedbackRestController_createFeedback {
         this.mockMvc
                 .perform(MockMvcRequestBuilders
                         .post("/feedback/create")
+                        .header("authorization",
+                                "Bearer " + TokenUtil.token)
                         .content(this.objectMapper.writeValueAsString(feedbackDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
-                .andExpect(status().is4xxClientError());
+                .andExpect(status().is2xxSuccessful());
     }
 
     /**
      * Created by: DiepTT
      * Date created: 10/08/2022
-     * Function: Check required of "image"
+     * Function: Check not-required of "image"
      *
      * @throws Exception
      */
@@ -561,10 +599,12 @@ public class FeedbackRestController_createFeedback {
         this.mockMvc
                 .perform(MockMvcRequestBuilders
                         .post("/feedback/create")
+                        .header("authorization",
+                                "Bearer " + TokenUtil.token)
                         .content(this.objectMapper.writeValueAsString(feedbackDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
-                .andExpect(status().is4xxClientError());
+                .andExpect(status().is2xxSuccessful());
     }
 
 
@@ -585,10 +625,11 @@ public class FeedbackRestController_createFeedback {
         feedbackDto.setRating(4);
         feedbackDto.setContent("Quán trang trí đẹp, thức uống ngon.");
         feedbackDto.setImage("anh-quan-cafe-1.jpg");
-
         this.mockMvc
                 .perform(MockMvcRequestBuilders
                         .post("/feedback/create")
+                        .header("authorization",
+                                "Bearer " + TokenUtil.token)
                         .content(this.objectMapper.writeValueAsString(feedbackDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
