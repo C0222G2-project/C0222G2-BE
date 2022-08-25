@@ -62,7 +62,7 @@ public class DishRestController {
     public ResponseEntity<Dish> findById(@PathVariable int id) {
         Optional<Dish> dishOptional = iDishService.findById(id);
         if (!dishOptional.isPresent()) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(dishOptional.get(), HttpStatus.OK);
     }
@@ -81,7 +81,7 @@ public class DishRestController {
         Optional<Dish> dishOptional = iDishService.findById(id);
 
         if (!dishOptional.isPresent()) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         if (bindingResult.hasErrors()) {
             return new ResponseEntity<>(bindingResult.getFieldError(), HttpStatus.UPGRADE_REQUIRED);

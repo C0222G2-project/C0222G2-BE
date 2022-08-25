@@ -58,7 +58,6 @@ public class DishDto implements Validator {
                     errors.rejectValue("code", "", "codeExists");
                     break;
                 }
-
             }
         }
     }
