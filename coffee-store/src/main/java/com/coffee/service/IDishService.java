@@ -4,6 +4,7 @@ import com.coffee.model.dish.Dish;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface IDishService {
@@ -20,4 +21,8 @@ public interface IDishService {
     Optional<Dish> findById(int id);
 
     void editDish(Dish dish);
+
+    Page<Dish> getDishByDishType(int id, Pageable pageable);
+
+    List<Dish> findAll();
 }

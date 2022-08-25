@@ -16,28 +16,26 @@ public class FeedbackDto {
     @NotBlank(message = "Vui lòng nhập họ và tên.")
     @Pattern(regexp = "^([A-ZÁÀẢÃẠĂẮẰẲẴẶÂẤẦẨẬẪÉÈẺẼẸÊẾỀỂỄỆÍÌỈĨỊÓÒỎÕỌÔỐỒỔỖỘƠỚỜỞỠỢÚÙỦŨỤƯỨỪỬỮỰÝỲỶỸỴĐ]" +
             "[a-záàảãạăắằẳẵặâấầẩậẫéèẻẽẹêếềểễệíìỉĩịóòỏõọôốồổỗộơớờởỡợúùủũụưứừửữựýỳỷỹỵđ]*" +
-            "( ))*([A-ZÁÀẢÃẠĂẮẰẲẴẶÂẤẦẨẬẪÉÈẺẼẸÊẾỀỂỄỆÍÌỈĨỊÓÒỎÕỌÔỐỒỔỖỘƠỚỜỞỠỢÚÙỦŨỤƯỨỪỬỮỰÝỲỶỸỴĐ]" +
+            "( )){0,14}([A-ZÁÀẢÃẠĂẮẰẲẴẶÂẤẦẨẬẪÉÈẺẼẸÊẾỀỂỄỆÍÌỈĨỊÓÒỎÕỌÔỐỒỔỖỘƠỚỜỞỠỢÚÙỦŨỤƯỨỪỬỮỰÝỲỶỸỴĐ]" +
             "[a-záàảãạăắằẳẵặâấầẩậẫéèẻẽẹêếềểễệíìỉĩịóòỏõọôốồổỗộơớờởỡợúùủũụưứừửữựýỳỷỹỵđ]*)$",
-            message = "Vui lòng nhập đúng định dạng họ và tên: " +
-                    "viết hoa chữ cái đầu mỗi từ, không chứa ký tự đặc biệt...")
+            message = "Vui lòng nhập họ và tên đúng định dạng" +
+                    " (chỉ viết hoa chữ cái đầu mỗi từ, không chứa số và ký tự đặc biệt, không chứa khoảng trắng thừa, ...).")
     @Size(min = 2, max = 30, message = "Vui lòng nhập 2 - 30 ký tự.")
     private String creator;
 
     @NotBlank(message = "Vui lòng nhập địa chỉ email cá nhân.")
     @Email(message = "Vui lòng nhập đúng định dạng email.")
-    @Size(min = 5, max = 320, message = "Vui lòng nhập 5 - 320 ký tự.")
+    @Size(min = 5, message = "Vui lòng nhập từ 5 ký tự trở lên.")
     private String email;
 
     @NotBlank(message = "Vui lòng nhập nội dung phản hồi.")
-    @Size(min = 2, message = "Vui lòng nhập nhiều hơn 1 ký tự.")
+    @Size(min = 2, message = "Vui lòng nhập từ 2 ký tự trở lên.")
     private String content;
 
-    @NotNull(message = "Vui lòng đánh giá sao trước khi phản hồi.")
-    @Range(min = 1, max = 5, message = "Vui lòng đánh giá 1-5 sao.")
+    @NotNull(message = "Vui lòng đánh giá dịch vụ.")
+    @Range(min = 1, max = 5, message = "Vui lòng đánh giá 1 - 5 sao.")
     private Integer rating;
 
-    @NotBlank(message = "Vui lòng đính kèm ảnh phản hồi thực tế.")
-    @Size(min = 5, max = 70, message = "Vui lòng đặt tên ảnh từ 5 đến 70 ký tự.")
     private String image;
 
 
@@ -51,7 +49,6 @@ public class FeedbackDto {
         this.rating = rating;
         this.image = image;
     }
-
 
     public String getCreator() {
         return creator;

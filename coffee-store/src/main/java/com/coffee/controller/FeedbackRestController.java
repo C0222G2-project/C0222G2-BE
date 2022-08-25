@@ -11,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
@@ -27,7 +28,6 @@ public class FeedbackRestController {
     @Autowired
     private IFeedbackService feedbackService;
 
-
     /**
      * Created by: DiepTT
      * Date created: 09/08/2022
@@ -37,6 +37,7 @@ public class FeedbackRestController {
      * @param bindingResult
      * @return feedback in the database
      */
+    @PreAuthorize("isAuthenticated()")
     @PostMapping("/create")
     public ResponseEntity<List<FieldError>> createFeedback(
             @Validated @RequestBody FeedbackDto feedbackDto,
@@ -46,7 +47,6 @@ public class FeedbackRestController {
             return new ResponseEntity<>(bindingResult.getFieldErrors(), HttpStatus.BAD_REQUEST);
         }
 
-
         Feedback feedback = new Feedback();
 
         BeanUtils.copyProperties(feedbackDto, feedback);
@@ -55,7 +55,6 @@ public class FeedbackRestController {
 
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
-
 
     /**
      * Created by : LuanTV
@@ -72,8 +71,7 @@ public class FeedbackRestController {
      * @param searchEndDate
      * @return Page<Feedback>
      */
-
-
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @GetMapping("/page")
     public ResponseEntity<Page<Feedback>> getAllFeedback(
             @RequestParam(name = "page", required = false, defaultValue = "0") Integer page,
@@ -83,9 +81,13 @@ public class FeedbackRestController {
             @RequestParam Optional<String> searchStartDate,
             @RequestParam Optional<String> searchEndDate) {
 
-        Sort sortable = Sort.by(sort);
+        Sort sortable ;
         if (sort.equals("ASC")) {
             sortable = Sort.by("id").ascending();
+        } else if(!sort.equals("DESC")){
+            sortable = Sort.by("rating").descending();
+        }else {
+            sortable = Sort.by("rating").ascending();
         }
         Pageable pageable = PageRequest.of(page, size, sortable);
         String creator = searchCreator.orElse("");
@@ -100,7 +102,6 @@ public class FeedbackRestController {
         }
     }
 
-
     /**
      * Created by : LuanTV
      * Date created: 09/08/2022
@@ -110,7 +111,7 @@ public class FeedbackRestController {
      * @param id
      * @return Feedback
      */
-
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @GetMapping("/{id}")
     public ResponseEntity<Feedback> getFeedbackById(@PathVariable int id) {
         Optional<Feedback> feedback = feedbackService.findFeedbackById(id);
