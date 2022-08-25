@@ -23,9 +23,6 @@ public class FeedbackDto {
     @Size(min = 2, max = 30, message = "Vui lòng nhập 2 - 30 ký tự.")
     private String creator;
 
-    @NotBlank(message = "Vui lòng nhập địa chỉ email cá nhân.")
-    @Email(message = "Vui lòng nhập đúng định dạng email.")
-    @Size(min = 5, message = "Vui lòng nhập từ 5 ký tự trở lên.")
     private String email;
 
     @NotBlank(message = "Vui lòng nhập nội dung phản hồi.")
