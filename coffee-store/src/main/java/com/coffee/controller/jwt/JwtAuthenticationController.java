@@ -57,7 +57,6 @@ public class JwtAuthenticationController {
                                                        BindingResult bindingResult) throws Exception {
         this.loginUtil.getTokenMap().remove(authenticationRequest.getUsername());
         if (!this.loginUtil.getTokenMap().isEmpty()) {
-            System.out.println(this.loginUtil.getTokenMap().get(authenticationRequest.getUsername()));
             if (this.loginUtil.getTokenMap().get(authenticationRequest.getUsername()) != null) {
                 return new ResponseEntity<>("isLogin", HttpStatus.UNAUTHORIZED);
             }
@@ -87,7 +86,6 @@ public class JwtAuthenticationController {
         List<String> grantList = userDetails.getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority)
                 .collect(Collectors.toList());
-
         final String token = jwtTokenUtil.generateToken(userDetails);
 
         this.loginUtil.getTokenMap().put(userDetails.getUsername(), token);
