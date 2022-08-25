@@ -29,7 +29,8 @@ public class EmployeeRestController_getAllPosition {
 
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .get("/rest/position"))
+                                .get("/rest/position").header("authorization",
+                                        "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtYW5hZ2VyIiwiZXhwIjoxNjYxMzE2MTE1LCJpYXQiOjE2NjExMzYxMTV9.F1Vp9fGsVsitdbGum_PiZzh9a7tyjKwrmG5gr9dr32KvAOI7Vh54C6b1mCg3LxywlBivrFUfFj3rnjYoU5i_dg"))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
@@ -45,11 +46,12 @@ public class EmployeeRestController_getAllPosition {
 
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .get("/rest/position"))
+                                .get("/rest/position").header("authorization",
+                                        "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtYW5hZ2VyIiwiZXhwIjoxNjYxMzE2MTE1LCJpYXQiOjE2NjExMzYxMTV9.F1Vp9fGsVsitdbGum_PiZzh9a7tyjKwrmG5gr9dr32KvAOI7Vh54C6b1mCg3LxywlBivrFUfFj3rnjYoU5i_dg"))
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful())
                 .andExpect(jsonPath("content[0].id").value(1))
-                .andExpect(jsonPath("content[0].name").value("quản lí"));
+                .andExpect(jsonPath("content[0].name").value("Quản Lý"));
     }
 
 }

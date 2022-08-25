@@ -15,15 +15,17 @@ public class EmployeeDTOEdit implements Validator {
 
     @NotBlank(message = "vui lòng điền thông tin.")
     @Size(min = 6,max = 30,message = "Vui lòng nhập name lớn hơn 6 nhỏ hơn 30 kí tự.")
-    @Pattern(regexp = "^([A-Z][^A-Z0-9\\s]+)(\\s[A-Z][^A-Z0-9\\s]+)*$", message = "Vui lòng nhập chữ cái đầu In Hoa mỗi từ ")
+    @Pattern(regexp = "^([A-ZÁÀẢÃẠĂẮẰẲẴẶÂẤẦẨẬẪÉÈẺẼẸÊẾỀỂỄỆÍÌỈĨỊÓÒỎÕỌÔỐỒỔỖỘƠỚỜỞỠỢÚÙỦŨỤƯỨỪỬỮỰÝỲỶỸỴĐ]" +
+            "[a-záàảãạăắằẳẵặâấầẩậẫéèẻẽẹêếềểễệíìỉĩịóòỏõọôốồổỗộơớờởỡợúùủũụưứừửữựýỳỷỹỵđ]*( )){0,14}" +
+            "([A-ZÁÀẢÃẠĂẮẰẲẴẶÂẤẦẨẬẪÉÈẺẼẸÊẾỀỂỄỆÍÌỈĨỊÓÒỎÕỌÔỐỒỔỖỘƠỚỜỞỠỢÚÙỦŨỤƯỨỪỬỮỰÝỲỶỸỴĐ]" +
+            "[a-záàảãạăắằẳẵặâấầẩậẫéèẻẽẹêếềểễệíìỉĩịóòỏõọôốồổỗộơớờởỡợúùủũụưứừửữựýỳỷỹỵđ]*)$", message = "Vui lòng nhập chữ cái đầu In Hoa mỗi từ ")
     private String name;
 
-    @NotBlank(message = "vui lòng điền thông tin.")
     @Size(max = 255,message = "Vui lòng nhập hình ảnh nhỏ hơn 255 kí tự")
     private String image;
 
     @NotBlank(message = "vui lòng điền thông tin.")
-    @Pattern(regexp = "^(09|\\(84\\)\\+9)[01]\\d{7}$", message = "Vui lòng nhập 10 số vs đầu số dạng 090, 091 , (84)+90 , (84)+91")
+    @Pattern(regexp = "^(03|08|09|\\(84\\)\\+9)\\d\\d{7}$", message = "Vui lòng nhập 10 số vs đầu số dạng 090, 091 , (84)+90 , (84)+91")
     private String phoneNumber;
 
     @NotBlank(message = "vui lòng điền thông tin.")
@@ -44,7 +46,7 @@ public class EmployeeDTOEdit implements Validator {
     @Max(value = 100000000)
     private Double salary;
 
-    private Integer isDeleted;
+    private Boolean isDeleted;
 
     private Position position;
 
