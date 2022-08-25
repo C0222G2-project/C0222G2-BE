@@ -9,7 +9,6 @@ import java.util.List;
 
 public interface IEmployeeService {
 
-
     /**
      * Create by TuyenTN
      * Data: 9-8-2022
@@ -57,7 +56,6 @@ public interface IEmployeeService {
      */
     void saveEmployee(Employee employee);
 
-
     /**
      * @creator TaiLV
      * Date 09/08/2022
@@ -76,7 +74,6 @@ public interface IEmployeeService {
      * @return  update Employee success
      */
     void editEmployee(Employee employee);
-
 
     List<Employee> findAll();
 }

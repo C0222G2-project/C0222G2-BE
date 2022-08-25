@@ -46,7 +46,7 @@ public class SimpleEmailController_sendSimpleEmail {
      * date-create 10/8/2022
      * @throws Exception
      */
-    // 91. [item] not found in database => return status 204
+    // 91. [item] not found in database => return status 401
     @Test
     public void sendSimpleEmail_username_91() throws Exception {
         JwtRequest jwtRequest = new JwtRequest();
@@ -57,7 +57,7 @@ public class SimpleEmailController_sendSimpleEmail {
                         .content(this.objectMapper.writeValueAsString(jwtRequest))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
-                .andExpect(status().is2xxSuccessful());
+                .andExpect(status().is4xxClientError());
     }
 
     /**
@@ -69,7 +69,7 @@ public class SimpleEmailController_sendSimpleEmail {
     @Test
     public void sendSimpleEmail_username_18() throws Exception {
         JwtRequest jwtRequest = new JwtRequest();
-        jwtRequest.setUsername("staff");
+        jwtRequest.setUsername("tranthienminh135");
 
         this.mockMvc.perform(MockMvcRequestBuilders
                         .post("/sendSimpleEmail")
@@ -85,14 +85,14 @@ public class SimpleEmailController_sendSimpleEmail {
      * date-create 10/8/2022
      * @throws Exception
      */
-    // 93. [item] is not same with token's server
+    // 93. [item] is not same with token's server -> return 302 status
     @Test
     public void getUsernameForChangePassword_token_93() throws Exception {
         String tempToken = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzdGFmZiIsImV4cCI6MTY2MDEzOTYyNiwiaWF0IjoxNjYwMTIxNjI2fQ.wCAsQ1bTO2kj6c5qvBSLFcWPtsCBxogqO3XY7smnGgJchLeO4KdKSSAq0yD6qDu__Xilbk1ftbsunyUS19G7NQ";
         this.mockMvc.perform(MockMvcRequestBuilders
                         .get("/forgotPassword/" + tempToken))
                 .andDo(print())
-                .andExpect(status().is4xxClientError());
+                .andExpect(status().is3xxRedirection());
     }
 
     /**
@@ -107,7 +107,7 @@ public class SimpleEmailController_sendSimpleEmail {
         this.mockMvc.perform(MockMvcRequestBuilders
                         .get("/forgotPassword/" + tempToken))
                 .andDo(print())
-                .andExpect(status().is4xxClientError());
+                .andExpect(status().is3xxRedirection());
     }
 
     /**

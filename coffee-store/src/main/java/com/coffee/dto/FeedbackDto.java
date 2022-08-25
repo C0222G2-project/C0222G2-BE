@@ -47,7 +47,6 @@ public class FeedbackDto {
         this.image = image;
     }
 
-
     public String getCreator() {
         return creator;
     }

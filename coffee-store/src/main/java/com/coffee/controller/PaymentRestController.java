@@ -4,6 +4,7 @@ package com.coffee.controller;
 import com.coffee.dto.ICoffeeTableDto;
 import com.coffee.dto.ITotalPaymentDto;
 import com.coffee.model.bill.Bill;
+import com.coffee.model.coffee_table.CoffeeTable;
 import com.coffee.repository.IBillRepository;
 import com.coffee.repository.IDishOrderRepository;
 import com.coffee.repository.IPaymentInBillRepository;
@@ -90,7 +91,6 @@ public class PaymentRestController {
         return new ResponseEntity<>(iTotalPaymentDto, HttpStatus.OK);
     }
 
-
     @GetMapping("/in-bill")
     public ResponseEntity<Void> inBill(@RequestParam int idTable) {
         int code = this.getRandomNumber(this.billRepository.findAll());
@@ -120,5 +120,17 @@ public class PaymentRestController {
             }
         }
         return false;
+    }
+
+    @PatchMapping ("/total/{id}")
+    public ResponseEntity<ITotalPaymentDto> setStatus(@PathVariable("id") String nameTable) {
+        this.iCoffeeTableService.updateStatusIsName(nameTable);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping ("/getTable/{id}")
+    public ResponseEntity<CoffeeTable> getTableCode(@PathVariable("id") String nameTable) {
+        CoffeeTable coffeeTable = this.iCoffeeTableService.getTableCode(nameTable);
+        return new ResponseEntity<>(coffeeTable, HttpStatus.OK);
     }
 }

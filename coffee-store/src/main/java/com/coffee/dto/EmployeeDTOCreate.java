@@ -80,6 +80,4 @@ public class EmployeeDTOCreate implements Validator {
             errors.rejectValue("salary", "create.salary", "salary%100000");
         }
     }
-
-
 }
