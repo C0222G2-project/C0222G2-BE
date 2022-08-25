@@ -86,6 +86,6 @@ public interface ICoffeeTableRepository extends JpaRepository<CoffeeTable, Integ
      */
     @Transactional
     @Modifying
-    @Query(value = " UPDATE `coffee_store`.`coffee_table` SET `status` = 0 WHERE (`id` = :idTable) ", nativeQuery = true)
+    @Query(value = " UPDATE `coffee_table` SET `status` = 1 WHERE (`id` = :idTable) ", nativeQuery = true)
     void updateStatus(@Param("idTable") int idTable);
 }

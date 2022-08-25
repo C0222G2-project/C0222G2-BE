@@ -109,4 +109,18 @@ public class DishService implements IDishService {
     public Page<Dish> searchDish(String name, String code, String price, String dishType, Pageable pageable) {
         return iDishRepository.searchDishPage("%" + name + "%", "%" + code + "%", "%" + price + "%", dishType, pageable);
     }
+
+    /**
+     * Created By: BinhPX
+     * Date created: 14/08/2022
+     * function: get Dish list
+     *
+     * @param id of dish type
+     * @param pageable
+     * @return dishPage
+     */
+    @Override
+    public Page<Dish> getDishByDishType(int id, Pageable pageable) {
+        return iDishRepository.findAllDishFindByeId(id, pageable);
+    }
 }

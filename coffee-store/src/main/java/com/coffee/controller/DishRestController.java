@@ -27,6 +27,8 @@ public class DishRestController {
     private IDishService iDishService;
 
     /**
+    /**
+    /**
      * @param dishDto
      * @return dish, status 201
      * @function (create new Dish)
@@ -187,5 +189,26 @@ public class DishRestController {
     public ResponseEntity<Void> deleteDish(@PathVariable Integer id) {
         this.iDishService.deleteDish(id);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    /**
+     * Created by: BinhPX
+     * Date created: 14/08/2022
+     * function: get dish from dish type
+     *
+     * @param id
+     * @return HTTP status  204(NO_CONTENT) : id = null
+     * HTTP status  200(OK) : deleted
+     */
+    @GetMapping("/getDishFindIdDishType/{id}")
+    public ResponseEntity<Page<Dish>> getAllDishFindIdDishType(@PathVariable Integer id,
+                                                               @PageableDefault(4) Pageable pageable,
+                                                               @RequestParam("page") Optional<Integer> page){
+        Page<Dish> dishPage = this.iDishService.getDishByDishType(id,pageable);
+        if (dishPage.isEmpty()) {
+            return new ResponseEntity<>(dishPage, HttpStatus.NO_CONTENT);
+        } else {
+            return new ResponseEntity<>(dishPage, HttpStatus.OK);
+        }
     }
 }

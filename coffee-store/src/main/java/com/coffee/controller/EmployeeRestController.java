@@ -48,7 +48,7 @@ public class EmployeeRestController {
      * @param searchAccount
      * @return
      */
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+//    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @GetMapping("/employee/page")
     public ResponseEntity<Page<IEmployeeDTO>> getAllEmployee(@PageableDefault(10) Pageable pageable,
                                                              Optional<String> searchName,
@@ -189,6 +189,7 @@ public class EmployeeRestController {
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @PostMapping("/employee/create")
     public ResponseEntity<?> saveEmployee(@Valid @RequestBody EmployeeDTOCreate employeeDTO , BindingResult bindingResult) {
+
         EmployeeDTOCreate employeeDTOCreate = new EmployeeDTOCreate();
         employeeDTOCreate.setEmployeeList(this.iEmployeeService.findAll());
 
