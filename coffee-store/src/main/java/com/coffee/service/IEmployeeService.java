@@ -9,7 +9,6 @@ import java.util.List;
 
 public interface IEmployeeService {
 
-
     /**
      * Create by TuyenTN
      * Data: 9-8-2022
@@ -56,7 +55,6 @@ public interface IEmployeeService {
      * @return  create Employee success
      */
     void saveEmployee(Employee employee);
-
 
     /**
      * @creator TaiLV

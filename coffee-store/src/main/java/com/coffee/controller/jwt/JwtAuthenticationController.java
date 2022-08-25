@@ -6,7 +6,7 @@ import com.coffee.model.jwt.JwtResponse;
 import com.coffee.service.account.IAppUserService;
 import com.coffee.service.jwt.JwtUserDetailsService;
 import com.coffee.util.JwtTokenUtil;
-import com.coffee.util.TokenUtil;
+import com.coffee.util.LoginUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -43,7 +43,7 @@ public class JwtAuthenticationController {
     private IAppUserService appUserService;
 
     @Autowired
-    private TokenUtil tokenUtil;
+    private LoginUtil loginUtil;
 
     /**
      * @param authenticationRequest
@@ -55,9 +55,9 @@ public class JwtAuthenticationController {
     @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
     public ResponseEntity<?> createAuthenticationToken(@Valid @RequestBody JwtRequest authenticationRequest,
                                                        BindingResult bindingResult) throws Exception {
-        if (!this.tokenUtil.getTokenMap().isEmpty()) {
-            System.out.println(this.tokenUtil.getTokenMap().get(authenticationRequest.getUsername()));
-            if (this.tokenUtil.getTokenMap().get(authenticationRequest.getUsername()) != null) {
+        this.loginUtil.getTokenMap().remove(authenticationRequest.getUsername());
+        if (!this.loginUtil.getTokenMap().isEmpty()) {
+            if (this.loginUtil.getTokenMap().get(authenticationRequest.getUsername()) != null) {
                 return new ResponseEntity<>("isLogin", HttpStatus.UNAUTHORIZED);
             }
         }
@@ -86,10 +86,9 @@ public class JwtAuthenticationController {
         List<String> grantList = userDetails.getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority)
                 .collect(Collectors.toList());
-
         final String token = jwtTokenUtil.generateToken(userDetails);
 
-        this.tokenUtil.getTokenMap().put(userDetails.getUsername(), token);
+        this.loginUtil.getTokenMap().put(userDetails.getUsername(), token);
 
         return ResponseEntity.ok(new JwtResponse(token, grantList, userDetails.getUsername()));
     }

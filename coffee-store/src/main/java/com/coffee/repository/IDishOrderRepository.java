@@ -17,6 +17,7 @@ import java.util.List;
 
 @Repository
 public interface IDishOrderRepository extends JpaRepository<DishOrder, Integer> {
+
     /**
      * Created by: BaoTQ
      * Date create: 09/08/2022
@@ -29,7 +30,6 @@ public interface IDishOrderRepository extends JpaRepository<DishOrder, Integer> 
             " GROUP BY  dish_order.dish_id ORDER BY time_order DESC LIMIT 5) as dto_table"
             , nativeQuery = true)
     List<DishMostOrderDTO> get5DishMostOrderDTO();
-
 
     /**
      * Created by: BaoTQ
@@ -52,7 +52,6 @@ public interface IDishOrderRepository extends JpaRepository<DishOrder, Integer> 
             " from dish_order where is_deleted = 0 ) as dishOrder",
             nativeQuery = true)
     Page<DishOrder> getAllOrder(Pageable pageable);
-
 
     /**
      * Author: BinhPX
@@ -78,7 +77,6 @@ public interface IDishOrderRepository extends JpaRepository<DishOrder, Integer> 
             "employee_id, is_deleted from dish_order where is_deleted = 0 and coffee_table_id = :param", nativeQuery = true)
     List<DishOrder> getOrderHaveCode(@Param("param") String param);
 
-
      /**
      *   Author: BinhPX
      *   Date created: 12/08/2022
@@ -89,7 +87,6 @@ public interface IDishOrderRepository extends JpaRepository<DishOrder, Integer> 
     @Modifying
     @Query(value = "update dish_order set is_deleted = 1 where code = :code", nativeQuery = true)
     void deleteOrder(@Param("code") String code);
-
 
     /**
      * @param billAfter

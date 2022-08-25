@@ -41,7 +41,8 @@ public class EmployeeRestController_findById {
     public void findById_id_4() throws Exception {
 
         this.mockMvc.perform(
-                        MockMvcRequestBuilders.get("/rest/employee/findId/1"))
+                        MockMvcRequestBuilders.get("/rest/employee/findId/1").header("authorization",
+                                "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtYW5hZ2VyIiwiZXhwIjoxNjYxMzE2MTE1LCJpYXQiOjE2NjExMzYxMTV9.F1Vp9fGsVsitdbGum_PiZzh9a7tyjKwrmG5gr9dr32KvAOI7Vh54C6b1mCg3LxywlBivrFUfFj3rnjYoU5i_dg"))
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful())
                 .andExpect(jsonPath("id").value(1))

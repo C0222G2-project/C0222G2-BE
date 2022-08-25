@@ -63,5 +63,4 @@ public class EmployeeDTOEdit implements Validator {
             errors.rejectValue("salary", "create.salary", "vui lòng nhập lương là bội của 100.000");
         }
     }
-
 }

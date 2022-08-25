@@ -63,18 +63,19 @@ public class EmployeeRestController_findEmployeeById {
      */
     @Test
     public void findEmployeeById_id_4() throws Exception {
-        this.mockMvc.perform(MockMvcRequestBuilders.get("/rest/employee/find/1"))
+        this.mockMvc.perform(MockMvcRequestBuilders.get("/rest/employee/find/1").header("authorization",
+                "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtYW5hZ2VyIiwiZXhwIjoxNjYxMzE2MTE1LCJpYXQiOjE2NjExMzYxMTV9.F1Vp9fGsVsitdbGum_PiZzh9a7tyjKwrmG5gr9dr32KvAOI7Vh54C6b1mCg3LxywlBivrFUfFj3rnjYoU5i_dg"))
                 .andDo(print()).andExpect(status().is2xxSuccessful())
                 .andExpect(jsonPath("id").value(1))
-                .andExpect(jsonPath("name").value("Tuyến"))
-                .andExpect(jsonPath("birthday").value("1990-01-01"))
-                .andExpect(jsonPath("phoneNumber").value("0935933888"))
-                .andExpect(jsonPath("address").value("Đà Nẵng"))
-                .andExpect(jsonPath("email").value("abc@gmail.com"))
-                .andExpect(jsonPath("salary").value(1500000))
-                .andExpect(jsonPath("image").value("aaaaaaa"))
+                .andExpect(jsonPath("name").value("Trần Thiên Minh"))
+                .andExpect(jsonPath("birthday").value("1998-11-21"))
+                .andExpect(jsonPath("phoneNumber").value("0905934232"))
+                .andExpect(jsonPath("address").value("27-28, ngõ 294 Vạn Phúc, Kim Mã, Hà Nội"))
+                .andExpect(jsonPath("email").value("tranthienminh1351@gmail.com"))
+                .andExpect(jsonPath("salary").value(15000000))
+                .andExpect(jsonPath("image").value("https://toigingiuvedep.vn/wp-content/uploads/2021/07/mau-anh-the-dep-chuan.jpg"))
                 .andExpect(jsonPath("position").value("Quản Lý"))
-                .andExpect(jsonPath("appUser").value("admin"))
+                .andExpect(jsonPath("appUser").value("manager"))
                 .andExpect(jsonPath("gender").value(1));
     }
 }

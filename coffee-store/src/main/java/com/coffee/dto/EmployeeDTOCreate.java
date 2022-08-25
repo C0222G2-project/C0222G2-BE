@@ -37,6 +37,7 @@ public class EmployeeDTOCreate implements Validator {
 
     @NotBlank(message = "vui lòng điền thông tin.")
     @Email(message = "vui lòng nhập đúng định dạng email.")
+    @Size(min = 6,max = 50,message = "Vui lòng nhập địa chỉ lớn hơn 6 nhỏ hơn 50 kí tự.")
     private String email;
 
     private int gender;
@@ -82,6 +83,4 @@ public class EmployeeDTOCreate implements Validator {
             errors.rejectValue("salary", "create.salary", "salary%100000");
         }
     }
-
-
 }
