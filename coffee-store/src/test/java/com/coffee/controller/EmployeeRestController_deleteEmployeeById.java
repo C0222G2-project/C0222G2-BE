@@ -56,7 +56,8 @@ public class EmployeeRestController_deleteEmployeeById {
      */
     @Test
     public void deleteEmployeeById_id_8() throws Exception {
-        this.mockMvc.perform(MockMvcRequestBuilders.delete("/rest/employee/delete/1"))
+        this.mockMvc.perform(MockMvcRequestBuilders.delete("/rest/employee/delete/1").header("authorization",
+                        "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtYW5hZ2VyIiwiZXhwIjoxNjYxMzE2MTE1LCJpYXQiOjE2NjExMzYxMTV9.F1Vp9fGsVsitdbGum_PiZzh9a7tyjKwrmG5gr9dr32KvAOI7Vh54C6b1mCg3LxywlBivrFUfFj3rnjYoU5i_dg"))
                 .andDo(print()).andExpect(status().is2xxSuccessful());
     }
 }

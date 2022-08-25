@@ -19,6 +19,7 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Integer> {
      * Create by TuyenTN
      * Date: 16:30 pm  9-8-2022
      * method show list and search and paging
+     * tuyentn-list-employee-2
      *
      * @param pageable
      * @param searchByName
@@ -26,19 +27,19 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Integer> {
      * @param searchByAccount
      * @return
      */
-    @Query(value = " select employee.`name` as name,employee.phone_number as phoneNumber,position.name as position, " +
-            " app_user.user_name as appUser,employee.id,employee.birthday,employee.image,employee.address,employee.salary, " +
-            " employee.gender,employee.email from employee " +
-            " join app_user on app_user.id = employee.user_id " +
-            " join position on employee.position_id = position.id " +
-            " where employee.is_deleted =0 and employee.name like :keyZero and employee.phone_number like :keyOne " +
+    @Query(value = " select e.`name` as name,e.phone_number as phoneNumber,`position`.name as `position`, " +
+            " app_user.user_name as appUser,e.id,e.birthday,e.image,e.address,e.salary, " +
+            " e.gender,e.email from employee e " +
+            " join app_user on app_user.id = e.user_id " +
+            " join `position` on e.position_id = `position`.id " +
+            " where e.is_deleted =0 and e.name like :keyZero and e.phone_number like :keyOne " +
             " and app_user.user_name like :keyTwo ",
-            countQuery = " select count(*) from (select employee.`name` as name,employee.phone_number as phoneNumber, " +
-                    " app_user.user_name as appUser,position.name as position,employee.id,employee.birthday,employee.image, " +
-                    " employee.address,employee.salary, employee.gender,employee.email from employee " +
-                    " join app_user on app_user.id = employee.user_id " +
-                    " join position on employee.position_id = position.id " +
-                    " where employee.is_deleted =0 and employee.name like :keyZero and employee.phone_number like :keyOne " +
+            countQuery = " select count(*) from (select e.`name` as name,e.phone_number as phoneNumber, " +
+                    " app_user.user_name as appUser,`position`.name as `position`,e.id,e.birthday,e.image, " +
+                    " e.address,e.salary, e.gender,e.email from employee e " +
+                    " join app_user on app_user.id = e.user_id " +
+                    " join `position` on e.position_id = `position`.id " +
+                    " where e.is_deleted =0 and e.name like :keyZero and e.phone_number like :keyOne " +
                     " and app_user.user_name like :keyTwo ) templol ", nativeQuery = true)
     Page<IEmployeeDTO> getAllEmployee(Pageable pageable, @Param("keyZero") String searchByName,
                                       @Param("keyOne") String searchByPhone,
