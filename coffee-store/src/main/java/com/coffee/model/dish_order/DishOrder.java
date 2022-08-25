@@ -15,9 +15,6 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Getter
-@Setter
-@RequiredArgsConstructor
 public class DishOrder {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -46,16 +43,5 @@ public class DishOrder {
     @JoinColumn(name = "dish_id", referencedColumnName = "id")
     private Dish dish;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        DishOrder dishOrder = (DishOrder) o;
-        return id != null && Objects.equals(id, dishOrder.id);
-    }
 
-    @Override
-    public int hashCode() {
-        return getClass().hashCode();
-    }
 }

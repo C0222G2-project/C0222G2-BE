@@ -31,7 +31,9 @@ public class FeedbackRestController_getFeedbackById {
     public void getFeedbackById_id_1() throws Exception {
 
         this.mockMvc.perform(
-                MockMvcRequestBuilders.get("/feedback/null"))
+                MockMvcRequestBuilders.get("/feedback/null")
+                        .header("authorization",
+                                "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtYW5hZ2VyIiwiZXhwIjoxNjYxMzE2NTA2LCJpYXQiOjE2NjExMzY1MDZ9.5lz2df8Nu6cfWENXqVyZU9G3cN77A6mu7hyVMJjxYLr2CLe-8o70nI5FLvs0uqMzcmEg8hOFW_Ma17VNy7TqSQ"))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
 
@@ -41,7 +43,9 @@ public class FeedbackRestController_getFeedbackById {
     public void getFeedbackById_id_2() throws Exception {
 
         this.mockMvc.perform(
-                MockMvcRequestBuilders.get("/feedback/"))
+                MockMvcRequestBuilders.get("/feedback/")
+                        .header("authorization",
+                                "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtYW5hZ2VyIiwiZXhwIjoxNjYxMzE2NTA2LCJpYXQiOjE2NjExMzY1MDZ9.5lz2df8Nu6cfWENXqVyZU9G3cN77A6mu7hyVMJjxYLr2CLe-8o70nI5FLvs0uqMzcmEg8hOFW_Ma17VNy7TqSQ"))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
 
@@ -51,7 +55,9 @@ public class FeedbackRestController_getFeedbackById {
     public void getFeedbackById_id_3() throws Exception {
 
         this.mockMvc.perform(
-                MockMvcRequestBuilders.get("/feedback/9"))
+                MockMvcRequestBuilders.get("/feedback/99")
+                        .header("authorization",
+                                "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtYW5hZ2VyIiwiZXhwIjoxNjYxMzE2NTA2LCJpYXQiOjE2NjExMzY1MDZ9.5lz2df8Nu6cfWENXqVyZU9G3cN77A6mu7hyVMJjxYLr2CLe-8o70nI5FLvs0uqMzcmEg8hOFW_Ma17VNy7TqSQ"))
                 .andDo(print())
                 .andExpect(status().is(204));
 
@@ -69,16 +75,18 @@ public class FeedbackRestController_getFeedbackById {
     public void getFeedbackById_id_4() throws Exception {
 
         this.mockMvc.perform(
-                MockMvcRequestBuilders.get("/feedback/3"))
+                MockMvcRequestBuilders.get("/feedback/3")
+                        .header("authorization",
+                                "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtYW5hZ2VyIiwiZXhwIjoxNjYxMzE2NTA2LCJpYXQiOjE2NjExMzY1MDZ9.5lz2df8Nu6cfWENXqVyZU9G3cN77A6mu7hyVMJjxYLr2CLe-8o70nI5FLvs0uqMzcmEg8hOFW_Ma17VNy7TqSQ"))
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful())
                 .andExpect(jsonPath("id").value(3))
-                .andExpect(jsonPath("code").value("FB003"))
-                .andExpect(jsonPath("creator").value("Diệp"))
-                .andExpect(jsonPath("email").value("diepdn@gmail.com"))
-                .andExpect(jsonPath("content").value("Giá tiền vừa đủ"))
+                .andExpect(jsonPath("code").value("FB0003"))
+                .andExpect(jsonPath("creator").value("Quỳnh Thị Điệp"))
+                .andExpect(jsonPath("email").value("quynhdiepdiepdn@gmail.com"))
+                .andExpect(jsonPath("content").value("Giá đồ uống rẻ"))
                 .andExpect(jsonPath("rating").value(3))
-                .andExpect(jsonPath("feedbackDate").value("2022-02-05"))
-                .andExpect(jsonPath("image").value("https://www.vivosmartphone.vn/uploads/MANGOADS/ch%E1%BB%A5p%20%E1%BA%A3nh/%E1%BA%A2nh%20%C4%91%E1%BB%93%20u%E1%BB%91ng/fD6Mguu.jpg"));
+                .andExpect(jsonPath("feedbackDate").value("2022-02-01"))
+                .andExpect(jsonPath("image").value("https://firebasestorage.googleapis.com/v0/b/c0222g2-4cf09.appspot.com/o/16-08-YYYca%CC%80%20phe%CC%82%20bo%CC%A3t%20bie%CC%82%CC%89n.jpeg?alt=media&token=d9c32f95-b80e-4a20-8f35-64992b37d344"));
     }
 }
