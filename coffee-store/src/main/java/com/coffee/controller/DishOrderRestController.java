@@ -75,7 +75,7 @@ public class DishOrderRestController {
                                                        @RequestParam("size") Optional<Integer> size) {
         Page<DishOrder> dishOrders = iDishOrderService.getAllOrder(pageable);
         if (dishOrders.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(dishOrders, HttpStatus.OK);
     }
