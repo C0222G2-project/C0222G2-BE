@@ -1,5 +1,6 @@
 package com.coffee.model.account;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -23,6 +24,7 @@ public class AppRole {
     private String roleName;
 
     @OneToMany(mappedBy = "appRole")
+    @JsonIgnore
     private List<UserRole> userRoles;
 
     @Column(columnDefinition = "bit(1) default 0")
