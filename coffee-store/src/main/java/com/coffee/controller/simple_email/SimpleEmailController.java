@@ -24,14 +24,16 @@ import java.io.IOException;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @CrossOrigin
 public class SimpleEmailController {
 
-    private static final String URL_FE = "http://localhost:4200";
-    private static final String URL_API = "http://trungdc.synology.me:8080";
+    @Value("${FE_URL}")
+    private String fe_url;
+
+    @Value("${API_URL}")
+    private String api_url;
     @Autowired
     public JavaMailSender emailSender;
 
@@ -95,17 +97,17 @@ public class SimpleEmailController {
     @GetMapping("/forgotPassword/{token}")
     public ResponseEntity<?> getUsernameForChangePassword(@PathVariable String token, HttpServletResponse response) throws IOException {
         if (this.tokenList.isEmpty()) {
-            response.sendRedirect(URL_FE + "/login");
+            response.sendRedirect(fe_url + "/login");
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
         for (String tokenVal : this.tokenList) {
             if (tokenVal.equals(token)) {
-                response.sendRedirect(URL_FE + "/forgot/" + token);
+                response.sendRedirect(fe_url + "/forgot/" + token);
                 this.loginUtil.getTokenMap().remove(this.jwtTokenUtil.getUsernameFromToken(token));
                 return new ResponseEntity<>(HttpStatus.OK);
             }
         }
-        response.sendRedirect(URL_FE + "/login");
+        response.sendRedirect(fe_url + "/login");
         return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 
@@ -225,7 +227,7 @@ public class SimpleEmailController {
                 "                                        Một liên kết duy nhất để đặt lại mật khẩu của bạn đã được tạo ra.\n" +
                 "                                        Để đặt lại mật khẩu, hãy nhấp vào liên kết bên dưới và làm theo hướng dẫn.\n" +
                 "                                    </p>\n" +
-                "                                    <a href=\"" + URL_API + "/forgotPassword/" + token + "\" class=\"btn-yellow\"\n" +
+                "                                    <a href=\"" + api_url + "/forgotPassword/" + token + "\" class=\"btn-yellow\"\n" +
                 "                                       style=\" text-decoration:none !important; font-weight:500; margin-top:35px; color:#fff;text-transform:uppercase; font-size:14px;padding:10px 24px;display:inline-block;border-radius:50px;\">Cập\n" +
                 "                                        nhật mật khẩu</a>\n" +
                 "                                </td>\n" +
