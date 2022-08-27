@@ -40,7 +40,6 @@ public class DishRestController_createDish {
         dishDto.setName("cà phê sữa");
         dishDto.setImage("ảnh");
         dishDto.setIsDeleted(false);
-
         DishType dishType = new DishType();
         dishType.setId(1);
         dishDto.setDishType(dishType);

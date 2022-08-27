@@ -1,7 +1,5 @@
 package com.coffee.service.impl;
 
-
-
 import com.coffee.dto.IEmployeeDTO;
 import com.coffee.model.account.AppRole;
 import com.coffee.model.account.AppUser;
@@ -15,8 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
@@ -46,7 +42,8 @@ public class EmployeeServiceImpl implements IEmployeeService {
      * @return
      */
     @Override
-    public Page<IEmployeeDTO> getAllEmployee(Pageable pageable, String searchByName, String searchByPhone, String searchByAccount) {
+    public Page<IEmployeeDTO> getAllEmployee(Pageable pageable, String searchByName, String searchByPhone, String searchByAccount)
+    {
         return iEmployeeRepository.getAllEmployee(pageable, "%" + searchByName + "%", "%" + searchByPhone + "%",
                 "%" + searchByAccount + "%");
     }
@@ -110,7 +107,6 @@ public class EmployeeServiceImpl implements IEmployeeService {
 
         this.iUserRoleService.save(userRole);
         employee.setAppUser(au);
-
         iEmployeeRepository.saveEmployee(employee);
     }
 

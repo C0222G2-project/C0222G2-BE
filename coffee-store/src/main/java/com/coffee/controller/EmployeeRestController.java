@@ -12,6 +12,7 @@ import com.coffee.service.IPositionService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
@@ -48,7 +49,7 @@ public class EmployeeRestController {
      * @param searchAccount
      * @return
      */
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+//    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @GetMapping("/employee/page")
     public ResponseEntity<Page<IEmployeeDTO>> getAllEmployee(@PageableDefault(10) Pageable pageable,
                                                              Optional<String> searchName,
@@ -57,15 +58,7 @@ public class EmployeeRestController {
         String searchByName = searchName.orElse("");
         String searchByPhone = searchPhone.orElse("");
         String searchByAccount = searchAccount.orElse("");
-        if (searchByName.equals("null")) {
-            searchByName = "";
-        }
-        if (searchByPhone.equals("null")) {
-            searchByPhone = "";
-        }
-        if (searchByAccount.equals("null")) {
-            searchByPhone = "";
-        }
+
         Page<IEmployeeDTO> employeePage = this.iEmployeeService.getAllEmployee(pageable, searchByName, searchByPhone, searchByAccount);
         if (employeePage.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -188,6 +181,7 @@ public class EmployeeRestController {
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @PostMapping("/employee/create")
     public ResponseEntity<?> saveEmployee(@Valid @RequestBody EmployeeDTOCreate employeeDTO , BindingResult bindingResult) {
+
         EmployeeDTOCreate employeeDTOCreate = new EmployeeDTOCreate();
         employeeDTOCreate.setEmployeeList(this.iEmployeeService.findAll());
 

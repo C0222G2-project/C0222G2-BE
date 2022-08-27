@@ -1,9 +1,7 @@
 package com.coffee.model.account;
 
 import com.coffee.model.employee.Employee;
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -39,8 +37,9 @@ public class AppUser {
     @JsonIgnore
     private List<UserRole> userRoles;
 
+
     @OneToOne(mappedBy = "appUser")
-    @JsonBackReference
+    @JsonIgnore
     private Employee employee;
 
     @Override

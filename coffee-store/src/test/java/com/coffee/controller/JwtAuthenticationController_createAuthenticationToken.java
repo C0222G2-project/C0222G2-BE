@@ -16,7 +16,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class jwtAuthenticationEntryPoint_createAuthenticationToken {
+public class JwtAuthenticationController_createAuthenticationToken {
 
     @Autowired
     private MockMvc mockMvc;
@@ -106,7 +106,7 @@ public class jwtAuthenticationEntryPoint_createAuthenticationToken {
      * date-create 10/8/2022
      * @throws Exception
      */
-    // 91. [item] not found in database => return status 204
+    // 91. [item] not found in database => return status 401
     @Test
     public void createAuthenticationToken_username_91() throws Exception {
         JwtRequest jwtRequest = new JwtRequest();
@@ -118,7 +118,7 @@ public class jwtAuthenticationEntryPoint_createAuthenticationToken {
                         .content(this.objectMapper.writeValueAsString(jwtRequest))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
-                .andExpect(status().is2xxSuccessful());
+                .andExpect(status().is4xxClientError());
     }
 
     /**
@@ -151,8 +151,8 @@ public class jwtAuthenticationEntryPoint_createAuthenticationToken {
     @Test
     public void createAuthenticationToken_username_password_18() throws Exception {
         JwtRequest jwtRequest = new JwtRequest();
-        jwtRequest.setUsername("admin");
-        jwtRequest.setPassword("123");
+        jwtRequest.setUsername("manager");
+        jwtRequest.setPassword("123456a@");
 
         this.mockMvc.perform(MockMvcRequestBuilders
                         .post("/authenticate")
@@ -160,7 +160,7 @@ public class jwtAuthenticationEntryPoint_createAuthenticationToken {
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful())
-                .andExpect(jsonPath("username").value("admin"))
+                .andExpect(jsonPath("username").value("manager"))
                 .andExpect(jsonPath("grantList[0]").value("ROLE_ADMIN"))
                 .andExpect(jsonPath("grantList[1]").value("ROLE_STAFF"))
                 .andExpect(jsonPath("grantList[2]").value("ROLE_USER"));
