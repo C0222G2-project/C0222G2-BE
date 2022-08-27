@@ -2,7 +2,6 @@ package com.coffee.service.impl;
 
 import com.coffee.dto.ICoffeeTableDto;
 import com.coffee.dto.ITotalPaymentDto;
-import com.coffee.model.coffee_table.CoffeeTable;
 import com.coffee.repository.ICoffeeTableRepository;
 import com.coffee.service.ICoffeeTableService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,11 +27,6 @@ public class CoffeeTableService implements ICoffeeTableService {
     @Override
     public List<ICoffeeTableDto> findByIdTable(Integer id) {
         return this.iCoffeeTableRepository.displayTableById(id);
-    }
-
-    @Override
-    public CoffeeTable getTableCode(String nameTable) {
-        return this.iCoffeeTableRepository.getCodeTable(nameTable);
     }
 
     /**
@@ -62,11 +56,6 @@ public class CoffeeTableService implements ICoffeeTableService {
     @Override
     public void updateStatus(int idTable) {
         this.iCoffeeTableRepository.updateStatus(idTable);
-    }
-
-    @Override
-    public void updateStatusIsName(String nameTable) {
-        this.iCoffeeTableRepository.updateStatusIsName(nameTable);
     }
 
     @Override
