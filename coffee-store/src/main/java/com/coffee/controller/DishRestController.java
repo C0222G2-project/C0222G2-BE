@@ -205,7 +205,7 @@ public class DishRestController {
      * @return HTTP status  204(NO_CONTENT) : id = null
      * HTTP status  200(OK) : deleted
      */
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     @GetMapping("/getDishFindIdDishType/{id}")
     public ResponseEntity<Page<Dish>> getAllDishFindIdDishType(@PathVariable Integer id,
                                                                @PageableDefault(4) Pageable pageable,

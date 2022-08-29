@@ -76,7 +76,7 @@ public interface IDishOrderRepository extends JpaRepository<DishOrder, Integer> 
     @Query(value="select dor.id, dor.dish_id, dor.coffee_table_id, sum(dor.quantity) as quantity, dor.code, dor.employee_id, dor.bill_id, " +
             " dor.is_deleted from dish_order dor \n" +
             "inner join coffee_table on coffee_table.id = dor.coffee_table_id\n" +
-            "where coffee_table.id = :param\n" +
+            "where coffee_table.id = :param and dor.is_deleted = 0\n" +
             "group by dor.dish_id", nativeQuery = true)
     List<DishOrder> getOrderHaveCode(@Param("param") int param);
 
