@@ -32,7 +32,8 @@ public class DishOrderRestController_getAllOrder {
 
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .get("/dish-order/get-dish-list/"))
+                                .get("/dish-order/get-dish-list/").header("authorization",
+                                        "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtYW5hZ2VyIiwiZXhwIjoxNjYxMzE2MTE1LCJpYXQiOjE2NjExMzYxMTV9.F1Vp9fGsVsitdbGum_PiZzh9a7tyjKwrmG5gr9dr32KvAOI7Vh54C6b1mCg3LxywlBivrFUfFj3rnjYoU5i_dg"))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
@@ -48,7 +49,8 @@ public class DishOrderRestController_getAllOrder {
     public void getAllOrder_6() throws Exception {
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .get("/dish-order/get-dish-list/"))
+                                .get("/dish-order/get-dish-list/").header("authorization",
+                                        "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtYW5hZ2VyIiwiZXhwIjoxNjYxMzE2MTE1LCJpYXQiOjE2NjExMzYxMTV9.F1Vp9fGsVsitdbGum_PiZzh9a7tyjKwrmG5gr9dr32KvAOI7Vh54C6b1mCg3LxywlBivrFUfFj3rnjYoU5i_dg"))
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful())
                 .andExpect(jsonPath("totalPages").value(1))

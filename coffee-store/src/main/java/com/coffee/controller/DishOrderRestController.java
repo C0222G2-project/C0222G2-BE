@@ -86,18 +86,14 @@ public class DishOrderRestController {
      * This function get order have code is, @param is a code, @return status ok if size greater than 0
      * and return status bad gateway if size equal 0
      **/
-    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_STAFF')")
     @GetMapping("/get-order-have-code/{code}")
-    public ResponseEntity<List<DishOrder>> getOrderHaveCode(@PathVariable String code) {
-        if (code != null) {
-            List<DishOrder> dishOrders = iDishOrderService.getOrderHaveCode(code);
-            if (dishOrders.isEmpty()) {
-                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-            } else {
-                return new ResponseEntity<>(dishOrders, HttpStatus.OK);
-            }
+    public ResponseEntity<List<DishOrder>> getOrderHaveCode(@PathVariable int code) {
+        List<DishOrder> dishOrders = iDishOrderService.getOrderHaveCode(code);
+        if (dishOrders.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } else {
+            return new ResponseEntity<>(dishOrders, HttpStatus.OK);
         }
-        return new ResponseEntity<>(HttpStatus.BAD_GATEWAY);
     }
 
     /**
@@ -128,4 +124,5 @@ public class DishOrderRestController {
         this.iDishOrderService.deleteDishOrder(code);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
 }

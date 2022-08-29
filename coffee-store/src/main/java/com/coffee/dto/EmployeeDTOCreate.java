@@ -18,6 +18,9 @@ public class EmployeeDTOCreate implements Validator {
 
     @NotBlank(message = "vui lòng điền thông tin.")
     @Size(min = 6,max = 30,message = "Vui lòng nhập name lớn hơn 6 nhỏ hơn 30 kí tự.")
+
+    @Pattern(regexp = "^([A-ZĐ][^A-Z0-9\\s]+)(\\s[A-ZĐ][^A-Z0-9\\s]+)*$", message = "Vui lòng nhập chữ cái đầu In Hoa mỗi từ ")
+
     @Pattern(regexp = "^([A-ZÁÀẢÃẠĂẮẰẲẴẶÂẤẦẨẬẪÉÈẺẼẸÊẾỀỂỄỆÍÌỈĨỊÓÒỎÕỌÔỐỒỔỖỘƠỚỜỞỠỢÚÙỦŨỤƯỨỪỬỮỰÝỲỶỸỴĐ]" +
             "[a-záàảãạăắằẳẵặâấầẩậẫéèẻẽẹêếềểễệíìỉĩịóòỏõọôốồổỗộơớờởỡợúùủũụưứừửữựýỳỷỹỵđ]*( )){0,14}" +
             "([A-ZÁÀẢÃẠĂẮẰẲẴẶÂẤẦẨẬẪÉÈẺẼẸÊẾỀỂỄỆÍÌỈĨỊÓÒỎÕỌÔỐỒỔỖỘƠỚỜỞỠỢÚÙỦŨỤƯỨỪỬỮỰÝỲỶỸỴĐ]" +

@@ -43,7 +43,7 @@ public interface IDishOrderService {
      *   Date created: 09/08/2022
      *   This function return order menu could find, @param tableId, @return list DishOrder
      **/
-    List<DishOrder> getOrderHaveCode(String param);
+    List<DishOrder> getOrderHaveCode(int param);
 
 
     /**
