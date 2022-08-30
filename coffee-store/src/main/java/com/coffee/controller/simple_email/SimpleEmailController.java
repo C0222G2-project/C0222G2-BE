@@ -79,7 +79,7 @@ public class SimpleEmailController {
             tokenList.add(token);
             String htmlMsg = createHTMLMailForm(token, appUser.getUserName());
             message.setContent(htmlMsg, "text/html; charset=UTF-8");
-            message.setHeader("Access-Control-Allow-Origin","https://trungdc.synology.me");
+            
             helper.setTo(appUser.getEmployee().getEmail());
 
             helper.setSubject("[C0222G2 - Coffee] Lấy lại mật khẩu");
