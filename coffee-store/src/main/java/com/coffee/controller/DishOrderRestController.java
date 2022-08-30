@@ -48,7 +48,7 @@ public class DishOrderRestController {
      * Date created: 09/08/2022
      * This function create new order, @param dishOrderDto, @return
      **/
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     @PostMapping("/create-dishOrder")
     public ResponseEntity<List<FieldError>> createOrder(@Valid @RequestBody DishOrderDto dishOrderDto, BindingResult bindingResult) {
         DishOrder dishOrder = new DishOrder();
