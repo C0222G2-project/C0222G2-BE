@@ -75,5 +75,11 @@ public interface IEmployeeService {
      */
     void editEmployee(Employee employee);
 
+
+    /**
+     * @return list Employee
+     * @creator TaiLV
+     * Date 13/08/2022
+     */
     List<Employee> findAll();
 }
