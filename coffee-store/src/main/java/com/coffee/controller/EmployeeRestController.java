@@ -49,7 +49,7 @@ public class EmployeeRestController {
      * @param searchAccount
      * @return
      */
-//    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @GetMapping("/employee/page")
     public ResponseEntity<Page<IEmployeeDTO>> getAllEmployee(@PageableDefault(10) Pageable pageable,
                                                              Optional<String> searchName,
