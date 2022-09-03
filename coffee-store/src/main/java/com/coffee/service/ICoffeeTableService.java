@@ -19,15 +19,15 @@ public interface ICoffeeTableService {
      */
     List<ICoffeeTableDto> findByIdTable(Integer id);
 
-    CoffeeTable getTableCode(String nameTable);
-
     Page<ICoffeeTableDto> displayCoffeeTableByPage(Pageable pageable);
 
     ITotalPaymentDto calcultion(Integer id);
 
     void updateStatus(int idTable);
 
-    void updateStatusIsName(String nameTable);
-
     void deleteList(Integer id);
+
+    CoffeeTable getTableCode(String nameTable);
+
+    void updateStatusIsName(String nameTable);
 }

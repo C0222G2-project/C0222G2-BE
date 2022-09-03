@@ -30,11 +30,6 @@ public class CoffeeTableService implements ICoffeeTableService {
         return this.iCoffeeTableRepository.displayTableById(id);
     }
 
-    @Override
-    public CoffeeTable getTableCode(String nameTable) {
-        return this.iCoffeeTableRepository.getCodeTable(nameTable);
-    }
-
     /**
      * Create HoaNN
      * Date create 10/08/2022
@@ -65,12 +60,17 @@ public class CoffeeTableService implements ICoffeeTableService {
     }
 
     @Override
-    public void updateStatusIsName(String nameTable) {
-        this.iCoffeeTableRepository.updateStatusIsName(nameTable);
+    public void deleteList(Integer id) {
+        this.iCoffeeTableRepository.deleteList(id);
     }
 
     @Override
-    public void deleteList(Integer id) {
-        this.iCoffeeTableRepository.deleteList(id);
+    public CoffeeTable getTableCode(String nameTable) {
+        return this.iCoffeeTableRepository.getCodeTable(nameTable);
+    }
+
+    @Override
+    public void updateStatusIsName(String nameTable) {
+        this.iCoffeeTableRepository.updateStatusIsName(nameTable);
     }
 }

@@ -39,7 +39,7 @@ public class IDishOrderServiceImpl implements IDishOrderService {
     }
 
     @Override
-    public List<DishOrder> getOrderHaveCode(String param) {
+    public List<DishOrder> getOrderHaveCode(int param) {
         return iDishOrderRepository.getOrderHaveCode(param);
     }
 

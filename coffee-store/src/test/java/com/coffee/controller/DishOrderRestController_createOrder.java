@@ -50,7 +50,8 @@ public class DishOrderRestController_createOrder {
         dishOrderDto.setQuantity(2);
 
         this.mockMvc.perform(MockMvcRequestBuilders
-                .post("/dish-order/create-dishOrder")
+                .post("/dish-order/create-dishOrder").header("authorization",
+                                "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtYW5hZ2VyIiwiZXhwIjoxNjYxMzE2MTE1LCJpYXQiOjE2NjExMzYxMTV9.F1Vp9fGsVsitdbGum_PiZzh9a7tyjKwrmG5gr9dr32KvAOI7Vh54C6b1mCg3LxywlBivrFUfFj3rnjYoU5i_dg")
                     .content(this.objectMapper.writeValueAsString(dishOrderDto))
                     .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -79,7 +80,8 @@ public class DishOrderRestController_createOrder {
         dishOrderDto.setQuantity(2);
 
         this.mockMvc.perform(MockMvcRequestBuilders
-                        .post("/dish-order/create-dishOrder")
+                        .post("/dish-order/create-dishOrder").header("authorization",
+                                "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtYW5hZ2VyIiwiZXhwIjoxNjYxMzE2MTE1LCJpYXQiOjE2NjExMzYxMTV9.F1Vp9fGsVsitdbGum_PiZzh9a7tyjKwrmG5gr9dr32KvAOI7Vh54C6b1mCg3LxywlBivrFUfFj3rnjYoU5i_dg")
                         .content(this.objectMapper.writeValueAsString(dishOrderDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -108,7 +110,8 @@ public class DishOrderRestController_createOrder {
         dishOrderDto.setQuantity(2);
 
         this.mockMvc.perform(MockMvcRequestBuilders
-                        .post("/dish-order/create-dishOrder")
+                        .post("/dish-order/create-dishOrder").header("authorization",
+                                "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtYW5hZ2VyIiwiZXhwIjoxNjYxMzE2MTE1LCJpYXQiOjE2NjExMzYxMTV9.F1Vp9fGsVsitdbGum_PiZzh9a7tyjKwrmG5gr9dr32KvAOI7Vh54C6b1mCg3LxywlBivrFUfFj3rnjYoU5i_dg")
                         .content(this.objectMapper.writeValueAsString(dishOrderDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -137,7 +140,8 @@ public class DishOrderRestController_createOrder {
         dishOrderDto.setQuantity(2);
 
         this.mockMvc.perform(MockMvcRequestBuilders
-                        .post("/dish-order/create-dishOrder")
+                        .post("/dish-order/create-dishOrder").header("authorization",
+                                "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtYW5hZ2VyIiwiZXhwIjoxNjYxMzE2MTE1LCJpYXQiOjE2NjExMzYxMTV9.F1Vp9fGsVsitdbGum_PiZzh9a7tyjKwrmG5gr9dr32KvAOI7Vh54C6b1mCg3LxywlBivrFUfFj3rnjYoU5i_dg")
                         .content(this.objectMapper.writeValueAsString(dishOrderDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -166,7 +170,8 @@ public class DishOrderRestController_createOrder {
         dishOrderDto.setQuantity(2);
 
         this.mockMvc.perform(MockMvcRequestBuilders
-                        .post("/dish-order/create-dishOrder")
+                        .post("/dish-order/create-dishOrder").header("authorization",
+                                "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtYW5hZ2VyIiwiZXhwIjoxNjYxMzE2MTE1LCJpYXQiOjE2NjExMzYxMTV9.F1Vp9fGsVsitdbGum_PiZzh9a7tyjKwrmG5gr9dr32KvAOI7Vh54C6b1mCg3LxywlBivrFUfFj3rnjYoU5i_dg")
                         .content(this.objectMapper.writeValueAsString(dishOrderDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -197,7 +202,8 @@ public class DishOrderRestController_createOrder {
         dishOrderDto.setQuantity(null);
 
         this.mockMvc.perform(MockMvcRequestBuilders
-                        .post("/dish-order/create-dishOrder")
+                        .post("/dish-order/create-dishOrder").header("authorization",
+                                "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtYW5hZ2VyIiwiZXhwIjoxNjYxMzE2MTE1LCJpYXQiOjE2NjExMzYxMTV9.F1Vp9fGsVsitdbGum_PiZzh9a7tyjKwrmG5gr9dr32KvAOI7Vh54C6b1mCg3LxywlBivrFUfFj3rnjYoU5i_dg")
                         .content(this.objectMapper.writeValueAsString(dishOrderDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -229,6 +235,8 @@ public class DishOrderRestController_createOrder {
 
         this.mockMvc.perform(MockMvcRequestBuilders
                         .post("/dish-order/create-dishOrder")
+                        .header("authorization",
+                                "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtYW5hZ2VyIiwiZXhwIjoxNjYxMzE2MTE1LCJpYXQiOjE2NjExMzYxMTV9.F1Vp9fGsVsitdbGum_PiZzh9a7tyjKwrmG5gr9dr32KvAOI7Vh54C6b1mCg3LxywlBivrFUfFj3rnjYoU5i_dg")
                         .content(this.objectMapper.writeValueAsString(dishOrderDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -260,6 +268,8 @@ public class DishOrderRestController_createOrder {
 
         this.mockMvc.perform(MockMvcRequestBuilders
                         .post("/dish-order/create-dishOrder")
+                        .header("authorization",
+                                "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtYW5hZ2VyIiwiZXhwIjoxNjYxMzE2MTE1LCJpYXQiOjE2NjExMzYxMTV9.F1Vp9fGsVsitdbGum_PiZzh9a7tyjKwrmG5gr9dr32KvAOI7Vh54C6b1mCg3LxywlBivrFUfFj3rnjYoU5i_dg")
                         .content(this.objectMapper.writeValueAsString(dishOrderDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
